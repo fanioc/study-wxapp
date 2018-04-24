@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/freeclass/index",
+    "pages/me/index",
+    "pages/schedule/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}
