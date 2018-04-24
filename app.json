@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/freeclass/index",
+    "pages/order-study/index",
     "pages/me/index",
     "pages/schedule/index"
   ],
@@ -9,5 +9,24 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/schedule/index",
+      "text": "课表",
+      "iconPath": "",
+      "selectedIconPath": ""
+    },{
+      "pagePath": "pages/order-study/index",
+      "text": "约自习",
+      "iconPath": "",
+      "selectedIconPath": ""
+    },{
+      "pagePath": "pages/me/index",
+      "text": "我的",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }
+    ]
   }
 }

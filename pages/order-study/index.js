@@ -1,4 +1,4 @@
-// pages/freeclass/index.js
+// pages/order-study/index.js
 Page({
 
   /**
