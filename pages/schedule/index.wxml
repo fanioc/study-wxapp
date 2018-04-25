@@ -1,2 +1,4 @@
 <!--pages/schedule/index.wxml-->
-<text>pages/schedule/index.wxml</text>
+<view class='contain'>
+
+</view>

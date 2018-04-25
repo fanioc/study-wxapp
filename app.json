@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/schedule/index",
     "pages/order-study/index",
-    "pages/me/index",
-    "pages/schedule/index"
+    "pages/me/index"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -14,18 +15,18 @@
     "list": [{
       "pagePath": "pages/schedule/index",
       "text": "课表",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "image/tabBar/activity.png",
+      "selectedIconPath": "image/tabBar/activity_fill.png"
     },{
       "pagePath": "pages/order-study/index",
       "text": "约自习",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "image/tabBar/select.png",
+      "selectedIconPath": "image/tabBar/select_fill.png"
     },{
       "pagePath": "pages/me/index",
       "text": "我的",
-      "iconPath": "",
-      "selectedIconPath": ""
+      "iconPath": "image/tabBar/addressbook.png",
+      "selectedIconPath": "image/tabBar/addressbook_fill.png"
     }
     ]
   }
