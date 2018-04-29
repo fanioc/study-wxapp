@@ -6,12 +6,16 @@
     
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "去自习",
+    "navigationBarTextStyle": "black",
+    "navigationStyle":"default",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
+    "selectedColor":"#707070",
+    "borderStyle":"white",
     "list": [{
       "pagePath": "pages/schedule/index",
       "text": "课表",
@@ -19,7 +23,7 @@
       "selectedIconPath": "image/tabBar/activity_fill.png"
     },{
       "pagePath": "pages/order-study/index",
-      "text": "约自习",
+      "text": "自习",
       "iconPath": "image/tabBar/select.png",
       "selectedIconPath": "image/tabBar/select_fill.png"
     },{

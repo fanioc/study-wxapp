@@ -1,4 +1,53 @@
-<!--pages/schedule/index.wxml-->
 <view class='contain'>
+  <!-- 课表显示页面 -->
+  <view style='text-align: center;'>第{{term.week}}周</view>
 
+  <!-- 周 -->
+  <view>
+    <view class='week'>
+      <view style='width:12.5%;margin:100rpx 0 0 0;'>
+        
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+          <view class='week-time'>8:00</view>
+        
+      </view>
+
+      <view class='week-title'>周一
+        <view class='week-title-little'>23号</view>
+      </view>
+
+      <view class='week-title'>周二
+        <view class='week-title-little'>23号</view>
+      </view>
+
+      <view class='week-title'>周三
+        <view class='week-title-little'>23号</view>
+      </view>
+
+      <view class='week-title'>周四
+        <view class='week-title-little'>23号</view>
+      </view>
+
+      <view class='week-title'>周五
+        <view class='week-title-little'>23号</view>
+      </view>
+
+      <view class='week-title'>周六
+        <view class='week-title-little'>23号</view>
+      </view>
+      
+      <view class='week-title'>周日
+        <view class='week-title-little'>23号</view>
+      </view>
+
+    </view>
+
+
+  </view>
 </view>
