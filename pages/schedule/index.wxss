@@ -1,5 +1,29 @@
 /* pages/schedule/index.wxss */
 
-.contain{
-  
+
+.week {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.week-title {
+  font-size: 17px;
+  height: 100rpx;
+  width: 12.5%;
+  text-align: center;
+}
+
+.week-title-little {
+  margin: 3px 0 0 0;
+  font-size: 14px;
+  color: #888888;
+  text-align: center;
+}
+
+.week-time {
+  height: 100rpx;
+  font-size: 14px;
+  color: #888888;
+  text-align: center;
 }
