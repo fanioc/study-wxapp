@@ -5,6 +5,20 @@
     <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">排行榜</view>
 </view>
 
+<!-- 置顶广告部分 -->
+
+
+      <swiper indicator-dots="true"
+        autoplay="true"   id='banner'>
+       <block wx:for="{{bannerList}}" wx:key="index">
+          <swiper-item>
+            <image   src="{{item.imgSrc}}" />
+          </swiper-item>
+        </block>
+
+      </swiper>
+
+
 <!-- 内容部分 -->
   <!-- 动态圈板块-->
 <view id="dynamic" wx:if="{{currentTab == 0}}">

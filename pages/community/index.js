@@ -5,14 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab:0
+    currentTab:0,//当前顶部切换组件的序号
+    bannerList: [{ imgSrc:"0.png"}]
   },
 //-----------------本页面自定义函数
     /**
-     * 点击上tab切换
+     * 点击上tab切换，已调试
      */
-  swichNav:function(e)
-  {
+  swichNav:function(e){
 console.log(e.currentTarget.dataset.current);
 var that = this;
 
@@ -23,6 +23,13 @@ if (this.data.currentTab === e.target.dataset.current) {
     currentTab: e.target.dataset.current
   })
 }
+  },
+      /**
+     * 获取动态圈板块的置顶广告的图片src，并存入数组bannerList:[]供wx for渲染
+     */
+  getBannerImgSrc:function(e)
+  {
+
   },
 //-----------------本页面自定义函数
   /**

@@ -32,3 +32,9 @@
   color: #fff; 
   background: #f85f48;
 }
+
+
+.swiper-item{
+  display: block;
+  height: 150rpx;
+}
