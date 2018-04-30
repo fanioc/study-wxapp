@@ -1,53 +1,35 @@
-<view class='contain'>
+<view>
   <!-- 课表显示页面 -->
-  <view style='text-align: center;'>第{{term.week}}周</view>
+  <view style='text-align:center;'>第{{term.week}}周</view>
 
-  <!-- 周 -->
   <view>
     <view class='week'>
-      <view style='width:12.5%;margin:100rpx 0 0 0;'>
-        
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-          <view class='week-time'>8:00</view>
-        
+
+      <view style='margin:50px 3px 0 3px;'>
+        <!-- 每节课的时间 -->
+        <view wx:for="{{config.tableHead.time}}" class='week-time'>
+          
+            <view style='font-size: 16px;color:#000;'>{{index+1}}</view>
+            <view>{{item}}</view>
+          
+
+        </view>
       </view>
 
-      <view class='week-title'>周一
-        <view class='week-title-little'>23号</view>
-      </view>
+      <view wx:for="{{config.tableHead.week}}" style='flex:1;'>
+        <!-- 周几-->
+        <view class='week-title'>
+          <view>{{item}}</view>
+          <view class='week-title-little'>{{config.tableHead.date[index]}}日</view>
+        </view>
 
-      <view class='week-title'>周二
-        <view class='week-title-little'>23号</view>
-      </view>
-
-      <view class='week-title'>周三
-        <view class='week-title-little'>23号</view>
-      </view>
-
-      <view class='week-title'>周四
-        <view class='week-title-little'>23号</view>
-      </view>
-
-      <view class='week-title'>周五
-        <view class='week-title-little'>23号</view>
-      </view>
-
-      <view class='week-title'>周六
-        <view class='week-title-little'>23号</view>
-      </view>
-      
-      <view class='week-title'>周日
-        <view class='week-title-little'>23号</view>
+        <view class='week-table'> </view>
+        <view class='week-table'> </view>
+        <view class='week-table'> </view>
+        <view class='week-table'> </view>
+        <view class='week-table'> </view>
       </view>
 
     </view>
-
-
   </view>
 </view>
