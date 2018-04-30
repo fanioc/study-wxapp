@@ -2,37 +2,46 @@
   "pages": [
     "pages/schedule/index",
     "pages/order-study/index",
-    "pages/me/index"
-    
+    "pages/me/index",
+    "pages/community/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "去自习",
     "navigationBarTextStyle": "black",
-    "navigationStyle":"default",
+    "navigationStyle": "default",
     "enablePullDownRefresh": true
   },
   "tabBar": {
-    "color":"#707070",
+    "color": "#707070",
     "selectedColor": "#707070",
-    "borderStyle":"dark",
-    "list": [{
-      "pagePath": "pages/schedule/index",
-      "text": "课表",
-      "iconPath": "image/tabBar/activity.png",
-      "selectedIconPath": "image/tabBar/activity_fill.png"
-    },{
-      "pagePath": "pages/order-study/index",
-      "text": "自习",
-      "iconPath": "image/tabBar/select.png",
-      "selectedIconPath": "image/tabBar/select_fill.png"
-    },{
-      "pagePath": "pages/me/index",
-      "text": "我的",
-      "iconPath": "image/tabBar/addressbook.png",
-      "selectedIconPath": "image/tabBar/addressbook_fill.png"
-    }
+    "borderStyle": "dark",
+    "list": [
+      {
+        "pagePath": "pages/schedule/index",
+        "text": "课表",
+        "iconPath": "image/tabBar/activity.png",
+        "selectedIconPath": "image/tabBar/activity_fill.png"
+      },
+      {
+        "pagePath": "pages/order-study/index",
+        "text": "自习",
+        "iconPath": "image/tabBar/select.png",
+        "selectedIconPath": "image/tabBar/select_fill.png"
+      },
+      {
+              "pagePath": "pages/community/index",
+              "text": "社区",
+              "iconPath": "image/tabBar/community.png",
+              "selectedIconPath": "image/tabBar/community_fill.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的",
+        "iconPath": "image/tabBar/addressbook.png",
+        "selectedIconPath": "image/tabBar/addressbook_fill.png"
+      }
     ]
   }
 }
