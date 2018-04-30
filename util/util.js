@@ -1,19 +1,19 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+//核心函数，处理服务器发送来的errocode
+function errorCode(err, data, callback) {
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  console.log("errorCode函数参数,错误码：" + err + "数据：" + data);
+
+  switch (err) {
+    //状态码
+    case 0: return 0;//无错误
+
+
+    //---------------------------------------------------------
+
+    //错误码
+
+  }
 }
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
 module.exports = {
-  formatTime: formatTime
+
 }
