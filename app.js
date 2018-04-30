@@ -26,5 +26,10 @@ App({
    */
   onError: function (msg) {
     
+  } ,
+
+  //全局变量
+  globalData: {
+    subjectCode: 0  //程序主题的序号码，默认为0，不同编码程序的取色 背景图等 可能不同
   }
 })
