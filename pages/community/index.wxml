@@ -1,2 +1,23 @@
 <!--pages/community/index.wxml-->
-<text>pages/community/index.wxml</text>
+<!-- 顶部切换 -->
+<view class="swiper-tab">
+    <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">动态圈</view>
+    <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">排行榜</view>
+</view>
+
+<!-- 内容部分 -->
+  <!-- 动态圈板块-->
+<view id="dynamic" wx:if="{{currentTab == 0}}">
+  动态圈板块
+
+</view>
+
+  <!-- 排行榜板块-->
+<view id="rank"  wx:if="{{currentTab == 1}}">
+排行榜板块
+    
+
+</view>
+
+
+
