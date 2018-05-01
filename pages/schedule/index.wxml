@@ -1,33 +1,39 @@
 <view>
   <!-- 课表显示页面 -->
-  <view style='text-align:center;'>第{{term.week}}周</view>
+  <view style='text-align:center;'>第{{config.currentWeek}}周</view>
 
   <view>
     <view class='week'>
 
       <view style='margin:50px 3px 0 3px;'>
         <!-- 每节课的时间 -->
-        <view wx:for="{{config.tableHead.time}}" class='week-time'>
-          
-            <view style='font-size: 16px;color:#000;'>{{index+1}}</view>
-            <view>{{item}}</view>
-          
+        <view wx:for="{{config.tableHead.time}}" wx:key="df" class='week-time'>
+
+          <view style='font-size: 16px;color:#000;'>{{index+1}}</view>
+          <view>{{item}}</view>
 
         </view>
       </view>
 
-      <view wx:for="{{config.tableHead.week}}" style='flex:1;'>
+      <view wx:for="{{config.tableHead.week}}" wx:key="df" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
         <!-- 周几-->
         <view class='week-title'>
-          <view>{{item}}</view>
-          <view class='week-title-little'>{{config.tableHead.date[index]}}日</view>
+          <view>{{weekName}}</view>
+          <view class='week-title-little'>{{config.tableHead.date[weekNum]}}日</view>
         </view>
 
-        <view class='week-table'> </view>
-        <view class='week-table'> </view>
-        <view class='week-table'> </view>
-        <view class='week-table'> </view>
-        <view class='week-table'> </view>
+        <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum" id='{{weekNum+1}}-{{classNum+1}}'>
+          <view wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" style='position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*60}}px;' class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'>
+            <view>
+              {{currentCourse[(weekNum+1)*10+classNum+1].className}}
+            </view>
+            <view>
+              {{currentCourse[(weekNum+1)*10+classNum+1].location}}
+            </view>
+          </view>
+
+        </view>
+
       </view>
 
     </view>

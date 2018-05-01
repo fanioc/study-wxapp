@@ -32,10 +32,52 @@
   text-align: center;
 }
 
-.week-table {
+.week-table-font {
   /* box-sizing: border-box; */
-  background: #888;
-  height: 118px;
-  margin: 2px 2px 0 0;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3px;
+  font-size: 13px;
+  text-align: center;
+  color: #ffffff;
+     box-sizing: border-box; 
+
+  margin: 0px 2px 0 0;
   border-radius: 5px;
+}
+
+.week-table-1 {
+  /* box-sizing: border-box; */
+  background: #cce6ff;
+  height: 58px;
+
+}
+
+.week-table-2 {
+  /* box-sizing: border-box; */
+  background: #ffbf80;
+  height: 118px;
+
+}
+/*
+ffcccc
+15a892
+e6ccff
+cce6ff
+ffbf80
+80bfff
+  */
+.week-table-3 {
+
+  background: #80bfff;
+  height: 178px;
+
+}
+
+.week-table-4 {
+  background: #80bfff;
+  height: 238px;
+
 }
