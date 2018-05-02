@@ -11,7 +11,8 @@
     "navigationBarTitleText": "去自习",
     "navigationBarTextStyle": "black",
     "navigationStyle": "default",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#fff"
   },
   "tabBar": {
     "color": "#707070",
