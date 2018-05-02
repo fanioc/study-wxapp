@@ -1,1 +1,12 @@
-{}
+{
+  "config": {
+    "courseColor": [
+      "ffcccc",
+      "15a892",
+      "e6ccff",
+      "cce6ff",
+      "ffbf80",
+      "80bfff"
+    ]
+  }
+}
