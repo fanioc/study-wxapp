@@ -32,27 +32,27 @@ Page({
       'className': '大学英语',
       'time': [2, 1, 2],
       'week': [2, 2, 18],
-      'location': '一号教学楼101'
+      'location': '一号教学楼201'
     }, {
       'className': '大学英语2',
       'time': [2, 3, 4],
       'week': [2, 2, 18],
-      'location': '一号教学楼101'
+      'location': '二号教学楼301'
     }, {
-      'className': '大学英语2',
+      'className': '自习(已约人)',
       'time': [2, 5, 7],
       'week': [2, 2, 18],
-      'location': '一号教学楼101'
+      'location': '一号教学楼301'
     }, {
       'className': '数据库概论',
       'time': [3, 4, 5],
       'week': [1, 1, 18],
-      'location': '一号教学楼101'
+      'location': '一号教学楼511'
     }, {
       'className': '形势政策',
       'time': [4, 5, 6],
       'week': [2, 5, 18],
-      'location': '一号教学楼101'
+      'location': '一号教学楼401'
     }, {
       'className': '计算机网络',
       'time': [5, 1, 2],
