@@ -25,8 +25,8 @@ Page({
   getSche: [
     {
       'className': '高等数学',
-      'time': [1, 1, 3],// 数据格式：星期,第几节,第几节课
-      'week': [1, 18, 1],// 数据格式：所有单双周0 1 2,第几周,第几周
+      'time': [1, 1, 1],// 数据格式：星期,第几节-第几节课
+      'week': [1, 18, 1],// 数据格式：所有单双周0 1 2,第几周-第几周
       'location': '一号教学楼101'
     }, {
       'className': '大学英语',
@@ -67,7 +67,7 @@ Page({
 
   },
 
-  setCurrentSche: function (getSche) {
+  setCurrentSche: function (getSche,week) {
     var that = this
     that.data.currentCourse = new Array
 

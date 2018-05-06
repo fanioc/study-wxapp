@@ -1,0 +1,5 @@
+
+<lly-content style="{{themeColorCSS}}">
+{{inner}}
+<slot></slot>
+</lly-content>

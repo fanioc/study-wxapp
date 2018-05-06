@@ -31,10 +31,10 @@
         "selectedIconPath": "image/tabBar/select_fill.png"
       },
       {
-              "pagePath": "pages/community/index",
-              "text": "社区",
-              "iconPath": "image/tabBar/community.png",
-              "selectedIconPath": "image/tabBar/community_fill.png"
+        "pagePath": "pages/community/index",
+        "text": "社区",
+        "iconPath": "image/tabBar/community.png",
+        "selectedIconPath": "image/tabBar/community_fill.png"
       },
       {
         "pagePath": "pages/me/index",

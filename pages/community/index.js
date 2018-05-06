@@ -6,7 +6,7 @@ Page({
    */
   data: {
     currentTab:0,//当前顶部切换组件的序号
-    bannerList: [{ imgSrc:"0.png"}]
+    bannerList: [{ imgSrc:"debug0.png"}]
   },
 //-----------------本页面自定义函数
     /**

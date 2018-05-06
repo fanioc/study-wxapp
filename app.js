@@ -1,10 +1,19 @@
 App({
-
+//
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
+var util=require("/util/util.js");
+//若无缓存的主题参数，初始化为 黑色，白色，浅灰色，顺序码0
+  if(!wx.getStorageSync('theme'))
+  {
+    util.setTheme("#000000", "#ffffff","#e6e6e6","0");
+    console.log("setTheme");
+  }
 
+  
+  
   },
 
   /**
@@ -30,6 +39,5 @@ App({
 
   //全局变量
   globalData: {
-    subjectCode: 0  //程序主题的序号码，默认为0，不同编码程序的取色 背景图等 可能不同
   }
 })
