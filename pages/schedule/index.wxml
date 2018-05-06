@@ -1,39 +1,56 @@
 <view>
+  <!-- <view class="htmleaf-container">
+	<view class="wrapper">
+		<view class="container">
+		</view>
+		
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+      <li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</view>
+</view> -->
+
   <!-- 课表显示页面 -->
   <view style='text-align:center;'>第{{config.currentWeek}}周</view>
 
-  <view>
+  <view style=''>
     <view class='week'>
-
-      <view style='margin:50px 3px 0 3px;'>
+      <view style='margin:100rpx 6rpx 0 6rpx;'>
         <!-- 每节课的时间 -->
         <view wx:for="{{config.tableHead.time}}" wx:key="df" class='week-time'>
-
-          <view style='font-size: 16px;color:#000;'>{{index+1}}</view>
-          <view>{{item}}</view>
-
+          <view style='font-size:30rpx;color:#000;'>{{index+1}}</view>
+          <view style='font-size:20rpx;color:#888;'>{{item}}</view>
         </view>
       </view>
 
       <view wx:for="{{config.tableHead.week}}" wx:key="df" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
         <!-- 周几-->
         <view class='week-title'>
-          <view>{{weekName}}</view>
-          <view class='week-title-little'>{{config.tableHead.date[weekNum]}}日</view>
+          <view style=''>{{weekName}}</view>
+          <view style='' class='week-title-little'>{{config.tableHead.date[weekNum]}}日</view>
         </view>
 
         <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum" id='{{weekNum+1}}-{{classNum+1}}'>
-          <view wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" style='position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*60}}px;' class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'>
+          <view wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" style='position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*100}}rpx;' class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'>
             <view>
-              {{currentCourse[(weekNum+1)*10+classNum+1].className}}
-            </view>
-            <view>
-              {{currentCourse[(weekNum+1)*10+classNum+1].location}}
+              <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*10+classNum+1].className}}</text>@{{currentCourse[(weekNum+1)*10+classNum+1].location}}
             </view>
           </view>
-
         </view>
-
+        
       </view>
 
     </view>
