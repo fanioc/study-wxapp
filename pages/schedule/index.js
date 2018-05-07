@@ -74,7 +74,7 @@ Page({
 
   },
 
-  setCurrentSche: function (getSche) {
+  setCurrentSche: function (getSche,week) {
     var that = this
     that.data.currentCourse = new Array
 
