@@ -13,10 +13,10 @@ Page({
       },
       currentWeek: 8,
     },
-    color: ["ffcccc", '15a892', 'e6ccff', 'cce6ff', 'ffbf80','80bfff'],
-    currentCourse:[{}]
+    color: ["ffcccc", '15a892', 'e6ccff', 'cce6ff', 'ffbf80', '80bfff'],
+    currentCourse: [{}]
   },
-  
+
   //测试数据
   getTerm: {
     year: 2018,
@@ -27,36 +27,43 @@ Page({
       'className': '高等数学',
       'time': [1, 1, 3],// 数据格式：星期,第几节,第几节课
       'week': [1, 18, 1],// 数据格式：所有单双周0 1 2,第几周,第几周
+      'teacher': "陈靖",
       'location': '一号教学楼101'
     }, {
       'className': '大学英语',
       'time': [2, 1, 2],
       'week': [2, 2, 18],
+      'teacher': "陈靖",
       'location': '一号教学楼201'
     }, {
       'className': '大学英语2',
       'time': [2, 3, 4],
       'week': [2, 2, 18],
+      'teacher': "陈靖",
       'location': '二号教学楼301'
     }, {
       'className': '自习(已约人)',
       'time': [2, 5, 7],
       'week': [2, 2, 18],
+      'teacher': "陈靖",
       'location': '一号教学楼301'
     }, {
       'className': '数据库概论',
       'time': [3, 4, 5],
       'week': [1, 1, 18],
+      'teacher': "陈靖",
       'location': '一号教学楼511'
     }, {
       'className': '形势政策',
       'time': [4, 5, 6],
       'week': [2, 5, 18],
+      'teacher': "陈靖",
       'location': '一号教学楼401'
     }, {
       'className': '计算机网络',
       'time': [5, 1, 2],
       'week': [0, 1, 9],
+      'teacher': "陈靖",
       'location': '一号教学楼101'
     }
   ],
@@ -73,9 +80,9 @@ Page({
 
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
-      var id = (getSche[i].time[0] ) * 10 + getSche[i].time[1] //表示课程id
-      
-      that.data.currentCourse[id]={
+      var id = (getSche[i].time[0]) * 10 + getSche[i].time[1] //表示课程id
+
+      that.data.currentCourse[id] = {
         'className': getSche[i].className,
         'time': getSche[i].time,
         'lengthTime': getSche[i].time[2] - getSche[i].time[1] + 1,
@@ -130,7 +137,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.getSche.splice(2,1)
+    this.getSche.splice(2, 1)
     this.setCurrentSche(this.getSche)
     wx.stopPullDownRefresh();
   },
