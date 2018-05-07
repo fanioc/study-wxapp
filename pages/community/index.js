@@ -6,7 +6,8 @@ Page({
    */
   data: {
     currentTab:0,//当前顶部切换组件的序号
-    bannerList: [{ imgSrc:"debug0.png"}]
+    bannerList: [{ imgSrc:"debug0.png"}],
+    on:true
   },
 //-----------------本页面自定义函数
     /**
@@ -29,7 +30,7 @@ if (this.data.currentTab === e.target.dataset.current) {
      */
   getBannerImgSrc:function(e)
   {
-
+   //addtionRegion
   },
 //-----------------本页面自定义函数
   /**

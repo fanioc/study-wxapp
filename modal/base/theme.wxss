@@ -1,1 +1,9 @@
 /* extend/modal.wxss */
+
+.swiper-left{
+  border-radius: .3rem 0 0 .3rem;
+}
+
+.swiper-right{
+  border-radius: 0 .3rem .3rem 0;
+}

@@ -1,20 +1,17 @@
 <!--pages/community/index.wxml-->
 <!-- 顶部切换 -->
 <view class="swiper-tab">
-    <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">动态圈</view>
-    <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">排行榜</view>
-</view>
-<view class="swiper-tab">
-
-    <subject order-index='0' selected="{{currentTab}}" class="swiper-tab-list swiper-left" inner-text="动态圈" data-current="0" bindtap="swichNav"></subject>
-      <subject  order-index='1' selected="{{currentTab}}" class="swiper-tab-list swiper-right " inner-text="动态圈" data-current="1" bindtap="swichNav" ><view>laj<view>hah</view></view></subject>
-      
-    
+    <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}"  data-current="0"  bindtap="swichNav">
+    动态圈
+    </view>
+  
+     <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}"  data-current="1"   bindtap="swichNav">
+     排行榜
+     </view>
+   
 </view>
 
 <!-- 置顶广告部分 -->
-
-
       <swiper indicator-dots="true"
         autoplay="true"   id='banner' class='banner'>
        <block wx:for="{{bannerList}}" wx:key="index">
@@ -25,8 +22,6 @@
         </block>
 
       </swiper>
-
-
 <!-- 内容部分 -->
   <!-- 动态圈板块-->
 <view id="dynamic" wx:if="{{currentTab == 0}}">
@@ -39,10 +34,11 @@
 <view id="rank"  wx:if="{{currentTab == 1}}">
 排行榜板块
 根据用户数据，在用户许可的情况下以排行榜的形式展示学生的学习情况。。平台甚至是用户可对排名靠前的学生进行打赏
-
 </view>
 
 
-  <theme inner="iew" >
-  <text class="swiper-tab-list swiper-left">hah</text>
-  </theme>
+ 
+
+
+
+

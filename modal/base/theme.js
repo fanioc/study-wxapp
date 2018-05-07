@@ -3,21 +3,35 @@ Component({
   behaviors: [],
 
   properties: {
-    inner: { // 属性名
+    inner: { // 属性名,插入节点的内容
       type: String
 
-    }
+    },
+
+    selected: { // 属性名，切换状态是否为选择，这将影响组件的css
+      type: Boolean,
+      value: false
+    },
+    index: { // 属性名,
+      type:Number
+
+    },
   },
   data: {
     themeColorCSS:'',//当前主题的前景色背景色和边框色的样式
+    selectedCSS: ''  //当前主题且切换状态为选择的，前景色背景色和边框色的样式
 
   }, // 私有数据，可用于模版渲染
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
-  attached: function () {
-   var value=wx.getStorageSync('theme');
-    var themeColor = "border:1px solid " + value.selectedColor + ";" +"background:" + value.unselectedColor + ";color:" + value.selectedColor + ";";
-this.setData({ themeColorCSS: themeColor});
+
+  attached: function () {//从本地缓存获取和主题有关的颜色参数，由此设置data themeColorCSS, selectedCSS
+    var value = wx.getStorageSync('theme');
+    var border = "border-color:"+ value.selectedColor + ";" ;
+      var themeColor = border+"background:" + value.unselectedColor + ";color:" + value.selectedColor + ";";
+      var selected = border +"background:" + value.selectedColor + ";color:" + value.unselectedColor + ";";
+     
+    this.setData({ themeColorCSS: themeColor, selectedCSS: selected});
 
    },
   moved: function () { },

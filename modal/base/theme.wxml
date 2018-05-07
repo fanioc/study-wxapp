@@ -1,5 +1,5 @@
 
-<lly-content style="{{themeColorCSS}}">
+<view style=" {{selected?selectedCSS:themeColorCSS}}" >
 {{inner}}
 <slot></slot>
-</lly-content>
+</view>
