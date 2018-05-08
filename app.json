@@ -3,7 +3,8 @@
     "pages/schedule/index",
     "pages/order-study/index",
     "pages/me/index",
-    "pages/community/index"
+    "pages/community/index",
+    "debug/debug"
   ],
   "window": {
     "backgroundTextStyle": "dark",

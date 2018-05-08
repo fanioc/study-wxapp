@@ -22,12 +22,66 @@
         </block>
 
       </swiper>
+
+
 <!-- 内容部分 -->
   <!-- 动态圈板块-->
 <view id="dynamic" wx:if="{{currentTab == 0}}">
-  动态圈板块
-学生可以在这个板块发送：1，难题求解答的帮助，2，心情分享，感悟，
-这个版块是否可以模仿成知乎的形式，只是问题的范围进行缩减，回答的用户角色进行限定（如仅限校内人员）
+     <!-- 动态圈动态模块-->
+ <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+
+    <block wx:for="{{feed}}" wx:for-index="idx" wx:key="{{idx}}" data-idx="{{idx}}">
+        <view class="feed-item">
+        <!--一，用户信息部分-->
+            <view class="feed-source">
+                
+                    <view class="avatar">
+                        <image src="{{item.feed_source_img}}"></image>
+                        
+                    </view>
+                      <text>{{item.feed_source_name}}-{{item.feed_source_identity}}</text>
+                   
+            </view>
+         <!--用户信息部分-->
+
+         <!--二，动态内容部分-->
+            <view class="feed-content"  bindtap="bindItemTap">
+                <!--标题部分-->
+                <view class="question" >
+                   
+                        <text >item.question_title{{item.question_title}}</text>
+                
+                </view>
+                <!--标题部分-->
+
+                <!--问题描述部分-->
+                <view class="answer-body">
+                    <view>
+                        <text class="answer-txt" aid="{{answer_id}}">item.question_describe{{item.question_describe}}</text>
+                    </view>
+
+                </view>
+                <!--问题描述部分-->
+
+            </view>
+         <!--动态内容部分-->
+
+         <!--三，动态信息部分-->
+        <view class="answer-actions" >
+                        <view >
+                            <a>{{item.sort}}  </a>
+                        </view>
+                        <view >
+                            <a>{{item.comment_num}} 回答 </a>
+                        </view>
+                        <view >
+                            <a>{{item.question_status}}</a>
+                        </view>
+                    </view>
+        </view>
+        <!--动态信息部分-->
+    </block>
+</scroll-view>
 </view>
 
   <!-- 排行榜板块-->

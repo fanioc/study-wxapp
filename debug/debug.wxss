@@ -1,17 +1,4 @@
-/* pages/community/index.wxss */
-
-
-
-.banner
-{
-
-   text-align: center;
-width: 100%;
-height: 480rpx;
-
-  
-}
-/*/--------滑动广告css--------*/
+/* debug/debug.wxss */
 .container {
   height: 100%;
   display: flex;
@@ -69,15 +56,11 @@ height: 480rpx;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   box-shadow: 0 2px 5px #eeeeee;
-
-
 }
 .container .feed-item .feed-source{
   width: 690rpx;
   left: 0;
   height: 50rpx;
-  display: flex; 
- 
 }
 .container .feed-item .feed-source .avatar{
   position: relative;
@@ -96,7 +79,7 @@ height: 480rpx;
   top: 10rpx;
   vertical-align: middle;
 }
-.container .feed-item .feed-source text {
+.container .feed-item .feed-source text{
   /*position: absolute;*/
   display: inline-block;
   height: 40rpx;
@@ -106,8 +89,6 @@ height: 480rpx;
   color: #a0acac;
   font-size: 26rpx;
 }
-
-
 .container .feed-item .feed-source .item-more{
   display: inline-block;
   width: 40rpx;
@@ -117,7 +98,7 @@ height: 480rpx;
 .container .feed-item .feed-content{
   padding: 10rpx 0 0 0;
 }
-.container .feed-item .feed-content .question text {
+.container .feed-item .feed-content .question text{
   font-size: 28rpx;
   font-weight: 600px;
   line-height: 40rpx;
@@ -130,18 +111,18 @@ height: 480rpx;
   line-height: 28rpx;
   color: #5b5b5b;
 }
-.container .feed-item  .answer-actions{
+.container .feed-item .feed-content .answer-actions{
   width: 690rpx;
   padding: 10rpx 0  0;
   color: #a0acac;
 }
-.container .feed-item  .answer-actions view{
+.container .feed-item .feed-content .answer-actions view{
   display: inline-block;
   vertical-align: text-bottom;
   padding: 0 10rpx 0 0;
   font-size: 24rpx;
 }
-.container .feed-item  .answer-actions .dot ::after{
+.container .feed-item .feed-content .answer-actions .dot ::after{
   content: "•";
 }
 container{
@@ -188,5 +169,3 @@ container{
   background: #F0F4F3;
   color: #000;
 }
-
-/*/--------动态圈模块css--------*/
