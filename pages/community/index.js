@@ -33,6 +33,19 @@ if (this.data.currentTab === e.target.dataset.current) {
       url: '../answer/answer'
     })
   },
+//-----upper
+  upper: function () {
+    wx.showNavigationBarLoading()
+    this.refresh();
+    console.log("upper");
+    setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
+  },
+  lower: function (e) {
+    wx.showNavigationBarLoading();
+    var that = this;
+    setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
+    console.log("lower")
+  },
   getFeed: function ()//从服务器获取动态模块所需数据，设置data：feed, feed_length
   {
     var getFeed,feed_Array=[];
