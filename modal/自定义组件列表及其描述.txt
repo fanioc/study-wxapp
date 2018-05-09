@@ -1,0 +1,2 @@
+1，
+base/theme  此组件的前景色，背景色，border-color 受storage的theme影响

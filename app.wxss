@@ -1,0 +1,37 @@
+.swiper-tab{ 
+  padding: 10px 0px;
+  height: 30px; 
+  line-height: 30px; 
+  background: #FFF; 
+  display: flex; 
+  position: relative; 
+  z-index: 2; 
+  flex-direction:row; 
+  justify-content:center; 
+  align-items:center;
+   color: #f85f48;
+    border-color: #f85f48;
+}
+.swiper-tab-list{ 
+
+  text-align: center;
+ 
+  margin: 10px 0px;  
+  padding: 0 6px;
+  width: 60px; 
+  font-size: 28rpx; 
+  font-family: Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "PingFang SC", Roboto, "微软雅黑", "Heiti SC", "Microsoft Yahei", sans-serif 
+}
+.swiper-left{
+  border-radius: .3rem 0 0 .3rem;
+}
+
+.swiper-right{
+  border-radius: 0 .3rem .3rem 0;
+}
+.on{
+  color: #fff; 
+  background: #f85f48;
+}
+
+/*/--------顶部滑块css--------*/

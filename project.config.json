@@ -52,6 +52,12 @@
 					"name": "社区",
 					"pathName": "pages/community/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "debug",
+					"pathName": "debug/debug",
+					"query": ""
 				}
 			]
 		}
