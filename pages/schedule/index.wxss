@@ -40,8 +40,8 @@
   flex-direction: column;
   justify-content: center;
   padding:8rpx;
-  font-size: 23rpx; 
-  text-align: justify; 
+  font-size: 25rpx; 
+  text-align:left; 
   color: #fff;
   box-sizing: border-box;
   margin: 0px 5rpx 0 0;
