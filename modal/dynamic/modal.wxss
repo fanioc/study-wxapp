@@ -1,5 +1,6 @@
+/* extend/modal.wxss */
 .container {
-  height: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,10 +13,8 @@
   font-size: 14rpx;
   color: #000;
 
-
-
-
-
+   word-break:break-all;
+  height: 750rpx;
 }
 
 .feed-item{
@@ -80,7 +79,6 @@
   line-height: 28rpx;
   color: #5b5b5b;
 
-word-break:break-all;
 
 }
 .answer-actions{
@@ -95,63 +93,18 @@ word-break:break-all;
   font-size: 24rpx;
 }
 
-.lable-answer-actions ::after{
-  content: "•";
-}
-.last-lable-answer-actions
-{
-  display: inline-block;
-  vertical-align: text-bottom;
-  padding: 0 10rpx 0 0;
-  font-size: 24rpx;
-}
-.answer-body-image{
-    width: 80px;
-  height: 80px;
-    border-radius: 45rpx;
-  top: 10rpx;
-  margin: 20rpx;
-
-}
-
-
-.answer-body_noName{
-
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  /*height: 10rpx;*/
-
-  line-height: 28rpx;
-  word-break:break-all;
- 
-}
-.title-txt{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  
-   
-   font-size: 45rpx ; 
-   font-weight:bold;
-  width: 550rpx;
-   word-wrap:break-word;
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "PingFang SC", Roboto, "微软雅黑", "Heiti SC", "Microsoft Yahei", sans-serif
-}
-  
-
-/*-----------------------------------
-*/
+/*-------------------------*/
 .dynamic_card {
     border: 2px solid #ffffff;
     border-radius: 5px;
     background-color: #ffffff;
     box-shadow: 4px 1px 1px #cccccc;
 
-  margin: 7rpx 0 6rpx 0;
+    width: 100%;
+    margin: 7rpx 0 6rpx 0;
     background: #ffffff;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
  
 }
 
@@ -176,23 +129,4 @@ word-break:break-all;
     padding: 14px;
     font-size: 14px;
 }
-
-.dynamic_post {
-    float: right;
-    background-color: #ffffff;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-    border: 0 solid #ffffff;
-    border-radius: 500px;
-    margin: 16px;
-    box-shadow: 4px 1px 1px #cccccc;
-}
-
-
-
-
-
-
 

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-   "theme":"/modal/base/theme"
+   "theme":"/modal/base/theme",
+    "dynamics":"/modal/dynamic/modal"
   }
 }

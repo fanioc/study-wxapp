@@ -1,2 +1,24 @@
-1，
-base/theme  此组件的前景色，背景色，border-color 受storage的theme影响
+1:
+{
+  /modal/base/theme  此组件的前景色，背景色，border-color 受storage的theme影响
+所需属性：    inner:     属性名,插入节点的内容（不包括slot）
+             selected:  属性名，切换状态是否为选择，这将影响组件的css
+             index:  
+}
+2:
+{
+  /modal/dynamic/modal 此组件，通过getFeed（）获取数据显示动态模块
+所需属性： 
+          feed: Array ,整个模块数据来源，用于wx::for渲染
+}
+             
+3:  
+{
+/modal/toast/middleToast 自定义toast
+所需属性： 
+          hidden:  属性名,是否隐藏提示框，true 为显示
+          content: 提示内容
+          duration: 属性名,持续显示时间，默认1500
+}
+
+ 

@@ -39,5 +39,7 @@ var util=require("/util/util.js");
 
   //全局变量
   globalData: {
+     util:require("/util/util.js"),
+     CONSTANT: require('/util/constant.js')
   }
 })
