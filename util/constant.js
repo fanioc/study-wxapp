@@ -10,7 +10,9 @@ const URL=
 //2.关于路径的常量，所有资源都以此为前缀
 const PATH=
 {
-  icon:"/image/subject/"
+  icon:"/image/subject/",
+  wrong: "/image/wrong.png",
+  debug: "/image/debug.png"
 }
 
 //3.关于时间的常量

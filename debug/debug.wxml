@@ -1,84 +1,26 @@
-<!--index.wxml-->
-<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 
-    <block wx:for="{{feed}}" wx:for-index="idx" wx:key="{{idx}}" data-idx="{{idx}}">
-        <view class="feed-item">
-        <!--一-->
-            <view class="feed-source">
-                
-                    <view class="avatar">
-                        <image src="{{item.feed_source_img}}"></image>
-                    </view>
-                    <text>{{item.feed_source_name}}-学生（item.feed_source_identity）</text>
-            </view>
-         <!--一-->
 
-         <!--二-->
-            <view class="feed-content"  bindtap="bindItemTap">
-                <view class="question" >
-                   
-                        <text>item.question_title{{item.question_title}}</text>
-                  
-                </view>
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt" aid="{{answer_id}}">item.question_describe{{item.question_describe}}</text>
-                    </view>
-                    <view class="answer-actions" >
-                        <view class="like dot">
-                            <a>{{item.sort}}  </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>{{item.comment_num}} 回答 </a>
-                        </view>
-                        <view class="follow-it">
-                            <a>{{item.question_status}}</a>
-                        </view>
-                    </view>
-                </view>
-            </view>
-           <!--二-->
-        </view>
-    </block>
-</scroll-view><scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <swiper indicator-dots="true"
+        autoplay="true"   class='banner' >
 
-    <block wx:for="{{feed}}" wx:for-index="idx" wx:key="{{idx}}" data-idx="{{idx}}">
-        <view class="feed-item">
-        <!--一-->
-            <view class="feed-source">
-                
-                    <view class="avatar">
-                        <image src="{{item.feed_source_img}}"></image>
-                    </view>
-                    <text>{{item.feed_source_name}}-学生（item.feed_source_identity）</text>
+          <swiper-item wx:for="{{lly}}" wx:key="index">
+          <view class='debug'>
+              <view class="dynamic_card"  >
+                <view>
+                  <image bindtap='pre_dynamic_image' class="dynamic_image" mode="aspectFill" data-img="{{item.dynamic_data.card_img}}"                            src="{{item.dynamic_data.card_img}}"/>
+              
+                  <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>      
             </view>
-         <!--一-->
 
-         <!--二-->
-            <view class="feed-content"  bindtap="bindItemTap">
-                <view class="question" >
-                   
-                        <text>item.question_title{{item.question_title}}</text>
-                  
-                </view>
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt" aid="{{answer_id}}">item.question_describe{{item.question_describe}}</text>
-                    </view>
-                    <view class="answer-actions" >
-                        <view class="like dot">
-                            <a>{{item.sort}}  </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>{{item.comment_num}} 回答 </a>
-                        </view>
-                        <view class="follow-it">
-                            <a>{{item.question_status}}</a>
-                        </view>
-                    </view>
-                </view>
-            </view>
-           <!--二-->
-        </view>
-    </block>
-</scroll-view>
+            <button class='debug-button'>进行中</button>
+          </view>
+      
+          </view>
+          </swiper-item>
+ 
+      
+      </swiper>
+
+
+
+            

@@ -1,0 +1,84 @@
+
+<mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
+<!-- 动态圈动态模块-->
+ <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper"  bindscrolltolower="lower"  >
+
+    <block wx:for="{{feed}}"  wx:key="{{index}}" data-feedIndex="{{index}}">
+    <!-- 动态模块0-->
+      <view class="feed-item" wx:if="{{item.dynamic_type==0}}">
+
+        <!--动态内容部分-->
+      
+              <!--一，用户信息部分-->
+            <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}">
+                <a class="a-feed-source">
+                    <view class="avatar">
+                        <image src="{{item.dynamic_data.feed_head_img}}" class='img-feed-source'></image>
+                        
+                    </view>
+                      <text class='text-feed-source'>{{item.dynamic_data.feed_source_name}}-{{item.dynamic_data.feed_source_identity}}</text>
+                  </a> 
+            </view>
+              <!--用户信息部分-->
+
+              <!--二，动态内容部分-->
+            <view class="feed-content"  bindtap="nav_dynamic_page" data-feedIndex="{{index}}" >
+                <!--标题部分-->
+                <view >
+                   
+                        <text class="question" >{{item.dynamic_data.question_title}}</text>
+                
+                </view>
+                <!--标题部分-->
+
+                <!--问题描述部分-->
+                <view class="answer-body">
+                    <view>
+                        <text class="answer-txt" >{{item.dynamic_data.question_describe}}</text>
+                    </view>
+
+                </view>
+                <!--问题描述部分-->
+
+            </view>
+              <!--动态内容部分-->
+              <!--三，动态信息部分-->
+                 <view class="answer-actions" >
+        
+                        <view class='lable-answer-actions'>
+                            <a class='a-lable-answer-actions'>{{item.dynamic_sort}}  </a>
+                            <text>•</text>
+                        </view>
+
+                        <view class='lable-answer-actions'>
+                            <a class='a-lable-answer-actions'>{{item.comment_num}} 回答 </a>
+                            <text>•</text>
+                        </view>
+
+                        <view class='lable-answer-actions' wx:if="{{item.dynamic_follow_with_interest}}">
+                            <a class='last-a-lable-answer-actions'>特别关注</a>
+                        </view>
+                    </view>
+              <!--动态信息部分-->
+    
+       
+        <!--动态内容部分-->
+        
+
+      </view>
+    
+    <!-- 动态模块1-->
+          <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}" >
+         
+            <view>
+             <image bindtap='pre_dynamic_image' class="dynamic_image" mode="aspectFill" data-img="{{item.dynamic_data.card_img}}" src="{{item.dynamic_data.card_img}}"/>
+              
+              <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>
+              
+            </view>
+
+            
+          </view>
+
+    </block>
+</scroll-view>

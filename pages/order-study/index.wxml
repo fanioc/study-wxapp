@@ -1,16 +1,25 @@
-<!--pages/order-study/index.wxml-->
-<view>
-<text>■ 每个用户都拥有一个肖像，通过许多标签的形式展示，用户自己可以对自身打标签，和用户有自习记录的其他用户也可。</text>
-</view>
-<view>
-<text>■ 通过教务系统的成绩查询，丰富用户的肖像</text>
-</view>
-<view>
-<text>■ 通过用户提供的筛选信息（自习的科目，性别，成绩要求），为学生匹配自习对象，或者由用户自行匹配</text>
-</view>
-<view>
-<text>■ 此模块可展示相同教室下所有自习学生的学习科目，学习内容等，更灵活的帮助用户寻找学习的伙伴</text>
-</view>
+
+
+      <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
+
+          <swiper-item wx:for="{{invite_item_array}}" wx:key="index">
+          <view class='invite_item_content'>
+              <view class="invite_item_content_card"  >
+                <view>
+                  <image bindtap='pre_dynamic_image' class="card_image" mode="aspectFill" data-img="{{item.dynamic_data.card_img}}"                            src="{{item.dynamic_data.card_img}}"/>
+              
+                  <view bindtap='nav_dynamic_page' class="card_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>      
+            </view>
+
+            <button class='invite_item_content_button'>进行中</button>
+          </view>
+      
+          </view>
+          </swiper-item>
+ 
+      
+      </swiper>
+
 
 
 

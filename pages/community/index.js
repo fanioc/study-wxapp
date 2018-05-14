@@ -1,4 +1,7 @@
 // pages/community/index.js
+var globalData=getApp().globalData;
+var util=globalData.util;
+var CONSTANT = globalData.CONSTANT;
 Page({
 
   /**
@@ -33,20 +36,15 @@ if (this.data.currentTab === e.target.dataset.current) {
       url: '../answer/answer'
     })
   },
-//-----upper
-  upper: function () {
-    wx.showNavigationBarLoading()
-    this.refresh();
-    console.log("upper");
-    setTimeout(function () { wx.hideNavigationBarLoading(); wx.stopPullDownRefresh(); }, 2000);
-  },
+//lower 动态圈模块下拉获取更多数据
   lower: function (e) {
+    console.log("fuck");
     wx.showNavigationBarLoading();
     var that = this;
     setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
     console.log("lower")
   },
-  getFeed: function ()//从服务器获取动态模块所需数据，设置data：feed, feed_length
+  getFeed: function (mode=0)//从服务器获取动态模块所需数据,参数mode表示设置feed时：1为追加 0为重写，设置data：feed, feed_length
   {
     var getFeed,feed_Array=[];
     //----调试代码----
@@ -66,8 +64,16 @@ if (this.data.currentTab === e.target.dataset.current) {
     //----调试代码----
 
     //addtionRegion 后台数据
-    feed_Array=this.data.feed.concat(getFeed);
+    if(mode)
+    {
+      feed_Array = this.data.feed.concat(getFeed);
+    }
+    else
+    {
+      feed_Array = getFeed;
+    }
     this.setData({ feed: feed_Array, feed_length:feed_Array.length});
+    return true;
   },
 //----getBannerImgSrc
 
@@ -80,8 +86,8 @@ if (this.data.currentTab === e.target.dataset.current) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.getFeed();
-     this.getFeed();
+     this.getFeed(1);
+     this.getFeed(1);
   },
 
   /**
@@ -116,7 +122,15 @@ if (this.data.currentTab === e.target.dataset.current) {
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    if (this.data.currentTab==0)
+  {
+      util.PullDownRefresh(this.getFeed);
+  }
+  else
+  {
+
+  }
+    wx.stopPullDownRefresh();
   },
 
   /**

@@ -33,7 +33,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -58,6 +59,11 @@
 					"name": "debug",
 					"pathName": "debug/debug",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "自习",
+					"pathName": "pages/order-study/index"
 				}
 			]
 		}
