@@ -26,12 +26,12 @@
 
 <!-- 内容部分 -->
   <!-- 动态圈板块-->
-<view id="dynamic" wx:if="{{currentTab == 0}}">
+<view id="dynamic" hidden="{{currentTab != 0}}">
     <dynamics />
 </view>
 
   <!-- 排行榜板块-->
-<view id="rank"  wx:if="{{currentTab == 1}}">
+<view id="rank"  hidden="{{currentTab != 1}}">
 排行榜板块
 根据用户数据，在用户许可的情况下以排行榜的形式展示学生的学习情况。。平台甚至是用户可对排名靠前的学生进行打赏
 </view>

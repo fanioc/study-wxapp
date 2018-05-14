@@ -5,7 +5,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    invite_item_array: [
+      {
+        dynamic_data:
+        {
+
+          feed_head_img: '/image/debug.png',
+          feed_source_name: 'debug',
+          feed_source_identity: 'debug',
+
+          card_img: '/image/debug4.jpg',
+
+          question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
+          question_describe: 'debug',
+        },
+        dynamic_sort: 'debug',
+        comment_num: 999,
+        dynamic_follow_with_interest: true,
+        dynamic_type: 1,
+        dynamic_time: 2018 - 1 - 2
+      },
+      {
+        dynamic_data:
+        {
+
+          feed_head_img: '/image/debug.png',
+          feed_source_name: 'debug',
+          feed_source_identity: 'debug',
+
+          card_img: '/image/debug4.jpg',
+
+          question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
+          question_describe: 'debug',
+        },
+        dynamic_sort: 'debug',
+        comment_num: 999,
+        dynamic_follow_with_interest: true,
+        dynamic_type: 1,
+        dynamic_time: 2018 - 1 - 2
+      }],
   },
 
   /**

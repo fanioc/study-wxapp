@@ -10,6 +10,46 @@
   /modal/dynamic/modal 此组件，通过getFeed（）获取数据显示动态模块
 所需属性： 
           feed: Array ,整个模块数据来源，用于wx::for渲染
+           //----debug----
+      getFeed = [
+        {
+          userID:123,
+          dynamic_data:
+          {
+            feed_head_img: '/image/debug.png',
+            feed_source_name: 'debug',
+            feed_source_identity: 'debug',
+            question_title: 'debug',
+            question_describe: 'debug'
+          },
+          dynamic_sort: 'debug',
+          comment_num: 999,
+          dynamic_follow_with_interest: true,
+          dynamic_type:0,
+          dynamic_time:2018-1-1
+        },
+        {
+          userID:123,
+          dynamic_data:
+          {
+            
+            feed_head_img: '/image/debug.png',
+            feed_source_name: 'debug',
+            feed_source_identity: 'debug',
+
+            card_img: '/image/debug2.jpeg',
+
+            question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
+            question_describe: 'debug',
+          },
+          dynamic_sort: 'debug',
+          comment_num: 999,
+          dynamic_follow_with_interest: true,
+          dynamic_type: 1,
+          dynamic_time: 2018 - 1 - 2
+        },
+      ];
+      //----debug----
 }
              
 3:  

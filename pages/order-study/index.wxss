@@ -1,1 +1,53 @@
-/* pages/order-study/index.wxss */
+.invite_item
+{
+
+text-align: center;
+width: 100%;
+height:  1000rpx;
+}
+.invite_item_content{
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+}
+.invite_item_content_card {
+    border: 2px solid #ffffff;
+    border-radius: 20rpx 20rpx 0 0;
+    background-color: #ffffff;
+    box-shadow: 4px 1px 1px #cccccc;
+    margin: 8px;
+    position: relative;
+    word-break:break-all;
+    width: 600rpx;
+
+  margin-top: 5%;
+}
+
+.card_image{
+  border-radius: 20rpx 20rpx 0 0;
+    width: 100%;
+    height:300rpx;
+    background-color: #eeeeee;
+}
+
+
+
+.card_title {
+   height: 400rpx;
+    padding: 14px;
+    font-size: 14px;
+}
+.invite_item_content_button{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: white;
+  font-weight:500;
+  font-size:40rpx;
+    color: #f85f48;
+}
+
+

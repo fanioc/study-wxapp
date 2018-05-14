@@ -73,7 +73,7 @@
             <view>
              <image bindtap='pre_dynamic_image' class="dynamic_image" mode="aspectFill" data-img="{{item.dynamic_data.card_img}}" src="{{item.dynamic_data.card_img}}"/>
               
-              <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{index}}{{item.dynamic_data.question_title}}</view>
+              <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>
               
             </view>
 
