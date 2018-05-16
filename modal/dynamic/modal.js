@@ -6,8 +6,24 @@ Component({
 
   properties: {
 
-     feed: Array // 简化的定义方式,整个模块数据来源，用于wx::for渲染
+     feed: Array, // 简化的定义方式,整个模块数据来源，用于wx::for渲染
+
+         refresh: { // 属性名,监视页面pulldown
+       type: Boolean, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+       value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
+       observer: function (newVal, oldVal) { 
+         if (this.getFeed(0)) {
+           this.setData({ hiddenToast: true, toastContent: '刷新成功' });
+
+         }
+         else {
+           this.setData({ hiddenToast: true, toastContent: '刷新失败' });
+
+         }
+       } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
+     },
   },
+  
   data: {
     feed_length:0,//feed数组长度，getFeed()会自动设置
     hiddenToast:false, //控制提示刷新成功的toast
@@ -16,7 +32,7 @@ Component({
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () {
-    this.getFeed(0);
+    this.getFeed(0);//addtionRegion
     this.getFeed(1);
    },
   moved: function () { },
@@ -82,22 +98,7 @@ Component({
       this.setData({ feed: feed_Array, feed_length: feed_Array.length });
       return true;
     },
-    upper: function () {//上拉刷新
-      
- 
-      if(this.getFeed(0))
-      {
-        this.setData({ hiddenToast: true, toastContent:'刷新成功'});
-       
-      }
-      else
-      {
-        this.setData({ hiddenToast: true, toastContent: '刷新失败' });
-     
-      }
-      
-     
-    },
+
     lower: function (e) {//下拉追加
       this.getFeed(1);
       console.log("lower");
