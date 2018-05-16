@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     config: {
       tableHead: {
         week: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
@@ -75,11 +76,9 @@ Page({
   setCurrentSche: function (getSche, week) {
     var that = this
     that.data.currentCourse = new Array
-
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
       var id = (getSche[i].time[0]) * 10 + getSche[i].time[1] //表示课程id
-
       var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
@@ -96,7 +95,6 @@ Page({
     this.setData({
       currentCourse: that.data.currentCourse
     })
-
     console.log(this.data.currentCourse)
   },
 

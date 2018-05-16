@@ -4,7 +4,8 @@
     "pages/order-study/index",
     "pages/me/index",
     "pages/community/index",
-    "debug/debug"
+    "debug/debug",
+    "pages/me/binds/bind-edusys"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -18,7 +19,7 @@
   "tabBar": {
     "color": "#707070",
     "selectedColor": "#707070",
-    "borderStyle":"dark",
+    "borderStyle": "dark",
     "list": [
       {
         "pagePath": "pages/schedule/index",
