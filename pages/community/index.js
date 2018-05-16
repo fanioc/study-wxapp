@@ -1,16 +1,19 @@
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab:0,//当前顶部切换组件的序号
-    bannerList: [{ imgSrc: "debug0.png" }],//广告控件for渲染数组，和getBannerImgSrc函数配合
-    dynamics_refresh:''//通知dynamic模块刷新
+
+    currentTab: 0,//当前顶部切换组件的序号
+    bannerList: [{ imgSrc: "debug0.png" }],
+    on: true,
+    feed: [],
+    feed_length: 0
+
   },
-//-----------------本页面自定义函数
-    //-----swichNav
+  //-----------------本页面自定义函数
+  //-----swichNav
   swichNav: function (e)//* 点击上tab切换，已调试
   {
 //console.log(e.currentTarget.dataset.current);
@@ -32,7 +35,7 @@ else
 
   getBannerImgSrc: function (e)//获取动态圈板块的置顶广告的图片src，并存入数组bannerList:[]供wx for渲染
   {
-   //addtionRegion
+    //addtionRegion
   },
 //-----------------本页面自定义函数
 
@@ -40,35 +43,34 @@ else
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -93,13 +95,13 @@ else
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

@@ -5,13 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     config: {
       tableHead: {
         week: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
         date: [23, 24, 25, 26, 27, 28, 29],
         time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00"]
       },
-      currentWeek: 11,
+      currentWeek: 12,
     },
     color: ["ffcccc", '15a892', 'e6ccff', 'cce6ff', 'ffbf80', '80bfff'],
     currentCourse: [{}],
@@ -19,7 +20,7 @@ Page({
     //测试数据
     getTerm: {
       year: 2018,
-      week: 11
+      week: 12
     },
     getSche: [
       {
@@ -75,11 +76,9 @@ Page({
   setCurrentSche: function (getSche, week) {
     var that = this
     that.data.currentCourse = new Array
-
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
       var id = (getSche[i].time[0]) * 10 + getSche[i].time[1] //表示课程id
-
       var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
@@ -96,7 +95,6 @@ Page({
     this.setData({
       currentCourse: that.data.currentCourse
     })
-
     console.log(this.data.currentCourse)
   },
 
@@ -104,7 +102,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -116,14 +114,14 @@ Page({
       title: '正在读取课表',
     })
     wx.request({
-      url: 'http://tool.fangrass.com/public/xaufe/EduSysMobile/getCourse?xh=1605990111',
+      url: 'https://api.xietan.xin/public/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {
         // console.log(res.data)
         that.setData({
           getSche: res.data
         })
       },
-      complete:function(){
+      complete: function () {
         wx.hideLoading()
         that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
         console.log(that.data.getSche)
@@ -136,6 +134,41 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.checkSession({
+      success: function (res) { },
+      fail: function (res) {
+        wx.login({
+          success: function (res_code) {
+            wx.request({
+              url: 'http://127.0.0.1/tp/public/xaufe/studyApp/login',
+              data: {
+                'code': res_code.code
+              },
+              success: function (res) {
+                console.log(res_code.code)
+                console.log(res)
+
+                global.session = res.data['session']
+              },
+              complete: function () {
+                wx.getUserInfo({
+                  success: function (res) {
+                    wx.request({
+                      url: 'http://127.0.0.1/tp/public/xaufe/studyApp/updateUserBasicInfo',
+                      data: {
+                        'session': global.session,
+                        'rawData': res.rawData,
+                      },
+                    })
+                  },
+                })
+              }
+            })
+          }
+        })
+      },
+      complete: function (res) { },
+    })
 
   },
 
@@ -157,8 +190,25 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setCurrentSche(this.data.getSche,this.data.getTerm.week)
-    wx.stopPullDownRefresh();
+    var that = this
+    wx.showLoading({
+      title: '正在读取课表',
+    })
+    wx.request({
+      url: 'https://api.xietan.xin/public/xaufe/EduSysMobile/getCourse?xh=1605990711',
+      success: function (res) {
+        // console.log(res.data)
+        that.setData({
+          getSche: res.data
+        })
+      },
+      complete: function () {
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+        that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
+        console.log(that.data.getSche)
+      }
+    })
   },
   /**
    * 页面上拉触底事件的处理函数

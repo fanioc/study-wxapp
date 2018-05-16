@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -63,6 +63,12 @@
 					"id": -1,
 					"name": "自习",
 					"pathName": "pages/order-study/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "绑定页面",
+					"pathName": "pages/me/binds/bind-edusys",
 					"query": ""
 				}
 			]

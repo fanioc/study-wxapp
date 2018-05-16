@@ -4,14 +4,15 @@
     "pages/order-study/index",
     "pages/me/index",
     "pages/community/index",
-    "debug/debug"
+    "debug/debug",
+    "pages/me/binds/bind-edusys"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "去自习",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "default",
+    "navigationStyle": "defalut",
     "enablePullDownRefresh": true,
     "backgroundColor": "#fff"
   },

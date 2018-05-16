@@ -1,2 +1,8 @@
 <!--pages/me/index.wxml-->
-<text>pages/me/index.wxml</text>
+
+<open-data type="userNickName"></open-data>
+<view style="margin:50px;width:auto;">
+  <open-data type="userAvatarUrl"></open-data>
+</view>
+
+<open-data type="userGender" lang="zh_CN"></open-data>

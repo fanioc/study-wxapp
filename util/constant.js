@@ -1,19 +1,20 @@
 //存储全局常量
 
-  //1.关于链接的常量，所有网络请求都以此为前缀
-const URL=
-{
-    base:"http://localhost/wx/",
-    debug:"http://localhost/a.php"
-}
+//1.关于链接的常量，所有网络请求都以此为前缀
+const URL =
+  {
+    study: 'https://study.xietan.xin/xaufe/StudyApp/',
+    base: "http://localhost/wx/",
+    debug: "http://localhost/a.php"
+  }
 
 //2.关于路径的常量，所有资源都以此为前缀
-const PATH=
-{
-  icon:"/image/subject/",
-  wrong: "/image/wrong.png",
-  debug: "/image/debug.png"
-}
+const PATH =
+  {
+    icon: "/image/subject/",
+    wrong: "/image/wrong.png",
+    debug: "/image/debug.png"
+  }
 
 //3.关于时间的常量
 const formatTime = date => {
