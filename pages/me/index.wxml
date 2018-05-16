@@ -4,5 +4,5 @@
 <view style="margin:50px;width:auto;">
   <open-data type="userAvatarUrl"></open-data>
 </view>
-
+<view>{{ssss}}</view>
 <open-data type="userGender" lang="zh_CN"></open-data>

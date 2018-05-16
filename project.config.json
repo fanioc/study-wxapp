@@ -33,11 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
 			"current": 5,
-=======
-			"current": 3,
->>>>>>> b3ae4fcb6eb13de2c4285e09b3f9b85f4c474c3c
 			"list": [
 				{
 					"id": -1,
@@ -68,14 +64,12 @@
 					"name": "自习",
 					"pathName": "pages/order-study/index",
 					"query": ""
-<<<<<<< HEAD
 				},
 				{
 					"id": -1,
 					"name": "绑定页面",
-					"pathName": "pages/me/binds/bind-edusys"
-=======
->>>>>>> b3ae4fcb6eb13de2c4285e09b3f9b85f4c474c3c
+					"pathName": "pages/me/binds/bind-edusys",
+					"query": ""
 				}
 			]
 		}
