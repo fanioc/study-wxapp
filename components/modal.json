@@ -1,6 +1,6 @@
 {
   "component": true,
       "usingComponents": {
-        "mtoast": "/modal/toast/middleToast"
+        "mtoast": "/components/toast/middleToast"
       }
 }
