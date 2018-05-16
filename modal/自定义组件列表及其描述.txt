@@ -10,6 +10,7 @@
   /modal/dynamic/modal 此组件，通过getFeed（）获取数据显示动态模块
 所需属性： 
           feed: Array ,整个模块数据来源，用于wx::for渲染
+          refresh:监听页面pulldown
            //----debug----
       getFeed = [
         {

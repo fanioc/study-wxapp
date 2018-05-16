@@ -1,6 +1,7 @@
 {
 "usingComponents": {
   "dynamic": "/modal/dynamic/modal",
-    "theme": "/modal/base/theme"
+    "theme": "/modal/base/theme",
+    "study":"/modal/orderStudy/modal"
 }
 }

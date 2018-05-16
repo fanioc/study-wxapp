@@ -1,7 +1,4 @@
-// pages/community/index.js
-var globalData=getApp().globalData;
-var util=globalData.util;
-var CONSTANT = globalData.CONSTANT;
+
 Page({
 
   /**
@@ -9,10 +6,8 @@ Page({
    */
   data: {
     currentTab:0,//当前顶部切换组件的序号
-    bannerList: [{ imgSrc:"debug0.png"}],
-    on:true,
-    feed: [],
-    feed_length: 0
+    bannerList: [{ imgSrc: "debug0.png" }],//广告控件for渲染数组，和getBannerImgSrc函数配合
+    dynamics_refresh:''//通知dynamic模块刷新
   },
 //-----------------本页面自定义函数
     //-----swichNav
@@ -21,60 +16,18 @@ Page({
 //console.log(e.currentTarget.dataset.current);
 var that = this;
 
-if (this.data.currentTab === e.target.dataset.current) {
+if (this.data.currentTab === e.target.dataset.current) 
+        {
   return false;
-} else {
+        } 
+else 
+    {
   that.setData({
-    currentTab: e.target.dataset.current
-  })
-}
-  },
-  //-----bindItemTap
-  bindItemTap: function ()//点击单动态模块时的动作
-   {
-    wx.navigateTo({
-      url: '../answer/answer'
-    })
-  },
-//lower 动态圈模块下拉获取更多数据
-  lower: function (e) {
-    console.log("fuck");
-    wx.showNavigationBarLoading();
-    var that = this;
-    setTimeout(function () { wx.hideNavigationBarLoading(); that.nextLoad(); }, 1000);
-    console.log("lower")
-  },
-  getFeed: function (mode=0)//从服务器获取动态模块所需数据,参数mode表示设置feed时：1为追加 0为重写，设置data：feed, feed_length
-  {
-    var getFeed,feed_Array=[];
-    //----调试代码----
-    getFeed=[
-      {
-        feed_source_img: '/image/debug.png',
-        feed_source_name: 'debug',
-        feed_source_identity: 'debug',
-        question_title: 'debug',
-        question_describe: 'debug',
-        sort: 'debug',
-        comment_num: 999,
-        question_status: '已解决',
-
-      }
-    ];
-    //----调试代码----
-
-    //addtionRegion 后台数据
-    if(mode)
-    {
-      feed_Array = this.data.feed.concat(getFeed);
+    currentTab: e.target.dataset.current})
     }
-    else
-    {
-      feed_Array = getFeed;
-    }
-    this.setData({ feed: feed_Array, feed_length:feed_Array.length});
-    return true;
   },
+
+
 //----getBannerImgSrc
 
   getBannerImgSrc: function (e)//获取动态圈板块的置顶广告的图片src，并存入数组bannerList:[]供wx for渲染
@@ -82,12 +35,12 @@ if (this.data.currentTab === e.target.dataset.current) {
    //addtionRegion
   },
 //-----------------本页面自定义函数
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.getFeed(1);
-     this.getFeed(1);
+
   },
 
   /**
@@ -121,15 +74,18 @@ if (this.data.currentTab === e.target.dataset.current) {
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    if (this.data.currentTab==0)
+  onPullDownRefresh: function () 
   {
-      util.PullDownRefresh(this.getFeed);
-  }
+    
+    if (this.data.currentTab == 0)//当currentTab为0时下拉刷新提示相应模块刷新数据
+    {
+      
+      this.setData({ dynamics_refresh: !this.data.dynamics_refresh});
+    }
   else
-  {
+    {
 
-  }
+    }
     wx.stopPullDownRefresh();
   },
 

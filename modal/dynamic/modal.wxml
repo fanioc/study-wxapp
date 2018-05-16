@@ -1,7 +1,7 @@
 
 <mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
 <!-- 动态圈动态模块-->
- <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper"  bindscrolltolower="lower"  >
+ <scroll-view scroll-y="true" class="container"   bindscrolltolower="lower"  >
 
     <block wx:for="{{feed}}"  wx:key="{{index}}" data-feedIndex="{{index}}">
     <!-- 动态模块0-->

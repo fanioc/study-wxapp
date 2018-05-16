@@ -1,0 +1,66 @@
+<view class='invite_item_content'>
+  <view class="invite_item_content_card"  >
+          <view>
+                    <!-- 模块top图片 -->
+                    
+                  <image bindtap='nav_orderStudy_detailPage' class="card_image" mode="aspectFill"    src="STUDY.PNG"/>
+                    <!-- 模块top图片 -->
+
+                    <!-- 模块middle信息 -->
+                        <!-- 休息中ing -->
+                    <view  class="card_title" hidden='{{study_status}}'>
+                       <!-- 主要 -->
+                        上一次学习情况
+
+                        <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:240rpx;'>
+                              <view wx:for="{{last_study_array}}" wx:key="{{index}}" >
+                              {{item.subject}}：{{item.content}}
+                              </view>
+                        </scroll-view>
+
+
+                        <view style='margin-top:30rpx;' >
+                               满意度
+                          <progress  activeColor='#f85f48' percent='{{study_satisfaction}}' style='margin-top:30rpx;' ></progress>
+                        </view>
+                        
+                       <!-- 主要 -->
+                    </view>
+                        <!-- 学习中ing -->
+                    <view  class="card_title" hidden='{{!study_status}}'>
+                       <!-- 主要 -->
+                        在我眼里学习如游戏           
+                        <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:240rpx;' >
+                              <view wx:for="{{studyInfo_array}}" wx:key="{{index}}" >
+                              {{item.subject}}：{{item.content}}
+                              </view>
+                        </scroll-view>
+
+                        <checkbox-group class='card_title_checkbox' bindchange='post_study_constraint'>
+                              <checkbox value='1' color='#f85f48'>接受邀请</checkbox>
+                              <checkbox value='2' color='#f85f48'>分享学习信息</checkbox>
+                        </checkbox-group>
+                       <!-- 主要 -->
+                    </view>
+                    <!-- 模块middle信息 -->      
+          </view>
+          <!-- 模块bottom按钮部门 -->
+                    <view class='invite_item_content_button'>
+                      <text class='content_button_text'>
+                            <!-- 学习中ing -->
+                          <text hidden='{{!study_status}}'>学习中ing~</text>
+                            <!-- 休息中ing -->
+                          <text hidden='{{study_status}}'>休息中ing~</text>
+                      </text>
+                      <switch color='#f85f48'  bindchange='change_study_status'></switch>
+                    </view>
+                    <!-- 模块bottom按钮部门 -->
+  </view>
+
+
+
+</view>
+
+
+
+
