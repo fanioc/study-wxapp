@@ -3,6 +3,13 @@ App({
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
+
+  checkLogin:function(){
+    console.log(res)
+    wx.setStorageSync('session', res.data.session)
+    console.log(wx.getStorageSync('session'))
+  },
+
   onLaunch: function () {
     var util = require("/util/util.js");
     //若无缓存的主题参数，初始化为 黑色，白色，浅灰色，顺序码0
@@ -11,20 +18,20 @@ App({
       console.log("setTheme");
     }
 
+
+    //登入校验
     wx.checkSession({
       fail:function(e){
         wx.login({
           success:function(res){
-            var constant = require('/util/constant.js');
+            // var constant = require('/util/constant.js');
             wx.request({
-              url: constant.URL.study +'loginStudy',
+              url: this.globalData.CONSTANT.URL.study +'loginStudy',
               data:{
                 code:res.code
               },
               success:function(res){
-                console.log(res)
-                wx.setStorageSync('session', res.data.session)
-                console.log(wx.getStorageSync('session'))
+                globalData.util.errCode(res.data.errCode, res.data.data, this.checkLogin)
               }
             })
           }
