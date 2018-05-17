@@ -1,1 +1,7 @@
-{}
+{
+  "usingComponents": {
+
+    "study": "/components/orderStudy/modal"
+
+  }
+}

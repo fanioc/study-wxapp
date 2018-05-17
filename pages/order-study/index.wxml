@@ -1,20 +1,7 @@
-
-
       <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
 
-          <swiper-item wx:for="{{invite_item_array}}" wx:key="index">
-          <view class='invite_item_content'>
-              <view class="invite_item_content_card"  >
-                <view>
-                  <image bindtap='pre_dynamic_image' class="card_image" mode="aspectFill" data-img="{{item.dynamic_data.card_img}}"                            src="{{item.dynamic_data.card_img}}"/>
-              
-                  <view bindtap='nav_dynamic_page' class="card_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>      
-            </view>
-
-            <button class='invite_item_content_button'>进行中</button>
-          </view>
-      
-          </view>
+          <swiper-item >
+                  <study refresh="{{study_fresh}}" />
           </swiper-item>
  
       

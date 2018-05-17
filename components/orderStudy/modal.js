@@ -6,23 +6,25 @@ Component({
   behaviors: [],
 
   properties: {
-    refresh: { // 属性名,监视页面pulldown
+    refresh: { // 属性名,监视页面pulldown,重新获取进入学习状态后的信息
       type: Boolean, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
       observer: function (newVal, oldVal) {
-        if (this.getFeed(0)) {
+        if (this.get_studyInfo_array()) {
           this.setData({ hiddenToast: true, toastContent: '刷新成功' });
-
+          
         }
         else {
           this.setData({ hiddenToast: true, toastContent: '刷新失败' });
-
+          
         }
-      } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
-    },
-    myProperty2: String // 简化的定义方式
+        wx.stopPullDownRefresh();
+      } 
+    }
   },
   data: {
+    hiddenToast:'',
+    toastContent:'',
     study_status:false,//判断是在学习和还是休息
     last_study_array: [],//上次学习的信息
     study_satisfaction:0,//学习满意度 用于进度条
@@ -86,6 +88,7 @@ Component({
       data.push({ subject: '当前教室自习人数', content: '9' });
       //----debugdata----------
       this.setData({ studyInfo_array: data });
+      return true;
     },
 //将是否接收邀请和分享学习信息的选择发送给服务器
     post_study_constraint: function (e) {

@@ -1,3 +1,4 @@
+<mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
 <view class='invite_item_content'>
   <view class="invite_item_content_card"  >
           <view>

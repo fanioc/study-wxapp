@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-   
+    
+    study_fresh:false,
     invite_item_array: [
       {
         dynamic_data:
@@ -63,8 +64,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.PullDownRefresh(this.a);
-    console.log(this.data.utils);
+   
   },
 
   /**
@@ -99,6 +99,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({ study_fresh: !this.data.study_fresh });
   
   },
 
