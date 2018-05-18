@@ -3,6 +3,8 @@
   "dynamic": "/components/dynamic/modal",
     "theme": "/components/base/theme",
     "study":"/components/orderStudy/modal",
-    "img_pre":"/components/base/image_canPreview/image_canPreview"
+    "img_pre":"/components/base/image_canPreview/image_canPreview",
+    "user":"/components/userInfo/modal",
+    "modal":"/components/simulate_popup/modal"
 }
 }

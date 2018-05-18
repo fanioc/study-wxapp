@@ -1,0 +1,27 @@
+<view class='drawer_screen' wx:if="{{showModalStatus}}">
+<!--弹窗-->
+<view animation="{{animationData}}" class="drawer_box"  >
+<form bindsubmit='Confirm_submit'>
+  <!--标题-->
+  <view class="drawer_title">{{title}}</view>
+  <!--内容-->
+  <view class="drawer_content">
+    <import src='/template/form.wxml' />
+    <template is='{{formtype}}' />
+
+  </view>
+    <!--按钮-->
+  <view class="modal-footer" wx:if="{{button}}">
+      <button class="btn-cancel" catchtap="cancel" style='margin: 0rpx;padding: 0rpx;border: none;'>
+      取消
+      </button>
+      <button class="btn-confirm" form-type='submit'   style='margin: 0rpx;padding: 0rpx;border: none;'>
+      {{rightButton}}
+      </button>
+  </view>
+</form>
+</view>
+
+</view>
+
+

@@ -54,9 +54,9 @@ Page({
       url: '../answer/answer'
     })
   },
-  a:function()
+  a:function(e)
   {
-    console.log('a');
+    console.log(e);
     return true;
   },
 //------------
