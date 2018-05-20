@@ -13,10 +13,6 @@ Component({
 
       } 
     },
-    button: { // 属性名,是否显示确认和取消按钮
-      type: Boolean,
-      value: true
-    },
     title: String, // 简化的定义方式,弹窗标题
     rightButton: { // 属性名,右按钮名称
       type:String,
@@ -26,7 +22,10 @@ Component({
     type: String,
     value: 'leave_message'
   },
-
+    full: { // 属性名,是否全屏
+      type: Boolean,
+      value: false,
+    },
   },
   data: {
 
@@ -34,7 +33,6 @@ Component({
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () {
-
     
    },
   moved: function () { },
@@ -100,7 +98,7 @@ Component({
     }, 
     Confirm_submit: function(e) { //确认，并提交数据
       //console.log(e.detail.value);
-      var myEventDetail = { formData: e.detail.value} // detail对象，将弹窗内的表单数据给事件监听函数
+      var myEventDetail = { formData: e.detail.value, templateType: this.data.formtype} // detail对象，将弹窗内的表单数据给事件监听函数
       var myEventOption = {} // 触发事件的选项，全部默认否
       this.triggerEvent('comfirm', myEventDetail, myEventOption)//事件名为comfirm
       this.util("close");

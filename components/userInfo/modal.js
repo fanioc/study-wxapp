@@ -1,6 +1,4 @@
-var globalData = getApp().globalData;
-var util = globalData.util;
-var CONSTANT = globalData.CONSTANT;
+var components = getApp().globalData.components;
 Component({
 
   behaviors: [],
@@ -42,7 +40,13 @@ Component({
   detached: function () { },
 
   methods: {
-    
+    set_modal: function () { //设置弹窗属性
+
+      this.setData({ show_modal: true, modal_title: '留言ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message' });
+
+      return true;
+    },
+
     nav_User_personalPage: function() { //转跳至用户个人信息页面
       var data = false;
       //addtionRegion
@@ -88,11 +92,17 @@ Component({
     },
     modal_leave_message: function () { //用户留言窗口
 
-      this.setData({ show_modal: true, modal_title: '留言ing', modal_right_button: '发送', modal_callback:'post_leave_message'});
+      this.setData({ show_modal: true, modal_title: '留言ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message'});
       
       return true;
     },
-    post_leave_message: function (e) { //向服务器发送用户留言
+    modal_reply_message: function () { //用户回复留言窗口
+
+      this.setData({ show_modal: true, modal_title: '回复ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message' });
+
+      return true;
+    },
+    post_leave_message: function (e) { //向服务器发送用户留言，或者回复内容
       var data;
       //addtionRegion
       //----debugdata----------
@@ -100,15 +110,17 @@ Component({
       //----debugdata----------
 
       console.log(e.detail.formData);
-      this.setData({ hiddenToast: true, toastContent: '已发送邀请' });
+      this.setData({ hiddenToast: true, toastContent: '已发送' });
       return true;
     },
+
     modal_comment: function () { //用户评论窗口
 
       this.setData({ show_modal: true, modal_title: '评论ing', modal_right_button: '完成', modal_callback: 'post_comment', template_form:'comment'});
 
       return true;
     },
+
     post_comment: function (e) { //向服务器发送用户留言
       var data;
       //addtionRegion
@@ -116,8 +128,19 @@ Component({
 
       //----debugdata----------
 
-      console.log(e.detail.formData);
-      this.setData({ hiddenToast: true, toastContent: '已完成评价' });
+      console.log(e.detail);
+      this.setData({ hiddenToast: true, toastContent: '完成评价' });
+      return true;
+    },
+    modal_answer_question: function (e) { //用户回答窗口
+      var data;
+      //addtionRegion
+      //----debugdata----------
+
+      //----debugdata----------
+
+      this.setData({ show_modal: true,  modal_right_button: '完成', modal_callback: 'post_comment', template_form: 'comment' });
+
       return true;
     },
     //--------------------------------

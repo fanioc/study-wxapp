@@ -1,5 +1,5 @@
 <mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
-<modal formtype='{{template_form}}' title='{{modal_title}}' bindcomfirm='{{modal_callback}}' show-modal-status="{{show_modal}}" right-button="{{modal_right_button}}"/>
+<include src='/template/interActive.wxml' />
 
 <view class='user_contain' >
             <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}" >
@@ -27,6 +27,16 @@
 
                       <block wx:elif="{{model==4}}">
                        <text class='button_text follow' catchtap='modal_comment'>十 评价</text>
+                         
+                      </block>
+
+                      <block wx:elif="{{model==5}}">
+                       <text class='button_text follow' catchtap='modal_reply_message'>十 回复</text>
+                         
+                      </block>
+
+                      <block wx:elif="{{model==6}}">
+                       <text class='button_text follow' catchtap='modal_answer_question'>十 回答</text>
                          
                       </block>
                 </a> 

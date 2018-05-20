@@ -17,9 +17,12 @@
               <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
 
               
-<modal title='标题' bindcomfirm='a' CSS='aa' />
+<include src='/template/interActive.wxml' />
 
-<user model='4'/>
+
+<user model='3'/>
+
+
              
 
               

@@ -1,0 +1,6 @@
+<view>
+
+
+<modal formtype='{{template_form}}' title='{{modal_title}}' bindcomfirm='{{modal_callback}}' show-modal-status="{{show_modal}}" right-button="{{modal_right_button}}" full="{{modal_fullScreen}}" wx:if="{{show_modal}}"/>
+
+</view>

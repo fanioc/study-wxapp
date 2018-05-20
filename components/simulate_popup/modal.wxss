@@ -47,7 +47,14 @@ overflow-y: scroll;
   display: flex;
   flex-direction: row;
   height: 86rpx;
-  border-top: 1px solid #dedede;
+  
   font-size: 34rpx;
   line-height: 86rpx;
+}
+.colorScreen{
+  background: #FAFAFA;
+}
+.full_content {
+height: 1119rpx;
+overflow-y: scroll;
 }

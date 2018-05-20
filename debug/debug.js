@@ -1,5 +1,7 @@
 // debug/debug.js
+
 var util=require('../util/util.js');
+var components = getApp().globalData.components;
 Page({
 
   /**
@@ -49,14 +51,18 @@ Page({
       }],
   },
 //-------------
+  asd: function () {
+    var that = this; //console.log(components);
+    components.show_modal(that, 'leave_message', 'a', '弹窗hah', '完成hah', false);
+  },
   bindItemTap: function () {
     wx.navigateTo({
       url: '../answer/answer'
     })
   },
-  a:function(e)
+  a:function()
   {
-    console.log(e);
+    console.log('e');
     return true;
   },
 //------------

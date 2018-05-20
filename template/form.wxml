@@ -1,5 +1,5 @@
 <template name="leave_message">
-  <textarea placeholder='留言' name='leave_message' auto-height='true' fixed='true'></textarea>
+  <textarea placeholder='简单的文本内容' name='leave_message' auto-height='true' fixed='true'></textarea>
 </template>
 
 <template name="comment">
