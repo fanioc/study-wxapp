@@ -4,20 +4,6 @@ Component({
   behaviors: [],
 
   properties: {
-    refresh: { // 属性名,监视页面pulldown
-      type: Boolean, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-      value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
-      observer: function (newVal, oldVal) {
-        if (this.getFeed(0)) {
-          this.setData({ hiddenToast: true, toastContent: '刷新成功' });
-
-        }
-        else {
-          this.setData({ hiddenToast: true, toastContent: '刷新失败' });
-
-        }
-      } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
-    },
    inner: String, // 简化的定义方式,插入的内容
    model:Number
   },
@@ -40,13 +26,6 @@ Component({
   detached: function () { },
 
   methods: {
-    set_modal: function () { //设置弹窗属性
-
-      this.setData({ show_modal: true, modal_title: '留言ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message' });
-
-      return true;
-    },
-
     nav_User_personalPage: function() { //转跳至用户个人信息页面
       var data = false;
       //addtionRegion
@@ -91,15 +70,16 @@ Component({
       return true; 
     },
     modal_leave_message: function () { //用户留言窗口
-
-      this.setData({ show_modal: true, modal_title: '留言ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message'});
+      var that = this;
+      components.show_modal(that, 'leave_message', 'post_leave_message', '留言ing', '发送', false);
+      
       
       return true;
     },
     modal_reply_message: function () { //用户回复留言窗口
-
-      this.setData({ show_modal: true, modal_title: '回复ing', modal_right_button: '发送', modal_callback: 'post_leave_message', template_form: 'leave_message' });
-
+      var that = this;
+      components.show_modal(that, 'leave_message', 'post_leave_message', '回复ing', '发送', false);
+      
       return true;
     },
     post_leave_message: function (e) { //向服务器发送用户留言，或者回复内容
@@ -115,8 +95,9 @@ Component({
     },
 
     modal_comment: function () { //用户评论窗口
+      var that = this;
+      components.show_modal(that, 'comment', 'post_comment', '评论ing', '发送', false);
 
-      this.setData({ show_modal: true, modal_title: '评论ing', modal_right_button: '完成', modal_callback: 'post_comment', template_form:'comment'});
 
       return true;
     },
@@ -132,14 +113,24 @@ Component({
       this.setData({ hiddenToast: true, toastContent: '完成评价' });
       return true;
     },
-    modal_answer_question: function (e) { //用户回答窗口
+    modal_answer_question: function () { //用户回答窗口
+      var data;
+      //addtionRegion
+      //----debugdata----------
+
+      //----debugdata----------
+      var that = this;
+      components.show_modal(that, '//addtionRegion', 'post_answer_question', '回答', '完成', true);
+
+      return true;
+    },
+    post_answer_question: function () { //用户回答窗口
       var data;
       //addtionRegion
       //----debugdata----------
 
       //----debugdata----------
 
-      this.setData({ show_modal: true,  modal_right_button: '完成', modal_callback: 'post_comment', template_form: 'comment' });
 
       return true;
     },

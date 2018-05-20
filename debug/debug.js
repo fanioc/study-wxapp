@@ -52,8 +52,11 @@ Page({
   },
 //-------------
   asd: function () {
-    var that = this; //console.log(components);
-    components.show_modal(that, 'leave_message', 'a', '弹窗hah', '完成hah', false);
+   // getCurrentPages();
+    console.log(this.data.hah);
+    getCurrentPages()[0].setData({hah:'a'});
+    console.log(this.data.hah);
+    console.log(getCurrentPages()[0].a);
   },
   bindItemTap: function () {
     wx.navigateTo({

@@ -1,4 +1,4 @@
-<mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
+
 <include src='/template/interActive.wxml' />
 
 <view class='user_contain' >
