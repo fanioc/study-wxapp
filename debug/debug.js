@@ -53,18 +53,28 @@ Page({
 //-------------
   asd: function () {
    // getCurrentPages();
-    console.log(this.data.hah);
-    getCurrentPages()[0].setData({hah:'a'});
-    console.log(this.data.hah);
-    console.log(getCurrentPages()[0].a);
+    //var asda = this.bindItemTap;
+    components.show_mToast('完成评价');
+    //this.lly(asda);
+    //this.a(asda);
+    
+    //getCurrentPages()[0].setData({ hah:  function () { console.log('asda');return true; } });
+    //getCurrentPages()[0].data.hah();
+    //console.log(this.data.hah());
+    //console.log(getCurrentPages()[0].a);
+  },
+  lly:function(call)
+  {
+      call();
   },
   bindItemTap: function () {
     wx.navigateTo({
       url: '../answer/answer'
     })
   },
-  a:function()
+  a:function(aa)
   {
+    aa();
     console.log('e');
     return true;
   },

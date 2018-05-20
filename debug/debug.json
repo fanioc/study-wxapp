@@ -5,6 +5,7 @@
     "study":"/components/orderStudy/modal",
     "img_pre":"/components/base/image_canPreview/image_canPreview",
     "user":"/components/userInfo/modal",
-    "modal":"/components/simulate_popup/modal"
+    "modal":"/components/simulate_popup/modal",
+    "mtoast": "/components/toast/middleToast"
 }
 }

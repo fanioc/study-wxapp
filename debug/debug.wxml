@@ -19,8 +19,8 @@
               
 <include src='/template/interActive.wxml' />
 
-<button bindtap='asd'>haha</button>
-<user model='1'/>
+<button bindtap="asd">haha</button>
+<user model='4'/>
 
 
              

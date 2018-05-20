@@ -1,5 +1,4 @@
 
-<include src='/template/interActive.wxml' />
 
 <view class='user_contain' >
             <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}" >

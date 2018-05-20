@@ -25,7 +25,7 @@ Component({
     full: { // 属性名,是否全屏
       type: Boolean,
       value: false,
-    },
+    }
   },
   data: {
 
@@ -97,10 +97,10 @@ Component({
       this.util("close");
     }, 
     Confirm_submit: function(e) { //确认，并提交数据
-      //console.log(e.detail.value);
-      var myEventDetail = { formData: e.detail.value, templateType: this.data.formtype} // detail对象，将弹窗内的表单数据给事件监听函数
-      var myEventOption = {} // 触发事件的选项，全部默认否
-      this.triggerEvent('comfirm', myEventDetail, myEventOption)//事件名为comfirm
+      var myEventDetail = { formData: e.detail.value, templateType: this.data.formtype } // detail对象，将弹窗内的表单数据给事件监听函数
+     
+      
+      getCurrentPages()[0].data.modal_comfirm_callback(myEventDetail);
       this.util("close");
     },
     //--------------------------------

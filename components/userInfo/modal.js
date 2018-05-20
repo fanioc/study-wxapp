@@ -1,4 +1,4 @@
-var components = getApp().globalData.components;
+var components = getApp().globalData.components; components.show_mToast
 Component({
 
   behaviors: [],
@@ -9,8 +9,6 @@ Component({
   },
   data: {
     show_modal:false,
-    hiddenToast: false, //控制提示刷新成功的toast
-    toastContent: '',//toast 提示内容
     followed: false,//判断是否关注已当前用户
     invited: false
   }, // 私有数据，可用于模版渲染
@@ -56,7 +54,8 @@ Component({
       //----debugdata----------
      
       //----debugdata----------
-      this.setData({ hiddenToast: true, toastContent: '关注成功', followed: true});
+      this.setData({followed: true});
+      components.show_mToast('关注成功');
       return true;
     },
 
@@ -66,19 +65,20 @@ Component({
       //----debugdata----------
 
       //----debugdata----------
-      this.setData({ hiddenToast: true, toastContent: '已发送邀请', invited: true });
+      this.setData({  invited: true });
+      components.show_mToast('已发送邀请');
       return true; 
     },
     modal_leave_message: function () { //用户留言窗口
       var that = this;
-      components.show_modal(that, 'leave_message', 'post_leave_message', '留言ing', '发送', false);
+      components.show_modal(that, 'leave_message', this.post_leave_message, '留言ing', '发送', false);
       
       
       return true;
     },
     modal_reply_message: function () { //用户回复留言窗口
       var that = this;
-      components.show_modal(that, 'leave_message', 'post_leave_message', '回复ing', '发送', false);
+      components.show_modal(that, 'leave_message', this.post_leave_message, '回复ing', '发送', false);
       
       return true;
     },
@@ -90,13 +90,13 @@ Component({
       //----debugdata----------
 
       console.log(e.detail.formData);
-      this.setData({ hiddenToast: true, toastContent: '已发送' });
+      components.show_mToast('已发送');
       return true;
     },
 
     modal_comment: function () { //用户评论窗口
       var that = this;
-      components.show_modal(that, 'comment', 'post_comment', '评论ing', '发送', false);
+      components.show_modal(that, 'comment', this.post_comment, '评论ing', '发送', false);
 
 
       return true;
@@ -109,8 +109,9 @@ Component({
 
       //----debugdata----------
 
-      console.log(e.detail);
-      this.setData({ hiddenToast: true, toastContent: '完成评价' });
+      console.log(e);
+      components.show_mToast('完成评价');
+     
       return true;
     },
     modal_answer_question: function () { //用户回答窗口
@@ -120,7 +121,7 @@ Component({
 
       //----debugdata----------
       var that = this;
-      components.show_modal(that, '//addtionRegion', 'post_answer_question', '回答', '完成', true);
+      components.show_modal(that, '//addtionRegion', this.post_answer_question, '回答', '完成', true);
 
       return true;
     },

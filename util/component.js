@@ -3,15 +3,16 @@ function simulate_popup_set_property(that, form, callback, title = '弹窗', rig
 {
  
 //show_modal直接定义为true
-  that.setData({ show_modal: true, template_form: form, modal_title: title, modal_right_button: right_button, modal_fullScreen: full, modal_callback: callback });
+  getCurrentPages()[0].setData({ show_modal: true, template_form: form, modal_title: title, modal_right_button: right_button, modal_fullScreen: full, modal_comfirm_callback: callback });
 
     return true;
 }
 //设置simulate_popup自定义组件属性
-function middleToast_set_property(that, content) {
+function middleToast_set_property(content) {
 
   //hidden直接定义为true
-  that.setData({ hiddenToast: true, toastContent: content });
+  getCurrentPages()[0].setData({ hiddenToast: true, toastContent: content });
+  console.log('hah');
   return true;
 }
 //配合<include src='/template/interActive.wxml' />使用
