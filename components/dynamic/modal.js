@@ -104,13 +104,6 @@ Component({
       console.log("lower");
     },
     //--------------bindtap事件函数
-    pre_dynamic_image: function (e) {//点击动态模块1图片时预览
-      console.log(e.currentTarget.dataset.img);
-      
-      wx.previewImage({
-        urls: [e.currentTarget.dataset.img]
-      })
-    },
 
     nav_dynamic_page: function (e) {//转跳至动态详情页面
       console.log(e.currentTarget.dataset.feedindex);

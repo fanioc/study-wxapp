@@ -1,0 +1,46 @@
+
+
+<view class='user_contain' >
+            <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}" >
+                <a class="a-feed-source">
+                    <view class="avatar" >
+                        <image src="/image/debug2.jpeg"  class='img-feed-source' />
+                        <text class='text-feed-source'>卢林杨-学生</text>
+                    </view>
+                      
+                   
+                      <block wx:if="{{model==1}}">
+                        <text class='button_text button_text_on' wx:if="{{followed}}" >已关注</text>
+                        <text class='button_text follow' wx:else catchtap='set_followed'>十 关注</text>
+                         
+                      </block>
+                      <block wx:elif="{{model==2}}">
+                        <text class='button_text button_text_on' wx:if="{{invited}}" >已邀请</text>
+                         <text class='button_text invite' wx:else catchtap='post_invited'>十 邀请</text>
+
+                      </block>
+                      <block wx:elif="{{model==3}}">
+                       <text class='button_text follow' catchtap='modal_leave_message'>十 留言</text>
+                         
+                      </block>
+
+                      <block wx:elif="{{model==4}}">
+                       <text class='button_text follow' catchtap='modal_comment'>十 评价</text>
+                         
+                      </block>
+
+                      <block wx:elif="{{model==5}}">
+                       <text class='button_text follow' catchtap='modal_reply_message'>十 回复</text>
+                         
+                      </block>
+
+                      <block wx:elif="{{model==6}}">
+                       <text class='button_text follow' catchtap='modal_answer_question'>十 回答</text>
+                         
+                      </block>
+                </a> 
+                
+            </view>
+            
+            
+</view>

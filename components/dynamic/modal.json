@@ -1,6 +1,7 @@
 {
   "component": true,
     "usingComponents": {
-      "mtoast": "/components/toast/middleToast"
+      "mtoast": "/components/toast/middleToast",
+      "img_pre": "/components/base/image_canPreview/image_canPreview"
     }
 }

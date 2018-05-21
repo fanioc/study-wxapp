@@ -1,12 +1,15 @@
 // debug/debug.js
+
 var util=require('../util/util.js');
+var components = getApp().globalData.components;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   
+    
+    study_fresh:false,
     invite_item_array: [
       {
         dynamic_data:
@@ -47,14 +50,31 @@ Page({
       }],
   },
 //-------------
+  asd: function () {
+   // getCurrentPages();
+    //var asda = this.bindItemTap;
+    components.show_mToast('完成评价');
+    //this.lly(asda);
+    //this.a(asda);
+    
+    //getCurrentPages()[0].setData({ hah:  function () { console.log('asda');return true; } });
+    //getCurrentPages()[0].data.hah();
+    //console.log(this.data.hah());
+    //console.log(getCurrentPages()[0].a);
+  },
+  lly:function(call)
+  {
+      call();
+  },
   bindItemTap: function () {
     wx.navigateTo({
       url: '../answer/answer'
     })
   },
-  a:function()
+  a:function(aa)
   {
-    console.log('a');
+    aa();
+    console.log('e');
     return true;
   },
 //------------
@@ -62,8 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.PullDownRefresh(this.a);
-    console.log(this.data.utils);
+   
   },
 
   /**
@@ -98,6 +117,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({ study_fresh: !this.data.study_fresh });
   
   },
 

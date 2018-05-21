@@ -1,0 +1,6 @@
+<view>
+
+<mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" wx:if="{{hiddenToast}}"/>
+<modal formtype='{{template_form}}' title='{{modal_title}}'  show-modal-status="{{show_modal}}" right-button="{{modal_right_button}}" full="{{modal_fullScreen}}" wx:if="{{show_modal}}"/>
+
+</view>

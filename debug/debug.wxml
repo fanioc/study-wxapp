@@ -2,12 +2,27 @@
             
 
 
-      <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
+      <!--<swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
 
           <swiper-item wx:for="{{invite_item_array}}" wx:key="index">
-                  <study  />
+                  <study refresh="{{study_fresh}}" />
           </swiper-item>
  
       
-      </swiper>
+      </swiper>-->
 
+              <!--一，用户信息部分<user model='3'/>-->
+              
+
+              <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
+
+              
+<include src='/template/interActive.wxml' />
+
+<button bindtap="asd">haha</button>
+<user model='4'/>
+
+
+             
+
+              

@@ -38,6 +38,16 @@ Component({
         // 更新属性和数据的方法与更新页面数据的方法类似
       })
     },
+    //---------------自定义部分---------
+    get_followed: function () {
+      var data;
+      //addtionRegion
+      //----debugdata----------
+      this.setData({ followed: data });
+      //----debugdata----------
+      return true;
+    },
+    //--------------------------------
     _myPrivateMethod: function () {
       // 内部方法建议以下划线开头
       this.replaceDataOnPath(['A', 0, 'B'], 'myPrivateData') // 这里将 data.A[0].B 设为 'myPrivateData'
