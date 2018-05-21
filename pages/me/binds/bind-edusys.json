@@ -1,1 +1,6 @@
-{}
+{
+    "enablePullDownRefresh": false,
+    "usingComponents":{
+      "navigation":"/components/navigation/navigation"
+    }
+}

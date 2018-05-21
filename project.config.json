@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -69,18 +69,6 @@
 					"id": -1,
 					"name": "绑定页面",
 					"pathName": "pages/me/binds/bind-edusys",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "问题详情",
-					"pathName": "pages/community/dynamic/dynamic",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "debug2",
-					"pathName": "pages/debug2/debug2",
 					"query": ""
 				}
 			]

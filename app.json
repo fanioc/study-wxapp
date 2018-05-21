@@ -14,7 +14,7 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "去自习",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "defalut",
+    "navigationStyle": "custom",
     "enablePullDownRefresh": true,
     "backgroundColor": "#fff"
   },

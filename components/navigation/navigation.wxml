@@ -1,0 +1,9 @@
+<!--components/navigation/navigation.wxml-->
+<view class="wrapper">
+
+  <view class='return'>
+    <view class='arrow'></view>
+     <!-- <view class='text'></view>  -->
+  </view>
+  <slot></slot>
+</view>

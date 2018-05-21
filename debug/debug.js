@@ -21,7 +21,6 @@ Page({
           feed_source_identity: 'debug',
 
           card_img: '/image/debug4.jpg',
-
           question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
           question_describe: 'debug',
         },

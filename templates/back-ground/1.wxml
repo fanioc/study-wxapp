@@ -1,0 +1,18 @@
+
+<template name="back-ground-1">
+
+	<view class="wrapper">
+		<ul class="bg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</view>
+</template>
