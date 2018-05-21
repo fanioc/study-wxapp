@@ -1,14 +1,15 @@
 // debug/debug.js
 
 var util=require('../util/util.js');
-var components = getApp().globalData.components;
+var components = getApp().globalData.components;//
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    //article将用来存储towxml数据
+    article: {},
     study_fresh:false,
     invite_item_array: [
       {
@@ -83,7 +84,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
+
   },
 
   /**

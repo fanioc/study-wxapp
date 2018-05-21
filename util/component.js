@@ -12,7 +12,7 @@ function middleToast_set_property(content) {
 
   //hidden直接定义为true
   getCurrentPages()[0].setData({ hiddenToast: true, toastContent: content });
-  console.log('hah');
+  //console.log('hah');
   return true;
 }
 //配合<include src='/template/interActive.wxml' />使用
