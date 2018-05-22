@@ -1,4 +1,4 @@
-@import "/templates/back-ground/1.wxss";
+@import "/template/back-ground/1.wxss";
 
 .view-box {
   width: 100%;
@@ -11,6 +11,7 @@
 
 input {
   padding: 5px 10px 5px 10px;
+  
   height: 2em;
   background: #fff;
   opacity: 0.8;

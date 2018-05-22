@@ -114,7 +114,7 @@ Page({
       title: '正在读取课表',
     })
     wx.request({
-      url: 'https://api.xietan.xin/public/xaufe/EduSysMobile/getCourse?xh=1605990711',
+      url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {
         // console.log(res.data)
         that.setData({
@@ -134,42 +134,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.checkSession({
-      success: function (res) { },
-      fail: function (res) {
-        wx.login({
-          success: function (res_code) {
-            wx.request({
-              url: 'http://127.0.0.1/tp/public/xaufe/studyApp/login',
-              data: {
-                'code': res_code.code
-              },
-              success: function (res) {
-                console.log(res_code.code)
-                console.log(res)
-
-                global.session = res.data['session']
-              },
-              complete: function () {
-                wx.getUserInfo({
-                  success: function (res) {
-                    wx.request({
-                      url: 'http://127.0.0.1/tp/public/xaufe/studyApp/updateUserBasicInfo',
-                      data: {
-                        'session': global.session,
-                        'rawData': res.rawData,
-                      },
-                    })
-                  },
-                })
-              }
-            })
-          }
-        })
-      },
-      complete: function (res) { },
-    })
-
+    
   },
 
   /**

@@ -1,39 +1,30 @@
+var _CONSTANT = require("./util/constant.js");
+var _util= require("./util/util.js");
+var _components = require("./util/component.js");
+
 App({
   //
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
-
-  checkLogin:function(){
-    console.log(res)
-    wx.setStorageSync('session', res.data.session)
-    console.log(wx.getStorageSync('session'))
-  },
-
   onLaunch: function () {
-    var util = require("/util/util.js");
     //若无缓存的主题参数，初始化为 黑色，白色，浅灰色，顺序码0
     if (!wx.getStorageSync('theme')) {
-      util.setTheme("#000000", "#ffffff", "#e6e6e6", "0");
+      _util.setTheme("#000000", "#ffffff", "#e6e6e6", "0");
       console.log("setTheme");
     }
 
-
+    var that = this;
+    
     //登入校验
     wx.checkSession({
-      fail:function(e){
+      fail: function (e) {
         wx.login({
-          success:function(res){
-            // var constant = require('/util/constant.js');
-            wx.request({
-              url: this.globalData.CONSTANT.URL.study +'loginStudy',
-              data:{
-                code:res.code
-              },
-              success:function(res){
-                globalData.util.errCode(res.data.errCode, res.data.data, this.checkLogin)
-              }
-            })
+          success: function (res) {
+            console.log(res)
+          // _util.API.loginStudy(res.code)
+          wx.setStorageSync('session','0d8f73928bc5b28d45730b0d6ddcc169')
+          _util.API.bindEduSys('1605990711','Cj147258!')
           }
         })
       }
@@ -62,8 +53,8 @@ App({
 
   //全局变量
   globalData: {
-    util: require("/util/util.js"),
-    components: require("/util/component.js"),
-    CONSTANT: require('/util/constant.js')
+    util: _util,
+    components: _components,
+    CONSTANT: _CONSTANT
   }
 })

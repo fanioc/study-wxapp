@@ -1,12 +1,13 @@
-<import src="/templates/back-ground/1.wxml" />
+<import src="/template/back-ground/1.wxml" />
 <template is="back-ground-1" />
 
 <navigation></navigation>
 <view class='view-box'>
   <form>
 
-    <input></input>
-    <input type='password'></input>
+    <view>账号<input></input></view>
+    <view>密码<input type='password'> </input></view>
+
     <button>提交</button>
 
   </form>

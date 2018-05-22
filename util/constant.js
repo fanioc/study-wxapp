@@ -4,6 +4,7 @@
 const URL =
   {
     study: 'https://study.xietan.xin/xaufe/StudyApp/',
+    localhost: 'https://study.xietan.xin/xaufe/StudyApp/',
     base: "http://localhost/wx/",
     debug: "http://localhost/a.php"
   }
