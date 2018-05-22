@@ -7,8 +7,12 @@
           <swiper-item wx:for="{{invite_item_array}}" wx:key="index">
                   <study refresh="{{study_fresh}}" />
           </swiper-item>
- 
-      
+
+ <include src='/template/interActive.wxml' />
+<user model='4'/>
+<user model='4'/>
+<towxml />
+ <towxml />
       </swiper>-->
 
               <!--一，用户信息部分<user model='3'/>-->
@@ -17,12 +21,11 @@
               <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
 
               
-<include src='/template/interActive.wxml' />
 
-<button bindtap="asd">haha</button>
-<user model='4'/>
+            <include src='/template/interActive.wxml' />
+            <img_pre imgURL='/image/debug2.jpeg' />
 
-
+<view class='lly'>_____________________________</view>
              
 
               

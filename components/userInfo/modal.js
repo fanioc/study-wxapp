@@ -5,7 +5,8 @@ Component({
 
   properties: {
    inner: String, // 简化的定义方式,插入的内容
-   model:Number
+   model:Number,
+   userID: String
   },
   data: {
     show_modal:false,
@@ -31,6 +32,7 @@ Component({
 
       //----debugdata----------
      // this.setData({ followed: data });
+      console.log('nav_User_personalPage');
       return true;
     },
     onMyButtonTap: function () {
@@ -96,7 +98,7 @@ Component({
 
     modal_comment: function () { //用户评论窗口
       var that = this;
-      components.show_modal(that, 'comment', this.post_comment, '评论ing', '发送', false);
+      components.show_modal(that, 'leave_message', this.post_comment, '评论ing', '发送', false);
 
 
       return true;

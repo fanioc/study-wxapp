@@ -1,5 +1,7 @@
-<!--点击动态圈模块内容部门后转跳的页面-->
-<view class="container">
+<include src='/template/interActive.wxml' />
+
+
+<view class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}'>
     <view class="question-wrp">
         <view class="question-item">
             <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
@@ -8,211 +10,83 @@
             </view>
             <!--问题的标题 {{question_title}}-->
             <view class="que-title">
-                {{question_title}}debugdata
+                {{question_title}}
             </view>
-            <view>
-                <image src='/image/debug2.jpeg' class="dynamic_image" mode="aspectFill">
-                </image>
-            </view>
+
             <!--问题的描述内容 {{question_describe}}-->
+            
             <view class="que-content">
-                {{question_describe}}debugdatadebugdatadebugdatadebugdatadebugdatadebugdatadebugda哈哈哈啊tadebugdata哈哈哈啊
+                {{question_describe}}
             </view>
-            <view class="que-follow">
-                <view class="left">
-                    <view class="watch">
-                        <image src="../../images/eye.png"></image>
-                        <text>3316</text>
-                    </view>
-                    <view class="comment">
-                        <image src="../../images/comment2.png"></image>
-                        <text>27</text>
-                    </view>
-                </view>
-                <view class="right">
-                    关注
-                </view>
-            </view>
+            <!--问题的图片 {{card_img}}-->
+            <img_pre imgURL='{{card_img}}' />
+            <user model="{{my_question?'0':'6'}}" userID='{{userID}}'/>
         </view>
 
     </view>
     <view class="answer-feed">
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
+        <view  bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
+            <user model='1' userID='{{item.userID}}'/>
             <view class="feed-content">
                 <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
+                    <view class="answer-txt">
+                        <text >{{item.content}} </text>
+                    </view><text>...</text>
                     <view class="answer-actions">
                         <view class="like dot">
-                            <a>3.9K 赞同 </a>
+                            <a>{{item.agree}} 赞同 </a>
                         </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
+
                         <view class="time">
-                            <a>2 个月前</a>
+                            <a>{{item.answer_time}}</a>
                         </view>
 
                     </view>
                 </view>
             </view>
         </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
-                </view>
-            </view>
-        </view>
+        
 
 
 
     </view>
+</view>
+<view  wx:if='{{!hidden_answer_detail}}'>
+  
+            
+            <view class='middle_content'>
+                <user model="{{my_question?'3':'0'}}" userID='{{userID}}'/>
+
+                  <view class='hr'>                  
+                    <view class="que-title">
+                      {{question_title}}
+                    </view>
+                  ——————————
+                  </view>
+                  <towxml URL='{{current_answer_detail}}' />
+            </view>
+<view class="dynamic_container">
+    <view class="search flex-wrp footer_button">
+      
+      <view class="search-left flex-item">
+         
+          <image src="/image/back.png" catchtap='hidden_answer_detail'></image>
+           <block wx:if="{{my_question}}">   
+              <text class='button_text button_text_on'  wx:if="{{question_attitude}}">已采纳</text>        
+              <text class='button_text'  catchtap='set_question_attitude' wx:else> 采纳</text>
+              
+           </block> 
+           <block wx:else>  
+              <text class='button_text button_text_on' wx:if="{{question_attitude}}">已赞同</text>         
+              <text class='button_text' catchtap='set_question_attitude' wx:else> 赞同</text>
+              
+           </block> 
+      </view>
+
+    </view>
+</view>
+
+  
+                        
+                        
 </view>

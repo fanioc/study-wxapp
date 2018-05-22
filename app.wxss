@@ -35,3 +35,31 @@
 }
 
 /*/--------顶部滑块css--------*/
+
+.fullscreen {
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0;
+left: 0;
+z-index: 99999999;
+background: white;
+overflow-y: scroll;
+}
+/*/--------全屏显示css--------*/
+.middle_content{
+
+}
+.footer_button{
+  z-index: 99999999;
+position: fixed;
+top:93%;
+opacity: 0.8;
+}
+/*/--------置底的按钮--------*/
+.hr
+{
+margin-top:10rpx;
+text-align: center;
+
+}

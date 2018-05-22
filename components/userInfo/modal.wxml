@@ -1,7 +1,7 @@
 
 
 <view class='user_contain' >
-            <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}" >
+            <view class="feed-source" catchtap='nav_User_personalPage' data-uid="{{item.userID}}" >
                 <a class="a-feed-source">
                     <view class="avatar" >
                         <image src="/image/debug2.jpeg"  class='img-feed-source' />
@@ -25,7 +25,7 @@
                       </block>
 
                       <block wx:elif="{{model==4}}">
-                       <text class='button_text follow' catchtap='modal_comment'>十 评价</text>
+                       <text class='button_text follow' catchtap='modal_comment'>十 评论</text>
                          
                       </block>
 

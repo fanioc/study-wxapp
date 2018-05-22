@@ -1,7 +1,7 @@
 var _CONSTANT = require("./util/constant.js");
 var _util= require("./util/util.js");
 var _components = require("./util/component.js");
-
+const Towxml = require('/towxml/main');     //引入towxml库
 App({
   //
   /**
@@ -36,7 +36,10 @@ App({
   onShow: function (options) {
 
   },
-
+    /**
+   * markdown html 转换为wxml
+   */
+  towxml: new Towxml(),
   /**
    * 当小程序从前台进入后台，会触发 onHide
    */

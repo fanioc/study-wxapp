@@ -22,7 +22,7 @@
               <!--用户信息部分-->
 
               <!--二，动态内容部分-->
-            <view class="feed-content"  bindtap="nav_dynamic_page" data-feedIndex="{{index}}" >
+            <view class="feed-content"  catchtap="nav_dynamic_page" data-feedIndex="{{index}}" >
                 <!--标题部分-->
                 <view >
                    

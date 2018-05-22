@@ -107,6 +107,12 @@ Component({
 
     nav_dynamic_page: function (e) {//转跳至动态详情页面
       console.log(e.currentTarget.dataset.feedindex);
+      wx.navigateTo({
+        url: "/pages/community/dynamic/dynamic",
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      });
     //addtionRegion
     },
 
