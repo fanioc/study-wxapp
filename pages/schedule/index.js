@@ -113,6 +113,9 @@ Page({
     wx.showLoading({
       title: '正在读取课表',
     })
+    
+    getApp().globalData.CONSTANT;
+    
     wx.request({
       url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {

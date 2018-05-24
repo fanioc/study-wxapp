@@ -14,7 +14,7 @@
   color: #000;
 
    word-break:break-all;
-  height: 1000rpx;
+  height: 100%;
 }
 
 .feed-item{

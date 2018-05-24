@@ -1,7 +1,8 @@
 var _CONSTANT = require("./util/constant.js");
-var _util= require("./util/util.js");
+var _util = require("./util/util.js");
 var _components = require("./util/component.js");
-const Towxml = require('/towxml/main');     //引入towxml库
+const Towxml = require('/towxml/main'); //引入towxml库
+
 App({
   //
   /**
@@ -15,28 +16,69 @@ App({
     }
 
     var that = this;
-    
+
     //登入校验
-    wx.checkSession({
-      fail: function (e) {
-        wx.login({
+    // wx.checkSession({
+    //   fail: function (e) {
+    wx.login({
+      success: function (res) {
+        wx.request({
+          url: _CONSTANT.API.loginStudy,
+          data: {
+            code: res.code
+          },
+          method: 'GET',
           success: function (res) {
             console.log(res)
-          // _util.API.loginStudy(res.code)
-          wx.setStorageSync('session','0d8f73928bc5b28d45730b0d6ddcc169')
-          _util.API.bindEduSys('1605990711','Cj147258!')
+            wx.setStorageSync('session', res.data.data.session)
+          },
+          fail: function () {
+            console.log("登入失败")
+          },
+          complete: function () {
+            // complete
           }
         })
       }
     })
+    //   }
+    // })
   },
+
+
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow
    */
   onShow: function (options) {
+    // 登入校验
+    wx.checkSession({
+      fail: function (e) {
+        wx.login({
+          success: function (res) {
+            wx.request({
+              url: _CONSTANT.API.loginStudy,
+              data: {
+                code: res.code
+              },
+              method: 'GET',
+              success: function (res) {
+                console.log(res)
+                wx.setStorageSync('session', res.data.data.session)
+              },
+              fail: function () {
+                console.log("登入失败")
+              },
+              complete: function () {
+                // complete
+              }
+            })
+          }
+        })
+      }
+    })
 
   },
-    /**
+  /**
    * markdown html 转换为wxml
    */
   towxml: new Towxml(),

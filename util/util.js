@@ -37,55 +37,14 @@ function PullDownRefresh(callback) //发生下拉动作执行，执行callback�
 }
 
 //设置session到储存空间
-function setSeesion(session){
-    wx.setStorageSync('session', session)
+function setSeesion(session) {
+  wx.setStorageSync('session', session)
 }
 
 //接口函数
-var API = {
-  loginStudy: function (code) {
-    wx.request({
-      url: CONSTANT.URL.study + 'loginStudy',
-      data: {
-        code: code
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log(res)
-        errorCode(res.data,setSeesion(res.data.data.session))
-        bindEduSys('1605990711','Cj147258!')
-      },
-      fail: function () {
-        // 网络错误
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  },
-  bindEduSys:function(xh,psd){
-    wx.request({
-      url: CONSTANT.URL.study + 'bindEduSys',
-      data: {
-        session:wx.getStorageSync('session'),
-        xh:xh,
-        psd:psd
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function () {
-        // 网络错误
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  }
-}
 
-errCode={
+
+// errCode={
 // 0 成功
 
 // 1000 网络错误
@@ -114,7 +73,7 @@ errCode={
 // 3200 提供给后台服务器信息错误
 // 3201 请求的数据非微信提供
 // 3202 教务账号密码错误，无法登入
-}
+// }
 
 
 
@@ -138,6 +97,5 @@ function errorCode(re_data, callback) {
 module.exports = {
   setTheme: setTheme,
   PullDownRefresh: PullDownRefresh,
-  errCode: errorCode,
-  API: API
+  errCode: errorCode
 }

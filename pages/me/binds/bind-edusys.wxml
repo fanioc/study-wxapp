@@ -3,12 +3,15 @@
 
 <navigation></navigation>
 <view class='view-box'>
-  <form>
+  <form bindsubmit="formSubmit">
 
-    <view>账号<input></input></view>
-    <view>密码<input type='password'> </input></view>
+    <view>账号<input name="xh"></input></view>
+    <view>密码<input name="psd" type='password'> </input></view>
+    <view>验证码<input name="check_code"> </input>  </view>
+    <!-- <view  style="background: url();height:27px;width:72px;"> </view> -->
+    <image src='{{check_code}}' style="width: 72px;height: 27px;"></image>
 
-    <button>提交</button>
+    <button form-type='submit'>提交</button>
 
   </form>
 </view>

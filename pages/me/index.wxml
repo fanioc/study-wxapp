@@ -9,4 +9,5 @@
       <open-data type="userNickName"></open-data>
     </view>
   </view>
+  <Button bindtap='toBindSys'>绑定</Button>
 </view>
