@@ -47,6 +47,84 @@ background: white;
 overflow-y: scroll;
 }
 /*/--------全屏显示css--------*/
+
+.hr
+{
+margin-top:10rpx;
+text-align: center;
+
+}
+b{
+  font-weight: bold;
+}
+i{
+  font-style: italic;
+}
+green
+{
+  color: green;
+  font-weight: bold;
+}
+/*/--------基础--------*/
+.dynamic_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /*padding: 200rpx 0;*/
+  box-sizing: border-box;
+  
+}
+/*/--------动态页面容器--------*/
+.flex-wrp{
+  display: flex;
+}
+.flex-item{
+  flex-grow: 1;
+  text-align: center;
+}
+.dynamic_container .search{
+  width: 735rpx;
+  height: 65rpx;
+  padding: 12.5rpx 0 12.5rpx 15rpx;
+  background: #2A8CE5;
+}
+.dynamic_container .search-left{
+ 
+  display: flex;
+  flex-direction:row; 
+  justify-content:space-around; 
+  align-items:center;
+}
+
+.dynamic_container .search .search-left image{
+  display: inline-block;
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 20rpx;
+}
+
+.button_text{
+    
+    font-size: 40rpx;
+    font-weight: bold;
+    border-radius: 6rpx;
+    border: none;
+    width: 70%;
+    margin-right: 40rpx;
+    margin-left: 40rpx;
+    background-color: white;
+}
+
+.button_text_on
+{
+ 
+    
+    color: LightGrey;
+  
+
+}
 .middle_content{
 
 }
@@ -57,9 +135,3 @@ top:93%;
 opacity: 0.8;
 }
 /*/--------置底的按钮--------*/
-.hr
-{
-margin-top:10rpx;
-text-align: center;
-
-}

@@ -16,7 +16,7 @@ Page({
     answer_detail_index: 0,//回答问题的列表下的for渲染的索引
     my_question:false,//是否是用户本人的问题,onload时get
     question_attitude: false,//对问题的态度是赞同采纳或者不赞同采纳，需要在modal_answer_detail开始时get
-    current_answer_detail: 'http://localhost/README.md',//当前需要展示的给towxml的md回答页面
+    current_answer_detail: 'http://fangrass.com/README.md',//当前需要展示的给towxml的md回答页面
   },
 //-----------自定义函数
   /**
@@ -93,7 +93,7 @@ Page({
    */
   onLoad: function (options) {
     //addtionRegion
-    var get_my_question=true;
+    var get_my_question=false;
     this.setData({ my_question: get_my_question});
     this.get_tag_array();
     this.get_answer_array();

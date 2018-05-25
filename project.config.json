@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": -1,
 			"list": [
 				{
 					"id": -1,
@@ -69,6 +69,24 @@
 					"id": -1,
 					"name": "绑定页面",
 					"pathName": "pages/me/binds/bind-edusys",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "debug2",
+					"pathName": "pages/debug2/debug2",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "富文本编辑器",
+					"pathName": "pages/markdown_editor/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "wenti",
+					"pathName": "pages/community/dynamic/dynamic",
 					"query": ""
 				}
 			]

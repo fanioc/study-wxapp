@@ -1,0 +1,59 @@
+<include src='/template/interActive.wxml' />
+<view style='height:70px;'></view>
+<block wx:if="{{!edit_content_preview}}">
+<view class="mdContainer">
+  <view class="navContainer">
+    <view class="markContainer">
+      <ul class="markListGroup">
+        <li bindtap='edit_button' data-type='0' class="markListItem">
+          C
+        </li>
+        <li bindtap='edit_button' data-type='1' class="markListItem">
+          <b>B</b>
+        </li>
+        <li bindtap='edit_button' data-type='2' class="markListItem">
+          <i>I</i>
+        </li>
+        <li bindtap='edit_button' data-type='3' class="markListItem">
+          <b>“”</b>
+        </li>
+        <li bindtap='edit_button' data-type='4' class="markListItem">H1</li>
+        <li bindtap='edit_button' data-type='5' class="markListItem">H2</li>
+        <li bindtap='edit_button' data-type='6' class="markListItem">H3</li>
+
+        <li class=" triple_width_markListItem" bindtap='edit_button' data-type='7'>分割线</li>
+        <li class="markListItem" style='width:60rpx;' bindtap='edit_button' data-type='8'>代码</li>
+        <li class="double_width_markListItem" bindtap='edit_button' data-type='9'>图片</li>
+        <li class="double_width_markListItem" bindtap='edit_button' data-type='10'>
+          <green>预览</green>
+        </li>
+        <li class="double_width_markListItem complete" bindtap='edit_button' data-type='11'>
+          <green>完成</green>
+        </li>
+      </ul>
+    </view>
+  </view>
+</view>
+<view class='edit_Container'>
+  <textarea id='edit_content' bindinput='edit_content_listen' focus='{{edit_content_focus}}' value='{{edit_content_value}}' fixed='true' placeholder='本编辑器使用markdown标记语言，支持输入法的emoji表情，点击预览可查看编辑样式' maxlength='-1'></textarea>
+ <progress percent='{{edit_content_img_upload_percent}}' show-info='true' wx:if='{{edit_content_img_insert}}'></progress>
+</view>
+</block>
+<block wx:else>
+<towxml model='2' content='{{edit_content_value}}'  />
+<view class="dynamic_container">
+    <view class="search flex-wrp footer_button">
+      
+      <view class="search-left flex-item">
+         
+          <image src="/image/back.png" catchtap='exit_edit_content_preview'></image>
+       
+              <text class='button_text' catchtap='edit_content_complete' > 完成</text>
+            
+      </view>
+
+    </view>
+</view>
+</block>
+
+ 

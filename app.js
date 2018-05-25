@@ -27,7 +27,7 @@ App({
           success:function(res){
             // var constant = require('/util/constant.js');
             wx.request({
-              url: this.globalData.CONSTANT.URL.study +'loginStudy',
+              url: getApp().globalData.CONSTANT.URL.study +'loginStudy',
               data:{
                 code:res.code
               },

@@ -4,10 +4,15 @@
 
     background-color: gray;
     position: fixed;
-    top: 94%;
-    border-top: 1rpx solid lightgray;
+    top: 70px;
+    border-bottom: 1rpx solid lightgray;
 }
-
+.edit_Container{
+      position: fixed;
+    top: 280rpx;
+    width: 100%;
+    height: 80%;
+}
 
 
 .mdContainer .navContainer {
@@ -58,7 +63,7 @@
       list-style: none;
     width: 60rpx;
     height: 40rpx;
-    margin: 0 8rpx;
+    margin: 0 7rpx;
     align-items: center;
     cursor: pointer;
     font-size: 24rpx;
@@ -100,6 +105,11 @@
     height: 100%
 }
 .markListGroup .complete{
-  width: 80rpx;
+  width: 60rpx;
 
 }
+#edit_content{
+  width: 100%;
+}
+
+

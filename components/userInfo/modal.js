@@ -123,7 +123,7 @@ Component({
 
       //----debugdata----------
       var that = this;
-      components.show_modal(that, '//addtionRegion', this.post_answer_question, '回答', '完成', true);
+      wx.navigateTo({ url:'/pages/markdown_editor/index'});
 
       return true;
     },

@@ -5,9 +5,14 @@ Component({
   properties: {
     URL: { // 属性名,md地址
       type: String, 
-      value: 'http://localhost/demo.md',
     },
-    
+    model: { // 属性名,模式见attach函数
+      type: Number,
+      value: 1,
+    },
+    content: { // 属性名,转换的内容
+      type: String
+    },
     theme: { // 属性名,md主题
     type: String,
     value: 'light',
@@ -21,26 +26,45 @@ Component({
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () { 
     const _ts = this;
+    if (this.data.model==1)
+    {
+      //请求markdown文件，并转换为内容
+      wx.request({
+        url: this.data.URL,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: (res) => {
+          //将markdown内容转换为towxml数据
+          let data = getApp().towxml.toJson('res.data', 'markdown');
+          
+          //设置文档显示主题，默认'light'
+          data.theme = this.data.theme;
 
-    //请求markdown文件，并转换为内容
-    wx.request({
-      url: this.data.URL,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: (res) => {
-        //将markdown内容转换为towxml数据
-        let data = getApp().towxml.toJson(res.data, 'markdown');
+          //设置数据
+          _ts.setData({
+            article: data
+          });
+        }
+      });
+    }
+    else if (this.data.model == 2)
+    {
+      //将markdown内容转换为towxml数据
+      console.log('lly'+_ts.data.content);
+      let data = getApp().towxml.toJson(_ts.data.content, 'markdown');
+      console.log(data);
+      
+      //设置文档显示主题，默认'light'
+      data.theme = this.data.theme;
+      //设置数据
+      _ts.setData({
+        article: data
+      });
+    }
+    
 
-        //设置文档显示主题，默认'light'
-        data.theme = this.data.theme;
-
-        //设置数据
-        _ts.setData({
-          article: data
-        });
-      }
-    });
+   
   },
   moved: function () { },
   detached: function () { },
