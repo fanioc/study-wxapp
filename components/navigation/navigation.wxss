@@ -3,16 +3,17 @@
 .wrapper {
   z-index: 99;
   position: fixed;
+  height: 70px;
 }
 
 .return {
-  top: 30px;
+  top: 50rpx;
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 50px;
+  height: 60rpx;
+  width: 100rpx;
 }
 
 .return .arrow {

@@ -18,6 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    Back:function(){
+      wx.navigateBack({
+        delta: 1, // 回退前 delta(默认为1) 页面
+      })
+    }
 
   }
 })

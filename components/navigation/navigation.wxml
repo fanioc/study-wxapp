@@ -1,7 +1,7 @@
 <!--components/navigation/navigation.wxml-->
 <view class="wrapper">
 
-  <view class='return'>
+  <view class='return' bindtap='Back'>
     <view class='arrow'></view>
      <!-- <view class='text'></view>  -->
   </view>

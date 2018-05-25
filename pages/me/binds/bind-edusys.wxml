@@ -1,13 +1,17 @@
-<import src="/templates/back-ground/1.wxml" />
+<import src="/template/back-ground/1.wxml" />
 <template is="back-ground-1" />
 
 <navigation></navigation>
 <view class='view-box'>
-  <form>
+  <form bindsubmit="formSubmit">
 
-    <input></input>
-    <input type='password'></input>
-    <button>提交</button>
+    <view>账号<input name="xh"></input></view>
+    <view>密码<input name="psd" type='password'> </input></view>
+    <view>验证码<input name="check_code"> </input>  </view>
+    <!-- <view  style="background: url();height:27px;width:72px;"> </view> -->
+    <image src='{{check_code}}' style="width: 72px;height: 27px;"></image>
+
+    <button form-type='submit'>提交</button>
 
   </form>
 </view>

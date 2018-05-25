@@ -2,5 +2,6 @@
     "enablePullDownRefresh": false,
     "usingComponents":{
       "navigation":"/components/navigation/navigation"
-    }
+    },
+    "navigationStyle":"default"
 }

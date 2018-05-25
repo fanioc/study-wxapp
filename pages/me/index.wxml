@@ -1,8 +1,13 @@
-<!--pages/me/index.wxml-->
-
-<open-data type="userNickName"></open-data>
-<view style="margin:50px;width:auto;">
-  <open-data type="userAvatarUrl"></open-data>
+<!-- pages/me/index.wxml -->
+<view class="topView"></view>
+<view class="contain">
+  <view>
+    <view class="info" style="width:50px;">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="info">
+      <open-data type="userNickName"></open-data>
+    </view>
+  </view>
+  <Button bindtap='toBindSys'>绑定</Button>
 </view>
-<view>{{ssss}}</view>
-<open-data type="userGender" lang="zh_CN"></open-data>
