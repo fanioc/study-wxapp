@@ -22,8 +22,9 @@ const API = {
   updateUserEduAll:URL.study+'updateUserEduAll',
   updateUserEduCourse:URL.study+'updateUserEduCourse',
   updateUserEduInfo:URL.study+'updateUserEduInfo',
-  updateUserEduScore:URL.study+'updateUserEduScore'
-
+  updateUserEduScore:URL.study+'updateUserEduScore',
+  
+  uploadFile: URL.study +'fileUpload'
 }
 
 //2.关于路径的常量，所有资源都以此为前缀
