@@ -14,14 +14,12 @@ Component({
       type: Boolean, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
       observer: function (newVal, oldVal) {
-        if (this.getFeed(0)) {
-          this.setData({ hiddenToast: true, toastContent: '刷新成功' });
+        this.getFeed(0)
+         
 
-        }
-        else {
-          this.setData({ hiddenToast: true, toastContent: '刷新失败' });
+        
 
-        }
+        
       } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
     },
   },
@@ -35,8 +33,7 @@ Component({
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () {
     
-    this.getFeed(0);//addtionRegion
-    this.getFeed(1);
+    this.getFeed(0);
 
   },
   moved: function () { },
@@ -48,56 +45,30 @@ Component({
         // 更新属性和数据的方法与更新页面数据的方法类似
       })
     },
-    getFeed: function (mode = 0)//从服务器获取动态模块所需数据,参数mode表示设置feed时：1为追加 0为重写，设置data：feed, feed_length
+    getFeed: function (mode = 1)//从服务器获取动态模块所需数据,参数mode表示设置feed时：1为追加 0为重写，设置data：feed, feed_length
     {
       var that = this;
       
-      //----debug----
-      var debug = [
-        {
-
-            //feed_source_identity: 'debug',
-            question_title: '如何使用指针对数组进行操作呢',
-            question_describe: '如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式',
-            question_id: 123,
-            card_img: '/image/debug2.jpeg',
-            dynamic_sort: '高等数学',
-          comment_num: 999,
-          dynamic_type: 0,
-          userID:109,
-          dynamic_time: '2018-05-26 10:07:14'
-        },
-        {
-          userID: 110,
-          //feed_source_identity: 'debug',
-          question_title: '如何使用指针对数组进行操作呢',
-          question_describe: '如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式',
-          question_id: 123,
-          card_img: '/image/debug2.jpeg',
-          dynamic_sort: '高等数学',
-          comment_num: 999,
-          dynamic_type: 0,
-          dynamic_time: '2018-05-26 10:07:14'
-        },
-        
-      ];
-      that.setData({ feed: debug, feed_length: debug.length });
-      //----debug----
+    
       //console.log(getCurrentPages()[0].is, _API.get_dynamic_array);
-      /*wx.request({
+      wx.request({
         url: _API.get_dynamic_array,
         data: {
-          session: wx.getStorageSync('session')
+          session: wx.getStorageSync('session'),
+          star: that.data.feed_length
         },
         method: 'GET',
         success: function (res) {
           var getFeed, feed_Array = [];
           getFeed = _util.errCode(res.data);
           if (mode) {
-            feed_Array = this.data.feed.concat(getFeed);
+            feed_Array = that.data.feed.concat(getFeed);
+            console.log('追加');
           }
           else {
             feed_Array = getFeed;
+           that.setData({ hiddenToast: true, toastContent: '刷新成功' });
+            console.log('重置');
           }
           that.setData({ feed: feed_Array, feed_length: feed_Array.length });
           return true;
@@ -107,15 +78,12 @@ Component({
           return false;
         },
         complete: function (res) { },
-      })*/
+      })
       //debugRegion
 
     },
 
-    lower: function (e) {//下拉追加
-      this.getFeed(1);
-      console.log("lower");
-    },
+
     //--------------bindtap事件函数
 
     nav_dynamic_page: function (e) {//转跳至动态详情页面,并将quesiotnID存入key中

@@ -35,4 +35,12 @@
             <include src='/template/interActive.wxml' />
           
 
+        <zan-button-group>
 
+      <zan-button type="primary">确认付款</zan-button>
+      <zan-button type="danger">确认付款</zan-button>
+      <zan-button type="warn">确认付款</zan-button>
+    </zan-button-group>
+
+
+ 

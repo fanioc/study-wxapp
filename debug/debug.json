@@ -1,12 +1,14 @@
 {
-"usingComponents": {
-  "dynamic": "/components/dynamic/modal",
+  "usingComponents": {
+    "dynamic": "/components/dynamic/modal",
     "theme": "/components/base/theme",
-    "study":"/components/orderStudy/modal",
-    "img_pre":"/components/base/image_canPreview/image_canPreview",
-    "user":"/components/userInfo/modal",
-    "modal":"/components/simulate_popup/modal",
+    "study": "/components/orderStudy/modal",
+    "img_pre": "/components/base/image_canPreview/image_canPreview",
+    "user": "/components/userInfo/modal",
+    "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
-    "towxml":"/components/towxml/modal"
-}
+    "towxml": "/components/towxml/modal",
+    "zan-button": "/components/btn/index",
+    "zan-button-group": "/components/btn-group/index"
+  }
 }

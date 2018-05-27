@@ -1,4 +1,4 @@
-var util = getApp().globalData.util;
+var CONSTANT = getApp().globalData.CONSTANT;
 
 Page({
 
