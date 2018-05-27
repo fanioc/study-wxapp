@@ -1,4 +1,5 @@
 // pages/schedule/index.js
+var util = getApp().globalData.util;
 Page({
 
   /**
@@ -24,43 +25,43 @@ Page({
     },
     getSche: [
       {
-        'className': '高等数学',
+        'class_name': '高等数学',
         'time': [1, 1, 3],// 数据格式：星期,第几节,第几节课
         'week': [1, 18, 1],// 数据格式：所有单双周0 1 2,第几周,第几周
         'teacher': "陈靖",
         'location': '一号教学楼101'
       }, {
-        'className': '大学英语',
+        'class_name': '大学英语',
         'time': [2, 1, 2],
         'week': [2, 2, 18],
         'teacher': "陈靖",
         'location': '一号教学楼201'
       }, {
-        'className': '大学英语2',
+        'class_name': '大学英语2',
         'time': [2, 3, 4],
         'week': [2, 2, 18],
         'teacher': "陈靖",
         'location': '二号教学楼301'
       }, {
-        'className': '自习(已约人)',
+        'class_name': '自习(已约人)',
         'time': [2, 5, 7],
         'week': [2, 2, 18],
         'teacher': "陈靖",
         'location': '一号教学楼301'
       }, {
-        'className': '数据库概论',
+        'class_name': '数据库概论',
         'time': [3, 4, 5],
         'week': [1, 1, 18],
         'teacher': "陈靖",
         'location': '一号教学楼511'
       }, {
-        'className': '形势政策',
+        'class_name': '形势政策',
         'time': [4, 5, 6],
         'week': [2, 5, 18],
         'teacher': "陈靖",
         'location': '一号教学楼401'
       }, {
-        'className': '计算机网络',
+        'class_name': '计算机网络',
         'time': [5, 1, 2],
         'week': [0, 1, 9],
         'teacher': "陈靖",
@@ -83,7 +84,7 @@ Page({
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
         that.data.currentCourse[id] = {
-          'className': getSche[i].className,
+          'class_name': getSche[i].class_name,
           'time': getSche[i].time,
           'lengthTime': getSche[i].time[2] - getSche[i].time[1] + 1,
           'week': getSche[i].week,
@@ -114,8 +115,6 @@ Page({
       title: '正在读取课表',
     })
     
-    getApp().globalData.CONSTANT;
-    
     wx.request({
       url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {
@@ -128,9 +127,11 @@ Page({
         wx.hideLoading()
         that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
         console.log(that.data.getSche)
+
+        var log = util.toFreeSchel(that.data.getSche, 11)
+        console.log(log);
       }
     })
-
   },
 
   /**

@@ -46,7 +46,7 @@
         <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum" id='{{weekNum+1}}{{classNum+1}}'>
           <view wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" style='position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*100}}rpx;' class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'>
             <view>
-              <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*10+classNum+1].className}}</text>@{{currentCourse[(weekNum+1)*10+classNum+1].location}}
+              <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*10+classNum+1].class_name}}</text>@{{currentCourse[(weekNum+1)*10+classNum+1].location}}
             </view>
           </view>
         </view>
