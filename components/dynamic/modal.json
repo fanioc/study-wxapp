@@ -2,6 +2,7 @@
   "component": true,
     "usingComponents": {
       "mtoast": "/components/toast/middleToast",
-      "img_pre": "/components/base/image_canPreview/image_canPreview"
+      "img_pre": "/components/base/image_canPreview/image_canPreview",
+      "user": "/components/userInfo/modal"
     }
 }

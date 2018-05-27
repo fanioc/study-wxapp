@@ -37,6 +37,10 @@ else
   {
     //addtionRegion
   },
+  add_dynamic: function ()//编辑动态
+  {
+    //addtionRegion
+  },
 //-----------------本页面自定义函数
 
   /**

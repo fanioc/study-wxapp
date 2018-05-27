@@ -4,8 +4,8 @@
             <view class="feed-source" catchtap='nav_User_personalPage' data-uid="{{item.userID}}" >
                 <a class="a-feed-source">
                     <view class="avatar" >
-                        <image src="/image/debug2.jpeg"  class='img-feed-source' />
-                        <text class='text-feed-source'>卢林杨-学生</text>
+                        <image src="{{user_head_img}}"  class='img-feed-source' />
+                        <text class='text-feed-source' style='margin-right:40rpx;'>{{user_source_name}} </text>
                     </view>
                       
                    

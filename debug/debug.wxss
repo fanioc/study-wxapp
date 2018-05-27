@@ -1,3 +1,6 @@
+.limit_text::after{
+  content: '...';
+}
 
 
 

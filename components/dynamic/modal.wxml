@@ -10,15 +10,7 @@
         <!--动态内容部分-->
       
               <!--一，用户信息部分-->
-            <view class="feed-source" bindtap='nav_User_personalPage' data-uid="{{item.userID}}">
-                <a class="a-feed-source">
-                    <view class="avatar">
-                        <image src="{{item.dynamic_data.feed_head_img}}" class='img-feed-source'></image>
-                        
-                    </view>
-                      <text class='text-feed-source'>{{item.dynamic_data.feed_source_name}}-{{item.dynamic_data.feed_source_identity}}</text>
-                  </a> 
-            </view>
+                  <user userID='{{item.userID}}' model='1'/>
               <!--用户信息部分-->
 
               <!--二，动态内容部分-->
@@ -26,15 +18,16 @@
                 <!--标题部分-->
                 <view >
                    
-                        <text class="question" >{{item.dynamic_data.question_title}}</text>
-                
+                        <text class="question" >{{item.question_title}}</text>
+                 
                 </view>
                 <!--标题部分-->
 
                 <!--问题描述部分-->
                 <view class="answer-body">
                     <view>
-                        <text class="answer-txt" >{{item.dynamic_data.question_describe}}</text>
+                     <textarea maxlength='50' value='{{item.question_describe}}' disabled='true' auto-height='true' ></textarea>
+                       
                     </view>
 
                 </view>
@@ -45,18 +38,18 @@
               <!--三，动态信息部分-->
                  <view class="answer-actions" >
         
-                        <view class='lable-answer-actions'>
-                            <a class='a-lable-answer-actions'>{{item.dynamic_sort}}  </a>
-                            <text>•</text>
-                        </view>
 
                         <view class='lable-answer-actions'>
                             <a class='a-lable-answer-actions'>{{item.comment_num}} 回答 </a>
                             <text>•</text>
                         </view>
 
-                        <view class='lable-answer-actions' wx:if="{{item.dynamic_follow_with_interest}}">
-                            <a class='last-a-lable-answer-actions'>特别关注</a>
+                        <view class='lable-answer-actions'>
+                            <a class='a-lable-answer-actions'>{{item.dynamic_sort}} </a>
+                            <text>•</text>
+                        </view>
+                        <view class='lable-answer-actions' >
+                            <a class='a-lable-answer-actions'> {{item.dynamic_time}}</a>
                         </view>
                     </view>
               <!--动态信息部分-->
@@ -71,8 +64,8 @@
           <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}" >
          
             <view>
-              <img_pre imgURL="{{item.dynamic_data.card_img}}" class="dynamic_image" complete='true' />
-              <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{item.dynamic_data.question_title}}</view>
+              <img_pre imgURL="{{item.card_img}}" class="dynamic_image" complete='true' />
+              <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}" >{{item.question_title}}</view>
               
             </view>
 

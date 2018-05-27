@@ -1,7 +1,7 @@
 //设置simulate_popup自定义组件属性
 function simulate_popup_set_property(that, form, callback, title = '弹窗', right_button = '完成', full = false)
 {
- 
+ //callback回调函数会给参数OBJECT{formData:'此数据格式和templatetype有关',templateType:string}
 //show_modal直接定义为true
   getCurrentPages()[0].setData({ show_modal: true, template_form: form, modal_title: title, modal_right_button: right_button, modal_fullScreen: full, modal_comfirm_callback: callback });
 

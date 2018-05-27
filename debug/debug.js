@@ -1,7 +1,8 @@
 // debug/debug.js
-
+var _constant = getApp().globalData.CONSTANT;
 var util=require('../util/util.js');
 var components = getApp().globalData.components;//
+var _that;
 Page({
 
   /**
@@ -74,7 +75,7 @@ Page({
   },
   a:function(aa)
   {
-    aa();
+    _constant
     console.log('e');
     return true;
   },
@@ -83,8 +84,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   /* var res={ errCode: 0, data:'llyasd' };
+    var that=this;
+    util.errCode(res, function () { console.log('aaaaa') })
+    //console.log();*/
+    _that=this;
+    console.log(_that);
+    console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
+    getApp().globalData.current_question = {
 
-
+      //feed_source_identity: 'debug',
+      question_title: '如何使用指针对数组进行操作呢',
+      question_describe: '如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式',
+      question_id: 123,
+      card_img: '/image/debug2.jpeg',
+      dynamic_sort: '高等数学',
+      comment_num: 999,
+      dynamic_type: 0,
+      dynamic_time: '2018-05-26 10:07:14'
+    };
+    console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
   },
 
   /**

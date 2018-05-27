@@ -84,13 +84,13 @@ green
   flex-grow: 1;
   text-align: center;
 }
-.dynamic_container .search{
+ .search{
   width: 735rpx;
   height: 65rpx;
   padding: 12.5rpx 0 12.5rpx 15rpx;
-  background: #2A8CE5;
+  background: lightblue;
 }
-.dynamic_container .search-left{
+ .search-left{
  
   display: flex;
   flex-direction:row; 
@@ -98,7 +98,7 @@ green
   align-items:center;
 }
 
-.dynamic_container .search .search-left image{
+.search .search-left image{
   display: inline-block;
   width: 70rpx;
   height: 70rpx;

@@ -129,4 +129,6 @@
     padding: 14px;
     font-size: 14px;
 }
-
+.answer-body::after{
+  content: '...';
+}
