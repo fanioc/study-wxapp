@@ -11,7 +11,7 @@ App({
   onLaunch: function () {
     //若无缓存的主题参数，初始化为 黑色，白色，浅灰色，顺序码0
     if (!wx.getStorageSync('theme')) {
-      _util.setTheme("#000000", "#ffffff", "#e6e6e6", "0");
+      _util.setTheme("#000000", "#ffffff", "#e6e6e6", "0");//addtionRegion
       console.log("setTheme");
     }
 
@@ -20,7 +20,7 @@ App({
     //登入校验
     // wx.checkSession({
     //   fail: function (e) {
-    wx.login({
+    /*wx.login({
       success: function (res) {
         wx.request({
           url: _CONSTANT.API.loginStudy,
@@ -42,7 +42,7 @@ App({
       }
     })
     //   }
-    // })
+    // })*/
   },
 
 
@@ -51,7 +51,7 @@ App({
    */
   onShow: function (options) {
     // 登入校验
-    wx.checkSession({
+   /* wx.checkSession({
       fail: function (e) {
         wx.login({
           success: function (res) {
@@ -75,7 +75,7 @@ App({
           }
         })
       }
-    })
+    })*/
 
   },
   /**
@@ -100,6 +100,10 @@ App({
   globalData: {
     util: _util,
     components: _components,
-    CONSTANT: _CONSTANT
+    CONSTANT: _CONSTANT,
+
+    //---------页面间通讯所需数据
+    current_questionID: {},//单击的问题的id，再nav_dynamic_page进行设置
+    me: { uid: 109, nickName: '卢二狗', avatarUrl: "https://api.xietan.xin/lly_debug/debug2.jpeg" }//debugRegion
   }
 })

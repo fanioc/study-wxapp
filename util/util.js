@@ -1,5 +1,6 @@
 //------
 var CONSTANT = require("./constant.js");
+var _components = require("./component.js");
 //---------
 //设置程序的主题参数（颜色用十六进制或者颜色英文单词表示，因为这些参数一般用于css）
 function setTheme(selected, unselected, background, code) {
@@ -98,20 +99,24 @@ function setSeesion(session) {
 
 
 //核心函数，处理服务器发送来的errocode
-function errorCode(re_data, callback) {
+function errorCode(re_data, callback=null) {
   console.log("errorCode函数参数\n错误码：" + re_data.errCode + "\n数据：" + re_data.data);
+  if (callback)//如果给回调函数将会调用回调函数,会给函数服务器接收到的错误码
+    callback(re_data.errCode);
 
+    //--------------
   switch (re_data.errCode) {
     //状态码
     case 0:
-      return 0; //无错误
-      callback();
-    case 1:
-      //---------------------------------------------------------
+      return re_data.data; //无错误,返回数据
 
+    case 1: _components.show_mToast(re_data.data); return true;//向客户端提示，提示内容由re_data.data决定，客户端发送的数据已经处理成功
+      //---------------------------------------------------------
       //错误码
 
   }
+  
+  
 }
 module.exports = {
   toFreeSchel:toFreeSchel,
