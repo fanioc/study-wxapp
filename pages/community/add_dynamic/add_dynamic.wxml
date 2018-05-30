@@ -36,6 +36,9 @@
     <zan-button type="primary" bindtap='edit_content_imgURL'>{{button_prompt}}图片</zan-button>
 
     <button type="warn" form-type='submit' style='margin-top:10rpx;'>发表</button>
-
+    
   </zan-button-group>
+<checkbox-group bindchange='anonymous'>
+  <checkbox class='anonymous_checkbox' value='1'>匿名</checkbox>
+</checkbox-group>
 </form>
