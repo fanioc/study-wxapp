@@ -1,4 +1,4 @@
-<view>
+<view style='padding:50px 0 0 0'>
 
   <!-- <view class="wrapper">
 		<view class="container">
@@ -23,7 +23,7 @@
 	</view>  -->
 
   <!-- 课表显示页面 -->
-  <button open-type="getUserInfo">授权</button>
+  <!-- <button open-type="getUserInfo">授权</button> -->
   <view style='text-align:center;'>第{{getTerm.week}}周</view>
 
   <view style=''>

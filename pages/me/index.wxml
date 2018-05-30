@@ -3,7 +3,7 @@
 <view class="contain">
   <view>
     <view class="info" style="width:50px;">
-      <open-data type="userAvatarUrl"></open-data>
+       <open-data type="userAvatarUrl"></open-data> 
     </view>
     <view class="info">
       <open-data type="userNickName"></open-data>
