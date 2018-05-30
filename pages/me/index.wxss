@@ -1,20 +1,80 @@
 /* pages/me/index.wxss */
 
-.topView{
-    position: relative;
-    height: 70px;
-    width: 100%;
+page{
+  background-color: #f3f3f3;
 }
 
-.contain{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
+.topView {
+  position: relative;
+  height: 70px;
+  width: 100%;
 }
 
-.info{
-    text-align: center;
-    display: block;
+.contain {
+  /* padding-top: 70px; */
+  display: flex;
+  flex-direction: column;
+}
 
+.userinfo {
+  /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);  */
+  padding: 90px 0 20px 0;
+  background-image: url('https://study.xietan.xin/static/upLoadFile/000.jpg');
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.info {
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info-other{
+  margin: 20px 0 0 0 ;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.info-other-xx{
+  text-align: center;
+}
+
+.study {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 0 10px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); 
+  margin: 15px 20px 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.study-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  margin: auto;
+}
+
+.icon{
+  margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+.tab{
+  /* background-color: #fff; */
+}
+
+.tab-list{
+  /* box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2); */
+  background-color: #fff;
+  margin-top: 5px;
+  padding: 10px;
 }

@@ -1,3 +1,4 @@
+// pages/me/score/score.js
 var CONSTANT = getApp().globalData.CONSTANT;
 
 Page({
@@ -6,41 +7,50 @@ Page({
    * 页面的初始数据
    */
   data: {
-      sss:''
-  },
-
-  toBindSys:function(){
-    wx.navigateTo({
-        url:'binds/bind-edusys'
-
-    })
-  },
-
-  toScore:function(){
-    wx.navigateTo({
-      url: 'score/score'
-    })
+    score:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    var that = this;
+    wx.request({
+      url: CONSTANT.API.updateUserEduScore ,
+      data:{
+        session:wx.getStorageSync('session')
+      },
+      success:function(){
+        wx.request({
+          url: CONSTANT.API.getUserScore,
+          data:{
+            session: wx.getStorageSync('session'),
+            xn:'2017-2018',
+            'xq':'1'
+          },
+          success:function(res){
+            that.setData({
+              score:res.data.data
+            })
+          }
+
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**

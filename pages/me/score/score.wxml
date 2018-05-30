@@ -1,0 +1,15 @@
+<include src='/template/interActive.wxml' />
+
+<import src="/template/back-ground/1.wxml" />
+<template is="back-ground-1" />
+
+ <navigation></navigation> 
+<view class='view-box'>
+
+<view class='list' wx:for="{{score}}">
+<view class>{{item.course}}</view>
+<view> {{item.score}}</view>
+</view>
+
+
+</view>

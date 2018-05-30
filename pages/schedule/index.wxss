@@ -1,4 +1,7 @@
 /* pages/schedule/index.wxss */
+page{
+  background-color: #fff;
+}
 
 .week {
    /* color: #fff;  */

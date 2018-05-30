@@ -25,6 +25,10 @@ Component({
   data: {
     hiddenToast:'',
     toastContent:'',
+    url:{
+      image:'https://study.xietan.xin/static/upLoadFile/STUDY.png'
+    }
+    ,
     study_status:false,//判断是在学习和还是休息
     last_study_array: [],//上次学习的信息
     study_satisfaction:0,//学习满意度 用于进度条
