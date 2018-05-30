@@ -164,7 +164,7 @@ Page({
       title: '正在读取课表',
     })
     wx.request({
-      url: 'https://api.xietan.xin/public/xaufe/EduSysMobile/getCourse?xh=1605990711',
+      url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {
         // console.log(res.data)
         that.setData({
