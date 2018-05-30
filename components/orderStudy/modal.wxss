@@ -1,67 +1,60 @@
-
-.invite_item_content{
- 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     
+.invite_item_content {
+  /*  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.invite_item_content_card {
-    border: 2px solid #ffffff;
-    border-radius: 20rpx 20rpx 0 0;
-    background-color: #ffffff;
-    box-shadow: 4px 1px 1px #cccccc;
-    margin: 8px;
-    position: relative;
-    word-break:break-all;
-    width: 600rpx;
 
+.invite_item_content_card {
+  border: 2px solid #fff;
+  border-radius: 20rpx 20rpx 0 0;
+  background-color: #fff;
+ box-shadow: 0px 0px 10px 1px #888;
+  margin: 8px;
+  position: relative;
+  word-break: break-all;
+  width: 600rpx;
   margin-top: 5%;
 }
 
-.card_image{
-    border-radius: 20rpx 20rpx 0 0;
-    width: 100%;
-    height:332rpx;
-    background-color: #eeeeee;
+.card_image {
+  border-radius: 20rpx 20rpx 0 0;
+  width: 100%;
+  height: 332rpx;
+  background-color: #eee;
 }
 
-
-
 .card_title {
-   height: 400rpx;
+  height: 400rpx;
   padding: 14px;
-  
   color: #a0acac;
   font-size: 26rpx;
 }
 
-.card_title_item_scroll{
-  text-align:left;
-  line-height:60rpx;
- 
+.card_title_item_scroll {
+  text-align: left;
+  line-height: 60rpx;
 }
-.invite_item_content_button{
+
+.invite_item_content_button {
   width: 100%;
   padding: 5rpx;
-
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.content_button_text{
-  font-weight:500;
-  font-size:40rpx;
+.content_button_text {
+  font-weight: 500;
+  font-size: 40rpx;
   color: #f85f48;
   margin-left: 180rpx;
 }
-.card_title_checkbox{
-      display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: black;
-    margin-top: 30rpx;
+
+.card_title_checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  margin-top: 30rpx;
 }
