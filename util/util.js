@@ -16,6 +16,25 @@ function setTheme(selected, unselected, background, code) {
   })
 }
 
+function toFreeSchel(schel,week){
+  var i = 0;
+  var free_class = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array(), new Array(),new Array());
+  while ("undefined" != typeof schel[i]) {
+    if (schel[i].week[0] % week == 0 && week <= schel[i].week[2] && week >= schel[i].week[1]){
+      var zj = schel[i].time[0]
+      for (var q = schel[i].time[1]; q <= schel[i].time[2];q++){
+        console.log(zj+'_' + q);
+        free_class[zj][q]=1;
+      }
+    }
+    i++;
+  }
+
+  console.log(free_class);
+
+  return free_class;
+}
+
 function PullDownRefresh(callback) //发生下拉动作执行，执行callback函数，并弹出loading框
 {
   wx.showLoading({
@@ -100,6 +119,7 @@ function errorCode(re_data, callback=null) {
   
 }
 module.exports = {
+  toFreeSchel:toFreeSchel,
   setTheme: setTheme,
   PullDownRefresh: PullDownRefresh,
   errCode: errorCode
