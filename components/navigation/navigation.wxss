@@ -1,11 +1,12 @@
 /* components/navigation/navigation.wxss */
 
-.wrapper {
-  z-index: 99;
+.wrapper
+{
+    z-index: 9999999;
   position: fixed;
   height: 70px;
+  width: 100%;
 }
-
 .return {
   top: 50rpx;
   position: absolute;

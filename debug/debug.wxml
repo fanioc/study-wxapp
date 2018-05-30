@@ -1,4 +1,4 @@
-
+<nav />
             
 
 
@@ -13,12 +13,12 @@
 <user model='4'/>
 <towxml />
  <towxml />
-
+    <view class='lly'>_____________________________</view>
  <towxml URL='http://fangrass.com/README.md' />
    <img_pre imgURL='/image/debug2.jpeg' />
       </swiper>-->
 
-      <view class='lly'>_____________________________</view>
+  
              
 <button bindtap='a'>hah</button>
 <user userID='110' model='1'/>

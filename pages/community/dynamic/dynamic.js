@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tag_array: [],//分类标签用于for渲染，get_tag_array: function ()
-    card_img:'/image/debug2.jpeg',
+    tag_array: [],//分类标签用于for渲染，onload()
+    
     question_title:'盧林楊啊啊啊',
     question_describe:'debugdatadebugdatadebugdatadebugdatadebugdatadebugdatadebugda哈哈哈啊tadebugdata哈哈哈啊',
     userID:0,
@@ -16,7 +16,8 @@ Page({
     answer_detail_index: 0,//回答问题的列表下的for渲染的索引
     my_question:false,//是否是用户本人的问题,onload时get
     question_attitude: false,//对问题的态度是赞同采纳或者不赞同采纳，需要在modal_answer_detail开始时get
-    current_answer_detail: 'http://fangrass.com/README.md',//当前需要展示的给towxml的md回答页面
+    
+    current_answer_detail: '',//当前需要展示的给towxml的md回答页面
   },
 //-----------自定义函数
   /**
@@ -24,9 +25,9 @@ Page({
    */
   get_tag_array: function () {
       var data=[];
-      //addtionRegion
+      //debugRegion
       //----debugdata----------
-      data = ['高等数学', '第二章','高斯定理'];
+      data = [getApp().globalData.current_question.dynamic_sort];
       //----debugdata----------
       var len=data.length;
       if(len.length>3)//确保只显示三个tag
@@ -92,9 +93,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //addtionRegion
-    var get_my_question=false;
-    this.setData({ my_question: get_my_question});
+    console.log(getApp().globalData.current_question);
+    
+    var question = getApp().globalData.current_question;
+    this.setData({ 
+      card_img: question.card_img,
+      question_title: question.question_title,
+      question_describe: question.question_describe,
+      userID: question.userID
+    });
+   
+    if (question.userID == getApp().globalData.me.uid) //debugRegion
+      this.setData({ my_question: true });
+    
     this.get_tag_array();
     this.get_answer_array();
 

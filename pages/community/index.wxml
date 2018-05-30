@@ -1,5 +1,6 @@
 <!--pages/community/index.wxml-->
 <!-- 顶部切换 -->
+<nav seat='true' />
 
 <view class="swiper-tab">
   <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">

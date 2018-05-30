@@ -1,6 +1,7 @@
 {
   "usingComponents": {
    "theme":"/components/base/theme",
-    "dynamics":"/components/dynamic/modal"
+    "dynamics":"/components/dynamic/modal",
+    "nav": "/components/navigation/navigation"
   }
 }

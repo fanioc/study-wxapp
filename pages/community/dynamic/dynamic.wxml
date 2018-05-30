@@ -1,5 +1,5 @@
 <include src='/template/interActive.wxml' />
-
+<nav seat='true' />
 
 <view class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}'>
     <view class="question-wrp">
@@ -29,8 +29,9 @@
             <user model='1' userID='{{item.userID}}'/>
             <view class="feed-content">
                 <view class="answer-body">
-                    <view class="answer-txt">
-                        <text >{{item.content}} </text>
+                    <view class="answer-txt ">
+                    <textarea maxlength='50' value='{{item.content}}' disabled='true' auto-height='true'></textarea>
+                        
                     </view><text>...</text>
                     <view class="answer-actions">
                         <view class="like dot">

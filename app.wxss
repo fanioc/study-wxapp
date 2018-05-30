@@ -74,7 +74,7 @@ green
   justify-content: space-between;
   /*padding: 200rpx 0;*/
   box-sizing: border-box;
-  
+  overflow:hidden;
 }
 /*/--------动态页面容器--------*/
 .flex-wrp{
@@ -135,3 +135,9 @@ top:93%;
 opacity: 0.8;
 }
 /*/--------置底的按钮--------*/
+.lly_omit::after{
+content: '...';
+}
+text{
+  word-break:break-all;
+}

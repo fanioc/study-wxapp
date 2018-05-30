@@ -83,7 +83,7 @@ Component({
 
       //----debugdata----------
      // this.setData({ followed: data });
-     // console.log('nav_User_personalPage');
+      console.log('nav_User_personalPage');
       return true;
     },
     onMyButtonTap: function () {
