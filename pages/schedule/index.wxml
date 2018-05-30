@@ -1,3 +1,7 @@
+<include src='/template/interActive.wxml' />
+
+
+
 <view>
 
   <!-- <view class="wrapper">

@@ -1,93 +1,96 @@
 <include src='/template/interActive.wxml' />
-<nav seat='true' />
 
-<view class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}'>
-    <view class="question-wrp">
-        <view class="question-item">
-            <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
-            <view class="que-tag">
-                <text class="tag" wx:for="{{tag_array}}" wx:key="{{index}}">{{item}}</text>
-            </view>
-            <!--问题的标题 {{question_title}}-->
-            <view class="que-title">
-                {{question_title}}
-            </view>
+<scroll-view scroll-y="true" class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}' bindscrolltolower='get_answer_array'>
 
-            <!--问题的描述内容 {{question_describe}}-->
-            
-            <view class="que-content">
-                {{question_describe}}
-            </view>
-            <!--问题的图片 {{card_img}}-->
-            <img_pre imgURL='{{card_img}}' />
-            <user model="{{my_question?'0':'6'}}" userID='{{userID}}'/>
-        </view>
+  <view class="question-wrp">
+    <view class="question-item">
+      <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
+      <view class="que-tag">
+        <text class="tag" wx:for="{{tag_array}}" wx:key="{{index}}">{{item}}</text>
+      </view>
+      <!--问题的标题 {{question_title}}-->
+      <view class="que-title">
+        {{question_title}}
+      </view>
 
+      <!--问题的描述内容 {{question_describe}}-->
+
+      <view class="que-content">
+        {{question_describe}}
+      </view>
+      <!--问题的图片 {{card_img}}-->
+      <img_pre imgURL='{{card_img}}' />
+      <user model="{{my_question?'0':'6'}}" userID='{{userID}}' />
     </view>
-    <view class="answer-feed">
-        <view  bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
-            <user model='1' userID='{{item.userID}}'/>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view class="answer-txt ">
-                    <textarea maxlength='50' value='{{item.content}}' disabled='true' auto-height='true'></textarea>
-                        
-                    </view><text>...</text>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>{{item.agree}} 赞同 </a>
-                        </view>
 
-                        <view class="time">
-                            <a>{{item.answer_time}}</a>
-                        </view>
+  </view>
 
-                    </view>
-                </view>
-            </view>
-        </view>
-        
-
-
-
-    </view>
-</view>
-<view  wx:if='{{!hidden_answer_detail}}'>
-  
+  <view class="answer-feed">
+    <view bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
+      <user model='1' userID='{{item.userID}}' />
+      <view class="feed-content">
+        <view class="answer-body">
+          <view class="answer-txt ">
             
-            <view class='middle_content'>
-                <user model="{{my_question?'3':'0'}}" userID='{{userID}}'/>
-
-                  <view class='hr'>                  
-                    <view class="que-title">
-                      {{question_title}}
-                    </view>
-                  ——————————
-                  </view>
-                  <towxml URL='{{current_answer_detail}}' />
+           
+            <l_text content='{{item.content}}' />
+          </view>
+          
+          <view class="answer-actions">
+            <view class="like dot">
+              <a>{{item.agree}} 赞同 </a>
             </view>
-<view class="dynamic_container">
+
+            <view class="time">
+              <a>{{item.answer_time}}</a>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+</scroll-view>
+<view wx:if='{{!hidden_answer_detail}}'>
+
+
+  <view class='middle_content'>
+    <user model="3" userID='{{current_answer_userID}}' />
+
+    <view class='hr'>
+      <view class="que-title">
+        {{question_title}}
+      </view>
+      ——————————
+    </view>
+    <towxml  model='2' content='{{current_answer_detail}}' />
+  </view>
+  <view class="dynamic_container">
     <view class="search flex-wrp footer_button">
-      
+
       <view class="search-left flex-item">
-         
-          <image src="/image/back.png" catchtap='hidden_answer_detail'></image>
-           <block wx:if="{{my_question}}">   
-              <text class='button_text button_text_on'  wx:if="{{question_attitude}}">已采纳</text>        
-              <text class='button_text'  catchtap='set_question_attitude' wx:else> 采纳</text>
-              
-           </block> 
-           <block wx:else>  
-              <text class='button_text button_text_on' wx:if="{{question_attitude}}">已赞同</text>         
-              <text class='button_text' catchtap='set_question_attitude' wx:else> 赞同</text>
-              
-           </block> 
+
+        <image src="/image/back.png" catchtap='hidden_answer_detail'></image>
+        <block wx:if="{{my_question}}">
+          <text class='button_text button_text_on' wx:if="{{question_attitude}}">已采纳</text>
+          <text class='button_text' catchtap='set_question_attitude' wx:else> 采纳</text>
+
+        </block>
+        <block wx:else>
+          <text class='button_text button_text_on' wx:if="{{question_attitude}}">已赞同</text>
+          <text class='button_text' catchtap='set_question_attitude' wx:else> 赞同</text>
+
+        </block>
       </view>
 
     </view>
-</view>
+  </view>
 
-  
-                        
-                        
+
+
+
 </view>

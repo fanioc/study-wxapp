@@ -1,2 +1,2 @@
 <!--pages/community/add_dynamic/add_dynamic.wxml-->
-<text>pages/community/add_dynamic/add_dynamic.wxml</text>
+<include src='/template/interActive.wxml' />

@@ -11,11 +11,12 @@
   align-items:center;
    color: #f85f48;
     border-color: #f85f48;
+    
 }
 .swiper-tab-list{ 
 
   text-align: center;
- 
+ border: solid 2rpx #f85f48;
   margin: 10px 0px;  
   padding: 0 6px;
   width: 60px; 

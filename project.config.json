@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -87,6 +87,12 @@
 					"id": -1,
 					"name": "wenti",
 					"pathName": "pages/community/dynamic/dynamic",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "写回答",
+					"pathName": "pages/community/add_dynamic/add_dynamic",
 					"query": ""
 				}
 			]

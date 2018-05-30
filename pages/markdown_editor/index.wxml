@@ -1,4 +1,5 @@
 <include src='/template/interActive.wxml' />
+
 <view style='height:70px;'></view>
 <block wx:if="{{!edit_content_preview}}">
 <view class="mdContainer">

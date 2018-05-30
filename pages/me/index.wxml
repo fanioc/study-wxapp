@@ -1,4 +1,8 @@
 <!-- pages/me/index.wxml -->
+<include src='/template/interActive.wxml' />
+
+
+
 <view class="topView"></view>
 <view class="contain">
   <view>

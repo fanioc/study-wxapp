@@ -107,7 +107,7 @@ Page({
       case '11':
         {
 
-          edit_content_complete();
+          this.edit_content_complete();
 
         }
         break;

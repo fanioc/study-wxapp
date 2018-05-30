@@ -7,6 +7,9 @@
     "user": "/components/userInfo/modal",
     "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
-    "towxml": "/components/towxml/modal"
+    "towxml": "/components/towxml/modal",
+    "zan-button": "/components/btn/index",
+    "zan-button-group": "/components/btn-group/index",
+    "nav": "/components/navigation/navigation"
   }
 }

@@ -8,16 +8,14 @@ Page({
   data: {
     tag_array: [],//分类标签用于for渲染，onload()
     
-    question_title:'盧林楊啊啊啊',
-    question_describe:'debugdatadebugdatadebugdatadebugdatadebugdatadebugdatadebugda哈哈哈啊tadebugdata哈哈哈啊',
-    userID:0,
     answer_array: [],//回答问题的列表，用于for渲染
     hidden_answer_detail:true,//是否隐藏回答详情页面
-    answer_detail_index: 0,//回答问题的列表下的for渲染的索引
-    my_question:false,//是否是用户本人的问题,onload时get
-    question_attitude: false,//对问题的态度是赞同采纳或者不赞同采纳，需要在modal_answer_detail开始时get
     
-    current_answer_detail: '',//当前需要展示的给towxml的md回答页面
+    my_question:false,//是否是用户本人的问题,onload时get
+    //见modal answer question
+    question_attitude: false,//对问题的态度是赞同采纳或者不赞同采纳，需要在modal_answer_detail开始时get
+    current_answer_userID:'',
+    current_answer_detail:'',//回答问题的列表下的for渲染的索引,当前需要展示的给towxml的answer_array元素
   },
 //-----------自定义函数
   /**
@@ -55,6 +53,8 @@ Page({
 
     if (model) {
       data = this.data.answer_array.concat(getArray);
+      
+      console.log(getCurrentPages()[0].is,'get_answer_array 追加' );
     }
     else {
       data = getArray;
@@ -66,10 +66,13 @@ Page({
    */
   modal_answer_detail: function (e) {
     //console.log(e.currentTarget.dataset.index);
+    var current_answer = this.data.answer_array[e.currentTarget.dataset.index];
     var get_question_attitude;//获取用户对问题的态度
     //addtionRegion
      get_question_attitude=false;
-     this.setData({ answer_detail_index: e.currentTarget.dataset.index, hidden_answer_detail: false, question_attitude: get_question_attitude });
+     this.setData({
+       hidden_answer_detail: false, question_attitude: get_question_attitude, current_answer_userID: current_answer.userID, 
+       current_answer_detail: current_answer.content });
   },
   /**
 *隐藏回答详情
@@ -100,7 +103,7 @@ Page({
       card_img: question.card_img,
       question_title: question.question_title,
       question_describe: question.question_describe,
-      userID: question.userID
+      userID: question.userID 
     });
    
     if (question.userID == getApp().globalData.me.uid) //debugRegion
@@ -150,7 +153,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.get_answer_array();
+  
   },
 
   /**

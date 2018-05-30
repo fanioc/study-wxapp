@@ -1,3 +1,5 @@
+<include src='/template/interActive.wxml' />
+
 <import src="/template/back-ground/1.wxml" />
 <template is="back-ground-1" />
 

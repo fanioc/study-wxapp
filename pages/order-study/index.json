@@ -1,7 +1,12 @@
 {
   "usingComponents": {
-
-    "study": "/components/orderStudy/modal"
-
+    "study": "/components/orderStudy/modal",
+    "img_pre": "/components/base/image_canPreview/image_canPreview",
+    "user": "/components/userInfo/modal",
+    "modal": "/components/simulate_popup/modal",
+    "mtoast": "/components/toast/middleToast",
+    "zan-button": "/components/btn/index",
+    "zan-button-group": "/components/btn-group/index",
+    "nav": "/components/navigation/navigation"
   }
 }

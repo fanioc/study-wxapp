@@ -83,7 +83,7 @@ Component({
 
     },
 
-
+    //
     //--------------bindtap事件函数
 
     nav_dynamic_page: function (e) {//转跳至动态详情页面,并将quesiotnID存入key中

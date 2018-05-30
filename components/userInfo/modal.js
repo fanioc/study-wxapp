@@ -49,7 +49,8 @@ Component({
           console.log(that.data.user_source_name);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {
-            that.setData({ followed: data[0].followed });
+            //that.setData({ followed: data[0].followed });
+            //addtionRegion
           }
         }
         else
