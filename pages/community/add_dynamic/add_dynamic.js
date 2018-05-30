@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    upload_img:[]
+    upload_img:[],
+    button_prompt:'添加'
   },
   edit_content_imgURL: function (e) {
     var that = this;
@@ -16,13 +17,16 @@ Page({
 
         //addtionRegion
         console.log(res_cho.tempFilePaths);
-        that.setData({ upload_img: res_cho.tempFilePaths})
+        that.setData({ upload_img: res_cho.tempFilePaths, button_prompt:'重选'});
         
       }
     })
 
 
-  }, 
+  },
+  submit_question: function (e) {
+    console.log(e.detail.value);
+  },
   /**
    * 生命周期函数--监听页面加载
    */

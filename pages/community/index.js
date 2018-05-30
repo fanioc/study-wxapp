@@ -40,7 +40,7 @@ else
   },
   add_dynamic: function ()//编辑动态
   {
-    //addtionRegion
+    wx.navigateTo({ url: "/pages/community/add_dynamic/add_dynamic"});
   },
 //-----------------本页面自定义函数
 
