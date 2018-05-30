@@ -1,7 +1,9 @@
 {
     "enablePullDownRefresh": false,
     "usingComponents":{
-      "navigation":"/components/navigation/navigation"
+      "navigation":"/components/navigation/navigation",
+          "modal": "/components/simulate_popup/modal",
+          "mtoast": "/components/toast/middleToast"
     },
     "navigationStyle":"default"
 }

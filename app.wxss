@@ -11,11 +11,12 @@
   align-items:center;
    color: #f85f48;
     border-color: #f85f48;
+    
 }
 .swiper-tab-list{ 
 
   text-align: center;
- 
+ border: solid 2rpx #f85f48;
   margin: 10px 0px;  
   padding: 0 6px;
   width: 60px; 
@@ -74,7 +75,7 @@ green
   justify-content: space-between;
   /*padding: 200rpx 0;*/
   box-sizing: border-box;
-  
+  overflow:hidden;
 }
 /*/--------动态页面容器--------*/
 .flex-wrp{
@@ -135,3 +136,9 @@ top:93%;
 opacity: 0.8;
 }
 /*/--------置底的按钮--------*/
+.lly_omit::after{
+content: '...';
+}
+text{
+  word-break:break-all;
+}

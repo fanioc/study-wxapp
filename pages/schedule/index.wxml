@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 <view style='padding:50px 0 0 0'>
+=======
+<include src='/template/interActive.wxml' />
+
+
+
+<view>
+>>>>>>> f44aea03357323bdaebbf687dca2f683b30468f5
 
   <!-- <view class="wrapper">
 		<view class="container">

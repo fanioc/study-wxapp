@@ -1,8 +1,9 @@
-var components = getApp().globalData.components;
+var _components = getApp().globalData.components;
 // pages/markdown_editor/index.js
 var edit_content_value_temp='';//存放编辑文本的临时变量
 var init_mark='';//初始的标记
 var button_type=0;
+var _constant = getApp().globalData.CONSTANT;
 Page({
 
   /**
@@ -107,7 +108,7 @@ Page({
       case '11':
         {
 
-          edit_content_complete();
+          this.edit_content_complete();
 
         }
         break;
@@ -135,7 +136,7 @@ Page({
           console.log(res_cho.tempFilePaths[0]);
 
           var  uploadTask=wx.uploadFile({
-            url: 'http://fangrass.com/debug/a.php',
+            url: _constant.URL.debug,
             filePath: res_cho.tempFilePaths[0],
             name: 'img'
           });
@@ -149,7 +150,7 @@ Page({
             {
               
               that.setData({ edit_content_img_insert: false });
-              components.show_mToast('图片上传成功');
+              _components.show_mToast('图片上传成功');
               //addtionRegion-------
               var imgURL = res_cho.tempFilePaths[0];
               //--------------------

@@ -1,9 +1,11 @@
 <!--pages/community/index.wxml-->
 <!-- 顶部切换 -->
+<include src='/template/interActive.wxml' />
+
 
 <view class="swiper-tab">
   <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
-    动态圈
+    解题帮
   </view>
 
   <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
@@ -32,7 +34,7 @@
     <view class="search-left flex-item">
 
 
-      <text class='button_text' catchtap='add_dynamic'> 写回答</text>
+      <text class='button_text' catchtap='add_dynamic'> 写问题</text>
 
     </view>
 

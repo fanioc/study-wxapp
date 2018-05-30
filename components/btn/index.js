@@ -35,7 +35,11 @@ Component({
     openType: {
       type: String,
       value: ''
-    }
+    },
+    form: {
+      type: String,
+      value: '',
+    },
   },
 
   data: {

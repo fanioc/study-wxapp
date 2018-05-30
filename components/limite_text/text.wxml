@@ -1,0 +1,2 @@
+<!--components/limite_text/text.wxml-->
+<text class='cr_text'>{{content}}</text>

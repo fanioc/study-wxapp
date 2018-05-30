@@ -83,7 +83,7 @@ Component({
 
     },
 
-
+    //
     //--------------bindtap事件函数
 
     nav_dynamic_page: function (e) {//转跳至动态详情页面,并将quesiotnID存入key中
@@ -92,6 +92,7 @@ Component({
       var feedIndex = e.currentTarget.dataset.feedindex;
       //将当前问题信息存入全局变量中，
       getApp().globalData.current_question = _THAT.data.feed[feedIndex];
+      //console.log()
       //转跳至动态详情页面
       
       wx.navigateTo({

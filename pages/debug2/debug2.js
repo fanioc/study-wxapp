@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    dataContent: [{ tag: 'hah', singleItems:[{ title:'我送草拟吗啊'}]}]
   },
 
   /**

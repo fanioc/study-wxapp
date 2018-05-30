@@ -5,7 +5,7 @@ const URL = {
     study: 'https://study.xietan.xin/xaufe/StudyApp/',
     localhost: 'https://study.xietan.xin/xaufe/StudyApp/',
     base: "http://localhost/wx/",
-    debug: "http://localhost/a.php",
+    debug: 'https://api.xietan.xin/lly_debug/a.php',
 }
 
 const API = {
@@ -31,7 +31,6 @@ const API = {
     //改了errcode case 0
     //
     get_dynamic_array: 'https://api.xietan.xin/lly_debug/b.php', //需要返回代码0，获取社区板块的动态信息，用于wx:for渲染
-
     set_followed_user: 'https://api.xietan.xin/lly_debug/a.php', //需要返回代码1和message关注成功，发送other_uid和session，关注此用户
     post_invited: 'https://api.xietan.xin/lly_debug/a.php', //需要返回代码1和message成功发送邀请，发送other_uid和session，向用户发送自习邀请
     post_leave_message: 'https://api.xietan.xin/lly_debug/a.php', //需要返回代码1和message留言成功，POST 发送other_uid和session和leaveMessage，向服务器发送用户的留言

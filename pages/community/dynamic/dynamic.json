@@ -8,6 +8,8 @@
     "user": "/components/userInfo/modal",
     "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
-    "towxml": "/components/towxml/modal"
+    "towxml": "/components/towxml/modal",
+    "nav": "/components/navigation/navigation",
+    "l_text": "/components/limite_text/text"
   }
 }

@@ -17,16 +17,17 @@
         <!--标题部分-->
         <view>
 
-          <text class="question">{{item.question_title}}</text>
 
+          <l_text class="question" content='{{item.question_title}}' max='50' />
         </view>
         <!--标题部分-->
 
         <!--问题描述部分-->
         <view class="answer-body">
           <view>
-            <textarea maxlength='50' value='{{item.question_describe}}' disabled='true' auto-height='true'></textarea>
+            <!--//addtionRegion-->
 
+            <l_text content='{{item.question_describe}}' />
           </view>
 
         </view>
@@ -63,7 +64,7 @@
     <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}">
 
       <view>
-        <img_pre imgURL="{{item.card_img}}" class="dynamic_image" complete='true' />
+        <img_pre imgURL="{{item.card_img}}" class="dynamic_image"  />
         <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}">{{item.question_title}}</view>
 
       </view>

@@ -1,2 +1,41 @@
 <!--pages/community/add_dynamic/add_dynamic.wxml-->
-<text>pages/community/add_dynamic/add_dynamic.wxml</text>
+<include src='/template/interActive.wxml' />
+
+
+<form>
+  <!--问题标题-->
+  <view class="frame">
+    <view class="tag">
+      标题
+    </view>
+    <view>
+
+      <textarea auto-height='true' class="singleItem"></textarea>
+
+    </view>
+  </view>
+  <!--具体描述-->
+  <view class="frame">
+    <view class="tag">
+      描述 · 可选
+    </view>
+    <view>
+
+      <textarea auto-height='true' class="singleItem"></textarea>
+
+    </view>
+  </view>
+  <!--图片预览-->
+  <view class="frame" wx:for='{{upload_img}}'>
+
+    <img_pre imgURL='{{item}}'></img_pre>
+
+  </view>
+  <!--按钮-->
+  <zan-button-group>
+    <zan-button type="primary" bindtap='edit_content_imgURL'>添加图片</zan-button>
+
+    <zan-button type="warn" form='submit'>发表</zan-button>
+
+  </zan-button-group>
+</form>

@@ -5,9 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    upload_img:[]
   },
+  edit_content_imgURL: function (e) {
+    var that = this;
 
+    wx.chooseImage({//选择图片，上传成功后将获取地址插入markdown标记中
+      count: 9,
+      success: function (res_cho) {
+
+        //addtionRegion
+        console.log(res_cho.tempFilePaths);
+        that.setData({ upload_img: res_cho.tempFilePaths})
+        
+      }
+    })
+
+
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
