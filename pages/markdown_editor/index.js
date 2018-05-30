@@ -100,14 +100,16 @@ Page({
         break;
       case '10':
         {
-          
+          that.setData({ edit_content_value: that.data.edit_content_value + init_mark });
+          init_mark = '';
           this.setData({ edit_content_preview: true});
 
         }
         break;
       case '11':
         {
-
+          that.setData({ edit_content_value: that.data.edit_content_value + init_mark });
+          init_mark = '';
           this.edit_content_complete();
 
         }

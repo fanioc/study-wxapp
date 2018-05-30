@@ -2,7 +2,7 @@
 <include src='/template/interActive.wxml' />
 
 
-<form>
+<form bindsubmit='submit_question'>
   <!--问题标题-->
   <view class="frame">
     <view class="tag">
@@ -10,7 +10,7 @@
     </view>
     <view>
 
-      <textarea auto-height='true' class="singleItem"></textarea>
+      <textarea auto-height='true' class="singleItem" placeholder='请输入标题' name='question_title'></textarea>
 
     </view>
   </view>
@@ -21,21 +21,21 @@
     </view>
     <view>
 
-      <textarea auto-height='true' class="singleItem"></textarea>
+      <textarea auto-height='true' class="singleItem" placeholder='请输入描述' name='question_describe'></textarea>
 
     </view>
   </view>
   <!--图片预览-->
-  <view class="frame" wx:for='{{upload_img}}'>
+  <view class="frame" wx:for='{{upload_img}}' wx:key='index'>
 
-    <img_pre imgURL='{{item}}'></img_pre>
+    <img_pre imgURL='{{item}}' complete='1'></img_pre>
 
   </view>
   <!--按钮-->
   <zan-button-group>
-    <zan-button type="primary" bindtap='edit_content_imgURL'>添加图片</zan-button>
+    <zan-button type="primary" bindtap='edit_content_imgURL'>{{button_prompt}}图片</zan-button>
 
-    <zan-button type="warn" form='submit'>发表</zan-button>
+    <button type="warn" form-type='submit' style='margin-top:10rpx;'>发表</button>
 
   </zan-button-group>
 </form>
