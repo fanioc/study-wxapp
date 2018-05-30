@@ -13,7 +13,7 @@ Page({
         date: [23, 24, 25, 26, 27, 28, 29],
         time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00"]
       },
-      currentWeek: 12,
+      currentWeek: 15,
     },
     color: ["ffcccc", '15a892', 'e6ccff', 'cce6ff', 'ffbf80', '80bfff'],
     currentCourse: [{}],
@@ -21,7 +21,7 @@ Page({
     //测试数据
     getTerm: {
       year: 2018,
-      week: 12
+      week: 14
     },
     getSche: [
       {
@@ -164,7 +164,7 @@ Page({
       title: '正在读取课表',
     })
     wx.request({
-      url: 'https://api.xietan.xin/public/xaufe/EduSysMobile/getCourse?xh=1605990711',
+      url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
       success: function (res) {
         // console.log(res.data)
         that.setData({

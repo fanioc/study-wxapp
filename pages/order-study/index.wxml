@@ -1,17 +1,7 @@
-<include src='/template/interActive.wxml' />
-
-
-
-      <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
-
-          <swiper-item >
-                  <study refresh="{{study_fresh}}" />
-          </swiper-item>
- 
-      
-      </swiper>
-
-
-
-
-
+<view style='padding:50px 0 0 0'>
+  <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
+    <swiper-item>
+      <study refresh="{{study_fresh}}" />
+    </swiper-item>
+  </swiper>
+</view>
