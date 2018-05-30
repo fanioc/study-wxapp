@@ -1,4 +1,5 @@
 // pages/community/add_dynamic/add_dynamic.js
+var _components = getApp().globalData.components;
 Page({
 
   /**
@@ -6,7 +7,8 @@ Page({
    */
   data: {
     upload_img:[],
-    button_prompt:'添加'
+    button_prompt:'添加',
+    anonymous:'',
   },
   edit_content_imgURL: function (e) {
     var that = this;
@@ -26,6 +28,16 @@ Page({
   },
   submit_question: function (e) {
     console.log(e.detail.value);
+    //addtionRegion
+    _components.show_mToast('发表成功');
+    wx.navigateBack({
+      delta:1
+    })
+  },
+  anonymous: function (e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value.length);
+    if (e.detail.value.length)
+        this.setData({anonymous:true});
   },
   /**
    * 生命周期函数--监听页面加载
