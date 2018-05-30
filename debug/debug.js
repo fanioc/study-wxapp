@@ -1,8 +1,8 @@
 // debug/debug.js
 var _constant = getApp().globalData.CONSTANT;
 var util=require('../util/util.js');
-var components = getApp().globalData.components;//
-var _that;
+var _components = getApp().globalData.components;//
+
 Page({
 
   /**
@@ -55,7 +55,7 @@ Page({
   asd: function () {
    // getCurrentPages();
     //var asda = this.bindItemTap;
-    components.show_mToast('完成评价');
+    _components.show_mToast('完成评价');
     //this.lly(asda);
     //this.a(asda);
     

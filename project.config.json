@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -90,7 +90,7 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "写回答",
 					"pathName": "pages/community/add_dynamic/add_dynamic",
 					"query": ""

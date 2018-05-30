@@ -1,105 +1,21 @@
-
-
-.mdContainer {
-
-    background-color: gray;
-    position: fixed;
-    top: 94%;
-    border-top: 1rpx solid lightgray;
+.frame {
+    background-color: #ffffff;
+    border-radius: 10rpx;
+    box-shadow: 8rpx 2rpx 2rpx #cccccc;
+    margin: 16rpx;
+    padding: 32rpx;
+    position: relative;
 }
 
-
-
-.mdContainer .navContainer {
-
-    width: 100%;
-    height: 80rpx;
-    background: #fff;
-    box-sizing: border-box;
-    border-bottom: 2rpx solid #eee;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-
-    justify-content: flex-start;
-
-    align-items: center;
+.tag {
+    font-size: 28rpx;
+    font-weight: 900;
+    margin-bottom: 16rpx;
+    color: darkgray;
 }
 
-.mdContainer .navContainer .markContainer {
-    width: auto;
-    height: 100%;
-    margin-left: 0
-}
-
-.mdContainer .navContainer .markContainer ul.markListGroup {
-    height: 100%;
-    width: auto;
-    display: flex;
-    justify-content: flex-start;
-
-    align-items: center
-}
-
-.mdContainer .navContainer .markContainer ul.markListGroup li.markListItem {
-    list-style: none;
-    width: 40rpx;
-    height: 40rpx;
-    margin: 0 8rpx;
-    align-items: center;
-    cursor: pointer;
-    font-size: 24rpx;
-    color: #333;  
-    display: flex;
-    flex-direction:row; 
-    justify-content:center; 
-}
-.double_width_markListItem{
-      list-style: none;
-    width: 60rpx;
-    height: 40rpx;
-    margin: 0 8rpx;
-    align-items: center;
-    cursor: pointer;
-    font-size: 24rpx;
-    color: #333;  
-    display: flex;
-    flex-direction:row; 
-    justify-content:center; 
-}
-.triple_width_markListItem
-{
-      list-style: none;
-   
-
-    align-items: center;
-    cursor: pointer;
-    font-size: 24rpx;
-    color: #333;
-    width: 80rpx;
-}
-.mdContainer .navContainer .markContainer ul.markListGroup li.markListItem:hover {
-    background: #eee;
-  
-}
-
-.mdContainer .mdBodyContainer {
-    width: 100%;
-    height: calc(100% - 72rpx);
-    background: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: space-between;
-
-    align-items: center;
-    box-sizing: border-box
-}
-
-.mdContainer .mdBodyContainer.noMenu {
-    height: 100%
-}
-.markListGroup .complete{
-  width: 80rpx;
-
+.singleItem {
+    font-size: 40rpx;
+   width: 100%;
+    
 }

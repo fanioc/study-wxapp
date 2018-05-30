@@ -64,7 +64,7 @@
     <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}">
 
       <view>
-        <img_pre imgURL="{{item.card_img}}" class="dynamic_image" complete='true' />
+        <img_pre imgURL="{{item.card_img}}" class="dynamic_image"  />
         <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}">{{item.question_title}}</view>
 
       </view>
