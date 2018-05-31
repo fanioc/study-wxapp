@@ -4,6 +4,7 @@ page{
 }
 
 .week {
+ 
    /* color: #fff;  */
   display: flex;
   flex-direction: row;

@@ -8,21 +8,22 @@
   <form bindsubmit="formSubmit">
 
     <view class='inpit'>
-      <view>账号</view>
+      <view style='width:50px;'>账号</view>
       <input name="xh"></input>
     </view>
     <view class='inpit'>
-      <view>密码</view>
+      <view style='width:50px;'>密码</view>
       <input name="psd" type='password'> </input>
     </view>
     <view style='position:relative;' class='inpit'>
-      <view>验证</view>
-      <input name="check_code"> </input>
-       <image src='{{check_code}}' style="position:absolute;right:40px; width: 72px;height: 27px;"></image>
+      <view style='width:50px;'>验证</view>
+      <input name="check_code">
+      </input>
+      <image bindtap='changeCode' src='{{check_code}}' style="z-index:100;position:absolute;right:20px;width:72px;height:27px;"></image>
     </view>
 
 
-    <button  form-type='submit'>提交</button>
+    <button form-type='submit'>绑定</button>
 
   </form>
 </view>
