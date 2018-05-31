@@ -142,3 +142,27 @@ content: '...';
 text{
   word-break:break-all;
 }
+
+
+
+.frame {
+    background-color: #ffffff;
+    border-radius: 10rpx;
+    box-shadow: 8rpx 2rpx 2rpx #cccccc;
+    margin: 16rpx;
+    padding: 32rpx;
+    position: relative;
+}
+
+.tag {
+    font-size: 28rpx;
+    font-weight: 900;
+    margin-bottom: 16rpx;
+    color: darkgray;
+}
+
+.singleItem {
+    font-size: 40rpx;
+   width: 100%;
+    
+}
