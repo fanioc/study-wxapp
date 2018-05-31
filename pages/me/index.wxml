@@ -1,17 +1,56 @@
 <!-- pages/me/index.wxml -->
-<include src='/template/interActive.wxml' />
+<!-- <include src='/template/interActive.wxml' />  -->
 
-
-
-<view class="topView"></view>
+<!-- <view class="topView"></view> -->
 <view class="contain">
-  <view>
-    <view class="info" style="width:50px;">
-       <open-data type="userAvatarUrl"></open-data> 
-    </view>
+
+  <view class='userinfo'>
+
+    <image class="info" style='height:auto;width:100px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 20px;'>
+      <open-data type="userAvatarUrl"></open-data>
+    </image>
+
     <view class="info">
       <open-data type="userNickName"></open-data>
     </view>
+
+    <view class="info">
+      <view>（已绑定）</view>
+    </view>
+
+    <view class="info-other">
+      <view><view class='info-other-xx'>100</view>关注</view>
+      <view><view class='info-other-xx'>100</view>粉丝</view>
+      <view><view class='info-other-xx'>2</view>消息</view>
+      <view><view class='info-other-xx'>100</view>收藏</view>
+    </view>
   </view>
-  <Button bindtap='toBindSys'>绑定</Button>
+
+  <view class='study'>
+    <view class="study-list">
+    <image class='icon' src='/image/me/1.png'></image>
+      学习任务
+    </view>
+
+    <view class="study-list">
+    <image class='icon' src='/image/me/2.png'></image>
+      时间胶囊
+    </view>
+
+    <view bindtap='toScore' class="study-list">
+    <image class='icon' src='/image/me/3.png'></image>
+      考试成绩
+    </view>
+  </view>
+
+  <view class='tab'>
+    <view bindtap='toBindSys' class='tab-list'>认证绑定</view>
+    <view class='tab-list'>我的问题</view>
+    <view class='tab-list'>我的消息</view>
+    <view class='tab-list'>设置</view>
+    <view class='tab-list'>问题反馈</view>
+    <view class='tab-list'>关于我们</view>
+  </view>
+
+
 </view>

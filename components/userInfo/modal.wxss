@@ -26,7 +26,7 @@
   display: inline-block;
   width:60rpx;
   height:60rpx;
-  border-radius: 45rpx;
+   border-radius: 50%; 
   top: 10rpx;
   vertical-align: middle;
 }

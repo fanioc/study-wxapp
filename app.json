@@ -9,7 +9,8 @@
     "pages/me/binds/bind-edusys",
     "pages/debug2/debug2",
     "pages/markdown_editor/index",
-    "pages/community/add_dynamic/add_dynamic"
+    "pages/community/add_dynamic/add_dynamic",
+    "pages/me/score/score"
   ],
   "window": {
     "backgroundTextStyle": "dark",

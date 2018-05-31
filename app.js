@@ -20,7 +20,7 @@ App({
     //登入校验
     // wx.checkSession({
     //   fail: function (e) {
-    /*wx.login({
+    wx.login({
       success: function (res) {
         wx.request({
           url: _CONSTANT.API.loginStudy,
@@ -42,7 +42,7 @@ App({
       }
     })
     //   }
-    // })*/
+    // })
   },
 
 

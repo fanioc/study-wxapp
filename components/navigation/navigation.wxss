@@ -2,7 +2,7 @@
 
 .wrapper
 {
-    z-index: 9999999;
+  z-index: 9999999;
   position: fixed;
   height: 70px;
   width: 100%;

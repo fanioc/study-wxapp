@@ -4,7 +4,7 @@
           <view>
                     <!-- 模块top图片 -->
                     
-                  <image bindtap='nav_orderStudy_detailPage' class="card_image" mode="aspectFill"    src="https://api.xietan.xin/lly_debug/STUDY.png"/>
+                  <image bindtap='nav_orderStudy_detailPage' class="card_image" mode="aspectFill"    src="{{url.image}}"/>
                     <!-- 模块top图片 -->
 
                     <!-- 模块middle信息 -->
