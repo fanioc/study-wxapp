@@ -11,19 +11,21 @@
 }
 
 input {
+
   padding: 5px 10px 5px 10px;
   height: 1.5em;
   background: #fff;
-  opacity: 0.8;
-  width: 60%;
+   opacity: 0.8; 
+  width: auto;
   margin: 5px 10px 5px 10px;
   box-shadow: 10px;
   border-radius: 5px;
-  color: #999;
+  color: #598;
 }
 
 
 .inpit{
+  width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;

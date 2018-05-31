@@ -1,5 +1,5 @@
 
-<view style='padding:50px 0 0 0'>
+<view style=''>
 
 <!-- <include src='/template/interActive.wxml' /> -->
 
@@ -29,7 +29,7 @@
 
   <!-- 课表显示页面 -->
   <!-- <button open-type="getUserInfo">授权</button> -->
-  <view style='text-align:center;'>第{{getTerm.week}}周</view>
+  <view style='background-color:#22b36e; padding:40px 0 10px 0;color:#fff; font-size: 20px;font-weight:bold; text-align:center;'>第{{getTerm.week}}周</view>
 
   <view style=''>
     <view class='week'>
