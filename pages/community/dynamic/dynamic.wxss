@@ -1,4 +1,6 @@
-
+page{
+  background-color: white;
+}
 .question_container{
   padding: 0;
   font-size: 14rpx;

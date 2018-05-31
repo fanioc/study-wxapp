@@ -161,3 +161,26 @@ green {
 text {
   word-break: break-all;
 }
+
+/*/----------------*/
+.frame {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 4px 1px 1px #cccccc;
+    margin: 8px;
+    padding: 16px;
+    position: relative;
+}
+
+.tag {
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+
+.singleItem {
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: darkgray;
+}
+/*/----------------*/

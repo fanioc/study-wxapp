@@ -26,7 +26,7 @@ Component({
     var that = this;
     if (that.data.userID == getApp().globalData.me.uid)//如果是用户自己将model设置为0
       {
-      that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName+" - 自己"});
+      that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName});
         return true;
       }
     
@@ -108,7 +108,7 @@ Component({
           
             if (_util.errCode(res.data))
 
-              this.setData({ followed: true });
+              _THAT.setData({ followed: true });
           
           return true;
         },
@@ -134,9 +134,9 @@ Component({
         },
         method: 'GET',
         success: function (res) {
-
-          this.setData({ invited: true });//lly_improve
-          _components.show_mToast('已发送邀请');
+          //console.log(res);
+          if(_util.errCode(res.data))
+          _THAT.setData({ invited: true });//lly_improve
           return true; 
         },
         fail: function (res) {
@@ -148,7 +148,7 @@ Component({
     
     },
     modal_leave_message: function () { //用户留言窗口
-      var _THAT = this;
+      var _THAT=this;
       _components.show_modal(_THAT, 'leave_message', this.post_leave_message, '留言ing', '发送', false);
       
       

@@ -1,4 +1,4 @@
-<nav />
+            <include src='/template/interActive.wxml' />
             
 
 
@@ -13,6 +13,14 @@
 <user model='4'/>
 <towxml />
  <towxml />
+
+         <zan-button-group>
+
+      <zan-button type="primary">确认付款</zan-button>
+      <zan-button type="danger">确认付款</zan-button>
+      <zan-button type="warn">确认付款</zan-button>
+    </zan-button-group>
+
     <view class='lly'>_____________________________</view>
  <towxml URL='http://fangrass.com/README.md' />
    <img_pre imgURL='/image/debug2.jpeg' />
@@ -22,9 +30,11 @@
              
 <button bindtap='a'>hah</button>
 <user userID='110' model='1'/>
-<user userID='110' model='1'/>
-<user userID='109' model='1'/>
-
+<user userID='110' model='2'/>
+<user userID='110' model='3'/>
+<user userID='110' model='4'/>
+<user userID='110' model='5'/>
+<user userID='110' model='6'/>
               <!--一，用户信息部分<user model='3'/>-->
               
 
@@ -32,17 +42,11 @@
 
               
 
-            <include src='/template/interActive.wxml' />
+
           
 
-        <zan-button-group>
 
-      <zan-button type="primary">确认付款</zan-button>
-      <zan-button type="danger">确认付款</zan-button>
-      <zan-button type="warn">确认付款</zan-button>
-    </zan-button-group>
 
-    <l_text content='我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa我害你是吗55啊啊aaa' />
-
+  
 
  

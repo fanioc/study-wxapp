@@ -96,8 +96,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(getApp().globalData.current_question);
-    
+    console.log(getApp().globalData.current_question); 
+    console.log('llllly',getCurrentPages());
     var question = getApp().globalData.current_question;
     this.setData({ 
       card_img: question.card_img,

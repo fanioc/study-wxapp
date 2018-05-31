@@ -104,6 +104,6 @@ App({
 
     //---------页面间通讯所需数据
     current_question: {},//单击的问题的id，再nav_dynamic_page进行设置
-    me: { uid: 109, nickName: '卢二狗', avatarUrl: "https://api.xietan.xin/lly_debug/debug2.jpeg" }//debugRegion
+    me: { uid: 109, nickName: '卢二狗', avatarUrl: "https://api.xietan.xin/lly_debug/head (1).jpg" }//debugRegion
   }
 })

@@ -1,7 +1,9 @@
 /* pages/community/index.wxss */
 
 
-
+page{
+  background-color: white;
+}
 .banner
 {
 
@@ -11,9 +13,58 @@ height: 480rpx;
 
   
 }
+
+#rank{
+  background-color: white;
+}
+
+
 .a{
    display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
 }
+.b{
+ display: flex;
+ flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  
+}
+.c{
+  margin-top: 5rpx;
+  background-color: #f85f48;
+  color: white;
+  height: 60rpx;
+  
+    position: absolute;
+       display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.d{
+  margin-left: 90rpx;
+}
+ .left {
+      width: 65rpx;
+      height: 65rpx;/*高度为宽度的2倍*/
+      border-radius: 65rpx 0 0 65rpx;/*圆角半径为宽度的值*/
+      position: relative;
+     display: inline-block;
+      background-color: white;
+  
+    
+    
+
+      
+    }
+    .e{
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+      width: 88rpx;
+    }

@@ -73,11 +73,13 @@ Page({
       url: '../answer/answer'
     })
   },
-  a:function(aa)
+  a:function()
   {
-    _constant
-    console.log('e');
-    return true;
+    console.log('llllly', getCurrentPages());
+    wx.navigateTo({
+      url: '/pages/community/index'
+    })
+   
   },
 //------------
   /**
@@ -88,7 +90,7 @@ Page({
     var that=this;
     util.errCode(res, function () { console.log('aaaaa') })
     //console.log();*/
-    _that=this;
+    var _that=this;
     console.log(_that);
     console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
     getApp().globalData.current_question = {

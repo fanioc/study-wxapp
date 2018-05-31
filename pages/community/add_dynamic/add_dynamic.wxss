@@ -1,4 +1,6 @@
-
+page{
+  background-color: white;
+}
 .anonymous_checkbox{
   margin-left: 78%;
 }
