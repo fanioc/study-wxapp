@@ -44,5 +44,19 @@
 
 <!-- 排行榜板块-->
 <view id="rank" hidden="{{currentTab != 1}}">
-  排行榜板块 根据用户数据，在用户许可的情况下以排行榜的形式展示学生的学习情况。。平台甚至是用户可对排名靠前的学生进行打赏
+
+  <view class="frame">
+    <view class="tag">
+      <text class='a'>top 3</text>
+    </view>
+    <view>
+
+      <user userID='110' model='2' />
+      <user userID='110' model='2' />
+      <user userID='110' model='2' />
+
+    </view>
+  </view>
+
+
 </view>

@@ -44,7 +44,7 @@ Page({
     //addtionRegion
     //----debugdata----------
     getArray = [{
-      userID:1,
+      userID:110,
       content:"难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是读量太少，那确实没有买kindle的必要。要",
       agree:369,
       answer_time:2017-1-1
