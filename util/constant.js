@@ -26,6 +26,8 @@ const API = {
   updateUserEduInfo: URL.study + 'updateUserEduInfo',
   updateUserEduScore: URL.study + 'updateUserEduScore',
   uploadFile: URL.study + 'fileUpload',
+
+  publishDynamic: URL.study +'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
   // 获取动态列表，last_id是上次获取最小的dynamic_id
   getDynamicList: URL.study + 'getDynamicList',//($session, $last_id = null)
 
