@@ -99,6 +99,7 @@ Page({
     console.log(getApp().globalData.current_question); 
     console.log('llllly',getCurrentPages());
     var question = getApp().globalData.current_question;
+    console.log('llllly', question);
     this.setData({ 
       card_img: question.card_img,
       question_title: question.question_title,

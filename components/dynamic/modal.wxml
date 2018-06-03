@@ -61,11 +61,11 @@
     </view>
 
     <!-- 动态模块1-->
-    <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}">
+    <view class="dynamic_card" wx:elif="{{item.dynamic_type==1}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
 
       <view>
-        <img_pre imgURL="{{item.card_img}}" class="dynamic_image"  />
-        <view bindtap='nav_dynamic_page' class="dynamic_title" data-feedIndex="{{index}}">{{item.question_title}}</view>
+        <image  src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
+        <view  class="dynamic_title" >{{item.question_title}}</view>
 
       </view>
 

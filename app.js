@@ -14,37 +14,43 @@ App({
       _util.setTheme("#000000", "#ffffff", "#e6e6e6", "0");//addtionRegion
       console.log("setTheme");
     }
-
     var that = this;
-
     //登入校验
-    // wx.checkSession({
-    //   fail: function (e) {
     wx.login({
       success: function (res) {
         wx.request({
           url: _CONSTANT.API.loginStudy,
-          data: {
-            code: res.code
-          },
+          data: {code: res.code},
           method: 'GET',
           success: function (res) {
             console.log(res)
             wx.setStorageSync('session', res.data.data.session)
-          },
-          fail: function () {
-            console.log("登入失败")
-          },
-          complete: function () {
-            // complete
+
+            var userInfo = that.getUserBasicInfo() //获取个人信息
+          
           }
         })
       }
     })
-    //   }
-    // })
+
   },
 
+  getUserBasicInfo:function(other_uid){
+    var that =this
+    wx.request({
+      url: _CONSTANT.API.getUserBasicInfo,
+      data:{
+        session:wx.getStorageSync('session')
+      },
+      method:"GET",
+      success:function(res){
+        console.log(res.data.data)
+        if (res.data.errCode==0)
+          that.globalData.me = res.data.data
+        console.log(that.globalData.me)
+      }
+    })
+  },
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow

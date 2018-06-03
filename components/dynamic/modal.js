@@ -15,17 +15,13 @@ Component({
       value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
       observer: function (newVal, oldVal) {
         this.getFeed(0)
-         
-
-        
-
         
       } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
     },
   },
 
   data: {
-    feed_length: 0,//feed数组长度，getFeed()会自动设置
+    feed_length: null,//feed数组长度，getFeed()会自动设置
     hiddenToast: false, //控制提示刷新成功的toast
     toastContent: ''//toast 提示内容
   }, // 私有数据，可用于模版渲染
@@ -52,10 +48,10 @@ Component({
     
       //console.log(getCurrentPages()[0].is, _API.get_dynamic_array);
       wx.request({
-        url: _API.get_dynamic_array,
+        url: _API.getDynamicList,
         data: {
           session: wx.getStorageSync('session'),
-          star: that.data.feed_length
+          last_id: that.data.feed_length
         },
         method: 'GET',
         success: function (res) {
@@ -98,7 +94,7 @@ Component({
       wx.navigateTo({
         url: "/pages/community/dynamic/dynamic"
       });
-      //addtionRegion
+      //debugRegion
     },
 
   
