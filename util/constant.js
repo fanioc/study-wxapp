@@ -15,6 +15,7 @@ const API = {
   getCheckCode: URL.study + 'getCheckCode',
   getUserCourse: URL.study + 'getUserCourse',
   getEduFreeClass: URL.study + 'getEduFreeClass',
+  setUserStar: URL.study + 'setUserStar',//$session,$bestar_uid,$star   star=1关注 0不关注
   getUserBasicInfo: URL.study + 'getUserBasicInfo',
   getCurrentTerm: URL.study + 'getCurrentTerm',
   getUserEduInfo: URL.study + 'getUserEduInfo',
@@ -27,7 +28,7 @@ const API = {
   uploadFile: URL.study + 'fileUpload',
   // 获取动态列表，last_id是上次获取最小的dynamic_id
   getDynamicList: URL.study + 'getDynamicList',//($session, $last_id = null)
-  
+
   // 回答问题，type=1代表正常，2代表匿名
   AnswerDynamic: URL.study + 'AnswerDynamic',//($session, $dynamic_id, $content, $type)
 
