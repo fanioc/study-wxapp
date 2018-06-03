@@ -127,9 +127,6 @@ Page({
         wx.hideLoading()
         that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
         console.log(that.data.getSche)
-
-        var log = util.toFreeSchel(that.data.getSche, 11)
-        console.log(log);
       }
     })
   },

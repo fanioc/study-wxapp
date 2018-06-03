@@ -45,7 +45,7 @@ Component({
         if(data)
         {
          // console.log(getCurrentPages()[0].is,'line 42', );
-          that.setData({ user_head_img: data[0].avatarUrl, user_source_name: data[0].nickName });
+          that.setData({ user_head_img: data.avatarUrl, user_source_name: data.nickName });
           console.log(that.data.user_source_name);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {

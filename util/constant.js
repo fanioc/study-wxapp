@@ -14,8 +14,8 @@ const API = {
   bindEduSys: URL.study + 'bindEduSys',
   getCheckCode: URL.study + 'getCheckCode',
   getUserCourse: URL.study + 'getUserCourse',
-  getEduFreeClass: URL.study + 'getEduFreeClass',
-  setUserStar: URL.study + 'setUserStar',//$session,$bestar_uid,$star   star=1关注 0不关注
+  getEduFreeClass: URL.study + 'getEduFreeClass',//空教室
+  setUserStar: URL.study + 'setUserStar',//$session $bestar_uid $star   star=1关注 0不关注
   getUserBasicInfo: URL.study + 'getUserBasicInfo',
   getCurrentTerm: URL.study + 'getCurrentTerm',
   getUserEduInfo: URL.study + 'getUserEduInfo',
@@ -42,10 +42,13 @@ const API = {
   getDynamicContent: URL.study + 'getDynamicContent',//($session, $dynamic_id)
 
   // 查看问题的详细信息
-  uploagetDynamicAnsdFile: URL.study + 'getDynamicAns',//($session, $dynamic_id, $answer_id)
+  getDynamicAns: URL.study + 'getDynamicAns',//($session, $dynamic_id, $answer_id)
 
   // 删除问题
   delDynamic: URL.study + 'delDynamic',//($session, $dynamic_id)
+  publishDynamic: URL.study + 'publishDynamic',//$title, $img_url, $content, $type, $sort = null
+
+  get_dynamic_array: 'https://api.xietan.xin/lly_debug/b.php', //需要返回代码0，获取社区板块的动态信息，用于wx:for渲染
 
   set_followed_user: 'https://api.xietan.xin/lly_debug/a.php', //需要返回代码1和message关注成功，发送other_uid和session，关注此用户
   post_invited: 'https://api.xietan.xin/lly_debug/a.php', //需要返回代码1和message成功发送邀请，发送other_uid和session，向用户发送自习邀请
