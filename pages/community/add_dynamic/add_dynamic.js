@@ -1,5 +1,6 @@
 // pages/community/add_dynamic/add_dynamic.js
 var _components = getApp().globalData.components;
+var _API = getApp().globalData.CONSTANT.API;
 Page({
 
   /**
@@ -27,12 +28,24 @@ Page({
 
   },
   submit_question: function (e) {
+    var that=this;
     console.log(e.detail.value);
     //addtionRegion
-    _components.show_mToast('发表成功');
-    wx.navigateBack({
-      delta:1
+    const a=wx.uploadFile({
+      url: _API.uploadFile,
+
+      filePath: that.data.upload_img[0],
+      name: 'file',
+      success: function (res){
+        console.log(res)
+      },
+    
     })
+    console.log('发表成功',a);
+    _components.show_mToast('发表成功');
+    /*wx.navigateBack({
+      delta:1
+    })*/
   },
   anonymous: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value.length);
