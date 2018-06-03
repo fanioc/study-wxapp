@@ -1,21 +1,11 @@
-// pages/debug2/debug2.js
+// pages/personal_info/personal_info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    dataContent: [{ tag: 'hah', singleItems:[{ title:'我送草拟吗啊'}]}],
-    marker: [{
-      iconPath: "/image/1.png",
-      id: 0,
-      latitude: 34.115632, 
-      longitude: 108.932280, 
-      width: 50,
-      height: 50, 
-      alpha: 0, 
-      callout: { content: '第一教学楼', color: '#f85f48', bgColor:'#F5F5F5',display:'ALWAYS'}
-    }],
+  
   },
 
   /**
@@ -31,9 +21,7 @@ Page({
   onReady: function () {
   
   },
-  a: function () {
-    console.log('hah');
-  },
+
   /**
    * 生命周期函数--监听页面显示
    */

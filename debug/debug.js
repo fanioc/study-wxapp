@@ -86,6 +86,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+    wx.request({
+      url: _constant.API.getEduFreeClass,
+      data: {
+        session: wx.getStorageSync('session'),
+        date:'2018-05-20',
+      },
+      method: 'GET',
+      success: function (res) {
+                    
+      },
+      fail: function (res) {
+        _components.show_mToast('网络错误');
+      },
+      complete: function (res) { },
+    })
    /* var res={ errCode: 0, data:'llyasd' };
     var that=this;
     util.errCode(res, function () { console.log('aaaaa') })

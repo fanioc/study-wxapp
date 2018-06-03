@@ -10,7 +10,9 @@
     "pages/debug2/debug2",
     "pages/markdown_editor/index",
     "pages/community/add_dynamic/add_dynamic",
-    "pages/me/score/score"
+    "pages/me/score/score",
+    "pages/personal_info/personal_info",
+    "pages/order-study/order_operate/operate"
   ],
   "window": {
     "backgroundTextStyle": "dark",

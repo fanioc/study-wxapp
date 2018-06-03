@@ -60,7 +60,9 @@ Component({
 //转跳匹配学习的页面，由图片触发
     nav_orderStudy_detailPage:function(){
       //addtionRegion
-
+      wx.navigateTo({
+        url: '/pages/order-study/order_operate/operate',
+      })
     },
 //获取上一次学习的信息，此操作读取本地缓存
     get_last_study_array: function () {

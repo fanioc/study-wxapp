@@ -17,5 +17,5 @@
 .singleItem {
     font-size: 40rpx;
    width: 100%;
-    
+    background-color: 
 }

@@ -1,0 +1,3 @@
+<!--pages/personal_info/personal_info.wxml-->
+            <include src='/template/interActive.wxml' />
+>

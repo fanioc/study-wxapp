@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -99,6 +99,12 @@
 					"id": -1,
 					"name": "成绩",
 					"pathName": "pages/me/score/score",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order_operate",
+					"pathName": "pages/order-study/order_operate/operate",
 					"query": ""
 				}
 			]

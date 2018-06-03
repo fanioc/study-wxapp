@@ -1,6 +1,8 @@
 <include src='/template/interActive.wxml' />
 
 
+<map style='width:100%;height:1000rpx;' longitude='108.934994' latitude='34.115986' scale='18' markers='{{marker}}'></map>
+<!-- 
 <view class="frame">
   <view class="tag">
     标题
@@ -11,3 +13,5 @@
 
   </view>
 </view>
+<image src='/image/debug5.png'  style='width:100%;height:800rpx;'> </image> -->
+<view></view>

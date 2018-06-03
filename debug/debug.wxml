@@ -28,19 +28,19 @@
 
   
              
-<button bindtap='a'>hah</button>
+<!-- <button bindtap='a'>hah</button>
 <user userID='110' model='1'/>
 <user userID='110' model='2'/>
 <user userID='110' model='3'/>
 <user userID='110' model='4'/>
 <user userID='110' model='5'/>
-<user userID='110' model='6'/>
+<user userID='110' model='6'/> -->
               <!--一，用户信息部分<user model='3'/>-->
               
 
               <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
 
-              
+
 
 
           
