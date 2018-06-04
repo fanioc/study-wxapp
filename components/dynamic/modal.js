@@ -45,18 +45,17 @@ Component({
     getFeed: function (mode = 1)//从服务器获取动态模块所需数据,参数mode表示设置feed时：1为追加 0为重写，设置data：feed, feed_length
     {
       var that = this;
-      
-    
       //console.log(getCurrentPages()[0].is, _API.get_dynamic_array);
       wx.request({
         url: _API.getDynamicList,
         data: {
           session: wx.getStorageSync('session'),
-          last_id: that.data.feed_length
+          // last_id: that.data.feed_length
         },
         method: 'GET',
         success: function (res) {
           var getFeed, feed_Array = [];
+          console.log(getFeed);
           getFeed = _util.errCode(res.data);
           if (mode) {
             feed_Array = that.data.feed.concat(getFeed);
@@ -67,6 +66,7 @@ Component({
            that.setData({ hiddenToast: true, toastContent: '刷新成功' });
             console.log('重置');
           }
+          
           that.setData({ feed: feed_Array, feed_length: feed_Array.length });
           return true;
         },
