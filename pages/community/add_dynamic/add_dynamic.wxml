@@ -1,6 +1,6 @@
 <!--pages/community/add_dynamic/add_dynamic.wxml-->
 <include src='/template/interActive.wxml' />
-
+<nav seat="60px"></nav>
 
 <form bindsubmit='submit_question'>
   <!--问题标题-->
@@ -21,21 +21,22 @@
     </view>
     <view>
 
-      <textarea auto-height='true' class="singleItem" placeholder='问题类别的关键词，如：高等数学' name='question_sort'></textarea>
+      <textarea auto-height='true' class="singleItem" placeholder='问题类别的关键词，如：高等数学' name='sort'></textarea>
 
     </view>
   </view>
   <!--具体描述-->
   <view class="frame">
     <view class="tag">
-      描述 · 可选
+      描述
     </view>
     <view>
 
-      <textarea auto-height='true' class="singleItem" placeholder='请输入描述' name='question_describe'></textarea>
+      <textarea height='100px' class="singleItem" placeholder='请输入描述' name='question_describe'></textarea>
 
     </view>
   </view>
+
 
   <!--图片预览//addtionRegion-->
   <view class="frame" wx:for='{{upload_img}}' wx:key='index'>
@@ -50,7 +51,9 @@
     <button type="warn" form-type='submit' style='margin-top:10rpx;'>发表</button>
 
   </zan-button-group>
-  <checkbox-group bindchange='anonymous'>
-    <checkbox class='anonymous_checkbox' value='2'>匿名</checkbox>
+
+  <checkbox-group name="type" bindchange='anonymous'>
+    <checkbox name="type" class='anonymous_checkbox' value='1'>匿名</checkbox>
   </checkbox-group>
+
 </form>

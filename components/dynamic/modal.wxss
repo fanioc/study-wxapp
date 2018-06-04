@@ -1,6 +1,6 @@
 /* extend/modal.wxss */
 .container {
-
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,9 @@
   color: #000;
 
   word-break:break-all;
-  height: 1400rpx;
+
+  /* position: absolute; */
+
 }
 
 .feed-item{

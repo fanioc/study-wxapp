@@ -6,7 +6,6 @@
   <!-- <text  wx:if='{{item.card_img&&0}}'>图片</text>
     <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length<3}}</text> -->
 
-
         <!-- 动态模块1-->
     <view class="dynamic_card" wx:if="{{item.card_img&&(item.question_describe)}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
 
@@ -43,7 +42,7 @@
           <view>
             <!--//addtionRegion-->
 
-            <l_text content='{{item.question_describe}}' />
+             <l_text content='{{item.question_describe}}' /> 
           </view>
 
         </view>

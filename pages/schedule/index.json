@@ -8,5 +8,7 @@
     "zan-button-group": "/components/btn-group/index",
     "nav": "/components/navigation/navigation"
   },
-    "navigationBarTextStyle":"white"
+    "backgroundTextStyle":"light",
+    "navigationBarTextStyle":"white",
+    "backgroundColor": "#22b36e"
 }

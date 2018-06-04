@@ -1,6 +1,5 @@
 // pages/community/dynamic/dynamic.js
 var components = getApp().globalData.components;
-var _API = getApp().globalData.CONSTANT.API;
 Page({
 
   /**
@@ -39,46 +38,28 @@ Page({
     /**
    * 获取回答的列表 追加的向数组添加数据
    */
-  get_answer_array: function (model=0) {
-    var that=this;
+  get_answer_array: function (model=1) {
     var data = [];
     var getArray=[];
     //addtionRegion
-    
-   /* //----debugdata----------
+    //----debugdata----------
     getArray = [{
       userID:110,
       content:"难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是读量太少，那确实没有买kindle的必要。要",
       agree:369,
       answer_time:2017-1-1
     }];
-    //console.log('get_answer_array');
-    //----debugdata----------*/
-    wx.request({
-      url: _API.getDynamicContent,
-      data: {
-        session: wx.getStorageSync('session'),
-        dynamic_id: that.data.question_id
-      },
-      method: 'GET',
-      success: function (res) {
-        getArray = res.data.data.ans_list;//lly_improve
-        console.log("_API.getDynamicContent", getArray)
-        /*if (model) {
-          //data = that.data.answer_array.concat(getArray);
-          //lly_improve
-          //console.log(getCurrentPages()[0].is,'get_answer_array 追加' );
-        }
-        else {
-          data = getArray;
-        }*/
-        that.setData({ answer_array: getArray });
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-      },
-    })
-   
+    //----debugdata----------
+
+    if (model) {
+      data = this.data.answer_array.concat(getArray);
+      
+      console.log(getCurrentPages()[0].is,'get_answer_array 追加' );
+    }
+    else {
+      data = getArray;
+    }
+    this.setData({ answer_array: data });
   },
     /**
    * 显示回答详情
@@ -108,20 +89,7 @@ Page({
 
     this.setData({ question_attitude: true });
     //addtionRegion
-   /* wx.request({
-      url: _API.setDynamicAgree,
-      data: {
-        session: wx.getStorageSync('session')
-      },
-      method: 'GET',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-      },
-      complete: function (res) { },
-    })*/
+   
   },
 //--------------------
   /**
@@ -134,11 +102,9 @@ Page({
     console.log('llllly', question);
     this.setData({ 
       card_img: question.card_img,
-      question_id: question.question_id,
       question_title: question.question_title,
       question_describe: question.question_describe,
-      userID: question.userID,
-
+      userID: question.userID
     });
     console.log('llllly', this.data.userID);
     if (question.userID == getApp().globalData.me.uid) //debugRegion
