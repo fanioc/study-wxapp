@@ -19,8 +19,9 @@
         {{question_describe}}
       </view>
       <!--问题的图片 {{card_img}}-->
-      <img_pre imgURL='{{card_img}}' />
-      <user model="{{my_question?'0':'6'}}" userID='{{userID}}' />
+      <img_pre imgURL='{{card_img}}' wx:if="{{card_img}}" />
+          <user model='1' userID='{{user}}' />
+
     </view>
 
   </view>
@@ -31,11 +32,11 @@
       <view class="feed-content">
         <view class="answer-body">
           <view class="answer-txt ">
-            
-           
+
+
             <l_text content='{{item.content}}' />
           </view>
-          
+
           <view class="answer-actions">
             <view class="like dot">
               <a>{{item.agree}} 赞同 </a>
@@ -67,7 +68,7 @@
       </view>
       ——————————
     </view>
-    <towxml  model='2' content='{{current_answer_detail}}' />
+    <towxml model='2' content='{{current_answer_detail}}' />
   </view>
   <view class="dynamic_container">
     <view class="search flex-wrp footer_button">

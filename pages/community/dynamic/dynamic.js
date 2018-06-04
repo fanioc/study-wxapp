@@ -7,7 +7,7 @@ Page({
    */
   data: {
     tag_array: [],//分类标签用于for渲染，onload()
-    
+    user:'110',
     answer_array: [],//回答问题的列表，用于for渲染
     hidden_answer_detail:true,//是否隐藏回答详情页面
     
@@ -106,7 +106,7 @@ Page({
       question_describe: question.question_describe,
       userID: question.userID 
     });
-   
+    console.log('llllly', this.data.userID);
     if (question.userID == getApp().globalData.me.uid) //debugRegion
       this.setData({ my_question: true });
     

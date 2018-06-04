@@ -41,12 +41,13 @@ Component({
       
         //console.log(getCurrentPages()[0].is, res.data);
         var data=_util.errCode(res.data);
+        console.log(data, 'hahdata', that.data.userID );
         //console.log(getCurrentPages()[0].is, data);
         if(data)
         {
          // console.log(getCurrentPages()[0].is,'line 42', );
           that.setData({ user_head_img: data.avatarUrl, user_source_name: data.nickName });
-          console.log(that.data.user_source_name);
+          console.log(that.data.user_source_name, 'hah', that.data.userID);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {
             //that.setData({ followed: data[0].followed });

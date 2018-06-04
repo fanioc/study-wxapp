@@ -14,6 +14,17 @@
 
     </view>
   </view>
+    <!--问题类别-->
+  <view class="frame">
+    <view class="tag">
+      类别
+    </view>
+    <view>
+
+      <textarea auto-height='true' class="singleItem" placeholder='问题类别的关键词，如：高等数学' name='question_sort'></textarea>
+
+    </view>
+  </view>
   <!--具体描述-->
   <view class="frame">
     <view class="tag">
@@ -25,7 +36,8 @@
 
     </view>
   </view>
-  <!--图片预览-->
+
+  <!--图片预览//addtionRegion-->
   <view class="frame" wx:for='{{upload_img}}' wx:key='index'>
 
     <img_pre imgURL='{{item}}' complete='1'></img_pre>
@@ -36,9 +48,9 @@
     <zan-button type="primary" bindtap='edit_content_imgURL'>{{button_prompt}}图片</zan-button>
 
     <button type="warn" form-type='submit' style='margin-top:10rpx;'>发表</button>
-    
+
   </zan-button-group>
-<checkbox-group bindchange='anonymous'>
-  <checkbox class='anonymous_checkbox' value='1'>匿名</checkbox>
-</checkbox-group>
+  <checkbox-group bindchange='anonymous'>
+    <checkbox class='anonymous_checkbox' value='2'>匿名</checkbox>
+  </checkbox-group>
 </form>

@@ -3,15 +3,29 @@
 <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed'>
 
   <block wx:for="{{feed}}" wx:key="{{index}}" data-feedIndex="{{index}}">
-  <text  wx:if='{{item.card_img&&0}}'>图片</text>
-    <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length}}</text>
+  <!-- <text  wx:if='{{item.card_img&&0}}'>图片</text>
+    <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length<3}}</text> -->
+
+
+        <!-- 动态模块1-->
+    <view class="dynamic_card" wx:if="{{item.card_img&&(item.question_describe)}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
+
+      <view>
+            <!--一，用户信息部分-->
+      <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}"/>
+        <image  src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
+        <view  class="dynamic_title" >{{item.question_title}}</view>
+
+      </view>
+
+    </view>
     <!-- 动态模块0-->
-    <view class="feed-item" wx:if="{{item.dynamic_type==1}}">
+    <view class="feed-item" wx:else>
 
       <!--动态内容部分-->
 
       <!--一，用户信息部分-->
-      <user userID='{{item.userID}}' model='1' />
+      <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}"/>
       <!--用户信息部分-->
 
       <!--二，动态内容部分-->
@@ -62,17 +76,7 @@
 
     </view>
 
-    <!-- 动态模块1-->
-    <view class="dynamic_card" wx:elif="{{item.dynamic_type==2}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
 
-      <view>
-        <image  src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
-        <view  class="dynamic_title" >{{item.question_title}}</view>
-
-      </view>
-
-
-    </view>
 
   </block>
 

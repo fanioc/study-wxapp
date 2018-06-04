@@ -10,6 +10,7 @@ Page({
    */
   data: {
     //article将用来存储towxml数据
+    userID:110,
     article: {},
     study_fresh:false,
     invite_item_array: [

@@ -56,6 +56,7 @@ Component({
         method: 'GET',
         success: function (res) {
           var getFeed, feed_Array = [];
+          console.log(getFeed);
           getFeed = _util.errCode(res.data);
           if (mode) {
             feed_Array = that.data.feed.concat(getFeed);
@@ -66,6 +67,7 @@ Component({
            that.setData({ hiddenToast: true, toastContent: '刷新成功' });
             console.log('重置');
           }
+          
           that.setData({ feed: feed_Array, feed_length: feed_Array.length });
           return true;
         },

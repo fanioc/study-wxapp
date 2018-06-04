@@ -1,6 +1,12 @@
-page{
-  background-color: white;
-}
+
 .anonymous_checkbox{
   margin-left: 78%;
+}
+.frame{
+padding-bottom: 7rpx;
+}
+.singleItem{
+  height: 90rpx;
+   font-size: 35rpx;
+  margin-bottom: 1rpx;
 }
