@@ -5,8 +5,7 @@ Component({
    */
   properties: {
     seat: { // 属性名,如果为真则屏幕占位70px
-      type: Boolean, //
-      value: false, //
+      type:String
     }
   },
 

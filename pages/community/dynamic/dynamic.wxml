@@ -1,12 +1,12 @@
 <include src='/template/interActive.wxml' />
-
+<nav seat='50px' />
 <scroll-view scroll-y="true" class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}' bindscrolltolower='get_answer_array'>
 
   <view class="question-wrp">
     <view class="question-item">
       <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
       <view class="que-tag">
-        <text class="tag" wx:for="{{tag_array}}" wx:key="{{index}}">{{item}}</text>
+         <text class="tag" wx:for="{{tag_array}}" wx:key="{{index}}">{{item}}</text> 
       </view>
       <!--问题的标题 {{question_title}}-->
       <view class="que-title">

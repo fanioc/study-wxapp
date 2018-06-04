@@ -1,13 +1,10 @@
 <!--components/navigation/navigation.wxml-->
 
 <view class="wrapper">
-
   <view class='return' bindtap='Back'>
     <view class='arrow'></view>
      <!-- <view class='text'></view>  -->
   </view>
   <slot></slot>
 </view>
-<view wx:if="{{seat}}">
-<view style='height:60px;'></view>
-</view>
+<view style='height:{{seat}};'></view>

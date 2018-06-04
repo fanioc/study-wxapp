@@ -6,7 +6,7 @@ page{
   font-size: 14rpx;
   color: #000;
   background: #F0F4F3;
-  height: 1170rpx;
+  /* height: 1170rpx; */
 }
 .dynamic_container .feed-item{
   width: 690rpx;

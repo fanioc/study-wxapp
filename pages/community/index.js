@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    dynamics_refresh:0,
     currentTab: 0,//当前顶部切换组件的序号
     bannerList: [{ imgSrc: "debug0.png" }],
     on: true,
@@ -86,8 +86,8 @@ else
     
     if (this.data.currentTab == 0)//当currentTab为0时下拉刷新提示相应模块刷新数据
     {
-      
-      this.setData({ dynamics_refresh: !this.data.dynamics_refresh});
+      this.setData({ dynamics_refresh: ! this.data.dynamics_refresh});
+      console.log(this.data.dynamics_refresh)
     }
   else
     {

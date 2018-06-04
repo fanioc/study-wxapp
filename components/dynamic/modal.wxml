@@ -3,8 +3,8 @@
 <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed'>
 
   <block wx:for="{{feed}}" wx:key="{{index}}" data-feedIndex="{{index}}">
-  <text  wx:if='{{item.card_img&&0}}'>图片</text>
-    <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length}}</text>
+   <text  wx:if='{{item.card_img&&0}}'>图片</text> 
+    <!-- <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length}}</text> -->
     <!-- 动态模块0-->
     <view class="feed-item" wx:if="{{item.dynamic_type==1}}">
 
@@ -29,7 +29,7 @@
           <view>
             <!--//addtionRegion-->
 
-            <l_text content='{{item.question_describe}}' />
+             <l_text content='{{item.question_describe}}' /> 
           </view>
 
         </view>

@@ -4,7 +4,7 @@ page{
 
 .swiper-tab {
   padding: 10px 0px;
-  height: 30px;
+  /* height: 30px;  */
   line-height: 30px;
   background: #fff;
   display: flex;
@@ -107,10 +107,14 @@ green {
 }
 
 .search {
-  width: 735rpx;
-  height: 65rpx;
-  padding: 12.5rpx 0 12.5rpx 15rpx;
-  background: lightblue;
+  /* z-index: 100;
+  position: fixed;
+  
+    */
+      width: 100%;
+        height: 30px; 
+  padding: 10px 0 10px 8px;
+    background: lightblue;  
 }
 
 .search-left {
@@ -118,6 +122,17 @@ green {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.search-bottom{
+  z-index: 99;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
 }
 
 .search .search-left image {
@@ -146,10 +161,10 @@ green {
 }
 
 .footer_button {
-  z-index: 99999999;
+  /* z-index: 99999999; */
   position: fixed;
-  top: 93%;
-  opacity: 0.8;
+  bottom: 0px;
+  /* opacity: 0.8; */
 }
 
 /*/--------置底的按钮--------*/
@@ -166,8 +181,8 @@ text {
 .frame {
     background-color: #ffffff;
     border-radius: 5px;
-    box-shadow: 4px 1px 1px #cccccc;
-    margin: 8px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);
+    margin: 8px 15px 15px 15px;
     padding: 16px;
     position: relative;
 }

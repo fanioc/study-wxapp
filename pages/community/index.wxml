@@ -2,8 +2,8 @@
 <!-- 顶部切换 -->
 <include src='/template/interActive.wxml' />
 
-
-<view class="swiper-tab">
+<view class="swiper-tab" style='position:fixed;width:100%;'>
+ <view style='height:70px'></view> 
   <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
     解题帮
   </view>
@@ -29,21 +29,18 @@
 <!-- 内容部分 -->
 <!-- 动态圈板块-->
 <view id="dynamic" hidden="{{currentTab != 0}}">
-  <view class="search flex-wrp " style='background:#f85f48;'>
-
-    <view class="search-left flex-item">
-
-
+  <view class="search flex-wrp " style='background:#f85f48;position:fixed;width:100%;z-index:99;top:70px;' >
+    <view class="search-left flex-item" >
       <text class='button_text' catchtap='add_dynamic'> 写问题</text>
-
     </view>
-
   </view>
-  <dynamics refresh='{{dynamics_refresh}}' />
+
+
+  <dynamics refresh='{{dynamics_refresh}} ' style="position:absolute;top:118px;"/>
 </view>
 
 <!-- 排行榜板块-->
-<view id="rank" hidden="{{currentTab != 1}}">
+<view id="rank" hidden="{{currentTab != 1}}" style="position:absolute;top:90px;">
 
   <view class="tag a">
     积分TOP5

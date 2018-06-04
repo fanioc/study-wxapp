@@ -15,30 +15,57 @@ Page({
     var that = this;
 
     wx.chooseImage({//选择图片，上传成功后将获取地址插入markdown标记中
-      count: 9,
+      count: 1,
       success: function (res_cho) {
-
         //addtionRegion
         console.log(res_cho.tempFilePaths);
         that.setData({ upload_img: res_cho.tempFilePaths, button_prompt:'重选'});
-        
       }
     })
 
 
   },
   submit_question: function (e) {
+    wx.showToast({
+      title: '正在发表...',
+      icon: 'loading',
+    })
     var that=this;
     console.log(e.detail.value);
     //addtionRegion
-    const a=wx.uploadFile({
+    var a=wx.uploadFile({
       url: _API.uploadFile,
-
       filePath: that.data.upload_img[0],
       name: 'file',
       success: function (res){
-        console.log(res)
-      },
+        var image_url= JSON.parse(res.data).fileUrl
+        if(e.detail.value.type[0]==1)
+          var dd_type = 2
+        else var dd_type = 1
+
+        wx.request({
+          url: _API.publishDynamic,
+          data:{
+            session:wx.getStorageSync('session'),
+            title: e.detail.value.question_title,
+            img_url: image_url,
+            content: e.detail.value.question_describe,
+            type:dd_type,
+            sort: e.detail.value.sort
+          },
+          success:function(e){
+            wx.hideToast();
+            wx.switchTab({
+              url: '../index',
+              success: function(res) {},
+              fail: function(res) {},
+              complete: function(res) {},
+            })
+          }
+        })
+
+
+      }
     
     })
     console.log('发表成功',a);
@@ -47,11 +74,13 @@ Page({
       delta:1
     })*/
   },
+
   anonymous: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value.length);
     if (e.detail.value.length)
         this.setData({anonymous:true});
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

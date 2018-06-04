@@ -104,7 +104,7 @@ Page({
       card_img: question.card_img,
       question_title: question.question_title,
       question_describe: question.question_describe,
-      userID: question.userID 
+      userID: question.userID
     });
    
     if (question.userID == getApp().globalData.me.uid) //debugRegion
