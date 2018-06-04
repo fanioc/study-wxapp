@@ -4,6 +4,7 @@ var edit_content_value_temp='';//存放编辑文本的临时变量
 var init_mark='';//初始的标记
 var button_type=0;
 var _constant = getApp().globalData.CONSTANT;
+var _API = getApp().globalData.CONSTANT.API;
 Page({
 
   /**
@@ -172,16 +173,47 @@ Page({
   },
   edit_content_complete: function () {//完成编辑，上传文件
      //addtionRegion
-     wx.navigateBack({
-       delta:1
-     });
+     var that=this;
+    var question = getApp().globalData.current_question;
+   /* console.log('llllly', question);
+    this.setData({
+      card_img: question.card_img,
+      question_id: question.question_id,
+      question_title: question.question_title,
+      question_describe: question.question_describe,
+      userID: question.userID,
+
+    }); */
+    wx.request({
+      url: _API.AnswerDynamic,
+      data: {
+        session: wx.getStorageSync('session'),
+        dynamic_id: question.question_id,
+        content: that.data.edit_content_value,
+        type:1,//lly_improve
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data);//lly_improve
+        
+        _components.show_mToast('回答成功');//lly_improve
+                wx.navigateBack({
+                  delta: 1
+                });
+      },
+      fail: function (res) {
+        _components.show_mToast('网络错误');
+      },
+      complete: function (res) { },
+    })
+     
   },
   //----------------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+   
   },
 
   /**
