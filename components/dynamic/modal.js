@@ -9,20 +9,20 @@ Component({
   properties: {
 
     feed: Array, // 简化的定义方式,整个模块数据来源，用于wx::for渲染
-
+  
     refresh: { // 属性名,监视页面pulldown
       type: Boolean, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: false, // 属性初始值（可选），如果未指定则会根据类型选择一个
       observer: function (newVal, oldVal) {
         this.getFeed(0);
-        console.log(newVal, oldVal);
+        console.log('刷新了');
         
       } // 属性被改变时执行的函数（可选），也可以写成在methods段中定义的方法名字符串, 如：'_propertyChange'
     },
   },
 
   data: {
-    feed_length: null,//feed数组长度，getFeed()会自动设置
+    feed_length: '',//feed数组长度，getFeed()会自动设置
     hiddenToast: false, //控制提示刷新成功的toast
     toastContent: ''//toast 提示内容
   }, // 私有数据，可用于模版渲染
@@ -46,16 +46,22 @@ Component({
     {
       var that = this;
       //console.log(getCurrentPages()[0].is, _API.get_dynamic_array);
+      if(that.data.feed_length==1){
+        _components.show_mToast('没有更多了')
+        return;
+      }
+        
+
       wx.request({
         url: _API.getDynamicList,
         data: {
           session: wx.getStorageSync('session'),
-          // last_id: that.data.feed_length
+           last_id: that.data.feed_length
         },
         method: 'GET',
         success: function (res) {
           var getFeed, feed_Array = [];
-          console.log(getFeed);
+          console.log(res);
           getFeed = _util.errCode(res.data);
           if (mode) {
             feed_Array = that.data.feed.concat(getFeed);
@@ -67,7 +73,8 @@ Component({
             console.log('重置');
           }
           
-          that.setData({ feed: feed_Array, feed_length: feed_Array.length });
+          that.setData({ feed: feed_Array, feed_length: feed_Array[feed_Array.length - 1].question_id });
+          console.log('feed_length:', that.data.feed_length);
           return true;
         },
         fail: function (res) {

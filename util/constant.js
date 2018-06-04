@@ -43,7 +43,7 @@ const API = {
   // 获取一个问题的内容和回答列表
   getDynamicContent: URL.study + 'getDynamicContent',//($session, $dynamic_id)
 
-  // 查看问题的详细信息
+  // 查看回答的详细信息
   getDynamicAns: URL.study + 'getDynamicAns',//($session, $dynamic_id, $answer_id)
 
   // 删除问题

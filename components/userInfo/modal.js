@@ -50,8 +50,9 @@ Component({
           console.log(that.data.user_source_name, 'hah', that.data.userID);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {
-            //that.setData({ followed: data[0].followed });
-            //addtionRegion
+            that.setData({
+              followed: data.is_star});
+            //debugRegion
           }
         }
         else
@@ -98,10 +99,12 @@ Component({
     set_followed: function () { //获取信息，由+关注组件触发，关注当前用户
       var _THAT = this;
       wx.request({
-        url: _API.set_followed_user,
+        //   $star   star=1关注 0不关注
+        url: _API.setUserStar,
         data: {
           session: wx.getStorageSync('session'),
-          other_uid: _THAT.data.userID
+          other_uid: _THAT.data.userID,
+          star:!_THAT.data.followed,
         },
         method: 'GET',
         success: function (res) {

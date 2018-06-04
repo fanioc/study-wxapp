@@ -40,7 +40,8 @@
 
               <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
 
-
+<user userID='110' model='1'/>
+<user userID='108' model='2'/>
 
 
           

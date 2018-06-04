@@ -32,7 +32,7 @@
     </view>
     <view>
 
-      <textarea height='100px' class="singleItem" placeholder='请输入描述' name='question_describe'></textarea>
+      <textarea height='200px'  class="singleItem" placeholder='请输入描述' name='question_describe'></textarea>
 
     </view>
   </view>

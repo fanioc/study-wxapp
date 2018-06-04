@@ -1,5 +1,6 @@
 <mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
 <!-- 动态圈动态模块-->
+
 <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed'>
 
   <block wx:for="{{feed}}" wx:key="{{index}}" data-feedIndex="{{index}}">

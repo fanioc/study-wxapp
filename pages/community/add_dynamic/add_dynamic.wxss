@@ -1,12 +1,13 @@
 
+
 .anonymous_checkbox{
   margin-left: 78%;
 }
 .frame{
-padding-bottom: 7rpx;
+padding-bottom: 15px;
 }
 .singleItem{
-  height: 90rpx;
-   font-size: 35rpx;
-  margin-bottom: 1rpx;
+  height: 50 px;
+   font-size: 14px;
+  margin-bottom: 1px;
 }
