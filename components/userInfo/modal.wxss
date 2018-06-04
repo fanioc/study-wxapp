@@ -35,11 +35,12 @@
   /*position: absolute;*/
   display: inline-block;
   height: 40rpx;
+  width: 80rpx;
   line-height: 40rpx;
   vertical-align: middle;
-  margin: 0 0 0 15rpx;
   color: #a0acac;
   font-size: 26rpx;
+   margin: 0 0 0 15rpx;
 }
 
 
@@ -47,6 +48,9 @@
     margin-left: 340rpx;
     font-size: 26rpx;
     padding: 10rpx 15rpx;
+    position: relative;
+    top:10rpx;
+    right: 5rpx;
     border-radius: 6rpx;
     border-style:solid;
     border-width: 3rpx;

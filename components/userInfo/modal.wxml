@@ -10,7 +10,7 @@
                       
                    
                       <block wx:if="{{model==1}}">
-                        <text class='button_text button_text_on' wx:if="{{followed}}" catchtap='set_followed'>已关注</text>
+                        <text class='button_text button_text_on' wx:if="{{followed==1}}" catchtap='set_followed'>已关注</text>
                         <text class='button_text follow' wx:else catchtap='set_followed'>十 关注</text>
                          
                       </block>

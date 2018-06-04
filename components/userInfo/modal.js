@@ -1,23 +1,23 @@
 var _components = getApp().globalData.components;
 var _util = getApp().globalData.util;
-var _API = getApp().globalData.CONSTANT.API; 
+var _API = getApp().globalData.CONSTANT.API;
 var _PATH = getApp().globalData.CONSTANT.PATH;
 Component({
 
   behaviors: [],
 
   properties: {
-   inner: String, // 简化的定义方式,插入的内容
-   model:Number,
-   userID: String
+    inner: String, // 简化的定义方式,插入的内容
+    model: Number,
+    userID: String
   },
   data: {
-    user_head_img:'',//用户头像url
-    user_source_name:'',//用户昵称
-    show_modal:false,
-    followed: false,//判断是否关注已当前用户
+    user_head_img: '',//用户头像url
+    user_source_name: '',//用户昵称
+    show_modal: false,
+    followed: 0,//判断是否关注已当前用户
     invited: false,//判断是否已发送邀请请求
-    myself:false,//判断是否是用户自己
+    myself: false,//判断是否是用户自己
   }, // 私有数据，可用于模版渲染
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -25,11 +25,11 @@ Component({
     //--------
     var that = this;
     if (that.data.userID == getApp().globalData.me.uid)//如果是用户自己将model设置为0
-      {
-      that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName});
-        return true;
-      }
-    
+    {
+      that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName });
+      return true;
+    }
+
     wx.request({
       url: _API.getUserBasicInfo,
       data: {
@@ -38,20 +38,22 @@ Component({
       },
       method: 'GET',
       success: function (res) {
-      
+
         //console.log(getCurrentPages()[0].is, res.data);
-        var data=_util.errCode(res.data);
-        console.log(data, 'hahdata', that.data.userID );
+        var data = _util.errCode(res.data);
+        console.log(data, 'hahdata', that.data.userID);
         //console.log(getCurrentPages()[0].is, data);
-        if(data)
-        {
-         // console.log(getCurrentPages()[0].is,'line 42', );
+        if (data) {
+          // console.log(getCurrentPages()[0].is,'line 42', );
           that.setData({ user_head_img: data.avatarUrl, user_source_name: data.nickName });
           console.log(that.data.user_source_name, 'hah', that.data.userID);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {
+            // console.log('is_star', data.is_star);
             that.setData({
-              followed: data.is_star});
+              followed: data.is_star
+            });
+            // console.log('is_star', that.data.followed);
             //debugRegion
           }
         }
@@ -60,32 +62,29 @@ Component({
 
       },
       fail: function (res) {
-       
+
         _components.show_mToast('网络错误');
         that.set_default();
       },
       complete: function (res) { },
     })
     //------
-   },
+  },
   moved: function () { },
   detached: function () { },
 
   methods: {
 
     set_default: function () {//为从服务器获取用户信息时将其设置为匿名用户，无法进行任何按钮操作
-    var _THAT=this;
+      var _THAT = this;
       //console.log(getCurrentPages()[0].is, 'set_default', );
-      _THAT.setData({ user_head_img: _PATH.anonymous, user_source_name: '匿名用户',model:0 });
-    
+      _THAT.setData({ user_head_img: _PATH.anonymous, user_source_name: '匿名用户', model: 0 });
+
     },
-    nav_User_personalPage: function() { //转跳至用户个人信息页面
+    nav_User_personalPage: function () { //转跳至用户个人信息页面
       var data = false;
       //addtionRegion
-      //----debugdata----------
 
-      //----debugdata----------
-     // this.setData({ followed: data });
       console.log('nav_User_personalPage');
       return true;
     },
@@ -103,32 +102,32 @@ Component({
         url: _API.setUserStar,
         data: {
           session: wx.getStorageSync('session'),
-          other_uid: _THAT.data.userID,
-          star:!_THAT.data.followed,
+          bestar_uid: _THAT.data.userID,
+          star: _THAT.data.followed ? 0 : 1,
         },
         method: 'GET',
         success: function (res) {
-          
-          
-            if (_util.errCode(res.data))
 
-              _THAT.setData({ followed: true });
-          
-          return true;
+          var data = _util.errCode(res.data)
+          if (data) {
+            _THAT.setData({ followed: _THAT.data.followed ? 0 : 1 });
+           _components.show_mToast(data.errMsg)
+          }
+
         },
         fail: function (res) {
           _components.show_mToast('网络错误');
         },
         complete: function (res) { },
       })
-  
+
 
     },
 
     post_invited: function () { //向用户发送邀请
       var data;
       var _THAT = this;
-      //debugRegion
+      //addtionRegion
       //----debugdata----------
       wx.request({
         url: _API.post_invited,
@@ -139,9 +138,9 @@ Component({
         method: 'GET',
         success: function (res) {
           //console.log(res);
-          if(_util.errCode(res.data))
-          _THAT.setData({ invited: true });//lly_improve
-          return true; 
+          if (_util.errCode(res.data))
+            _THAT.setData({ invited: true });//lly_improve
+          return true;
         },
         fail: function (res) {
           _components.show_mToast('网络错误');
@@ -149,24 +148,24 @@ Component({
         complete: function (res) { },
       })
       //----debugdata----------
-    
+
     },
     modal_leave_message: function () { //用户留言窗口
-      var _THAT=this;
+      var _THAT = this;
       _components.show_modal(_THAT, 'leave_message', this.post_leave_message, '留言ing', '发送', false);
-      
-      
+
+
       return true;
     },
     modal_reply_message: function () { //用户回复留言窗口,暂停使用
-    //  var _THAT = this;
+      //  var _THAT = this;
       //_components.show_modal(_THAT, 'leave_message', this.post_leave_message, '回复ing', '发送', false);
-      
+
       return true;
     },
     post_leave_message: function (formdata) { //向服务器发送用户留言，或者回复内容
       var _THAT = this;
-      //debugRegion
+       //addtionRegion
       //----debugdata----------
       wx.request({
         url: _API.post_leave_message,
@@ -206,12 +205,12 @@ Component({
 
       //console.log(e);
       _components.show_mToast('完成评价');
-     
+
       return true;
     },
     modal_answer_question: function () { //用户回答窗口
-  
-      wx.navigateTo({ url:'/pages/markdown_editor/index'});
+
+      wx.navigateTo({ url: '/pages/markdown_editor/index' });
       return true;
     },
     //--------------------------------
