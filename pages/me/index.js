@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-      sss:''
+      sss:'',
+      userInfo:''
   },
 
   toBindSys:function(){
