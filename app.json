@@ -12,7 +12,8 @@
     "pages/community/add_dynamic/add_dynamic",
     "pages/me/score/score",
     "pages/personal_info/personal_info",
-    "pages/order-study/order_operate/operate"
+    "pages/order-study/order_operate/operate",
+    "pages/community/dynamic/answer_detail/answer_detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

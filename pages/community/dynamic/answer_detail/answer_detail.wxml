@@ -1,0 +1,33 @@
+<nav seat='60px;'/>
+<include src='/template/interActive.wxml' />
+
+<view wx:if="{{data_success}}">
+
+<view class='middle_content'>
+  <user model="3" userID='{{answer_array.answer}}' />
+
+  <view class='hr'>
+    <view class="que-title">
+      {{question_title}}
+    </view>
+    ——————————
+  </view>
+  <towxml model='2' content='{{answer_array.content}}' />
+ 
+</view>
+<view class="dynamic_container">
+  <view class="search flex-wrp footer_button">
+
+    <view class="search-left flex-item">
+
+      <image src="/image/back.png" catchtap='hidden_answer_detail'></image>
+
+
+      <text class='button_text button_text_on' wx:if="{{agree==1}}" catchtap='set_question_attitude'>取消赞同</text>
+      <text class='button_text' catchtap='set_question_attitude' wx:else> 赞同</text>
+
+    </view>
+
+  </view>
+</view>
+</view>

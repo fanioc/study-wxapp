@@ -14,7 +14,7 @@ Page({
   },
   edit_content_imgURL: function (e) {
     var that = this;
-
+    that.setData({ upload_img:[]});
     wx.chooseImage({ //选择图片，上传成功后将获取地址插入markdown标记中
       count: 1,
       success: function (res_cho) {
@@ -22,7 +22,7 @@ Page({
         console.log(res_cho.tempFilePaths);
         that.setData({
           upload_img: res_cho.tempFilePaths,
-          button_prompt: '重选'
+          button_prompt: '重置'
         });
       }
     })
@@ -30,10 +30,12 @@ Page({
 
   },
   submit_question: function (e) {
-    wx.showToast({
-      title: '正在发表...',
-      icon: 'loading',
-    })
+    if (e.detail.value.question_title.length < 3 || e.detail.value.sort.length==0)
+    {
+      _components.show_mToast('标题大于三个字，类别不能为空');
+      return false;
+    }
+    
     var that = this;
     console.log(e.detail.value);
     //addtionRegion

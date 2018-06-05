@@ -103,6 +103,11 @@ page{
 }
 
 
+.publisher{
+  margin-left:11px;
+}
+
+
 
 
 
