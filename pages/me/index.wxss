@@ -44,6 +44,7 @@ page{
 }
 
 .study {
+  height: 80px;
   background-color: #fff;
   border-radius: 10px;
   padding: 10px 0 10px;
@@ -55,15 +56,18 @@ page{
 }
 
 .study-list{
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100px;
+  align-items: center; */
+  text-align: center;
+  font-size: 14px;
+  width: 70px;
   margin: auto;
 }
 
 .icon{
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
+  margin: auto;
   width: 50px;
   height: 50px;
 }
@@ -77,4 +81,8 @@ page{
   background-color: #fff;
   margin-top: 5px;
   padding: 10px;
+}
+
+zan-cell:active{
+  background-color: #bebebe;
 }
