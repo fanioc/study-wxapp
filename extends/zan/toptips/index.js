@@ -64,7 +64,7 @@ function Toptips() {
 
   options = Object.assign(defaultOptions, parseParam(options));
 
-  var $toptips = ctx.selectComponent(options.selector);
+  var $toptips = this.selectComponent(options.selector);
   delete options.selector;
 
   $toptips.setData(Object.assign({}, options));

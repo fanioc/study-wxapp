@@ -56,6 +56,30 @@ page{
   /* box-sizing: border-box; */
   background: #cce6ff;
   height: 97rpx;
+  /* width: 95%; */
+}
+
+.week-no-class{
+    /* box-sizing: border-box; */
+   /* background: #cce6ff;  */
+   color:#888;
+  height: 97rpx;
+  width: 96%;
+}
+
+.week-no-class:active{
+    /* box-sizing: border-box; */
+   background-color: #f3f3f3; 
+  height: 97rpx;
+  width: 100%;
+}
+
+
+.week-no-class1{
+    /* box-sizing: border-box; */
+   background-color: #f3f3f3; 
+  height: 97rpx;
+  width: 95%;
 }
 
 .week-table-2 {

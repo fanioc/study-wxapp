@@ -1,63 +1,46 @@
+<view>
+  <view style='background-color:#22b36e; padding:40px 0 10px 0;color:#fff; font-size: 20px;font-weight:bold; text-align:center;'>第{{currentWeek}}周</view>
 
-<view style=''>
+  <!-- 列数 -->
+  <view class='week'>
+    <!-- 时间列 -->
+    <view style='margin:100rpx 6rpx 0 6rpx;'>
+      <!-- 每节课的时间 -->
+      <view wx:for="{{config.tableHead.time}}" wx:key="df" class='week-time'>
+        <view style='font-size:30rpx;color:#000;'>{{index+1}}</view>
+        <view style='font-size:20rpx;color:#888;'>{{item}}</view>
+      </view>
+    </view>
 
-<!-- <include src='/template/interActive.wxml' /> -->
+    <!-- 周几列 -->
+    <view wx:for="{{config.tableHead.week}}" wx:key="df" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
 
-
-
-  <!-- <view class="wrapper">
-		<view class="container">
-		</view>
-		
-		<ul class="bg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-      <li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</view>  -->
-
-  <!-- 课表显示页面 -->
-  <!-- <button open-type="getUserInfo">授权</button> -->
-  <view style='background-color:#22b36e; padding:40px 0 10px 0;color:#fff; font-size: 20px;font-weight:bold; text-align:center;'>第{{getTerm.week}}周</view>
-
-  <view style=''>
-    <view class='week'>
-      <view style='margin:100rpx 6rpx 0 6rpx;'>
-        <!-- 每节课的时间 -->
-        <view wx:for="{{config.tableHead.time}}" wx:key="df" class='week-time'>
-          <view style='font-size:30rpx;color:#000;'>{{index+1}}</view>
-          <view style='font-size:20rpx;color:#888;'>{{item}}</view>
-        </view>
+      <!-- 周xx xx日 -->
+      <view class='week-title'>
+        <view>{{weekName}}</view>
+        <view class='week-title-little'>{{config.tableHead.date[weekNum]}}日</view>
       </view>
 
-      <view wx:for="{{config.tableHead.week}}" wx:key="df" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
-        <!-- 周几-->
-        <view class='week-title'>
-          <view style=''>{{weekName}}</view>
-          <view style='' class='week-title-little'>{{config.tableHead.date[weekNum]}}日</view>
-        </view>
+      <!-- 定位课表  -->
+      <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum">
 
-        <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum" id='{{weekNum+1}}{{classNum+1}}'>
-          <view wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" style='position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*100}}rpx;' class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'>
-            <view>
-              <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*10+classNum+1].class_name}}</text>@{{currentCourse[(weekNum+1)*10+classNum+1].location}}
-            </view>
+        <!-- 课表信息  -->
+        <view id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*10+classNum+1]}}" 
+        style='z-index:10;position:absolute;top:{{(currentCourse[(weekNum+1)*10+classNum+1].time[1]-1)*100}}rpx;' 
+        class='week-table-font week-table-{{currentCourse[(weekNum+1)*10+classNum+1].lengthTime}}'
+          bindtap='selectClass' bindlongpress='longpressClass'>
+
+          <view>
+            <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*10+classNum+1].class_name}}</text>@{{currentCourse[(weekNum+1)*10+classNum+1].location}}
           </view>
         </view>
+
+        <view id='{{weekNum+1}}{{classNum+1}}' wx:else style=' position:absolute;top:{{classNum*100}}rpx;' class='week-no-class{{selectNoclass[(weekNum+1)*10+classNum+1]}}' bindtap='selectNonClass' bindlongpress='longpressNonClass'></view>
 
       </view>
 
     </view>
+
   </view>
+
 </view>

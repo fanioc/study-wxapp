@@ -56,66 +56,21 @@ function PullDownRefresh(callback) //发生下拉动作执行，执行callback�
   }
 }
 
+function getWeekList(){
+  const dateOfToday = Date.now()
+  const dayOfToday = (new Date().getDay() + 7 - 1) % 7
+  const daysOfThisWeek = Array.from(new Array(7))
+    .map((_, i) => {
+      const date = new Date(dateOfToday + (i - dayOfToday) * 1000 * 60 * 60 * 24)
+      return date.getDate()
+    })
+  return daysOfThisWeek
+}
+
 //设置session到储存空间
 function setSeesion(session) {
   wx.setStorageSync('session', session)
 }
-
-//接口函数
-
-
-// errCode={
-// 0 成功
-
-// 1000 网络错误
-// 1001 Mobile登入网页无法访问
-// 1002 Mobile课表页面无法访问
-// 1003 Mobile课表子页面无法访问
-// 1004 Mobile成绩页面无法访问
-// 1005 Mobile个人信息页面无法访问
-
-// 2000 与微信后台相关
-// 2100 提供给微信后台信息错误
-// 2101 服务器session_key获取错误
-// 2102 服务器解密vi获取错误
-// 2103 服务器解密错误
-// 2104 appid与服务器校验出错
-
-// 2500 + 微信服务器提示错误errcode
-
-
-// 3000 与服务器数据相关
-// 3100 教务信息错误
-// 3101 数据库没有用户的个人信息，请求更新
-// 3102 session错误
-// 3103 用户没有绑定
-
-
-// 3200 提供给后台服务器信息错误
-// 3201 请求的数据非微信提供
-// 3202 没有存在的cookies值，刷新验证码重试
-// 3300 教务登入错误
-
-// 32 + 位数，获取验证码错误
-
-// 3400 上传错误
-// 3401 上传出错
-// 3402 文件过大
-// 3403 有同名文件
-
-
-// 3500 社区模块
-// 3501 发表数据库写入错误
-// 3502 删除回答失败，无删除权限
-// 3503 更改赞同失败，无赞同动态
-// 3504 获取动态列表错误
-// 3505 问题获取失败，可能已被删除
-// 3506 获取问题列表错误
-// 3507 获取问题回答错误
-// 3508 删除动态失败，无删除权限
-// }
-
-
 
 
 //核心函数，处理服务器发送来的errocode
@@ -142,5 +97,6 @@ module.exports = {
   toFreeSchel:toFreeSchel,
   setTheme: setTheme,
   PullDownRefresh: PullDownRefresh,
-  errCode: errorCode
+  errCode: errorCode,
+  getWeekList: getWeekList
 }

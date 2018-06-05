@@ -1,13 +1,11 @@
-// pages/me/score/score.js
-var CONSTANT = getApp().globalData.CONSTANT;
-
+// pages/me/personal-page/personal.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    score:{}
+  
   },
 
   /**
@@ -21,42 +19,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getScore()
-  },
   
-  getScore:function(){
-    var that = this;
-    wx.request({
-      url: CONSTANT.API.getUserScore,
-      data: {
-        session: wx.getStorageSync('session'),
-        xn: '2017-2018',
-        xq: '1'
-      },
-      success: function (res) {
-        if (res.data.errCode > 0){
-          that.updateScore();
-          return;
-        }
-          that.setData({
-            score: res.data.data
-          })
-      }
-
-    })
-  },
-
-  updateScore:function(){
-    var that = this;
-    wx.request({
-      url: CONSTANT.API.updateUserEduScore,
-      data: {
-        session: wx.getStorageSync('session')
-      },
-      success: function () {
-        that.getScore()
-      }
-    })
   },
 
   /**

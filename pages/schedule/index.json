@@ -6,7 +6,10 @@
     "mtoast": "/components/toast/middleToast",
     "zan-button": "/components/btn/index",
     "zan-button-group": "/components/btn-group/index",
-    "nav": "/components/navigation/navigation"
+    "nav": "/components/navigation/navigation",
+
+      "zan-toptips": "/extends/zan/toptips/index"
+
   },
     "backgroundTextStyle":"light",
     "navigationBarTextStyle":"white",
