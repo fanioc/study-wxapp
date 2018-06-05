@@ -24,7 +24,8 @@ Component({
   data: {
     feed_length: '',//feed数组长度，getFeed()会自动设置
     hiddenToast: false, //控制提示刷新成功的toast
-    toastContent: ''//toast 提示内容
+    toastContent: '',//toast 提示内容
+    data_success:false,//只有当网络请求成功时才会设置为真然后对其渲染
   }, // 私有数据，可用于模版渲染
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -50,16 +51,22 @@ Component({
         _components.show_mToast('没有更多了')
         return;
       }
-        
-
+      //---
+      wx.showLoading({
+        title: '加载动态中',
+      })
+      //---
       wx.request({
         url: _API.getDynamicList,
         data: {
           session: wx.getStorageSync('session'),
-           last_id: that.data.feed_length
+          last_id: that.data.feed_length
         },
         method: 'GET',
         success: function (res) {
+          //----网络请求成功渲染当前页面
+          
+          //----
           var getFeed, feed_Array = [];
           console.log(res);
           getFeed = _util.errCode(res.data);
@@ -69,11 +76,10 @@ Component({
           }
           else {
             feed_Array = getFeed;
-           that.setData({ hiddenToast: true, toastContent: '刷新成功' });
             console.log('重置');
           }
           
-          that.setData({ feed: feed_Array, feed_length: feed_Array[feed_Array.length - 1].question_id });
+          that.setData({ data_success: true, feed: feed_Array, feed_length: feed_Array[feed_Array.length - 1].question_id });
           console.log('feed_length:', that.data.feed_length);
           return true;
         },
@@ -81,7 +87,9 @@ Component({
           _components.show_mToast('网络错误');
           return false;
         },
-        complete: function (res) { },
+        complete: function (res) {
+          wx.hideLoading();
+         },
       })
       //debugRegion
 
@@ -94,13 +102,13 @@ Component({
       var _THAT = this;
       console.log('问题的index:',e.currentTarget.dataset.feedindex);
       var feedIndex = e.currentTarget.dataset.feedindex;
-      //将当前问题信息存入全局变量中，
-      getApp().globalData.current_question = _THAT.data.feed[feedIndex];
-      //console.log()
+      //将当前问题问题传递给动态页面，
+      
+      var question_id = _THAT.data.feed[feedIndex].question_id;
       //转跳至动态详情页面
       
       wx.navigateTo({
-        url: "/pages/community/dynamic/dynamic"
+        url: "/pages/community/dynamic/dynamic?question_id="+question_id
       });
       //debugRegion
     },

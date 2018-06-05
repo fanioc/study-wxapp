@@ -1,8 +1,8 @@
 
 
-<view class='user_contain' >
-            <view class="feed-source" catchtap='nav_User_personalPage' data-uid="{{item.userID}}" >
-                <a class="a-feed-source">
+<view class='user_contain' catchtap='nav_User_personalPage' data-uid="{{item.userID}}" >
+            
+               
                     <view class="avatar" >
                         <image src="{{user_head_img}}"  class='img-feed-source' />
                         <text class='text-feed-source' style='margin-right:40rpx;'>{{user_source_name}} </text>
@@ -10,7 +10,7 @@
                       
                    
                       <block wx:if="{{model==1}}">
-                        <text class='button_text button_text_on' wx:if="{{followed==1}}" catchtap='set_followed'>已关注</text>
+                        <text class='button_text button_text_on' wx:if="{{followed==1}}" catchtap='set_followed'>取消关注</text>
                         <text class='button_text follow' wx:else catchtap='set_followed'>十 关注</text>
                          
                       </block>
@@ -38,9 +38,9 @@
                        <text class='button_text follow' catchtap='modal_answer_question'>十 回答</text>
                          
                       </block>
-                </a> 
                 
-            </view>
+                
+        
             
             
 </view>

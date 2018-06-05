@@ -23,6 +23,8 @@ Component({
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () {
     //--------
+    console.log('用户id为空', this.data.userID)
+
     var that = this;
     if (that.data.userID == getApp().globalData.me.uid)//如果是用户自己将model设置为0
     {
@@ -41,12 +43,12 @@ Component({
 
         //console.log(getCurrentPages()[0].is, res.data);
         var data = _util.errCode(res.data);
-        console.log(data, 'hahdata', that.data.userID);
+        //console.log(data, 'hahdata', that.data.userID);
         //console.log(getCurrentPages()[0].is, data);
         if (data) {
           // console.log(getCurrentPages()[0].is,'line 42', );
           that.setData({ user_head_img: data.avatarUrl, user_source_name: data.nickName });
-          console.log(that.data.user_source_name, 'hah', that.data.userID);
+          console.log(that.data.user_source_name, '用户名', that.data.userID);
           if (that.data.model == 1)//获取信息，判断是否关注已当前用户
           {
             // console.log('is_star', data.is_star);
@@ -209,7 +211,7 @@ Component({
       return true;
     },
     modal_answer_question: function () { //用户回答窗口
-
+      
       wx.navigateTo({ url: '/pages/markdown_editor/index' });
       return true;
     },

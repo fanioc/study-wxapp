@@ -5,6 +5,7 @@ var init_mark='';//初始的标记
 var button_type=0;
 var _constant = getApp().globalData.CONSTANT;
 var _API = getApp().globalData.CONSTANT.API;
+var _util = getApp().globalData.util;
 Page({
 
   /**
@@ -130,18 +131,23 @@ Page({
   }, 
   edit_content_imgURL: function (e) {
       var that=this;
-      
+      var image_url;
       wx.chooseImage({//选择图片，上传成功后将获取地址插入markdown标记中
         count:1,
         success: function (res_cho) { 
-
-          //addtionRegion
+        
           console.log(res_cho.tempFilePaths[0]);
 
           var  uploadTask=wx.uploadFile({
-            url: _constant.URL.debug,
+            url: _API.uploadFile,
             filePath: res_cho.tempFilePaths[0],
-            name: 'img'
+            name: 'file',
+            success: function (res) {
+              
+              image_url = JSON.parse(res.data).fileUrl;
+              that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n![此次为插入的图片](" + image_url + ")\n", edit_content_focus: true });
+              init_mark = '';
+            }
           });
           //----------------------
           that.setData({ edit_content_img_insert: true });
@@ -154,12 +160,9 @@ Page({
               
               that.setData({ edit_content_img_insert: false });
               _components.show_mToast('图片上传成功');
-              //addtionRegion-------
-              var imgURL = res_cho.tempFilePaths[0];
-              //--------------------
+      
+             
               
-              that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n![此次为插入的图片](" + imgURL +")\n", edit_content_focus: true });
-                init_mark = '';
               
             }
           })
@@ -174,32 +177,30 @@ Page({
   edit_content_complete: function () {//完成编辑，上传文件
      //addtionRegion
      var that=this;
+     
     var question = getApp().globalData.current_question;
-   /* console.log('llllly', question);
-    this.setData({
-      card_img: question.card_img,
-      question_id: question.question_id,
-      question_title: question.question_title,
-      question_describe: question.question_describe,
-      userID: question.userID,
-
-    }); */
+    var pages = getCurrentPages();
+    var dy_id = pages[pages.length - 2].data.dynamic.dynamic_id;//lly_improve
     wx.request({
-      url: _API.AnswerDynamic,
+      url: _API.AnswerDynamic,//($session, $dynamic_id, $content, $type)
       data: {
         session: wx.getStorageSync('session'),
-        dynamic_id: question.question_id,
+        dynamic_id: dy_id,
         content: that.data.edit_content_value,
         type:1,//lly_improve
       },
       method: 'GET',
       success: function (res) {
         console.log(res.data);//lly_improve
-        
-        _components.show_mToast('回答成功');//lly_improve
-                wx.navigateBack({
-                  delta: 1
-                });
+          var data=_util.errCode(res.data);
+          if(data)
+          {
+            _components.show_mToast(data.errMsg);//lly_improve
+            wx.navigateBack({
+              delta: 1
+            });
+          }
+       
       },
       fail: function (res) {
         _components.show_mToast('网络错误');
@@ -213,7 +214,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
   },
 
   /**

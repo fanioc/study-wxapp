@@ -1,97 +1,61 @@
 <include src='/template/interActive.wxml' />
 <nav seat='50px' />
-<scroll-view scroll-y="true" class="dynamic_container question_container" hidden='{{!hidden_answer_detail}}' bindscrolltolower='get_answer_array'>
+<view wx:if="data_success">
+  <scroll-view scroll-y="true" class="dynamic_container question_container" bindscrolltolower='get_answer_array'>
 
-  <view class="question-wrp">
-    <view class="question-item">
-      <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
-      <view class="que-tag">
-         <text class="tag" wx:for="{{tag_array}}" wx:key="{{index}}">{{item}}</text> 
-      </view>
-      <!--问题的标题 {{question_title}}-->
-      <view class="que-title">
-        {{question_title}}
-      </view>
+    <view class="question-wrp">
+      <view class="question-item">
+        <!--问题的分类标签，最多只显示三个，wx:for tag_array-->
+        <view class="que-tag">
+          <text class="tag" >{{dynamic.sort}}</text>
+        </view>
+        <!--问题的标题 {{question_title}}-->
+        <view class="que-title">
+          {{dynamic.title}}
+        </view>
 
-      <!--问题的描述内容 {{question_describe}}-->
+        <!--问题的描述内容 {{question_describe}}-->
 
-      <view class="que-content">
-        {{question_describe}}
+        <view class="que-content">
+          {{dynamic.content}}
+        </view>
+        <!--问题的图片 {{card_img}}-->
+        <img_pre imgURL='{{dynamic.img_url}}' wx:if="{{dynamic.img_url}}" />
+        <user model='6' userID='{{dynamic.publish_uid}}' class='publisher' wx:if="{{dynamic.publish_uid}}"/>
+
       </view>
-      <!--问题的图片 {{card_img}}-->
-      <img_pre imgURL='{{card_img}}' wx:if="{{card_img}}" />
-          <user model='6' userID='{{user}}' />
 
     </view>
 
-  </view>
-
-  <view class="answer-feed">
-    <view bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
-      <user model='1' userID='{{item.userID}}' />
-      <view class="feed-content">
-        <view class="answer-body">
-          <view class="answer-txt ">
+    <view class="answer-feed">
+      <view bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
+        <user model='1' userID='{{item.answer}}' />
+        <view class="feed-content">
+          <view class="answer-body">
+            <view class="answer-txt ">
 
 
-            <l_text content='{{item.content}}' />
-          </view>
-
-          <view class="answer-actions">
-            <view class="like dot">
-              <a>{{item.agree_num}} 赞同 </a>
+              <l_text content='{{item.content}}' />
             </view>
 
-            <view class="time">
-              <a>{{item.time}}</a>
-            </view>
+            <view class="answer-actions">
+              <view class="like dot">
+                <a>{{item.agree_num}} 赞同 </a>
+              </view>
 
+              <view class="time">
+                <a>{{item.time}}</a>
+              </view>
+
+            </view>
           </view>
         </view>
       </view>
-    </view>
-
-  </view>
-
-
-
-</scroll-view>
-<view wx:if='{{!hidden_answer_detail}}'>
-
-
-  <view class='middle_content'>
-    <user model="3" userID='{{current_answer_userID}}' />
-
-    <view class='hr'>
-      <view class="que-title">
-        {{question_title}}
-      </view>
-      ——————————
-    </view>
-    <towxml model='2' content='{{current_answer_detail}}' />
-  </view>
-  <view class="dynamic_container">
-    <view class="search flex-wrp footer_button">
-
-      <view class="search-left flex-item">
-
-        <image src="/image/back.png" catchtap='hidden_answer_detail'></image>
-        <block wx:if="{{my_question}}">
-          <text class='button_text button_text_on' wx:if="{{question_attitude}}">已采纳</text>
-          <text class='button_text' catchtap='set_question_attitude' wx:else> 采纳</text>
-
-        </block>
-        <block wx:else>
-          <text class='button_text button_text_on' wx:if="{{question_attitude}}">已赞同</text>
-          <text class='button_text' catchtap='set_question_attitude' wx:else> 赞同</text>
-
-        </block>
-      </view>
 
     </view>
-  </view>
 
 
 
+  </scroll-view>
 
 </view>

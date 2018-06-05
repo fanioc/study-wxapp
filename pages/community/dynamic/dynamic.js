@@ -1,117 +1,108 @@
 // pages/community/dynamic/dynamic.js
 var components = getApp().globalData.components;
+var _API = getApp().globalData.CONSTANT.API;
+var _util = getApp().globalData.util;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tag_array: [],//分类标签用于for渲染，onload()
-    user:'110',
+  
     answer_array: [],//回答问题的列表，用于for渲染
-    hidden_answer_detail:true,//是否隐藏回答详情页面
-    
-    my_question:false,//是否是用户本人的问题,onload时get
-    //见modal answer question
-    question_attitude: false,//对问题的态度是赞同采纳或者不赞同采纳，需要在modal_answer_detail开始时get
-    current_answer_userID:'',
-    current_answer_detail:'',//回答问题的列表下的for渲染的索引,当前需要展示的给towxml的answer_array元素
+    dynamic:[],//当前问题所需数据，用于wx：for
+    data_success: false,//只有当网络请求成功时才会设置为真然后对其渲染
   },
 //-----------自定义函数
-  /**
-   * 获取问题的分类标签用于for渲染
-   */
-  get_tag_array: function () {
-      var data=[];
-      //debugRegion
-      //----debugdata----------
-      data = [getApp().globalData.current_question.dynamic_sort];
-      //----debugdata----------
-      var len=data.length;
-      if(len.length>3)//确保只显示三个tag
-        {
-          len=3;
-        }
 
-      this.setData({ tag_array: data.slice(0,len)});
-  },
     /**
    * 获取回答的列表 追加的向数组添加数据
    */
-  get_answer_array: function (model=1) {
+  get_answer_array: function (model=1,data_array) {
     var data = [];
-    var getArray=[];
-    //addtionRegion
-    //----debugdata----------
-    getArray = [{
-      userID:110,
-      content:"难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是读量太少，那确实没有买kindle的必要。要",
-      agree:369,
-      answer_time:2017-1-1
-    }];
-    //----debugdata----------
-
+    //debugRegion
     if (model) {
-      data = this.data.answer_array.concat(getArray);
-      
-      console.log(getCurrentPages()[0].is,'get_answer_array 追加' );
+      data = this.data.answer_array.concat(data_array);
+      console.log('get_answer_array 追加' );
     }
     else {
-      data = getArray;
+      data = data_array;
     }
     this.setData({ answer_array: data });
   },
+  //--------
+
     /**
-   * 显示回答详情
+   * 转跳至回答详情页面
    */
   modal_answer_detail: function (e) {
-    //console.log(e.currentTarget.dataset.index);
-    var current_answer = this.data.answer_array[e.currentTarget.dataset.index];
-    var get_question_attitude;//获取用户对问题的态度
-    //addtionRegion
-     get_question_attitude=false;
-     this.setData({
-       hidden_answer_detail: false, question_attitude: get_question_attitude, current_answer_userID: current_answer.userID, 
-       current_answer_detail: current_answer.content });
-  },
-  /**
-*隐藏回答详情
-*/
-  hidden_answer_detail: function () {
-    
-    this.setData({ hidden_answer_detail: true});
-    //console.log('hah');
-  },
-  /**
-* 赞同或采纳此问题
-*/
-  set_question_attitude: function () {
+    var that=this;
 
-    this.setData({ question_attitude: true });
-    //addtionRegion
-   
+    var current_answer_id = this.data.answer_array[e.currentTarget.dataset.index].answer_id
+    wx.navigateTo({
+      url: "/pages/community/dynamic/answer_detail/answer_detail?dynamic_id=" + that.data.dynamic.dynamic_id + "&answer_id=" + current_answer_id + "&question_title=" + that.data.dynamic.title ,
+    })
   },
+
+
 //--------------------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(getApp().globalData.current_question); 
-    console.log('llllly',getCurrentPages());
-    var question = getApp().globalData.current_question;
-    console.log('llllly', question);
-    this.setData({ 
-      card_img: question.card_img,
-      question_title: question.question_title,
-      question_describe: question.question_describe,
-      userID: question.userID
-    });
-    console.log('llllly', this.data.userID);
-    if (question.userID == getApp().globalData.me.uid) //debugRegion
-      this.setData({ my_question: true });
+    console.log('dynamic.js onload参数',options.question_id)
+    console.log(getApp().globalData.current_question);
+    //---------
+    var that=this;
+    //---
+    wx.showLoading({
+      title: '加载详情中',
+    })
+    //---
+    wx.request({
+      url: _API.getDynamicContent,
+      data: {
+        session: wx.getStorageSync('session'),
+        dynamic_id: options.question_id
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log('_API.getDynamicContent',res.data);
+        //----
+              var data=_util.errCode(res.data)
+        if(data)//获取成功
+        {
+          
+          that.setData({ dynamic: data.dynamic, data_success: true});
+          //--------传送回答列表数组
+          var typedata = typeof data.ans_list;
+          if(typedata=='object')
+          {
+            console.log('typedata', typedata, data.ans_list);
+            that.get_answer_array(0, data.ans_list);
+
+          }
+          //if(data.ans_list)
+              console.log('dynamic',that.data.dynamic)
+        }
+       
+      },
+      fail: function (res) {
+        _components.show_mToast('网络错误');
+        return false;
+      },
+      complete: function (res) {
+        wx.hideLoading();
+      },
+    })
+    //------ 
+   
     
-    this.get_tag_array();
-    this.get_answer_array();
+
+ 
+    
+    
+    //this.get_answer_array();
 
   },
 
