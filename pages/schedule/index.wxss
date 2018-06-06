@@ -52,12 +52,7 @@ page{
   border-radius: 5px;
 }
 
-.week-table-1 {
-  /* box-sizing: border-box; */
-  background: #cce6ff;
-  height: 97rpx;
-  /* width: 95%; */
-}
+
 
 .week-no-class{
     /* box-sizing: border-box; */
@@ -77,29 +72,33 @@ page{
 
 .week-no-class1{
     /* box-sizing: border-box; */
-   background-color: #f3f3f3; 
+   background-color: #f3f3f3;
   height: 97rpx;
   width: 95%;
 }
 
+.week-table-1 {
+  /* box-sizing: border-box; */
+  background: #cce6ff;
+  height: 97rpx;
+  /* width: 95%; */
+}
+
 .week-table-2 {
   /* box-sizing: border-box; */
-  background: #ffbf80;
+   background: #ffbf80; 
   height: 197rpx;
 }
 
 .week-table-3 {
-  background: #80bfff;
+  background: #ffbf80;
   height: 297rpx;
 }
 
 .week-table-4 {
-  background: #80bfff;
+  background: #ffbf80;
   height: 397rpx;
 }
-
-
-
 
 /* CSS背景实现  */
 .wrapper {

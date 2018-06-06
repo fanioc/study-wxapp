@@ -41,7 +41,7 @@
 </view>
 </block>
 <block wx:else>
-<towxml model='2' content='{{edit_content_value}}'  />
+<towxml model='2' style='padding-bottom:20px;' content='{{edit_content_value}}'  />
 <view class="dynamic_container">
     <view class="search flex-wrp footer_button">
       

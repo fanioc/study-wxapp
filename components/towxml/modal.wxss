@@ -4,3 +4,7 @@
 
 /**主题配色（深色样式）**/
 @import '/towxml/style/theme/dark.wxss';
+
+.contain{
+  padding-bottom: 20rpx;
+}

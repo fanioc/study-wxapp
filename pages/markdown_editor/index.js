@@ -52,7 +52,6 @@ Page({
             init_mark = '*';
           }
 
-
         }
       break;
       case '3':
