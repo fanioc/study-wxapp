@@ -17,16 +17,18 @@ page{
 }
 
 .userinfo {
+  height: 200px;
   /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);  */
-  padding:60px 0 100px 0;
-  background-image: url('https://study.xietan.xin/static/upLoadFile/000.jpg');
+  padding:80px 0 80px 0;
+   background-image: url('https://study.xietan.xin/static/bg_user_0.jpg');
+   /* background-size:100% 100%; */
+  /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
   display: flex;
   flex-direction: column;
   color: #fff;
 }
 
 .info {
-  
   margin: auto;
   justify-content: center;
   flex-direction: column;

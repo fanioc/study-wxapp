@@ -1,1 +1,26 @@
-/* pages/personal_info/personal_info.wxss */
+
+@import "/template/back-ground/1.wxss";
+@import "/template/back-ground/2.wxss";
+
+.view-box {
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.userinfo{
+  
+  position: relative;
+  height: 200px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

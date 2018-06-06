@@ -3,7 +3,9 @@
 <import src="/template/back-ground/1.wxml" />
 <template is="back-ground-1" />
 
- <navigation></navigation> 
+<navigation color="1"></navigation>
+
+
 <view class='view-box'>
 
 <view class='list' wx:for="{{score}}">

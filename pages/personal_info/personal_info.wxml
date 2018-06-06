@@ -1,3 +1,36 @@
-<!--pages/personal_info/personal_info.wxml-->
-            <include src='/template/interActive.wxml' />
->
+<import src="/template/back-ground/2.wxml" />
+<import src="/template/back-ground/1.wxml" />
+<template is="back-ground-2" />
+<nav color="1"></nav> 
+
+
+<view class='view-box'>
+
+  <view class="userinfo">
+    个人信息{{uid}}
+  </view>
+
+  <view>
+    学习信息 3*tab
+  </view>
+
+
+  <view>
+    足迹
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

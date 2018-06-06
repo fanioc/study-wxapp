@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "img_pre": "/components/base/image_canPreview/image_canPreview",
     "user": "/components/userInfo/modal",
