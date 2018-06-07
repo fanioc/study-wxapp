@@ -1,9 +1,9 @@
 
 
-<view class='user_contain' catchtap='nav_User_personalPage' data-uid="{{item.userID}}" >
+<view class='user_contain'  data-uid="{{item.userID}}" >
             
                
-                    <view class="avatar" >
+                    <view class="avatar" catchtap='nav_User_personalPage'>
                         <image src="{{user_head_img}}"  class='img-feed-source' />
                         <text class='text-feed-source' style='margin-right:40rpx;'>{{user_source_name}} </text>
                     </view>
@@ -36,7 +36,10 @@
 
                       <block wx:elif="{{model==6}}">
                        <text class='button_text follow' catchtap='modal_answer_question'>十 回答</text>
-                         
+                      </block>
+
+                       <block wx:elif="{{model==7}}">
+                        
                       </block>
                 
                 

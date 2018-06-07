@@ -1,6 +1,6 @@
 /* pages/me/index.wxss */
 
-page{
+page {
   background-color: #f3f3f3;
 }
 
@@ -17,11 +17,11 @@ page{
 }
 
 .userinfo {
-  /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);  */
-  padding: 90px 0 20px 0;
-  background-image: url('https://study.xietan.xin/static/upLoadFile/000.jpg');
+  padding: 80px 0 80px 0;
+  background-image: url('https://study.xietan.xin/static/bg_user_0.jpg');
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: #fff;
 }
 
@@ -32,30 +32,46 @@ page{
   text-align: center;
 }
 
-.info-other{
-  margin: 20px 0 0 0 ;
+.info-other {
+  padding: 0 15px 0 15px;
+  margin: 20px 0 0 0;
   display: flex;
+  font-size: 16px;
+  align-items: center;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.info-other-xx{
+.info-other-xx {
+  flex: 1;
   text-align: center;
 }
 
+.solid {
+  flex: 0;
+  border-left: solid #fff 1px;
+  height: 25px;
+  opacity: 0.8;
+  width: 0;
+}
+
 .study {
+  color: #888;
   height: 80px;
   background-color: #fff;
   border-radius: 10px;
-  padding: 10px 0 10px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); 
-  margin: 15px 20px 10px 20px;
+  padding: 15px 0 10px 0;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);
+  margin: 20px 20px 10px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  position: relative;
+  top: -80px;
+  z-index: 100;
 }
 
-.study-list{
+.study-list {
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -65,24 +81,30 @@ page{
   margin: auto;
 }
 
-.icon{
+.icon {
   /* margin-bottom: 5px; */
   margin: auto;
   width: 50px;
   height: 50px;
 }
 
-.tab{
+.tab {
   /* background-color: #fff; */
+  margin-top: -80px;
 }
 
-.tab-list{
+.tab-list {
   /* box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2); */
   background-color: #fff;
   margin-top: 5px;
   padding: 10px;
 }
 
-zan-cell:active{
+zan-cell:active {
   background-color: #bebebe;
+}
+
+.cell-panel-demo {
+  display: block;
+  margin-top: 10px;
 }

@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": false,
   "usingComponents": {
     "dynamic": "/components/dynamic/modal",
     "theme": "/components/base/theme",
@@ -12,5 +13,6 @@
     "zan-button-group": "/components/btn-group/index",
     "nav": "/components/navigation/navigation",
     "l_text": "/components/limite_text/text"
-  }
+  },
+  "navigationBarTextStyle": "white"
 }

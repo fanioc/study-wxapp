@@ -85,8 +85,14 @@ Component({
     },
     nav_User_personalPage: function () { //转跳至用户个人信息页面
       var data = false;
+      var that = this;
       //addtionRegion
-
+      wx.navigateTo({
+        url: '/pages/personal_info/personal_info?uid=' + that.data.userID,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
       console.log('nav_User_personalPage');
       return true;
     },

@@ -1,3 +1,97 @@
-<!--pages/personal_info/personal_info.wxml-->
-            <include src='/template/interActive.wxml' />
->
+<import src="/template/back-ground/2.wxml" />
+<import src="/template/back-ground/1.wxml" />
+<!-- <template is="back-ground-2" />  -->
+<nav color="1"></nav>
+
+
+<view class='view-box'>
+
+  <view class="userinfo flex-all">
+    <view>
+      <view class="info">
+        <image class='info' style='overflow:hidden; height:80px;width:80px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 15px;' src='{{userInfo.avatarUrl}}'></image>
+      </view>
+
+      <view class="info">
+        {{userInfo.nickName}}
+      </view>
+
+      <view class="info">
+        <view>班级：计算机类1607</view>
+      </view>
+      <view class="info">
+        <view> 积分：20000</view>
+      </view>
+    </view>
+
+
+    <view class='info_tab flex-x'>
+      <view class='info_tab_s' id='0' bindtap='tabClick'>自习记录
+        <view class="weui-navbar-slider" style="width:64px;transform:translateX({{slideOffset}}px);"></view>
+      </view>
+      <view class='info_tab_s' id='1' bindtap='tabClick'>时间胶囊</view>
+      <view class='info_tab_s' id='2' bindtap='tabClick'>学习成绩</view>
+
+    </view>
+
+  </view>
+
+  <swiper current="{{activeIndex}}" bindchange="tabChange" class='info_detil'>
+
+    <swiper-item style="height:100%">
+      <scroll-view scroll-y='true' style="height:100%" class='swiper_page flex-y'>
+        <view style='height:30px;width=100%'></view>
+
+        <view wx:for="{{study}}">
+          <view class='detil_card flex-x'>
+
+            <view style=''>{{uid==item.launch_id?'发起':'接受'}}</view>
+            <view style=''>{{item.launch_time}}</view>
+            <view style=''>{{item.location}}</view>
+
+          </view>
+        </view>
+
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item style="height:100%">
+      <scroll-view scroll-y='true' style="height:100%" class='swiper_page flex-y'>
+        <view style='height:30px;width=100%'></view>
+
+        <view class='detil_card'>记录1</view>
+
+      </scroll-view>
+    </swiper-item>
+
+
+    <swiper-item style="height:100%">
+      <scroll-view scroll-y='true' style="height:100%" class='swiper_page flex-y'>
+        <view style='height:30px;width=100%'></view>
+
+        <view class='detil_card'>记录1</view>
+
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+
+  <!-- <view>
+    foot
+  </view> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

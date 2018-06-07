@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-      sss:'',
       userInfo:''
   },
 
@@ -14,6 +13,13 @@ Page({
     wx.navigateTo({
         url:'binds/bind-edusys'
 
+    })
+  },
+
+  toPersonal:function(){
+    var that = this
+    wx.navigateTo({
+      url: '../personal_info/personal_info?uid=' + getApp().globalData.me.uid
     })
   },
 

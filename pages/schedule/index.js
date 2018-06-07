@@ -1,77 +1,46 @@
 // pages/schedule/index.js
 var util = getApp().globalData.util;
+const CONSTANT = getApp().globalData.CONSTANT;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+
     config: {
       tableHead: {
         week: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-        date: [28, 29, 30, 31, 1, 2, 3],
-        time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00"]
+        date: [],
+        time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00", "21:00", "22:00"]
       },
       currentWeek: 15,
-    },
-    color: ["ffcccc", '15a892', 'e6ccff', 'cce6ff', 'ffbf80', '80bfff'],
-    currentCourse: [{}],
+      currentTerm: []
 
-    //测试数据
-    getTerm: {
-      year: 2018,
-      week: 14
     },
-    getSche: [
-      {
-        'class_name': '高等数学',
-        'time': [1, 1, 3],// 数据格式：星期,第几节,第几节课
-        'week': [1, 18, 1],// 数据格式：所有单双周0 1 2,第几周,第几周
-        'teacher': "陈靖",
-        'location': '一号教学楼101'
-      }, {
-        'class_name': '大学英语',
-        'time': [2, 1, 2],
-        'week': [2, 2, 18],
-        'teacher': "陈靖",
-        'location': '一号教学楼201'
-      }, {
-        'class_name': '大学英语2',
-        'time': [2, 3, 4],
-        'week': [2, 2, 18],
-        'teacher': "陈靖",
-        'location': '二号教学楼301'
-      }, {
-        'class_name': '自习(已约人)',
-        'time': [2, 5, 7],
-        'week': [2, 2, 18],
-        'teacher': "陈靖",
-        'location': '一号教学楼301'
-      }, {
-        'class_name': '数据库概论',
-        'time': [3, 4, 5],
-        'week': [1, 1, 18],
-        'teacher': "陈靖",
-        'location': '一号教学楼511'
-      }, {
-        'class_name': '形势政策',
-        'time': [4, 5, 6],
-        'week': [2, 5, 18],
-        'teacher': "陈靖",
-        'location': '一号教学楼401'
-      }, {
-        'class_name': '计算机网络',
-        'time': [5, 1, 2],
-        'week': [0, 1, 9],
-        'teacher': "陈靖",
-        'location': '一号教学楼101'
-      }
-    ],
+    split:"|",
+    yh:"'",
+    selectNoclass: [],
+    color: ["#f3f3f3", '#ffbf80', '#80bfff', "#ffcccc", '#15a892'],
+    currentCourse: [{}],
+    getSchel: []
   },
 
   changeWeek: function () {
 
+  },
+
+  longpressNonClass: function (e) {
+    console.log(e)
+  },
+  longpressClass: function (e) {
+    console.log(e)
+  },
+  selectNonClass: function (e) {
+    console.log(e)
+  },
+  selectClass: function (e) {
+    console.log(e)
   },
 
   setCurrentSche: function (getSche, week) {
@@ -79,7 +48,7 @@ Page({
     that.data.currentCourse = new Array
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
-      var id = (getSche[i].time[0]) * 10 + getSche[i].time[1] //表示课程id
+      var id = (getSche[i].time[0])*100+ getSche[i].time[1] //表示课程id
       var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
@@ -88,7 +57,8 @@ Page({
           'time': getSche[i].time,
           'lengthTime': getSche[i].time[2] - getSche[i].time[1] + 1,
           'week': getSche[i].week,
-          'location': getSche[i].location
+          'location': getSche[i].location,
+          'type': getSche[i].type
         }
       }
       i++;
@@ -99,6 +69,7 @@ Page({
     console.log(this.data.currentCourse)
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -106,36 +77,111 @@ Page({
 
   },
 
+  initSchel: function () {
+    var that = this;
+
+    const weekList = util.getWeekList()
+    console.log(weekList)
+    that.setData({
+      'config.tableHead.date': weekList
+    })
+
+    var term = wx.getStorageSync('userTerm')
+    if (term != '') {
+      that.setData({
+        currentWeek: term.currentWeek,
+        currentTerm: term.currentTerm
+      })
+      that.readSchel(0)
+    }
+    else {
+      wx.request({
+        url: CONSTANT.API.getCurrentTerm,
+        success: function (res) {
+          that.setData({
+            currentWeek: res.data.data.week,
+            currentTerm: {
+              xn: res.data.data.xn,
+              xq: res.data.data.xq
+            }
+          })
+          wx.setStorageSync('userTerm', { currentTerm: that.data.currentTerm, currentWeek: that.data.currentWeek })
+          that.readSchel(0)
+        }
+      })
+    }
+  },
+
+  readSchel: function (updateAll) {
+    if (updateAll == 1) {
+      this.updateSchel()
+    }else{
+      var schel = wx.getStorageSync('userSchel')
+      if (schel != '') {
+        this.setData({
+          getSche: schel
+        })
+        this.showSchel()
+        return;
+      } else {
+        this.updateSchel()
+      }
+    }
+  },
+
+  updateSchel:function(){
+    var that =this;
+    wx.showLoading({
+      title: '正在读取课表',
+    })
+    wx.request({
+      url: CONSTANT.API.getUserAllCourse,
+      data: {
+        session: wx.getStorageSync('session'),
+        xn: that.data.currentTerm.xn,
+        xq: that.data.currentTerm.xq
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.errCode == 0) {
+          that.setData({
+            getSche: res.data.data
+          })
+
+          wx.setStorageSync('userSchel', res.data.data)
+          that.showSchel()
+        } else if (res.data.errCode == 3106) {
+
+          //数据库课表错误
+
+        }
+
+      },
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
+
+  showSchel: function () {
+    this.setCurrentSche(this.data.getSche, this.data.currentWeek)
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this
-    wx.showLoading({
-      title: '正在读取课表',
-    })
-    
-    wx.request({
-      url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
-      success: function (res) {
-        // console.log(res.data)
-        that.setData({
-          getSche: res.data
-        })
-      },
-      complete: function () {
-        wx.hideLoading()
-        that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
-        console.log(that.data.getSche)
-      }
-    })
+    var that = this;
+    setTimeout(function () {
+      that.initSchel()
+    }, 500)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -156,25 +202,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var that = this
-    wx.showLoading({
-      title: '正在读取课表',
-    })
-    wx.request({
-      url: 'https://study.xietan.xin/xaufe/EduSysMobile/getCourse?xh=1605990711',
-      success: function (res) {
-        // console.log(res.data)
-        that.setData({
-          getSche: res.data
-        })
-      },
-      complete: function () {
-        wx.hideLoading()
-        wx.stopPullDownRefresh()
-        that.setCurrentSche(that.data.getSche, that.data.getTerm.week)
-        console.log(that.data.getSche)
-      }
-    })
+    this.readSchel(1)
+    wx.stopPullDownRefresh();
   },
   /**
    * 页面上拉触底事件的处理函数

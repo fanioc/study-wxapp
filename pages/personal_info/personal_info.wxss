@@ -1,1 +1,67 @@
-/* pages/personal_info/personal_info.wxss */
+@import "/template/back-ground/1.wxss";
+@import "/template/back-ground/2.wxss";
+
+.view-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.userinfo {
+  z-index: 100;
+  font-size: 14px;
+  color: #fff;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  height:35%;
+  width: 100%;
+  box-shadow: 0px 10px 20px rgba(116, 82, 172, 0.4);
+}
+
+.info_tab{
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  justify-content: space-around; 
+}
+
+.info_tab_s{
+  font-size: 16px;
+   padding-bottom: 5px; 
+}
+
+.weui-navbar-slider{
+position: absolute;
+ height: 2px;
+content:""; 
+ background: #fff;
+ bottom: 0px;
+ transition: transform .3s;
+}
+
+.info{
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info_detil {
+  position: relative;
+  width: 100%;
+  height: 65%;
+}
+
+.swiper_page{
+  /* padding-top:20px;  */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.detil_card {
+  margin:0 auto 20px auto; 
+  padding: 10px;
+  box-shadow: 3px 3px 10px rgba(116, 82, 172, 0.3);
+  width: 80%;
+  background-color: #fff;
+}

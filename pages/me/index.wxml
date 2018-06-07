@@ -7,9 +7,9 @@
   <view class='userinfo'>
 
     <!-- 头像 -->
-    <image class="info" style='height:auto;width:100px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 20px;'>
+    <view id='me' class="info" bindtap='toPersonal' style='overflow:hidden;height:80px;width:80px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 20px;'>
       <open-data type="userAvatarUrl"></open-data>
-    </image>
+    </view>
 
     <!-- userNickName -->
     <view class="info">
@@ -17,20 +17,36 @@
     </view>
 
     <view class="info">
-      <view>{{userInfo.is_bind}}</view>
+      <view>未绑定</view>
     </view>
 
     <view class="info-other">
+
       <view>
-        <view class='info-other-xx'>100</view>关注</view>
+        <view class='info-other-xx'>100</view>
+        <view>关注</view>
+      </view>
+      <view class='solid'></view>
       <view>
-        <view class='info-other-xx'>100</view>粉丝</view>
+        <view class='info-other-xx'>100</view>
+        <view>粉丝</view>
+      </view>
+      <view class='solid'></view>
       <view>
-        <view class='info-other-xx'>2</view>消息</view>
+        <view class='info-other-xx'>2</view>
+        <view>消息</view>
+      </view>
+      <view class='solid'></view>
       <view>
-        <view class='info-other-xx'>100</view>收藏</view>
+        <view class='info-other-xx'>100</view>
+        <view>留言</view>
+      </view>
+
+
+
     </view>
   </view>
+
 
   <view class='study'>
     <view class="study-list">
@@ -39,8 +55,8 @@
         <zan-badge>11</zan-badge>
         <image class='icon' src='/image/me/1.png'></image>
       </view>
-       <view>
-      学习任务
+      <view>
+        学习任务
       </view>
     </view>
 
@@ -49,9 +65,9 @@
         <zan-badge>11</zan-badge>
         <image class='icon' src='/image/me/2.png'></image>
       </view>
-       <view>
-      时间胶囊
-       </view>
+      <view>
+        时间胶囊
+      </view>
     </view>
 
     <view bindtap='toScore' class="study-list">
@@ -60,22 +76,30 @@
         <image class='icon' src='/image/me/3.png'></image>
       </view>
       <view>
-      考试成绩
-       </view>
+        考试成绩
+      </view>
     </view>
   </view>
 
   <view class='tab'>
 
     <zan-panel class="cell-panel-demo">
+
       <zan-cell-group>
         <zan-cell class='zan-cell' title="绑定认证" bindtap="toBindSys" is-link></zan-cell>
         <zan-cell title="我的问题" is-link></zan-cell>
         <zan-cell title="我的消息" is-link></zan-cell>
+      </zan-cell-group>
+
+    </zan-panel>
+
+    <zan-panel class="cell-panel-demo">
+      <zan-cell-group>
         <zan-cell title="设置" is-link></zan-cell>
         <zan-cell title="问题反馈" is-link></zan-cell>
         <zan-cell title="关于我们" is-link></zan-cell>
       </zan-cell-group>
+
     </zan-panel>
 
   </view>

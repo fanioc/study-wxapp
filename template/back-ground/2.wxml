@@ -1,0 +1,7 @@
+<template name="back-ground-2">
+  <view class='back-contain'>
+    <view id='stars'></view>
+     <view id='stars2'></view> 
+     <view id='stars3'></view> 
+  </view>
+</template>
