@@ -1,9 +1,65 @@
-<view style='padding:50px 0 0 0' class='contain'>
+<include src='/template/interActive.wxml' />
+<nav seat='6%;' />
+<!-- 学习进行时显示的界面 -->
+<view class='contain' wx:if='{{study_status}}'>
 
   <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
-    <swiper-item >
-       <study refresh="{{study_fresh}}" /> 
+    <swiper-item>
+      <view class='invite_item_content'>
+        <view class="invite_item_content_card">
+          <view>
+            <!-- 模块top图片 -->
+
+            <image bindtap='nav_orderStudy_detailPage' class="card_image" mode="aspectFill" src="{{url.study}}" />
+            <!-- 模块top图片 -->
+
+            <!-- 模块middle信息 -->
+
+
+            <view class="card_title">
+              <!-- 主要 -->
+              {{current_studyInfo.title_msg}}
+              <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:240rpx;'>
+                <view>学习地点：{{current_studyInfo.place}}</view>
+                <view>学习科目：{{current_studyInfo.study_content}}</view>
+                <view>当前教室学习人数：{{current_studyInfo.study_num}}</view>
+                <view>预计结束时间：{{current_studyInfo.end_hour}}点</view>
+              </scroll-view>
+
+              <zan-button-group>
+
+                <zan-button size="small" type="primary">网约菜单</zan-button>
+                <zan-button size="small" type="danger">结束学习</zan-button>
+              </zan-button-group>
+
+
+              <!-- 主要 -->
+            </view>
+            <!-- 模块middle信息 -->
+          </view>
+          <!-- 模块bottom按钮部门 -->
+          <view class='invite_item_content_button'>
+            <text class='content_button_text'>
+            <!-- 学习中ing -->
+            <text hidden='{{!study_rest}}'>休息中ing~</text>
+            <!-- 休息中ing -->
+            <text hidden='{{study_rest}}'>学习中ing~</text>
+            </text>
+            <switch color='#f85f48' bindchange='change_study_rest' checked='true'></switch>
+          </view>
+          <!-- 模块bottom按钮部门 -->
+        </view>
+
+
+
+      </view>
+
     </swiper-item>
+
   </swiper>
 
+</view>
+<!-- 没有进行学习时显示的界面 -->
+<view wx:else>
+  <map id='study_map' show-location='true' hidden='{{hidden_map}}' class='order_map' latitude='{{latitude}}' longitude='{{longitude}}' scale='16' markers='{{marker}}' controls='{{map_controls}}' bindmarkertap='markertap' bindcontroltap='controltap'></map>
 </view>
