@@ -16,6 +16,13 @@ Page({
     })
   },
 
+  toPersonal:function(){
+    var that = this
+    wx.navigateTo({
+      url: '../personal_info/personal_info?uid=' + getApp().globalData.me.uid
+    })
+  },
+
   toScore:function(){
     wx.navigateTo({
       url: 'score/score'

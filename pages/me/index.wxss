@@ -1,6 +1,6 @@
 /* pages/me/index.wxss */
 
-page{
+page {
   background-color: #f3f3f3;
 }
 
@@ -17,14 +17,11 @@ page{
 }
 
 .userinfo {
-  height: 200px;
-  /* box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);  */
-  padding:80px 0 80px 0;
-   background-image: url('https://study.xietan.xin/static/bg_user_0.jpg');
-   /* background-size:100% 100%; */
-  /* background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); */
+  padding: 80px 0 80px 0;
+  background-image: url('https://study.xietan.xin/static/bg_user_0.jpg');
   display: flex;
   flex-direction: column;
+  justify-content: center;
   color: #fff;
 }
 
@@ -35,9 +32,9 @@ page{
   text-align: center;
 }
 
-.info-other{
+.info-other {
   padding: 0 15px 0 15px;
-  margin: 20px 0 0 0 ;
+  margin: 20px 0 0 0;
   display: flex;
   font-size: 16px;
   align-items: center;
@@ -45,12 +42,12 @@ page{
   justify-content: space-around;
 }
 
-.info-other-xx{
+.info-other-xx {
   flex: 1;
   text-align: center;
 }
 
-.solid{
+.solid {
   flex: 0;
   border-left: solid #fff 1px;
   height: 25px;
@@ -64,7 +61,7 @@ page{
   background-color: #fff;
   border-radius: 10px;
   padding: 15px 0 10px 0;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); 
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);
   margin: 20px 20px 10px 20px;
   display: flex;
   flex-direction: row;
@@ -74,7 +71,7 @@ page{
   z-index: 100;
 }
 
-.study-list{
+.study-list {
   /* display: flex;
   flex-direction: column;
   align-items: center; */
@@ -84,30 +81,30 @@ page{
   margin: auto;
 }
 
-.icon{
+.icon {
   /* margin-bottom: 5px; */
   margin: auto;
   width: 50px;
   height: 50px;
 }
 
-.tab{
+.tab {
   /* background-color: #fff; */
-margin-top: -80px;
+  margin-top: -80px;
 }
 
-.tab-list{
+.tab-list {
   /* box-shadow: 0 0px 4px 0 rgba(0, 0, 0, 0.2); */
   background-color: #fff;
   margin-top: 5px;
   padding: 10px;
 }
 
-zan-cell:active{
+zan-cell:active {
   background-color: #bebebe;
 }
 
-.cell-panel-demo{
+.cell-panel-demo {
   display: block;
   margin-top: 10px;
 }

@@ -7,9 +7,9 @@
   <view class='userinfo'>
 
     <!-- 头像 -->
-    <image class="info" style='height:auto;width:100px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 20px;'>
+    <view id='me' class="info" bindtap='toPersonal' style='overflow:hidden;height:80px;width:80px;z-index:99;box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10); border-radius: 20px;'>
       <open-data type="userAvatarUrl"></open-data>
-    </image>
+    </view>
 
     <!-- userNickName -->
     <view class="info">
@@ -17,7 +17,7 @@
     </view>
 
     <view class="info">
-      <view>{{userInfo.is_bind}}</view>
+      <view>未绑定</view>
     </view>
 
     <view class="info-other">
@@ -39,7 +39,7 @@
       <view class='solid'></view>
       <view>
         <view class='info-other-xx'>100</view>
-        <view>收藏</view>
+        <view>留言</view>
       </view>
 
 

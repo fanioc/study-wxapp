@@ -36,7 +36,10 @@
 
                       <block wx:elif="{{model==6}}">
                        <text class='button_text follow' catchtap='modal_answer_question'>十 回答</text>
-                         
+                      </block>
+
+                       <block wx:elif="{{model==7}}">
+                        
                       </block>
                 
                 
