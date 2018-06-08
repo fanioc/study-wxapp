@@ -1,10 +1,10 @@
 <view>
   <view class='topNav'>
-    <view class='setting'>设置</view>
+    <view class='setting'><zan-icons style="width:30px;height:30px;" type="wap-nav"></zan-icons></view>
     <view class='currentWeek'>第{{currentWeek}}周</view>
   </view>
 
-  <view class='fixed-button'></view>
+  <!-- <view class='fixed-button'></view> -->
 
   <!-- 列数 -->
   <view class='week'>

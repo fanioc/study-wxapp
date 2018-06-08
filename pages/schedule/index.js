@@ -70,13 +70,6 @@ Page({
   },
 
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
   initSchel: function () {
     var that = this;
 
@@ -115,7 +108,7 @@ Page({
   readSchel: function (updateAll) {
     if (updateAll == 1) {
       this.updateSchel()
-    }else{
+    } else {
       var schel = wx.getStorageSync('userSchel')
       if (schel != '') {
         this.setData({
@@ -129,8 +122,8 @@ Page({
     }
   },
 
-  updateSchel:function(){
-    var that =this;
+  updateSchel: function () {
+    var that = this;
     wx.showLoading({
       title: '正在读取课表',
     })
@@ -167,14 +160,24 @@ Page({
     this.setCurrentSche(this.data.getSche, this.data.currentWeek)
   },
 
+
+
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 生命周期函数--监听页面加载
    */
-  onReady: function () {
+  onLoad: function (options) {
     var that = this;
     setTimeout(function () {
       that.initSchel()
     }, 500)
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+    console.log(getApp().globalData.me)
   },
 
   /**
@@ -204,6 +207,30 @@ Page({
   onPullDownRefresh: function () {
     this.readSchel(1)
     wx.stopPullDownRefresh();
+
+    wx.request({
+      url: CONSTANT.API.getClassList,
+      data: {
+        session: wx.getStorageSync('session'),
+        date: '2018-06-08',
+        place: '2号教学楼'
+      },
+      success: function (e) {
+        console.log(e);
+      }
+
+    })
+
+    wx.request({
+      url: CONSTANT.API.getStudyList,
+      data:{
+        session:wx.getStorageSync('session'),
+      },
+      success:function(e){
+        console.log(e);
+      }
+      
+    })
   },
   /**
    * 页面上拉触底事件的处理函数

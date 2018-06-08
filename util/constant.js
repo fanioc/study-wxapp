@@ -30,6 +30,10 @@ const API = {
   addUserCustomCourse: URL.study + 'addUserCustomCourse',
   delUserCustomCourse: URL.study + 'delUserCustomCourse',
   getUserCustomCourse: URL.study + 'getUserCustomCourse',
+  getClassList: URL.study + 'getClassList', //$place, $date, $time = null
+  getStudyList: URL.study +'getStudyList',
+  launchStudy: URL.study +'launchStudy',//($session, $reach_uid, $study_content, $msg, $place, $study_time, $study_date)
+  acceptStudy: URL.study +'acceptStudy',//($session, $study_id, $msg, $status)
 
   publishDynamic: URL.study +'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
   // 获取动态列表，last_id是上次获取最小的dynamic_id

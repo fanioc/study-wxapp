@@ -36,6 +36,7 @@ App({
   },
 
   getUserBasicInfo:function(other_uid){
+    
     var that =this
     wx.request({
       url: _CONSTANT.API.getUserBasicInfo,
@@ -44,12 +45,12 @@ App({
       },
       method:"GET",
       success:function(res){
-        console.log(res.data.data)
+        console.log(res)
         if (res.data.errCode==0)
           that.globalData.me = res.data.data
-        console.log(that.globalData.me)
       }
     })
+
   },
 
   /**

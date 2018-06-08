@@ -9,6 +9,8 @@
     "nav": "/components/navigation/navigation",
 
       "zan-toptips": "/extends/zan/toptips/index"
+      ,
+      "zan-icons":"/extends/zan/icon/index"
 
   },
     "backgroundTextStyle":"light",
