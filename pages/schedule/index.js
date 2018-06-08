@@ -225,6 +225,7 @@ Page({
       url: CONSTANT.API.getStudyList,
       data:{
         session:wx.getStorageSync('session'),
+        date:'2018-06-08'
       },
       success:function(e){
         console.log(e);
