@@ -6,6 +6,9 @@
     "mtoast": "/components/toast/middleToast",
     "zan-button": "/components/btn/index",
     "zan-button-group": "/components/btn-group/index",
-    "nav": "/components/navigation/navigation"
+    "nav": "/components/navigation/navigation",
+    "zan-cell": "/extends/zan/cell/index",
+    "zan-panel": "/extends/zan/panel/index",
+    "zan-tag": "/extends/zan/tag/index"
   }
 }

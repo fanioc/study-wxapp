@@ -47,6 +47,7 @@ App({
         console.log(res.data.data)
         if (res.data.errCode==0)
           that.globalData.me = res.data.data
+        that.globalData.me.study_hidden = 1; that.globalData.me.study_invite=1//debug
         console.log(that.globalData.me)
       }
     })

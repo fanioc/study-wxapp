@@ -66,6 +66,10 @@ page{
   margin-top: 30rpx;
 }
 /*-----学习卡片部分*/
+.button_zan-cell zan-tag{
+margin-right: 20rpx;
+}
+/*------历史学习记录部分--------*/
 .order_map{
   width:100%;
   height: 94%;

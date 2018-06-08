@@ -25,7 +25,7 @@
                       </block>
 
                       <block wx:elif="{{model==4}}">
-                       <text class='button_text follow' catchtap='modal_comment'>十 评论</text>
+                       <text class='button_text follow' catchtap='modal_comment'>十 评价</text>
                          
                       </block>
 
