@@ -7,60 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    study_status: true,
     url: {
       study: 'https://study.xietan.xin/static/upLoadFile/STUDY.png'
     },
-    study_status: false,//判断是在学习还是结束
+    study_status: true,//判断是在学习还是结束
     study_history_array: [],//上次学习的信息
-   
+    study_satisfaction: [],//历史学习记录的满意度,
     current_studyInfo: {},//学习时所需数据
-    study_rest: true,//是否处于休息状态
     //-----学习卡片部分
     study_fresh: false,
     //----------
-    marker: [
-      {
-
-        id: 1,
-        latitude: 34.113893,
-        longitude: 108.937504,
-        width: 50,
-        height: 50,
-        callout: { content: '第一教学楼\n自习人数200人', color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS', textAlign: 'center' },
-        // label: { content: '66\n睡觉的时间的速度', fontSize: 10, x:'-50%',y:0,textAlign:'center'}      
-      },
-      {
-
-        id: 2,
-        latitude: 34.115739,
-        longitude: 108.932906,
-        width: 50,
-        height: 50,
-        callout: { content: '第二教学楼', color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS' },
-
-      },
-      {
-
-        id: 3,
-        latitude: 34.114509,
-        longitude: 108.933170,
-        width: 50,
-        height: 50,
-        callout: { content: '第三教学楼', color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS' }
-      },
-      {
-
-        id: 4,
-        latitude: 34.114529,
-        longitude: 108.936024,
-        width: 50,
-        height: 50,
-
-        callout: { content: '图书馆', color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS' },
-
-      },
-    ],//lly_improve
+    marker: [],//lly_improve
     map_controls: [
 
       {
@@ -86,6 +43,62 @@ Page({
   },
   controltap: function (e) {
     //addtionRegion
+  },
+  //--初始化学习地图
+  get_study_map: function () {
+    var that=this;
+    //--获取当前地址；
+    wx.getLocation({
+      success: function (res) {
+
+        that.setData({ latitude: res.latitude, longitude: res.longitude })
+      },
+    });
+    //-----debug
+    var e = [
+      { place: "第一教学楼", location_x: 34.113893, location_y: 108.937504, study_num: 2000 },
+      { place: "第二教学楼", location_x: 34.115739, location_y: 108.932906, study_num: 2000 },
+      { place: "第三教学楼", location_x: 34.114509, location_y: 108.933170, study_num: 2000 },
+      { place: "图书馆", location_x: 34.114529, location_y: 108.936024, study_num: 2000 }
+    ]
+    //----
+
+    //---//addtionRegion
+    /* wx.request({
+       url: _API.getStudyPlace,
+       data: {
+         session: wx.getStorageSync('session')
+       },
+       method: 'GET',
+       success: function (res) {
+                 var e=_util.errCode(res.data);
+                 if(e)
+                 {
+ 
+                 }
+       },
+       fail: function (res) {
+         _components.show_mToast('网络错误');
+       },
+       complete: function (res) { wx.hideLoading();},
+     })*/
+
+    var i, marker = [], temp;
+    for (i = 0; i < e.length; i++) {
+      temp = {
+
+        id: i,
+        latitude: e[i].location_x,
+        longitude: e[i].location_y,
+        width: 50,
+        height: 50,
+        callout: { content: e[i].place + '\n自习人数:' + e[i].study_num, color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS', textAlign: 'center' }
+        // label: { content: '66\n睡觉的时间的速度', fontSize: 10, x:'-50%',y:0,textAlign:'center'}      
+      }
+      marker.push(temp);
+    }
+    this.setData({ marker: marker });
+
   },
   //----------------------
   //--学习卡片部分
@@ -128,10 +141,11 @@ Page({
         if (res.confirm) {
           //addtionRegion
           that.setData({ study_status: false })
-
+          that.get_study_map();
         }
       }
     })
+   
   },
   //获取正在学习的文字信息，
   set_current_studyInfo: function (study) {
@@ -158,20 +172,21 @@ Page({
     var data = [];//最终用于渲染的数组数据
     var end = e.length < 4 ? e.length : 4;//限制渲染卡片的数量
     var i, j;
-    var reach=[];
+    var reach = [];
     var gay = [];
-    var temp;
+    var temp, satisfaction = [];
     //---------------
     for (i = model; i < end; ++i) {
       //--获取曾经已经接受邀请的用户id
-        reach=e[i].reach_id;
+      reach = e[i].reach_id;
       for (j = 0; j < reach.length; j++) {
         if (reach[j].status == 1)
           gay.push(reach[j].uid);
       }
+      //----获取每次学习的满意度,
+      satisfaction.push(e[i].satisfaction);
       //---设置历史学习卡片信息
       temp = {
-        satisfaction:-1,
         msg: e[i].msg,
         place: e[i].place,
         study_content: e[i].study_content,
@@ -183,25 +198,23 @@ Page({
     }
 
 
-    console.log(temp);
-    console.log(data);
-    console.log(end);
+    /*console.log(temp);
+     console.log(data);
+     console.log(end);*/
 
-    this.setData({ study_history_array: data });
+    this.setData({ study_history_array: data, study_satisfaction: satisfaction });
   },
   //获取上一次学习的满意度，此操作读取本地缓存
   set_study_satisfaction: function (e) {
-    console.log(e);
-  },
-
-  //将是否接收邀请和分享学习信息的选择发送给服务器
-  post_study_constraint: function (e) {
-    var data = 0;
-    for (var i in e.detail.value) {
-      data += parseInt(e.detail.value[i]);
+    console.log(e.target.dataset);
+    if (e.target.dataset.value) {
+      var temp = this.data.study_satisfaction;
+      temp[e.currentTarget.dataset.index] = e.target.dataset.value;
+      //addtionRegion  发送满意度
+      this.setData({ study_satisfaction: temp });
     }
-    //addtionRegion ，
-    //console.log(data, e.detail.value);
+    console.log(e);
+    //this.setData({ })study_history_array[e.currentTarget.dataset.]
   },
   //----------------------------
   /**
@@ -209,7 +222,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var get_bulid, get_study;
+    var get_study;
     //addtionRegion
     //---
     /* wx.showLoading({
@@ -225,24 +238,20 @@ Page({
        success: function (res) {
          get_study = _util.errCode(res.data);
          if (get_study) {
- 
+            that.init_data(get_study);
          }
        },
        fail: function (res) {
          _components.show_mToast('网络错误');
+         wx.hideLoading();//success的由init_data()hideloading
        },
-       complete: function (res) { wx.hideLoading(); },
+       complete: function (res) {  },
      })*/
 
 
     //----debug
-    var get_data = [
-      { place: "第一教学楼", location_x: 0.000, location_y: 0.00, study_num: 2000 },
-      { place: "第二教学楼", location_x: 0.000, location_y: 0.00, study_num: 2000 },
-      { place: "第三教学楼", location_x: 0.000, location_y: 0.00, study_num: 2000 },
-      { place: "图书馆", location_x: 0.000, location_y: 0.00, study_num: 2000 }
-    ]
-    this.setData({ study_status: true });
+
+    // this.setData({ study_status: true });
     this.init_data();
     //----debug
 
@@ -258,6 +267,7 @@ Page({
         msg: '求大家帮我复习高数',
         place: '第二教学楼|101',
         study_content: '高等数学',
+        satisfaction: -1,
         study_num: '23',
         reach_id: [
           { uid: 109, accept_time: '2018-6-7 18:00', status: 0, msg: "有课不想接，可以下次预约" },
@@ -274,6 +284,7 @@ Page({
         msg: '求大家帮我复习高数',
         place: '第二教学楼|101',
         study_content: '高等数学',
+        satisfaction: -1,
         study_time: { date: '2018-6-7', time: [5, 7] },
         reach_id: [
           { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
@@ -284,13 +295,17 @@ Page({
       },
     ];
     //----debug
-    if (get_data[0].status) {
-      this.setData({ study_status: true });
+    if (get_data[0].status == 1) {
       this.set_current_studyInfo(get_data[0]);
       this.get_study_history_array(1, get_data);
+      this.setData({ study_status: true });
+      wx.hideLoading();
     }
     else {
-      this.setData({ study_status: false })
+      this.get_study_history_array(0, get_data);
+      get_study_map();
+      this.setData({ study_status: false });
+      //---由get_study_map wx.hideLoading();
     }
   },
   /**

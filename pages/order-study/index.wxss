@@ -49,6 +49,7 @@ page{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20rpx;
 }
 
 .content_button_text {

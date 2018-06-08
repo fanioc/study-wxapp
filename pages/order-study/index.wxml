@@ -40,10 +40,8 @@
           <!-- 模块bottom按钮部门 -->
           <view class='invite_item_content_button'>
             <text class='content_button_text'>
-            <!-- 学习中ing -->
-            <text hidden='{{study_rest}}'>休息中ing~</text>
-            <!-- 休息中ing -->
-            <text hidden='{{!study_rest}}'>学习中ing~</text>
+
+            <text >学习中ing~</text>
             </text>
 
           </view>
@@ -67,7 +65,7 @@
 
               <view class="card_title" style='height:796rpx;'>
                 <!-- 主要 -->
-                <scroll-view scroll-y='true' class='card_title_item_scroll' style='height:796rpx;'>
+                <scroll-view scroll-y='true' class='card_title_item_scroll' style='height:766rpx;'>
                   <view>消息：{{item.msg}}</view>
                   <view>学习地点：{{item.place}}</view>
                   <view>学习科目：{{item.study_content}}</view>
@@ -80,37 +78,37 @@
                       <user userID='{{gay}}' model='4' />
                     </block>
                   </zan-panel>
-                  <zan-panel title="满意度（您还未做出评价）" class="tag-demo">
+                  <zan-panel title="满意度{{study_satisfaction[index]==-1?'（您还未做出评价）':''}}" class="tag-demo">
                     <zan-cell class='button_zan-cell'>
-                      <block wx:if='{{item.satisfaction>-1?true:false}}'>
-                        <zan-tag type="danger" data-value='0' data-index='{{index}}' bindtap='set_study_satisfaction'>
-                        不满意</zan-tag>
-                        <zan-tag type="warn" data-value='1' data-index='{{index}}' bindtap='set_study_satisfaction'>
-                        勉 强</zan-tag>
-                        <zan-tag type="primary" data-value='2' data-index='{{index}}' bindtap='set_study_satisfaction'>
-                        满 意</zan-tag>
-                      </block>
-
+                      <view wx:if='{{study_satisfaction[index]==-1?true:false}}' data-index='{{index}}' bindtap='set_study_satisfaction'>
+                        <zan-tag type="danger" data-value='0'>
+                          不满意</zan-tag>
+                        <zan-tag type="warn" data-value='1'>
+                          勉 强</zan-tag>
+                        <zan-tag type="primary" data-value='2'>
+                          满 意</zan-tag>
+                      </view>
+                      <view wx:else>
+                        <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}' ></progress>
+                      </view>
 
 
                     </zan-cell>
                   </zan-panel>
-                  <zan-panel title="我的评价" class="tag-demo">
 
-
-                    <zan-cell>
-                      <text>hah</text>
-                    </zan-cell>
-                    <text>hah</text>
-
-
-                  </zan-panel>
                 </scroll-view>
 
+          <view class='invite_item_content_button'>
+            <text class='content_button_text'>
 
+            <text >历史记录</text>
+            </text>
+
+          </view>
                 <!-- 主要 -->
               </view>
               <!-- 模块middle信息 -->
+              
             </view>
           </view>
 
@@ -125,6 +123,5 @@
 
 </view>
 <!-- 没有进行学习时显示的界面 -->
-<view wx:else>
-  <map id='study_map' show-location='true' hidden='{{hidden_map}}' class='order_map' latitude='{{latitude}}' longitude='{{longitude}}' scale='16' markers='{{marker}}' controls='{{map_controls}}' bindmarkertap='markertap' bindcontroltap='controltap'></map>
-</view>
+
+  <map id='study_map' show-location='true' hidden='{{hidden_map}}' class='order_map' latitude='{{latitude}}' longitude='{{longitude}}' scale='16' markers='{{marker}}' controls='{{map_controls}}' bindmarkertap='markertap' bindcontroltap='controltap' wx:else></map>
