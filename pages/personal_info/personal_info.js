@@ -149,10 +149,11 @@ Page({
 
   },
   tabClick: function (e) {
-    this.setData({
-      activeIndex: e.currentTarget.id,
-      slideOffset: e.currentTarget.offsetLeft
-    })
+    if (this.data.activeIndex != e.currentTarget.id)
+      this.setData({
+        activeIndex: e.currentTarget.id,
+        slideOffset: e.currentTarget.offsetLeft
+      })
   },
 
   tabChange: function (e) {

@@ -38,7 +38,7 @@ const API = {
   searchStudyPartner: URL.study + 'searchStudyPartner',  //$session, $study_time, $study_date, $require = null
   sendMsg: URL.study + 'sendMsg',//$session, $to_uid, $content, $type
   getMsg: URL.study + 'getMsg',//$session
-  getTag: URL.study + 'getTag',//$session
+  getTag: URL.study + 'getTag',//$session,$other_uid
   tag: URL.study + 'tag',//$session, $be_tag_uid, $tag)
 
   publishDynamic: URL.study + 'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
