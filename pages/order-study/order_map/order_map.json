@@ -1,0 +1,15 @@
+{
+    "usingComponents": {
+      "img_pre": "/components/base/image_canPreview/image_canPreview",
+      "user": "/components/userInfo/modal",
+      "modal": "/components/simulate_popup/modal",
+      "mtoast": "/components/toast/middleToast",
+      "zan-button": "/extends/zan/btn/index",
+      "zan-button-group": "/extends/zan/btn-group/index",
+      "nav": "/components/navigation/navigation",
+      "zan-cell": "/extends/zan/cell/index",
+      "zan-panel": "/extends/zan/panel/index",
+      "zan-tag": "/extends/zan/tag/index",
+      "zan-stepper": "/extends/zan/stepper/index"
+    }
+}

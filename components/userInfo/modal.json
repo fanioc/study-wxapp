@@ -1,8 +1,10 @@
 {
   "component": true,
-      "usingComponents": {
-        "mtoast": "/components/toast/middleToast",
-        "img_pre": "/components/base/image_canPreview/image_canPreview",
-        "modal": "/components/simulate_popup/modal"
-      }
+  "usingComponents": {
+    "mtoast": "/components/toast/middleToast",
+    "img_pre": "/components/base/image_canPreview/image_canPreview",
+    "modal": "/components/simulate_popup/modal",
+    "zan-button": "/extends/zan/btn/index",
+    "zan-button-group": "/extends/zan/btn-group/index"
+  }
 }

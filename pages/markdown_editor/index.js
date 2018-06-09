@@ -29,7 +29,7 @@ Page({
     {
       case '0': 
         
-        that.setData({ edit_content_value: that.data.edit_content_value + init_mark  , edit_content_focus: true });
+        that.setData({ edit_content_value: that.data.edit_content_value + init_mark   });
         init_mark = '';
         break;
       case '1': 
@@ -37,7 +37,7 @@ Page({
         
         if (init_mark != '**')
         {
-          that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '**', edit_content_focus: true });
+          that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '**' });
           init_mark = '**';
         }
        
@@ -48,7 +48,7 @@ Page({
         {
 
           if (init_mark != '*') {
-            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '*', edit_content_focus: true });
+            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '*' });
             init_mark = '*';
           }
 
@@ -59,7 +59,7 @@ Page({
 
            
           if (init_mark != '`') {
-            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '`', edit_content_focus: true });
+            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '`' });
             init_mark = '`';
           }
          
@@ -68,25 +68,25 @@ Page({
         }
        break;
       case '4':
-        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n# ", edit_content_focus: true });
+        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n# " });
         init_mark = '';
        break;
       case '5': 
-        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n## ", edit_content_focus: true });
+        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n## " });
         init_mark = '';
       break;
       case '6': 
-        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n### ", edit_content_focus: true });
+        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n### " });
         init_mark = '';
       break;
       case '7':
-        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n----\n", edit_content_focus: true });
+        that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n----\n" });
         init_mark = '';
         break;
       case '8':
         {
           if (init_mark != '\n```\n') {
-            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '\n```\n', edit_content_focus: true });
+            that.setData({ edit_content_value: that.data.edit_content_value + init_mark + '\n```\n' });
             init_mark = '\n```\n';
           }
 
@@ -144,7 +144,7 @@ Page({
             success: function (res) {
               
               image_url = JSON.parse(res.data).fileUrl;
-              that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n![此次为插入的图片](" + image_url + ")\n", edit_content_focus: true });
+              that.setData({ edit_content_value: that.data.edit_content_value + init_mark + "\n![此次为插入的图片](" + image_url + ")\n" });
               init_mark = '';
             }
           });

@@ -90,13 +90,31 @@ function errorCode(re_data, callback=null) {
       //错误码
 
   }
+
+}
+//------改变全局变量me的函数,同时改变服务器上的相关值,并返回值
+//--
+function set_me_study_hidden(e) {
   
+    getApp().globalData.me.study_hidden = e;
+    console.log(getApp().globalData.me);
+  return getApp().globalData.me.study_hidden;
+  //addtionRegion 网络请求改变值
+}
+//--
+function set_me_study_invite(e) {
   
+    getApp().globalData.me.study_invite = e;
+    console.log(getApp().globalData.me);
+  return getApp().globalData.me.study_invite;
+  //addtionRegion 网络请求改变值
 }
 module.exports = {
   toFreeSchel:toFreeSchel,
   setTheme: setTheme,
   PullDownRefresh: PullDownRefresh,
   errCode: errorCode,
-  getWeekList: getWeekList
+  getWeekList: getWeekList,
+  me: { study_invite: set_me_study_invite, study_hidden: set_me_study_hidden }
+
 }
