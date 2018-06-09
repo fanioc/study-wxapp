@@ -22,8 +22,9 @@
               <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:400rpx;'>
                 <view>学习地点：{{item.place}}</view>
                 <view>学习科目：{{item.study_content}}</view>
-                <view>学习日期：{{item.study_date}}点</view>
+                <view>学习日期：{{item.study_date}}</view>
                 <view>当前教室学习人数：{{item.study_num}}</view>
+                <view>发起时间：{{item.launch_time}}</view>
                 <view>预计结束时间：{{item.study_time_end}}点</view>
                 <view wx:if="{{item.card_sort==1}}">
                   自习伙伴：
@@ -35,8 +36,14 @@
 
                 </view>
                 <view wx:else>
-                 <zan-panel title=" 发起人：" class="tag-demo">
+
+                  <zan-panel title=" 发起人：" class="tag-demo">
                     <user userID='{{item.launch_id}}' model="3" />
+                  </zan-panel>
+                  <zan-panel title="自习伙伴：" class="tag-demo" wx:if="{{item.card_sort==3}}">
+                    <block wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
+                      <user userID='{{reach.uid}}' model="0" wx:if="{{reach.status==1}}" />
+                    </block>
                   </zan-panel>
                 </view>
               </scroll-view>
@@ -52,12 +59,15 @@
           <view class='invite_item_content_button'>
             <text class='content_button_text'>
 
-            <text >学习中ing~</text>
+            <text >进行中</text>
 
             </text>
             <zan-button-group>
-              <zan-button size="mini" type="primary" catchtap='agree_study_invite' wx:if='{{item.card_sort==2}}'>接收邀请</zan-button>
-              <zan-button size="mini" type="primary" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+              <block wx:if='{{item.card_sort==2}}'>
+                <zan-button size="mini" type="danger" catchtap='agree_study_invite'>拒绝邀请</zan-button>
+                <zan-button size="mini" type="primary" catchtap='agree_study_invite'>接收邀请</zan-button>
+              </block>
+              <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
             </zan-button-group>
           </view>
           <!-- 模块bottom按钮部门 -->

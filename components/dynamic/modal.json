@@ -5,7 +5,7 @@
       "img_pre": "/components/base/image_canPreview/image_canPreview",
       "user": "/components/userInfo/modal",
       "l_text": "/components/limite_text/text",
-          "zan-button": "/components/btn/index",
-          "zan-button-group": "/components/btn-group/index"
+          "zan-button": "/extends/zan/btn/index",
+          "zan-button-group": "/extends/zan/btn-group/index"
     }
 }

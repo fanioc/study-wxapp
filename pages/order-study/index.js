@@ -14,19 +14,13 @@ Page({
     study_history_array: [],//上次学习的信息
     study_satisfaction: [],//历史学习记录的满意度,
     current_studyInfo: {},//离自己最近的学习计划所需数据
-    study_index: {
-      doing:'',
-      invited:'',
-    },//sort_by_study_index根据服务器studylist接口接收的数据，对其进行分类,存入此数组中
+
     //-----学习卡片部分
     study_fresh: false,
     //----------
 
   },
   //------------自定义部分
-  sort_by_study_index: function (data) {//根据服务器studylist接口接收的数据，对其进行分类,存入study_index数组中
-            data
-  },
   //--学习卡片部分
   //网约学习底部菜单
   button_order_menu: function (e) {
@@ -84,13 +78,6 @@ Page({
   },
   //获取正在学习的文字信息，
   set_current_studyInfo: function (study) {
-    // var data = {
-    //   place: study.place,
-    //   study_content: study.study_content,
-    //   study_num: study.study_num,
-    //   end_hour: study.study_time.time[1],
-    //   title_msg: study.msg
-    // };
     var i,card_sort,temp=[];
     console.log(study);
     for(i=0;i<study.length;i++)
@@ -117,7 +104,7 @@ Page({
         temp.push(study[i]);
       }
     }
-    console.log(temp);
+    //console.log(temp);
     this.setData({ current_studyInfo:temp });
     return true;
   },
@@ -130,7 +117,10 @@ Page({
     })
   },
   //获取上一次学习的信息，此操作读取本地缓存
-  get_study_history_array: function (model, e) {
+  get_study_history_array: function (e) {
+    if(!e)
+    return false;
+
     var data = [];//最终用于渲染的数组数据
     var end = e.length < 4 ? e.length : 4;//限制渲染卡片的数量
     var i, j;
@@ -138,13 +128,12 @@ Page({
     var gay = [];
     var temp, satisfaction = [];
     //---------------
-    for (i = model; i < end; ++i) {
+    for (i = 0; i < end; ++i) {
       //--获取曾经已经接受邀请的用户id
       reach = e[i].reach_id;
       gay = [];
       for (j = 0; j < reach.length; j++) {
-
-        if (reach[j].status == 1)
+        if (reach[j].status == 1 && reach[j].uid!=getApp().globalData.me.uid)
           gay.push(reach[j].uid);
       }
       //----获取每次学习的满意度,
@@ -155,10 +144,10 @@ Page({
         place: e[i].place,
         study_content: e[i].study_content,
         launch_time: e[i].launch_time,
-        end_hour: e[i].study_time.time[1] - e[i].study_time.time[0],
+        end_hour: e[i].study_time_end - e[i].study_time_start,
         gay: gay,
       };
-      console.log(gay);
+      //console.log(gay);
       data.push(temp);
     }
 
@@ -186,9 +175,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  this.init_data();
+
+
+  },
+  //------
+  init_data: function () {
     var that = this;
-    var get_study;
-    //addtionRegion
+    var get_data;
+    //debugRegion
     //---
     wx.showLoading({
       title: '加载数据中',
@@ -202,47 +197,31 @@ Page({
       method: 'GET',
       success: function (res) {
 
-        get_study = _util.errCode(res.data);
-        if (get_study) {
-          console.log(get_study);//debug
-          that.init_data(get_study);
+        get_data = _util.errCode(res.data);
+        if (get_data) {
+          console.log(get_data);//debug
+          if (get_data[1]) {
+            that.set_current_studyInfo(get_data[1]);
+            that.get_study_history_array(get_data[0]);
+            that.setData({ study_status: true });
+          }
+          else {
+            that.get_study_history_array(get_data[0]);
+            wx.navigateTo({
+              url: '/pages/order-study/order_map/order_map',
+            });
+            that.setData({ study_status: true });
+          }
         }
       },
       fail: function (res) {
         _components.show_mToast('网络错误');
       },
-      complete: function (res) { 
+      complete: function (res) {
         wx.hideLoading();
       },
     })
 
-
-    //----debug
-
-    // this.setData({ study_status: true });
-    /* wx.showLoading({
-       title: 'jiazaizhong',
-     });
-     this.init_data();*/
-    //----debug
-
-
-  },
-  //------
-  init_data: function (get_data) {
-    console.log(get_data)
-    if (get_data[1]) {
-      this.set_current_studyInfo(get_data[1]);
-      //this.get_study_history_array(1, get_data);
-      this.setData({ study_status: true });
-    }
-    else {
-      this.get_study_history_array(0, get_data);
-      wx.navigateTo({
-        url: '/pages/order-study/order_map/order_map',
-      });
-      this.setData({ study_status: true });
-    }
 
     
   },

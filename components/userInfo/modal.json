@@ -4,7 +4,7 @@
     "mtoast": "/components/toast/middleToast",
     "img_pre": "/components/base/image_canPreview/image_canPreview",
     "modal": "/components/simulate_popup/modal",
-    "zan-button": "/components/btn/index",
-    "zan-button-group": "/components/btn-group/index"
+    "zan-button": "/extends/zan/btn/index",
+    "zan-button-group": "/extends/zan/btn-group/index"
   }
 }
