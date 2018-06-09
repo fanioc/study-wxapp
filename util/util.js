@@ -1,6 +1,7 @@
 //------
 var CONSTANT = require("./constant.js");
 var _components = require("./component.js");
+
 //---------
 //设置程序的主题参数（颜色用十六进制或者颜色英文单词表示，因为这些参数一般用于css）
 function setTheme(selected, unselected, background, code) {
