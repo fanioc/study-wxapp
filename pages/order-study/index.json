@@ -9,6 +9,7 @@
     "nav": "/components/navigation/navigation",
     "zan-cell": "/extends/zan/cell/index",
     "zan-panel": "/extends/zan/panel/index",
+    "zan-popup": "/extends/zan/popup/index",
     "zan-tag": "/extends/zan/tag/index"
   }
-}
+}    

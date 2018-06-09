@@ -1,16 +1,16 @@
 <include src='/template/interActive.wxml' />
-<nav seat='6%;' />
+
 <!-- 学习进行时显示的界面 -->
 <view class='contain' wx:if='{{study_status}}'>
 
   <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
-    <swiper-item>
+    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}'>
       <view class='invite_item_content'>
         <view class="invite_item_content_card">
           <view>
             <!-- 模块top图片 -->
 
-            <image bindtap='nav_orderStudy_detailPage' class="card_image" mode="aspectFill" src="{{url.study}}" />
+            <image bindtap='button_order_menu' class="card_image" mode="aspectFill" src="{{url.study}}" />
             <!-- 模块top图片 -->
 
             <!-- 模块middle信息 -->
@@ -18,19 +18,30 @@
 
             <view class="card_title">
               <!-- 主要 -->
-              {{current_studyInfo.title_msg}}
-              <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:240rpx;'>
-                <view>学习地点：{{current_studyInfo.place}}</view>
-                <view>学习科目：{{current_studyInfo.study_content}}</view>
-                <view>当前教室学习人数：{{current_studyInfo.study_num}}</view>
-                <view>预计结束时间：{{current_studyInfo.end_hour}}点</view>
+              {{item.msg}}
+              <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:400rpx;'>
+                <view>学习地点：{{item.place}}</view>
+                <view>学习科目：{{item.study_content}}</view>
+                <view>学习日期：{{item.study_date}}点</view>
+                <view>当前教室学习人数：{{item.study_num}}</view>
+                <view>预计结束时间：{{item.study_time_end}}点</view>
+                <view wx:if="{{item.card_sort==1}}">
+                  自习伙伴：
+                  <zan-panel title="{{reach.status==1?'接受':'拒绝'}} - {{reach.status==-1?'对方未处理':reach.msg}}" class="tag-demo" wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
+
+                    <user userID='{{reach.uid}}' model="{{reach.status==1?'3':'0'}}" />
+
+                  </zan-panel>
+
+                </view>
+                <view wx:else>
+                 <zan-panel title=" 发起人：" class="tag-demo">
+                    <user userID='{{item.launch_id}}' model="3" />
+                  </zan-panel>
+                </view>
               </scroll-view>
 
-              <zan-button-group>
 
-                <zan-button size="small" type="primary" bindtap='button_order_menu'>网约菜单</zan-button>
-                <zan-button size="small" type="danger" bindtap='button_complete_study'>结束学习</zan-button>
-              </zan-button-group>
 
 
               <!-- 主要 -->
@@ -42,8 +53,12 @@
             <text class='content_button_text'>
 
             <text >学习中ing~</text>
-            </text>
 
+            </text>
+            <zan-button-group>
+              <zan-button size="mini" type="primary" catchtap='agree_study_invite' wx:if='{{item.card_sort==2}}'>接收邀请</zan-button>
+              <zan-button size="mini" type="primary" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+            </zan-button-group>
           </view>
           <!-- 模块bottom按钮部门 -->
         </view>
@@ -89,7 +104,7 @@
                           满 意</zan-tag>
                       </view>
                       <view wx:else>
-                        <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}' ></progress>
+                        <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}'></progress>
                       </view>
 
 
@@ -98,17 +113,17 @@
 
                 </scroll-view>
 
-          <view class='invite_item_content_button'>
-            <text class='content_button_text'>
+                <view class='invite_item_content_button'>
+                  <text class='content_button_text'>
 
             <text >历史记录</text>
-            </text>
+                  </text>
 
-          </view>
+                </view>
                 <!-- 主要 -->
               </view>
               <!-- 模块middle信息 -->
-              
+
             </view>
           </view>
 
@@ -123,5 +138,3 @@
 
 </view>
 <!-- 没有进行学习时显示的界面 -->
-
-  <map id='study_map' show-location='true' hidden='{{hidden_map}}' class='order_map' latitude='{{latitude}}' longitude='{{longitude}}' scale='16' markers='{{marker}}' controls='{{map_controls}}' bindmarkertap='markertap' bindcontroltap='controltap' wx:else></map>

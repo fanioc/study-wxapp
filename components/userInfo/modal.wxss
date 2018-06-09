@@ -1,34 +1,33 @@
-
-.user_contain{
+.user_contain {
   height: 50px;
   display: flex;
-  flex-direction:row; 
-  justify-content:space-between; 
-  align-items:center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-
   padding: 0px;
 }
-.avatar{
-  position: relative;
 
+.avatar {
+  position: relative;
   margin-left: 10px;
   display: flex;
-  flex-direction:row; 
-  justify-content:center; 
-  align-items:center;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.img-feed-source{
+.img-feed-source {
   /*position: absolute;*/
   display: inline-block;
-  width:35px;
-  height:35px;
-  border-radius: 50%; 
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
   margin-top: 3px;
   vertical-align: middle;
 }
-.text-feed-source{
+
+.text-feed-source {
   /*position: absolute;*/
   display: inline-block;
   height: 40rpx;
@@ -38,45 +37,54 @@
   color: #a0acac;
   font-size: 26rpx;
   margin: 3px 0 0 15rpx;
-  
 }
 
+.button_text {
+  font-size: 26rpx;
+  padding: 10rpx 15rpx;
+  position: relative;
+  right: 15px;
+  border-radius: 6rpx;
+  border-style: solid;
+  border-width: 3rpx;
+}
 
-.button_text{
-   
-    font-size: 26rpx;
-    padding: 10rpx 15rpx;
-    position: relative;
-   
-    right: 15px;
-    border-radius: 6rpx;
-    border-style:solid;
-    border-width: 3rpx;
+.leave_messages {
+  line-height: 21px;
+  height: 22px;
+  font-size: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+  right: 15px;
+  border-radius: 6rpx;
+  border-style: solid;
+  border-width: 3rpx;
 }
- .follow{
-    color: #f85f48;
-    border-color: #f85f48;
-}
-.button_text_on
-{
- 
-    background-color: LightGrey;
-    color: white;
-    border-color:LightGrey;
 
+.follow {
+  color: #f85f48;
+  border-color: #f85f48;
 }
-.invite{
-    color: #40bcd0;
-    border-color: #40bcd0;
-  
+
+.button_text_on {
+  background-color: LightGrey;
+  color: white;
+  border-color: LightGrey;
 }
-.postMessage{
-    width: 600rpx;
+
+.invite {
+  color: #40bcd0;
+  border-color: #40bcd0;
 }
-.post_button
-{
-    border: none;
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+
+.postMessage {
+  width: 600rpx;
+}
+
+.post_button {
+  border: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }

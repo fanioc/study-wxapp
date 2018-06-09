@@ -15,12 +15,18 @@ page {
   position: fixed;
   width: 100%;
   background-color: #22b36e;
-  /* padding: 40px 0 10px 0; */
+}
+
+.setting{
+  color: #fff; 
+  position: absolute;
+  font-size: 20px;
+  /* bottom: 10px; */
+  left: 15px;
 }
 
 .currentWeek{
   position: absolute; 
-  margin: 0 auto;
   width: 100%;
   color: #fff;
   font-size: 20px;
@@ -28,7 +34,7 @@ page {
   text-align: center;
 }
 
-.fixed-button{
+/* .fixed-button{
   z-index: 100;
   position: fixed;
   right: 40px;
@@ -39,27 +45,14 @@ page {
   background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
   opacity: 0.5;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-}
+} */
 
-.setting{
-  border:#fff solid 1px;
-  border-radius: 5px;
-  padding: 0 2px;
- color: #fff;
-  font-size: 20px;
-  /* font-weight: bold; */
-  text-align: center;
-  letter-spacing:2px;
-
-  position: absolute;
-  left: 10px;
-}
 
 .week {
-  /* color: #fff;  */
   position: absolute;
   top: 70px;
    width: 100%; 
+   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
