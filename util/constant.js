@@ -40,7 +40,7 @@ const API = {
   getMsg: URL.study + 'getMsg',//$session
   getTag: URL.study + 'getTag',//$session,$other_uid
   tag: URL.study + 'tag',//$session, $be_tag_uid, $tag)
-
+  getStudyPlace: URL.study + 'getStudyPlace',
   publishDynamic: URL.study + 'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
   // 获取动态列表，last_id是上次获取最小的dynamic_id
   getDynamicList: URL.study + 'getDynamicList',//($session, $last_id = null)

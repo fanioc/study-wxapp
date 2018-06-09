@@ -128,7 +128,7 @@
 
             <text >历史记录</text>
                   </text>
-
+ <zan-button size="mini" type="primary" catchtap='nav_orderStudy_detailPage'>自习地图</zan-button>
                 </view>
                 <!-- 主要 -->
               </view>

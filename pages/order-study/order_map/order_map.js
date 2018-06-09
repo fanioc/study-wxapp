@@ -1,4 +1,6 @@
-// pages/order-study/order_map/order_map.js
+var _components = getApp().globalData.components;
+var _API = getApp().globalData.CONSTANT.API;
+var _util = getApp().globalData.util;
 Page({
 
   /**
@@ -19,14 +21,76 @@ Page({
         }
       }
     ],
-
-    hidden_map: false
+    current_sort:'0',
+    scroll_top:'',
+    scroll_ID:'s8',
+    hidden_map: true,
+    free_class_array:[],
+    time_index: []
   },
   markertap: function (e) {
     //console.log(e.markerId)
     var that = this;
-    this.setData({ hidden_map: true });
-    _components.show_modal(that, 'leave_message', this.post_leave_message, '留言ing', '发送', true);
+    //---
+    wx.showLoading({
+      title: '加载数据中',
+    });
+    //---
+    wx.request({
+      url: _API.getClassList,
+      data: {
+        session: wx.getStorageSync('session'),
+        place: '1号教学楼',//that.data.marker[e.markerId-1].place,//lly
+        date:'2018-06-08'
+
+      },
+      method: 'GET',
+      success: function (res) {
+        
+        var data = _util.errCode(res.data);
+        var top_offset=[];
+        top_offset.push(0);
+        if (data) {
+          console.log('ha', data);
+         // console.log('ha',data);
+          var i,temp=[],temp2=[],temp3=0;
+          for(i=8;i<23;i++)
+            { 
+              
+              temp.push(i+'-'+(++i));
+              temp2.push(data[i]);
+            }
+          for (i = 0; i < 8; i++) {
+
+            if (temp2[i]) {
+              console.log('haddddd', temp3);
+              temp3 += that.attributeCount(temp2[i]) * 55 + 44;
+            }
+            else
+              temp3 += 44;
+
+            top_offset.push(temp3);
+          }
+          //console.log('ha66', top_offset);
+            top_offset.pop();
+            //console.log('ha66', temp2);
+            that.setData({ free_class_array: temp2, time_index: temp, top_offset: top_offset});
+        }
+      },
+      fail: function (res) {
+        _components.show_mToast('网络错误');
+      },
+      complete: function (res) { wx.hideLoading(); },
+    })
+  },
+  attributeCount:function (obj) {
+    var count = 0;
+    for (var i in obj) {
+      if (obj.hasOwnProperty(i)) {  // 建议加上判断,如果没有扩展对象属性可以不加
+        count++;
+      }
+    }
+    return count;
   },
   controltap: function (e) {
     //addtionRegion
@@ -41,17 +105,8 @@ Page({
         that.setData({ latitude: res.latitude, longitude: res.longitude })
       },
     });
-    //-----debug
-    var e = [
-      { place: "第一教学楼", location_x: 34.113893, location_y: 108.937504, study_num: 2000 },
-      { place: "第二教学楼", location_x: 34.115739, location_y: 108.932906, study_num: 2000 },
-      { place: "第三教学楼", location_x: 34.114509, location_y: 108.933170, study_num: 2000 },
-      { place: "图书馆", location_x: 34.114529, location_y: 108.936024, study_num: 2000 }
-    ]
-    //----
-
-    //---//addtionRegion
-    /* wx.request({
+    //---//debugRegion
+     wx.request({
        url: _API.getStudyPlace,
        data: {
          session: wx.getStorageSync('session')
@@ -61,38 +116,60 @@ Page({
                  var e=_util.errCode(res.data);
                  if(e)
                  {
- 
+                   var i, marker = [], temp;
+                   for (i = 0; i < e.length; i++) {
+                     temp = {
+
+                       id: e[i].place_id,
+                       latitude: e[i].latitude,
+                       longitude: e[i].longitude,
+                       width: 50,
+                       height: 50,
+                       place: e[i].place,
+                       callout: { content: e[i].place + '\n自习人数:' + e[i].stu_num, color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS', textAlign: 'center' }
+                       // label: { content: '66\n睡觉的时间的速度', fontSize: 10, x:'-50%',y:0,textAlign:'center'}      
+                     }
+                     marker.push(temp);
+                   }
+                   console.log(e);
+                   that.setData({ marker: marker});
                  }
        },
        fail: function (res) {
          _components.show_mToast('网络错误');
        },
        complete: function (res) { wx.hideLoading();},
-     })*/
+     })
 
-    var i, marker = [], temp;
-    for (i = 0; i < e.length; i++) {
-      temp = {
 
-        id: i,
-        latitude: e[i].location_x,
-        longitude: e[i].location_y,
-        width: 50,
-        height: 50,
-        callout: { content: e[i].place + '\n自习人数:' + e[i].study_num, color: '#f85f48', bgColor: '#F5F5F5', display: 'ALWAYS', textAlign: 'center' }
-        // label: { content: '66\n睡觉的时间的速度', fontSize: 10, x:'-50%',y:0,textAlign:'center'}      
-      }
-      marker.push(temp);
-    }
-    this.setData({ marker: marker });
 
   },
+
+  scrollClass:function(e){
+    var that=this;
+    //console.log('ID=', e.detail.scrollTop);
+    for(var i=1;i<8;i++)
+    {
+      if (e.detail.scrollTop<=that.data.top_offset[i])
+                break;
+    }
+    this.setData({ current_sort:i-1});
+    
+  },
+  changeScroll:function(e){
+    this.setData({
+      scroll_ID:e.currentTarget.id,
+      current_sort: e.currentTarget.dataset.index,
+    });
+  },
+
   //----------------------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.get_study_map()
+    this.get_study_map();
+    this.markertap(1);
   },
 
   /**

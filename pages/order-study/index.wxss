@@ -2,20 +2,7 @@ page{
   height: 100%;
   
 }
-/*--------*/
-.pop-example__container {
-  overflow: hidden;
-  background: #fff;
-}
 
-.pop-example__container--bottom {
-  width: 100vw;
-}
-
-.pop-example__container--left, .pop-example__container--right {
-  height: 100vh;
-}
-/*----------菜单*/
 /*------*/
 .invite_item_content {
   /*  */
