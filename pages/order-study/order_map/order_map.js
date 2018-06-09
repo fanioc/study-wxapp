@@ -61,14 +61,14 @@ Page({
               temp2.push(data[i]);
             }
           for (i = 0; i < 8; i++) {
-
+//*----------------
             if (temp2[i]) {
               console.log('haddddd', temp3);
               temp3 += that.attributeCount(temp2[i]) * 55 + 44;
             }
             else
               temp3 += 44;
-
+//** */-------------高度
             top_offset.push(temp3);
           }
           //console.log('ha66', top_offset);
