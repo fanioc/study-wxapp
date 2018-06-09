@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    options.place ='1号教学楼';
     //console.log(e.markerId)
     var that = this;
     //---
