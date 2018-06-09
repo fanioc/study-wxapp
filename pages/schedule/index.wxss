@@ -17,22 +17,21 @@ page {
   background-color: #22b36e;
 }
 
-.setting{
-  color: #fff; 
+.setting {
+  color: #fff;
   position: absolute;
   font-size: 20px;
   /* bottom: 10px; */
   left: 15px;
 }
 
-.currentWeek{
-  position: absolute; 
+.currentWeek {
+  position: absolute;
   color: #fff;
   font-size: 20px;
   font-weight: bold;
   /* text-align: center; */
 }
-
 
 /* .fixed-button{
   z-index: 100;
@@ -47,12 +46,11 @@ page {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 } */
 
-
 .week {
   position: absolute;
   top: 70px;
-   width: 100%; 
-   height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -83,6 +81,18 @@ page {
   text-align: center;
 }
 
+@keyframes spin {
+ from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
 .week-table-font {
   /* box-sizing: border-box; */
   width: auto;
@@ -96,6 +106,7 @@ page {
   box-sizing: border-box;
   margin: 0px 2rpx 0 2rpx;
   border-radius: 5px;
+   opacity: 0; 
 }
 
 .week-no-class {
