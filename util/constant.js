@@ -31,12 +31,17 @@ const API = {
   delUserCustomCourse: URL.study + 'delUserCustomCourse',
   getUserCustomCourse: URL.study + 'getUserCustomCourse',
   getClassList: URL.study + 'getClassList', //$place, $date, $time = null
-  getStudyList: URL.study +'getStudyList',
-  launchStudy: URL.study +'launchStudy',//($session, $reach_uid, $study_content, $msg, $place, $study_time, $study_date)
-  acceptStudy: URL.study +'acceptStudy',//($session, $study_id, $msg, $status)
-  getStudyPlace: URL.study + 'getStudyPlace',//($session date,
+  getStudyList: URL.study + 'getStudyList',
+  launchStudy: URL.study + 'launchStudy',//($session, $reach_uid, $study_content, $msg, $place, $study_time, $study_date)
+  acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+  setSatStudy: URL.study + 'setSatStudy',
+  searchStudyPartner: URL.study + 'searchStudyPartner',  //$session, $study_time, $study_date, $require = null
+  sendMsg: URL.study + 'sendMsg',//$session, $to_uid, $content, $type
+  getMsg: URL.study + 'getMsg',//$session
+  getTag: URL.study + 'getTag',//$session,$other_uid
+  tag: URL.study + 'tag',//$session, $be_tag_uid, $tag)
 
-  publishDynamic: URL.study +'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
+  publishDynamic: URL.study + 'publishDynamic',  //($session, $title, $img_url, $content, $type, $sort = null)
   // 获取动态列表，last_id是上次获取最小的dynamic_id
   getDynamicList: URL.study + 'getDynamicList',//($session, $last_id = null)
 

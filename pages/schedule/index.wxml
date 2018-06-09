@@ -1,7 +1,13 @@
 <view>
   <view class='topNav'>
-    <view class='setting'><zan-icons style="width:30px;height:30px;" type="wap-nav"></zan-icons></view>
-    <view class='currentWeek'>第{{currentWeek}}周</view>
+    <view bindtap='tapSetting' class='setting'>
+      <zan-icons type="wap-nav"></zan-icons>
+    </view>
+    <view class='currentWeek float-centert-a'>
+      <view class='float-centert-b'>
+      <picker value='{{currentWeek-1}}' range='{{weekArray}}' bindchange='changeWeek'>第{{currentWeek}}周</picker>
+      </view>
+    </view>
   </view>
 
   <!-- <view class='fixed-button'></view> -->

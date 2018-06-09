@@ -17,11 +17,10 @@
     </view>
 
     <view class="info">
-      <view>未绑定</view>
+      <view>{{userInfo.is_bind==1?'已绑定':'未绑定'}}</view>
     </view>
 
     <view class="info-other">
-
       <view>
         <view class='info-other-xx'>100</view>
         <view>关注</view>
@@ -39,7 +38,7 @@
       <view class='solid'></view>
       <view>
         <view class='info-other-xx'>100</view>
-        <view>留言</view>
+        <view>积分</view>
       </view>
 
 

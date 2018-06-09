@@ -22,6 +22,18 @@ page{
   justify-content: center;
 }
 
+.float-centert-b{
+  position: relative;
+  float: right;
+  right: 50%;
+}
+
+.float-centert-a{
+  float: left;
+  left: 50%;
+  position: absolute; 
+}
+
 .swiper-tab {
   padding: 10px 0px;
   /* height: 30px;  */

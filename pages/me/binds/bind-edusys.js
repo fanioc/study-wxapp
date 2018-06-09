@@ -43,11 +43,11 @@ Page({
         if(res.data.errCode!=0){
           console.log(res)
           wx.showToast({
-            title: res.data.errMsg,
-            icon:"error",
+            title: res.data.data.errMsg,
+            icon:"none",
             duration: 1000,
             mask: true,
-            success: function (res) { console.log('成功调用toast') },
+            success: function (res) { },
             fail: function (res) { },
             complete: function (res) { },
           })

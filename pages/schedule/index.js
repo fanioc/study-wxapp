@@ -7,29 +7,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-
     config: {
       tableHead: {
         week: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
         date: [],
         time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00", "21:00", "22:00"]
-      },
-      currentWeek: 15,
-      currentTerm: []
-
+      }
     },
-    split:"|",
-    yh:"'",
+    currentWeek: 1,
+    currentTerm: [],
+    weekArray:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
     selectNoclass: [],
     color: ["#f3f3f3", '#ffbf80', '#80bfff', "#ffcccc", '#15a892'],
     currentCourse: [{}],
     getSchel: []
   },
 
-  changeWeek: function () {
-
+  changeWeek: function (e) {
+    var week = parseInt(e.detail.value)  + 1
+    this.setData({ currentWeek: week})
+    wx.setStorageSync('userTerm', { "currentWeek": week, 'currentTerm': this.data.currentTerm})
+    this.showSchel()
   },
+  tapSetting: function (e) {
+    wx.showActionSheet({
+      itemList: ["添加课程", "自定义课表背景", "更新课程","设置"],
+      success: function (e) {
+        if (e.tapIndex == 0) {
 
+        } else if (e.tapIndex == 1) {
+
+        } else if (e.tapIndex == 2) {
+
+        } else if (e.tapIndex == 3) {
+
+        }
+      }
+    })
+  },
   longpressNonClass: function (e) {
     console.log(e)
   },
@@ -48,7 +63,7 @@ Page({
     that.data.currentCourse = new Array
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
-      var id = (getSche[i].time[0])*100+ getSche[i].time[1] //表示课程id
+      var id = (getSche[i].time[0]) * 100 + getSche[i].time[1] //表示课程id
       var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
@@ -146,7 +161,6 @@ Page({
         } else if (res.data.errCode == 3106) {
 
           //数据库课表错误
-
         }
 
       },
@@ -176,7 +190,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
     console.log(getApp().globalData.me)
   },
 
@@ -223,13 +237,14 @@ Page({
 
     wx.request({
       url: CONSTANT.API.getStudyList,
-      data:{
-        session:wx.getStorageSync('session'),
+      data: {
+        session: wx.getStorageSync('session'),
+        date: '2018-06-08'
       },
-      success:function(e){
-        console.log(e.data);
+      success: function (e) {
+        console.log(e);
       }
-      
+
     })
   },
   /**
