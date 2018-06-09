@@ -82,7 +82,7 @@ Page({
                    }
                    console.log(e);
                    that.setData({ marker: marker});
-                   that.markertap({ markerId:2});//debug
+                   
                  }
        },
        fail: function (res) {

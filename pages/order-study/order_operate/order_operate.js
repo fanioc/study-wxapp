@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    options.place ='1号教学楼';
     //console.log(e.markerId)
     var that = this;
     //---
@@ -62,7 +63,7 @@ Page({
           for (i = 0; i < 8; i++) {
             //*----------------
             if (temp2[i]) {
-              console.log('haddddd', temp3);
+              console.log('模块高度', temp3);
               temp3 += that.attributeCount(temp2[i]) * 55 + 44;
             }
             else
