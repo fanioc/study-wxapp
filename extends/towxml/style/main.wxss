@@ -291,9 +291,9 @@ image,video {
     width:100%; margin:0 auto 20rpx auto;
 }
 
-image {
+/* image {
 	height:auto;
 }
 video {
 	height:220px;
-}
+} */
