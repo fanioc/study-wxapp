@@ -62,14 +62,14 @@ Page({
 
   setCurrentSche: function (getSche, week) {
     var that = this
-    that.data.currentCourse = new Array
+    var currentCourse = new Array
     var i = 0;
     while ("undefined" != typeof getSche[i]) {
       var id = (getSche[i].time[0]) * 100 + getSche[i].time[1] //表示课程id
       var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
       var dsz = getSche[i].week[0] == 0 || getSche[i].week[0] % 2 == week % 2
       if (zs && dsz) {
-        that.data.currentCourse[id] = {
+      currentCourse[id] = {
           'class_name': getSche[i].class_name,
           'time': getSche[i].time,
           'lengthTime': getSche[i].time[2] - getSche[i].time[1] + 1,
@@ -81,11 +81,12 @@ Page({
       i++;
     }
     this.setData({
-      currentCourse: that.data.currentCourse
+      currentCourse: []
+    })
+    this.setData({
+      currentCourse: currentCourse
     })
     console.log(this.data.currentCourse)
-
-
   },
 
 

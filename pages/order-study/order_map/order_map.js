@@ -41,7 +41,7 @@ Page({
       data: {
         session: wx.getStorageSync('session'),
         place: '1号教学楼',//that.data.marker[e.markerId-1].place,//lly
-        date:'2018-06-08'
+        date:'2018-06-09'
 
       },
       method: 'GET',

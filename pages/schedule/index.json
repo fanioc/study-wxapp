@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "img_pre": "/components/base/image_canPreview/image_canPreview",
+    "bullet": "/components/bullet-screen/bullet-screen",
     "user": "/components/userInfo/modal",
     "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
