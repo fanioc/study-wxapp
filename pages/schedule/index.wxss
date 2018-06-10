@@ -82,7 +82,7 @@ page {
 }
 
 @keyframes spin {
- from {
+  from {
     opacity: 0;
     transform: translateY(50px);
   }
@@ -106,7 +106,7 @@ page {
   box-sizing: border-box;
   margin: 0px 2rpx 0 2rpx;
   border-radius: 5px;
-   opacity: 0; 
+  opacity: 0;
 }
 
 .week-no-class {

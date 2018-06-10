@@ -25,8 +25,8 @@ App({
           success: function (res) {
             console.log(res)
             wx.setStorageSync('session', res.data.data.session)
-
             var userInfo = that.getUserBasicInfo() //获取个人信息
+            var userConfig = that.getUserConfig()
           
           }
         })
@@ -35,6 +35,21 @@ App({
 
   },
 
+  getUserConfig:function(){
+    var that = this
+    wx.request({
+      url: _CONSTANT.API.getUserConfig,
+      data: {
+        session: wx.getStorageSync('session')
+      },
+      method: "GET",
+      success: function (res) {
+        if (res.data.errCode == 0)
+          that.globalData.userConfig = res.data.data
+        console.log(that.globalData.userConfig)
+      }
+    })
+  },
   getUserBasicInfo:function(other_uid){
     var that =this
     wx.request({
@@ -44,7 +59,6 @@ App({
       },
       method:"GET",
       success:function(res){
-        console.log(res.data.data)
         if (res.data.errCode==0)
           that.globalData.me = res.data.data
         that.globalData.me.study_hidden = 1; that.globalData.me.study_invite=1//debug
@@ -71,12 +85,6 @@ App({
               success: function (res) {
                 console.log(res)
                 wx.setStorageSync('session', res.data.data.session)
-              },
-              fail: function () {
-                console.log("登入失败")
-              },
-              complete: function () {
-                // complete
               }
             })
           }

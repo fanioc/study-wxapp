@@ -1,0 +1,14 @@
+<!--components/bullet-screen/bullet-screen.wxml-->
+<view wx:for="{{cover}}">
+  <cover-view wx:for="{{bullet}}"  class='bullet flex-x' style='opacity:{{bullet_opacity}};background:{{item.color}};top:{{item.top}}px;animation: move 7s {{item.delay}}s  linear 1 forwards;'>
+    <cover-image src='{{item.head}}' class='bullet-head'></cover-image>
+    <cover-view style='color:#fff;' class='bullet-content'>{{item.content}}</cover-view>
+  </cover-view>
+</view>
+
+<view wx:el>
+  <view wx:for="{{bullet}}" class='bullet flex-x' style='opacity:{{bullet_opacity}};background:{{item.color}};top:{{item.top}}px;animation: move 7s {{item.delay}}s  linear 1 forwards;'>
+    <image src='{{item.head}}' class='bullet-head'></image>
+    <view style='color:#fff;font-weight:bold;letter-spacing:2px;' class='bullet-content'>{{item.content}}</view>
+  </view>
+</view>

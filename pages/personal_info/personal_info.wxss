@@ -36,7 +36,7 @@ position: absolute;
 content:""; 
  background: #fff;
  bottom: 0px;
- transition: transform .3s;
+ transition: transform 0.3s;
 }
 
 .info{

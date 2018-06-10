@@ -57,6 +57,10 @@ function PullDownRefresh(callback) //发生下拉动作执行，执行callback�
   }
 }
 
+function rand(min,max){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 function getWeekList(){
   const dateOfToday = Date.now()
   const dayOfToday = (new Date().getDay() + 7 - 1) % 7
@@ -116,6 +120,7 @@ module.exports = {
   PullDownRefresh: PullDownRefresh,
   errCode: errorCode,
   getWeekList: getWeekList,
+  rand:rand,
   me: { study_invite: set_me_study_invite, study_hidden: set_me_study_hidden }
 
 }
