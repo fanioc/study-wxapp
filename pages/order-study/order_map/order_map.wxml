@@ -1,5 +1,4 @@
 <include src='/template/interActive.wxml' />
-<nav />
 
 <view class='view-box'>
   <map id='study_map' show-location='true' class='order_map' latitude='{{latitude}}' longitude='{{longitude}}' scale='18' markers='{{marker}}' controls='{{map_controls}}' bindmarkertap='markertap'  bindcontroltap="controltap"></map>
