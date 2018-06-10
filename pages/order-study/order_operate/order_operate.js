@@ -68,8 +68,13 @@ Page({
           // console.log('ha',data);
           var i, temp = [], temp2 = [], temp3 = 0;
           for (i = 8; i < 23; i++) {
+
             temp.push(i + '-' + (++i));
             temp.push(i + '-' + (++i));
+           
+          }
+          for(i=8;i<23;i++)
+          {
             temp2.push(data[i]);
           }
           for (i = 0; i < 8; i++) {

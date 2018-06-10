@@ -82,7 +82,7 @@ Page({
     if (userConfig.study_hidden)
       item.push('隐藏学习信息');
     else
-      item.push('取消隐藏学习信息'); me
+      item.push('取消隐藏学习信息');
     if (userConfig.study_invite)
       item.push('不接受邀请');
     else
