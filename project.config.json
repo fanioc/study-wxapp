@@ -114,9 +114,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "查看教室",
-					"pathName": "pages/order-study/order_map/order_map",
+					"id": 13,
+					"name": "空教室",
+					"pathName": "pages/order-study/order_operate/order_operate",
 					"query": ""
 				}
 			]
