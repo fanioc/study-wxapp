@@ -1,0 +1,52 @@
+<include src='/template/interActive.wxml' />
+<nav />
+<view class='view-box'>
+  <zan-cell>
+    <zan-steps type="horizon" hasDesc steps="{{steps}}"></zan-steps>
+  </zan-cell>
+  <zan-panel title="已选空教室">
+    <zan-field title="{{place}}" name='class' value='{{site}}' mode='wrapped'>
+    </zan-field>
+
+  </zan-panel>
+  <zan-panel title="学习内容">
+    <zan-field title="必填项：" name='content' right mode='wrapped'>
+    </zan-field>
+
+  </zan-panel>
+  <zan-panel title="日期：{{year}}年{{month}}月{{day}}日">
+    <view>
+      <picker-view indicator-style="height: 50px;border-color:red;" style="width: 100%; height: 69px;" value="{{date_value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{years}}" style="line-height: 50px" wx:key='index'> {{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" style="line-height: 50px" wx:key='index'> {{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" style="line-height: 50px" wx:key='index'> {{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </zan-panel>
+  <zan-panel title="预期：{{hour}}时{{minute}}分开始，持续至{{duration}}时{{minute}}分">
+    <view>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 138px;" value="{{time_value}}" bindchange="bindChange_time">
+        <picker-view-column>
+          <view wx:for="{{hours}}" style="line-height: 50px" wx:key='index'>{{item}}时</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{minutes}}" style="line-height: 50px" wx:key='index'>{{item}}分 </view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{durations}}" style="line-height: 50px" wx:key='index'>{{item}}时</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </zan-panel>
+      <zan-button-group class='button_next'>
+       <zan-button size="small" type='primary' bindtap='step_next' wx:if='{{current_step!=0}}'>上一步</zan-button>
+      <zan-button size="small" type='primary' bindtap='step_next'>{{step_content}}</zan-button>
+
+    </zan-button-group>
+</view>

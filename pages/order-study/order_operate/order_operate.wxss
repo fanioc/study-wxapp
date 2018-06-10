@@ -10,14 +10,17 @@ page {
 .class_block .items {
   margin: 10px 0 10px 0;
 }
-.left_content{
+
+.left_content {
   width: 100%;
 }
+
 .right_sort {
   right: 0;
   width: 15%;
   z-index: 99;
   display: flex;
+
   height: 90%;
   flex-direction: column;
   justify-content: center;
@@ -25,9 +28,11 @@ page {
   color: lightgray;
   background-color: transparent;
 }
-.on{
-    color: black;
+
+.on {
+  color: black;
 }
+
 .view-box {
   width: 100%;
   height: 100%;
@@ -39,4 +44,48 @@ page {
   position: absolute;
   left: 15%;
   height: 500px;
+}
+
+.panel-example {
+  display: flex;
+  flex-direction: row;
+}
+
+.week-table-font {
+  /* box-sizing: border-box; */
+  width: 200rpx;
+  display: inline-block;
+  font-size: 25rpx;
+  text-align: center;
+  color: #fff;
+  box-sizing: border-box;
+  margin: 0px 2rpx 12rpx 2rpx;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);}
+
+.week-table-1 {
+  /* box-sizing: border-box; */
+  background: #cce6ff;
+  height: 97rpx;
+  /* width: 95%; */
+}
+
+.class_online {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.class_body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+ background: #ffbf80;
+}
+
+.class_foot {
+  height: 40%;
+  background-color: white;
+  color: black;
 }

@@ -14,7 +14,8 @@
     "pages/personal_info/personal_info",
     "pages/community/dynamic/answer_detail/answer_detail",
     "pages/order-study/order_map/order_map",
-    "pages/order-study/order_operate/order_operate"
+    "pages/order-study/order_operate/order_operate",
+    "pages/order-study/order_operate/form/form"
   ],
   "window": {
     "backgroundTextStyle": "dark",

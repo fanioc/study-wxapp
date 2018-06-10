@@ -17,8 +17,10 @@ Page({
           left: 300,
           top: 450,
           width: 50,
-          height: 50
-        }
+          height: 50,
+          
+        },
+        clickable: true
       }
     ],
   
@@ -42,7 +44,10 @@ Page({
   },
   
   controltap: function (e) {
-    //addtionRegion
+    wx.navigateBack({
+      delta: 1,
+    })
+    console.log('controltap')
   },
   //--初始化学习地图
   get_study_map: function () {

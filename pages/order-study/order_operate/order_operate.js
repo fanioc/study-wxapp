@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     current_sort: '0',
     scroll_top: '',
     scroll_ID: 's8',
@@ -22,14 +23,25 @@ Page({
         count++;
       }
     }
-    return count;
+    if(count>0&&count<3)
+      count=3;
+    return count/3;
   },
+  fill_order_study:function(e)
+  {
+    var that=this;
+    wx.navigateTo({
+      url: "/pages/order-study/order_operate/form/form?site=" + e.currentTarget.dataset.site+'&place='+that.data.form_place,
+    })
+  },
+  a:function(){},
   /*--------------------*/
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     options.place ='1号教学楼';
+    this.setData({ form_place: options.place});
     //console.log(e.markerId)
     var that = this;
     //---
@@ -62,12 +74,10 @@ Page({
           }
           for (i = 0; i < 8; i++) {
             //*----------------
-            if (temp2[i]) {
+            
               console.log('模块高度', temp3);
-              temp3 += that.attributeCount(temp2[i]) * 55 + 44;
-            }
-            else
-              temp3 += 44;
+              temp3 += that.attributeCount(temp2[i]) * 54 + 44;
+            
             //** */-------------高度
             top_offset.push(temp3);
           }
