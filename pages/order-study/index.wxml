@@ -103,17 +103,9 @@
                       <user userID='{{gay}}' model='4' />
                     </block>
                   </zan-panel>
-                  <zan-panel title="满意度{{study_satisfaction[index]==-1?'（您还未做出评价）':''}}" class="tag-demo">
+                  <zan-panel title="满意度{{study_satisfaction[index]}}" class="tag-demo">
                     <zan-cell class='button_zan-cell'>
-                      <view wx:if='{{study_satisfaction[index]==-1?true:false}}' data-index='{{index}}' bindtap='set_study_satisfaction'>
-                        <zan-tag type="danger" data-value='0'>
-                          不满意</zan-tag>
-                        <zan-tag type="warn" data-value='1'>
-                          勉 强</zan-tag>
-                        <zan-tag type="primary" data-value='2'>
-                          满 意</zan-tag>
-                      </view>
-                      <view wx:else>
+                      <view>
                         <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}'></progress>
                       </view>
 

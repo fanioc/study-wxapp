@@ -57,7 +57,7 @@ Page({
           if (that.data.invited == 1)
           {
             temp[that.data.invited_index].reach_id[0].status=1;
-            temp[that.data.invited_index].card_sort=2;
+            temp[that.data.invited_index].card_sort=3;
           }
           else
           {
@@ -119,9 +119,32 @@ Page({
       content: '确认结束本次学习吗',
       success: res => {
         if (res.confirm) {
-          //addtionRegion
+          //---
+          wx.showLoading({
+            title: '加载数据中',
+          });
+          //---
+          wx.request({
+            url: _API.setSatStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+            data: {
+              session: wx.getStorageSync('session'),
+              study_id:'',
+              sat:'',
+            },
+            method: 'GET',
+            success: function (res) {
+              var get_data = _util.errCode(res.data);
+              if (get_data) {
+                console.log(get_data);
+              }
+            },
+            fail: function (res) {
+              _components.show_mToast('网络错误');
+            },
+            complete: function (res) { wx.hideLoading(); },
+          })
           that.setData({ study_status: false })
-          that.get_study_map();
+          that.nav_orderStudy_detailPage();
         }
       }
     })
@@ -139,7 +162,7 @@ Page({
           temp.push(study[i]);
         }
         else if (study[i].reach_id[0].status == '1') {
-          study[i].card_sort = 2;//3lly
+          study[i].card_sort = 3;//
           temp.push(study[i]);
         }
         else
@@ -221,7 +244,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.init_data();
+    
 
 
   },
@@ -283,7 +306,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init_data();
   },
 
   /**
