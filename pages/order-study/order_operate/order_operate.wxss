@@ -26,6 +26,7 @@ page {
 
 .left_content {
   width: 100%;
+  height: 100%;
 }
 
 .right_sort {
@@ -40,6 +41,24 @@ page {
   color: lightgray;
   background-color: transparent;
 }
+.title{
+  box-sizing: border-box;
+  height: 10%;
+  width: 100%;
+ text-align: center;
+ display: flex;
+  flex-direction: column;
+  justify-content: center;
+ align-items: center;
+  padding-top: 20px; 
+  position: relative;
+}
+
+.content{
+  height: 90%;
+  width: 100%;
+  position: relative;
+}
 
 .on {
   color: black;
@@ -49,7 +68,7 @@ page {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding-top: 70px;
+   /* padding-top: 70px;  */
 }
 
 .class_list {

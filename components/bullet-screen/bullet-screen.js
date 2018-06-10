@@ -37,6 +37,7 @@ Component({
           not_type: getApp().globalData.userConfig.bullet_not_show
         },
         success: function (e) {
+          
           if (e.data.data.length >= 1) {
             that.showBullet(e.data.data)
             wx.setStorageSync('bullet_id', e.data.data[e.data.data.length - 1].bullet_id)
