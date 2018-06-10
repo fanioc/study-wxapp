@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options.place ='1号教学楼';
+    options.place ='2号教学楼';
     this.setData({ form_place: options.place});
     //console.log(e.markerId)
     var that = this;
@@ -54,12 +54,12 @@ Page({
       data: {
         session: wx.getStorageSync('session'),
         place: options.place,
-        date: '2018-06-08'//improve
+        // date: '2018-06-08'//improve
 
       },
       method: 'GET',
       success: function (res) {
-
+        
         var data = _util.errCode(res.data);
         var top_offset = [];
         top_offset.push(0);
@@ -68,7 +68,7 @@ Page({
           // console.log('ha',data);
           var i, temp = [], temp2 = [], temp3 = 0;
           for (i = 8; i < 23; i++) {
-
+            temp.push(i + '-' + (++i));
             temp.push(i + '-' + (++i));
             temp2.push(data[i]);
           }
