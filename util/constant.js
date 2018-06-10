@@ -15,7 +15,7 @@ const API = {
   getUserBasicInfo: URL.study + 'getUserBasicInfo',
   uploadFile: URL.study + 'fileUpload',
 
-//教务接口
+  //教务接口
   bindEduSys: URL.study + 'bindEduSys',
   getCheckCode: URL.study + 'getCheckCode',
   getUserCourse: URL.study + 'getUserCourse',
@@ -29,33 +29,32 @@ const API = {
   getUserScore: URL.study + 'getUserScore',
   updateUserBasicInfo: URL.study + 'updateUserBasicInfo',
 
-
   //用户信息交互接口
   setUserStar: URL.study + 'setUserStar',//$session $bestar_uid $star   star=1关注 0不关注
   sendMsg: URL.study + 'sendMsg',//$session, $to_uid, $content, $type
   getMsg: URL.study + 'getMsg',//$session
   getTag: URL.study + 'getTag',//$session,$other_uid
   tag: URL.study + 'tag',//$session, $be_tag_uid, $tag)
-  
-  //弹幕接口
-  getBullet: URL.study +'getBullet',//($session, $last_id = null)
 
-//用户设置信息
-  setUserConfig: URL.study +'setUserConfig',//($session, $data)data 以设置名为键值，设置内容为内容值
-  getUserConfig: URL.study +'getUserConfig($session)',//($session)
+  //弹幕接口
+  getBullet: URL.study + 'getBullet',//($session, $last_id = null)
+
+  //用户设置信息
+  setUserConfig: URL.study + 'setUserConfig',//($session, $data)data 以设置名为键值，设置内容为内容值
+  getUserConfig: URL.study + 'getUserConfig',//($session)
 
   //自定义课表接口  
   getUserAllCourse: URL.study + 'getUserAllCourse',
   addUserCustomCourse: URL.study + 'addUserCustomCourse',
   delUserCustomCourse: URL.study + 'delUserCustomCourse',
   getUserCustomCourse: URL.study + 'getUserCustomCourse',
-  
+
   //自习部分接口
   getClassList: URL.study + 'getClassList', //$place, $date, $time = null
   getStudyList: URL.study + 'getStudyList',
   launchStudy: URL.study + 'launchStudy',//($session, $reach_uid, $study_content, $msg, $place, $study_time, $study_date)
   acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
-  setSatStudy: URL.study + 'setSatStudy',
+  setSatStudy: URL.study + 'setSatStudy',//设置满意度
   searchStudyPartner: URL.study + 'searchStudyPartner',  //$session, $study_time, $study_date, $require = null
   getStudyPlace: URL.study + 'getStudyPlace',//($session, $date = null)
 
@@ -69,8 +68,6 @@ const API = {
   getDynamicAns: URL.study + 'getDynamicAns',//($session, $dynamic_id, $answer_id)// 查看回答的详细信息
   delDynamic: URL.study + 'delDynamic',//($session, $dynamic_id)// 删除问题
   publishDynamic: URL.study + 'publishDynamic',//$title, $img_url, $content, $type, $sort = null
-
-
 }
 
 //2.关于路径的常量，所有资源都以此为前缀

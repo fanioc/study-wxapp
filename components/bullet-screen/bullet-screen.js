@@ -9,8 +9,7 @@ Component({
    */
   properties: {
     cover: { type: Boolean, value: false },
-    bullet_opacity: { type: String, value: '1' }
-
+    bullet_opacity: { type: Number, value: 0.5 }
   },
 
   /**
@@ -34,7 +33,8 @@ Component({
         url: _URL.API.getBullet,
         data: {
           session: wx.getStorageSync('session'),
-          last_id: last_id
+          last_id: last_id,
+          not_type: getApp().globalData.userConfig.bullet_not_show
         },
         success: function (e) {
           that.showBullet(e.data.data)
