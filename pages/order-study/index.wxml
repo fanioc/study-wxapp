@@ -1,5 +1,5 @@
 <include src='/template/interActive.wxml' />
-
+<nav />
 <!-- 学习进行时显示的界面 -->
 <view class='contain' wx:if='{{study_status}}'>
 
@@ -58,8 +58,8 @@
           <!-- 模块bottom按钮部门 -->
           <view class='invite_item_content_button'>
             <text class='content_button_text'>
-
-            <text >进行中</text>
+            <text wx:if='{{complete_study}}'>进行中</text>
+            <text wx:else>进行中</text>
 
             </text>
             <zan-button-group>
@@ -67,7 +67,19 @@
                 <zan-button size="mini" type="danger" data-index='{{index}}' data-invited='0' catchtap='modal_study_invite'>拒绝邀请</zan-button>
                 <zan-button size="mini" type="primary" data-invited='1' data-index='{{index}}' catchtap='modal_study_invite'>接受邀请</zan-button>
               </block>
-              <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+
+              <view wx:else>
+
+                <view wx:if='{{complete_study}}' data-index='{{item.study_id}}' bindtap='set_study_satisfaction'>
+                  <zan-tag type="danger" data-value='0'>
+                    不满意</zan-tag>
+                  <zan-tag type="warn" data-value='1'>
+                    勉 强</zan-tag>
+                  <zan-tag type="primary" data-value='2'>
+                    满 意</zan-tag>
+                </view>
+                <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+              </view>
             </zan-button-group>
           </view>
           <!-- 模块bottom按钮部门 -->
@@ -120,7 +132,7 @@
 
             <text >历史记录</text>
                   </text>
- <zan-button size="mini" type="primary" catchtap='nav_orderStudy_detailPage'>自习地图</zan-button>
+                  <zan-button size="mini" type="primary" catchtap='nav_orderStudy_detailPage'>自习地图</zan-button>
                 </view>
                 <!-- 主要 -->
               </view>

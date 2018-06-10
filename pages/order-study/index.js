@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    complete_study:false,
     url: {
       study: 'https://study.xietan.xin/static/upLoadFile/STUDY.png'
     },
@@ -54,17 +55,7 @@ Page({
       method: 'GET',
       success: function (res) {
         if (res.data.errCode) {
-          if (that.data.invited == 1)
-          {
-            temp[that.data.invited_index].reach_id[0].status=1;
-            temp[that.data.invited_index].card_sort=3;
-          }
-          else
-          {
-            temp[that.data.invited_index].reach_id[0].status = 0;
-            temp[that.data.invited_index].card_sort = -1;
-          }
-          that.setData({ current_studyInfo:temp});
+          that.init_data();
                   }
       },
       fail: function (res) {
@@ -113,41 +104,7 @@ Page({
   },
   //---结束当前学习
   button_complete_study: function (e) {
-    var that = this;
-    wx.showModal({
-      title: '提示',
-      content: '确认结束本次学习吗',
-      success: res => {
-        if (res.confirm) {
-          //---
-          wx.showLoading({
-            title: '加载数据中',
-          });
-          //---
-          wx.request({
-            url: _API.setSatStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
-            data: {
-              session: wx.getStorageSync('session'),
-              study_id:'',
-              sat:'',
-            },
-            method: 'GET',
-            success: function (res) {
-              var get_data = _util.errCode(res.data);
-              if (get_data) {
-                console.log(get_data);
-              }
-            },
-            fail: function (res) {
-              _components.show_mToast('网络错误');
-            },
-            complete: function (res) { wx.hideLoading(); },
-          })
-          that.setData({ study_status: false })
-          that.nav_orderStudy_detailPage();
-        }
-      }
-    })
+    this.setData({complete_study:true});
 
   },
   //获取正在学习的文字信息，
@@ -180,9 +137,8 @@ Page({
   //---------------------------------------------------------------------
   //转跳匹配学习的页面，由图片触发
   nav_orderStudy_detailPage: function () {
-    //addtionRegion
-    wx.navigateTo({
-      url: '/pages/order-study/order_map/order_map',
+    wx.navigateBack({
+      delta: 1,
     })
   },
   //获取上一次学习的信息，此操作读取本地缓存
@@ -229,15 +185,45 @@ Page({
   },
   //获取上一次学习的满意度，此操作读取本地缓存
   set_study_satisfaction: function (e) {
-    console.log(e.target.dataset);
-    if (e.target.dataset.value) {
-      var temp = this.data.study_satisfaction;
-      temp[e.currentTarget.dataset.index] = e.target.dataset.value;
-      //addtionRegion  发送满意度
-      this.setData({ study_satisfaction: temp });
-    }
     console.log(e);
-    //this.setData({ })study_history_array[e.currentTarget.dataset.]
+    if (e.target.dataset.value) {
+  
+      var that = this;
+      
+       
+          //---
+          wx.showLoading({
+            title: '加载数据中',
+          });
+          //---
+          wx.request({
+            url: _API.setSatStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+            data: {
+              session: wx.getStorageSync('session'),
+              study_id: e.currentTarget.dataset.index,
+              sat: e.target.dataset.value,
+            },
+            method: 'GET',
+            success: function (res) {
+              var get_data = _util.errCode(res.data);
+              if (get_data) {
+                console.log(get_data);
+                this.setData({ complete_study: false });
+                that.init_data();
+              }
+            },
+            fail: function (res) {
+              _components.show_mToast('网络错误');
+            },
+            complete: function (res) { wx.hideLoading(); },
+          })
+      
+        
+      
+      
+    }
+   
+    
   },
   //----------------------------
   /**
@@ -269,18 +255,11 @@ Page({
         get_data = _util.errCode(res.data);
         if (get_data) {
           console.log(get_data);//debug
-          if (get_data[1]) {
+         
             that.set_current_studyInfo(get_data[1]);
             that.get_study_history_array(get_data[0]);
             that.setData({ study_status: true });
-          }
-          else {
-            that.get_study_history_array(get_data[0]);
-            wx.navigateTo({
-              url: '/pages/order-study/order_map/order_map',
-            });
-            that.setData({ study_status: true });
-          }
+          
         }
       },
       fail: function (res) {

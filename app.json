@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/schedule/index",
-    "pages/order-study/index",
+
+    "pages/order-study/order_map/order_map",
     "pages/me/index",
     "pages/community/index",
     "pages/community/dynamic/dynamic",
@@ -13,7 +14,7 @@
     "pages/me/score/score",
     "pages/personal_info/personal_info",
     "pages/community/dynamic/answer_detail/answer_detail",
-    "pages/order-study/order_map/order_map",
+    "pages/order-study/index",
     "pages/order-study/order_operate/order_operate",
     "pages/order-study/order_operate/form/form"
   ],
@@ -38,7 +39,7 @@
         "selectedIconPath": "image/tabBar/activity_fill.png"
       },
       {
-        "pagePath": "pages/order-study/index",
+        "pagePath": "pages/order-study/order_map/order_map",
         "text": "自习",
         "iconPath": "image/tabBar/select.png",
         "selectedIconPath": "image/tabBar/select_fill.png"

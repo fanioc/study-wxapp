@@ -4,14 +4,12 @@ page {
 
 .order_map {
   width: 100%;
-  height: 94%;
-  margin-top: 50rpx;
+  height: 100%;
 }
 
 .view-box {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding-top: 70px;
 }
 

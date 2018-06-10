@@ -44,8 +44,8 @@ Page({
   },
   
   controltap: function (e) {
-    wx.navigateBack({
-      delta: 1,
+    wx.navigateTo({
+      url: "/pages/order-study/index",
     })
     console.log('controltap')
   },
