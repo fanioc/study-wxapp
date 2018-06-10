@@ -36,14 +36,24 @@ class outwxml{
 	        let imgMode = ''
 	        if(item === 'image'){
 		        imgMode = 'mode="widthFix"';
-	        };
-            s+= `
-                    <${item} wx:if="{{item.node === 'element' && item.tag === '${item}'}}" ${attr} ${imgMode}>
-                        <block wx:for="{{item.child}}" wx:key="{{item}}">
-                            <template is="m${id}" data="{{item}}"/>
-                        </block>
-                    </${item}>
-            `;
+            };
+
+            // todo添加绑定事件
+            if(item === 'checkbox-group'){
+                attr += `bindchange="{{item.attr['bindchange']}}"`;
+            };
+            if(item === 'checkbox'){
+                attr += `value="{{item.attr['value']}}"`;
+            };
+            
+            s+= `<${item} wx:if="{{item.node === 'element' && item.tag === '${item}'}}" ${attr} ${imgMode}><block wx:for="{{item.child}}" wx:key="{{item}}"><template is="m${id}" data="{{item}}"/></block></${item}>`;
+            // s+= `
+            //         <${item} wx:if="{{item.node === 'element' && item.tag === '${item}'}}" ${attr} ${imgMode}>
+            //             <block wx:for="{{item.child}}" wx:key="{{item}}">
+            //                 <template is="m${id}" data="{{item}}"/>
+            //             </block>
+            //         </${item}>
+            // `;
         });
 
         return s;
@@ -55,8 +65,7 @@ class outwxml{
         
         let s = '',
             attr = [
-                'class','width','height','data','src','id','style','href','data-ename','data-url','data-src','data-alpha','data-data','data-id','data-name',
-                
+                'class','width','height','data','src','id','style','href','checked',
                 'bind:touchstart',
                 'bind:touchmove',
                 'bind:touchcancel',
@@ -68,34 +77,23 @@ class outwxml{
                 'bind:animationstart',
                 'bind:animationiteration',
                 'bind:animationend',
-                'bind:touchforcechange',
-
-                'capture-bind:touchstart',
-                'capture-bind:touchmove',
-                'capture-bind:touchcancel',
-                'capture-bind:touchend',
-                'capture-bind:tap',
-                'capture-bind:longpress',
-                'capture-bind:longtap',
-                'capture-bind:transitionend',
-                'capture-bind:animationstart',
-                'capture-bind:animationiteration',
-                'capture-bind:animationend',
-                'capture-bind:touchforcechange'
+                'bind:touchforcechange'
             ];
+
+        s += `data-_el="{{item}}"`;
         attr.forEach((item,index)=>{
+            
             switch (item) {
                 case 'class':
-                    s += `${item}="{{item.attr.className}}"`;
+                    s += `${item}="{{item.attr.class}}"`;
                 break;
                 case 'href':
                     s += `url="{{item.attr.${item}}}"`;
-                    s += `data-href="{{item.attr.${item}}}"`;
                 break;
                 default:
                     let aItem = item.split(':');
                     if(aItem.length > 1){
-                        s += `${item}='event_${aItem[0]}_${aItem[1]}'`;
+                        s += `${item}='eventRun_${aItem[0]}_${aItem[1]}'`;
                     }else{
                         s += `${item}="{{item.attr['${item}']}}"`;
                     };

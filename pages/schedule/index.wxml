@@ -7,7 +7,7 @@
     </view>
     <view class='currentWeek float-centert-a'>
       <view class='float-centert-b'>
-      <picker value='{{currentWeek-1}}' range='{{weekArray}}' bindchange='changeWeek'>第{{currentWeek}}周</picker>
+        <picker value='{{currentWeek-1}}' range='{{weekArray}}' bindchange='changeWeek'>第{{currentWeek}}周</picker>
       </view>
     </view>
   </view>
@@ -38,7 +38,7 @@
       <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum">
 
         <!-- 课表信息  -->
-        <view animation="{{animationData}}"  id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*100+classNum+1]}}" style='animation: spin .5s {{weekNum*80+classNum*40}}ms  ease 1 forwards;z-index:{{20-classNum}};position:absolute;top:{{(currentCourse[(weekNum+1)*100+classNum+1].time[1]-1)*100}}rpx;background:{{color[currentCourse[(weekNum+1)*100+classNum+1].type]}};'
+        <view animation="{{animationData}}" id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*100+classNum+1]}}" style='animation: spin .5s {{weekNum*80+classNum*40}}ms  ease 1 forwards;z-index:{{20-classNum}};position:absolute;top:{{(currentCourse[(weekNum+1)*100+classNum+1].time[1]-1)*100}}rpx;background:{{color[currentCourse[(weekNum+1)*100+classNum+1].type]}};'
           class='week-table-font week-table-{{currentCourse[(weekNum+1)*100+classNum+1].lengthTime}};}};' bindtap='selectClass' bindlongpress='longpressClass'>
           <view>
             <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*100+classNum+1].class_name}}</text>@{{currentCourse[(weekNum+1)*100+classNum+1].location}}

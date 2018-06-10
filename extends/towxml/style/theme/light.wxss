@@ -55,4 +55,4 @@
 }
 
 /**代码高亮样式**/
-@import '/towxml/plugins/hljs/style/github.wxss';
+@import '/extends/towxml/plugins/hljs/style/github.wxss';
