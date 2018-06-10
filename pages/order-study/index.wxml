@@ -4,7 +4,7 @@
 <view class='contain' wx:if='{{study_status}}'>
 
   <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
-    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}'>
+    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}' wx:if="{{item.card_sort!=-1}}">
       <view class='invite_item_content'>
         <view class="invite_item_content_card">
           <view>
@@ -64,8 +64,8 @@
             </text>
             <zan-button-group>
               <block wx:if='{{item.card_sort==2}}'>
-                <zan-button size="mini" type="danger" catchtap='agree_study_invite'>拒绝邀请</zan-button>
-                <zan-button size="mini" type="primary" catchtap='agree_study_invite'>接收邀请</zan-button>
+                <zan-button size="mini" type="danger" data-index='{{index}}' data-invited='0' catchtap='modal_study_invite'>拒绝邀请</zan-button>
+                <zan-button size="mini" type="primary" data-invited='1' data-index='{{index}}' catchtap='modal_study_invite'>接受邀请</zan-button>
               </block>
               <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
             </zan-button-group>

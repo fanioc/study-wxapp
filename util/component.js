@@ -14,7 +14,9 @@ function simulate_popup_set_property(that, form, callback, title = '弹窗', rig
 function middleToast_set_property(content) {
 
   //hidden直接定义为true
-  getCurrentPages()[0].setData({ hiddenToast: true, toastContent: content });
+  var pages = getCurrentPages();
+  var currentPage = pages[pages.length - 1];//lly_improve
+  currentPage.setData({ hiddenToast: true, toastContent: content });
   //console.log('hah');
   return true;
 }

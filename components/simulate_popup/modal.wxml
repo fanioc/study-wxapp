@@ -7,8 +7,7 @@
   <view class="full_content" animation="{{animationData}}">
     <!--提供外部节点-->
     <slot></slot>
-    <import src='/template/form.wxml' />
-    <template is='{{formtype}}' />
+    <textarea placeholder='简单的文本内容' name='leave_message' style='height:100px;' fixed='true'></textarea>
   </view>
     <!--按钮-->
   <view class="modal-footer" wx:if="{{button}}">

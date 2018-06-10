@@ -22,25 +22,76 @@ Page({
   },
   //------------自定义部分
   //--学习卡片部分
+  //----拒绝或接受邀请
+  modal_study_invite: function (e) {
+    var that = this;
+    this.setData({ invited_index: e.currentTarget.dataset.index, invited: e.currentTarget.dataset.invited });
+    var title = '您可向' + (e.currentTarget.dataset.invited == 1 ? '接受邀请的' : '被拒绝的同学') + '发送消息';
+    _components.show_modal(that, 'leave_message', that.post_inviteStatus, title, '确认');
+
+    console.log(e.currentTarget.dataset.index, e.currentTarget.dataset.invited);
+
+  },
+  post_inviteStatus: function (e) {
+
+    //console.log(e.formData, this.data.invited_index, this.data.invited);
+    //---
+    wx.showLoading({
+      title: '加载数据中',
+    });
+    //---
+    var that = this;
+    var temp = that.data.current_studyInfo;
+    wx.request({
+      url: _API.acceptStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+      data: {
+        session: wx.getStorageSync('session'),
+        study_id: temp[that.data.invited_index].study_id,
+        msg: e.formData.leave_message,
+        status: that.data.invited
+
+      },
+      method: 'GET',
+      success: function (res) {
+        if (res.data.errCode) {
+          if (that.data.invited == 1)
+          {
+            temp[that.data.invited_index].reach_id[0].status=1;
+            temp[that.data.invited_index].card_sort=2;
+          }
+          else
+          {
+            temp[that.data.invited_index].reach_id[0].status = 0;
+            temp[that.data.invited_index].card_sort = -1;
+          }
+          that.setData({ current_studyInfo:temp});
+                  }
+      },
+      fail: function (res) {
+        _components.show_mToast('网络错误');
+      },
+      complete: function (res) { wx.hideLoading(); },
+    })
+  },
   //网约学习底部菜单
   button_order_menu: function (e) {
     var that = this;
     var item = [];
-    var me = getApp().globalData.me;
+    var userConfig = getApp().globalData.userConfig;
     //----判断菜单内容
-    if (me.study_hidden)
+    if (userConfig.study_hidden)
       item.push('隐藏学习信息');
     else
-      item.push('取消隐藏学习信息');
-    if (me.study_invite)
+      item.push('取消隐藏学习信息'); me
+    if (userConfig.study_invite)
       item.push('不接受邀请');
     else
       item.push('接收邀请');
     item.push('不显示历史记录');//debug
     item.push('学习地图');
-    
+
     //--------------
-    this.setData({menu_item_list:item});
+    this.setData({ menu_item_list: item });
     wx.showActionSheet({
       itemList: item,
       success: function (res) {
@@ -50,9 +101,9 @@ Page({
             _util.me.study_hidden(me.study_hidden == 1 ? 0 : 1); break;
           case 1:
             _util.me.study_invite(me.study_invite == 1 ? 0 : 1); break;
-            case 2:
+          case 2:
             break;
-            case 3:
+          case 3:
             that.nav_orderStudy_detailPage()
             break;
         }
@@ -78,34 +129,29 @@ Page({
   },
   //获取正在学习的文字信息，
   set_current_studyInfo: function (study) {
-    var i,card_sort,temp=[];
+    var i, card_sort, temp = [];
     console.log(study);
-    for(i=0;i<study.length;i++)
-    {
-      
-      if (study[i].launch_id != getApp().globalData.me.uid)
-      {
-        if (study[i].reach_id[0].status == '-1')
-          {
+    for (i = 0; i < study.length; i++) {
+
+      if (study[i].launch_id != getApp().globalData.me.uid) {
+        if (study[i].reach_id[0].status == '-1') {
           study[i].card_sort = 2;
           temp.push(study[i]);
-          }
-        else if (study[i].reach_id[0].status == '1')
-        {
-          study[i].card_sort = 3;
+        }
+        else if (study[i].reach_id[0].status == '1') {
+          study[i].card_sort = 2;//3lly
           temp.push(study[i]);
         }
         else
-        {}
+        { }
       }
-      else
-      {
+      else {
         study[i].card_sort = 1;
         temp.push(study[i]);
       }
     }
     //console.log(temp);
-    this.setData({ current_studyInfo:temp });
+    this.setData({ current_studyInfo: temp });
     return true;
   },
   //---------------------------------------------------------------------
@@ -118,8 +164,8 @@ Page({
   },
   //获取上一次学习的信息，此操作读取本地缓存
   get_study_history_array: function (e) {
-    if(!e)
-    return false;
+    if (!e)
+      return false;
 
     var data = [];//最终用于渲染的数组数据
     var end = e.length < 4 ? e.length : 4;//限制渲染卡片的数量
@@ -133,7 +179,7 @@ Page({
       reach = e[i].reach_id;
       gay = [];
       for (j = 0; j < reach.length; j++) {
-        if (reach[j].status == 1 && reach[j].uid!=getApp().globalData.me.uid)
+        if (reach[j].status == 1 && reach[j].uid != getApp().globalData.me.uid)
           gay.push(reach[j].uid);
       }
       //----获取每次学习的满意度,
@@ -175,7 +221,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  this.init_data();
+    this.init_data();
 
 
   },
@@ -223,7 +269,7 @@ Page({
     })
 
 
-    
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

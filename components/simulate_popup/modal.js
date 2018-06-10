@@ -98,9 +98,9 @@ Component({
     }, 
     Confirm_submit: function(e) { //确认，并提交数据
       var myEventDetail = { formData: e.detail.value, templateType: this.data.formtype } // detail对象，将弹窗内的表单数据给事件监听函数
-     
- 
-      getCurrentPages()[0].data.modal_comfirm_callback(myEventDetail);
+      var pages = getCurrentPages();
+      var currentPage = pages[pages.length - 1];//lly_improve
+      currentPage.data.modal_comfirm_callback(myEventDetail);
       this.util("close");
     },
     //--------------------------------
