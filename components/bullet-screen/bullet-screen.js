@@ -17,7 +17,7 @@ Component({
    */
   data: {
     bullet: [],//top  //delay  //image_head  //color  //content 
-    color: ["#fbc2eb", "#d76171", "#5ee7df", "#66a6ff", "#fa71cd", "#f5efef", "#3cba92", "#9face6"]
+    color: ["#fbc2eb", "#d76171", "#5ee7df", "#66a6ff", "#fa71cd", "#80bfff", "#3cba92", "#9face6", "#de5145"]
   },
 
   /**
@@ -37,9 +37,10 @@ Component({
           not_type: getApp().globalData.userConfig.bullet_not_show
         },
         success: function (e) {
-          that.showBullet(e.data.data)
-          if (e.data.data.length >=1)
+          if (e.data.data.length >= 1) {
+            that.showBullet(e.data.data)
             wx.setStorageSync('bullet_id', e.data.data[e.data.data.length - 1].bullet_id)
+          }
         }
       })
     },
