@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo:{},
+    theme:{nav:"xxx"}
   },
 
   toBindSys:function(){

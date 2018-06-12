@@ -51,10 +51,10 @@ const API = {
 
   //自习部分接口
   getClassList: URL.study + 'getClassList', //$place, $date, $time = null
-  getStudyList: URL.study + 'getStudyList',
+  getStudyList: URL.study + 'getStudyList',//(session,study_id=null)
   launchStudy: URL.study + 'launchStudy',//($session, $reach_uid, $study_content, $msg, $place, $study_time, $study_date)
   acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
-  setSatStudy: URL.study + 'setSatStudy',//设置满意度
+  setSatStudy: URL.study + 'setSatStudy',//设置满意度 也就是完成当前学习 只有发起者能设置本次学习
   searchStudyPartner: URL.study + 'searchStudyPartner',  //$session, $study_time, $study_date, $require = null
   getStudyPlace: URL.study + 'getStudyPlace',//($session, $date = null)
 
