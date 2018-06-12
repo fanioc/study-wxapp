@@ -60,9 +60,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "自习",
-					"pathName": "pages/order-study/index",
+					"pathName": "pages/study/index",
 					"query": ""
 				},
 				{

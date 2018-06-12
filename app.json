@@ -16,7 +16,7 @@
     "pages/order-study/index",
     "pages/order-study/order_operate/order_operate",
     "pages/order-study/order_operate/form/form",
-    "pages/study/study-map"
+    "pages/study/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -39,7 +39,7 @@
         "selectedIconPath": "image/tabBar/activity_fill.png"
       },
       {
-        "pagePath": "pages/order-study/order_map/order_map",
+        "pagePath": "pages/study/index",
         "text": "自习",
         "iconPath": "image/tabBar/select.png",
         "selectedIconPath": "image/tabBar/select_fill.png"

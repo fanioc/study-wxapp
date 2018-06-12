@@ -35,7 +35,12 @@ App({
 
   },
 
-  getUserConfig:function(){
+  getUserConfig:function(err=0){
+		console.log(err)
+		if(err==1)
+			console.log("err为1")
+		else console.log(err)
+		
     var that = this
     wx.request({
       url: _CONSTANT.API.getUserConfig,
@@ -107,7 +112,7 @@ App({
    * 当小程序发生脚本错误，或者 api 调用失败时，会触发 onError 并带上错误信息
    */
   onError: function (msg) {
-
+		
   },
 
   //全局变量
