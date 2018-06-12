@@ -1,82 +1,85 @@
-<!--pages/community/index.wxml-->
-<!-- 顶部切换 -->
-<include src='/template/interActive.wxml' />
+<mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
+<!-- 动态圈动态模块-->
 
-<view class="swiper-tab" style='position:fixed;width:100%;'>
- <view style='height:70px'></view> 
-  <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
-    解题帮
-  </view>
+<!-- <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed' wx:if="{{data_success}}"> -->
 
-  <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
-    排行榜
-  </view>
+<view class='view-box'>
+  <block wx:for="{{feed}}" wx:key="{{index}}" data-feedIndex="{{index}}">
+    <!-- <text  wx:if='{{item.card_img&&0}}'>图片</text>
+    <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length<3}}</text> -->
 
-</view>
+    <!-- 动态模块1-->
+    <view class="dynamic_card" wx:if="{{item.card_img&&(item.question_describe)}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
 
-<!-- 置顶广告部分 -->
-<swiper indicator-dots="true" autoplay="true" id='banner' class='banner' wx:if="{{false}}">
-  <block wx:for="{{bannerList}}" wx:key="index">
+      <view>
+        <!--一，用户信息部分-->
+        <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" />
 
-    <swiper-item>
-      <image mode="aspectFit" src="{{item.imgSrc}}" />
-    </swiper-item>
+        <image src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
+        <view class="dynamic_title">{{item.question_title}}</view>
+
+      </view>
+
+    </view>
+    <!-- 动态模块0-->
+    <view class="feed-item" wx:else>
+
+      <!--动态内容部分-->
+
+      <!--一，用户信息部分-->
+      <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" />
+      <!--用户信息部分-->
+
+      <!--二，动态内容部分-->
+      <view class="feed-content" catchtap="nav_dynamic_page" data-feedIndex="{{index}}">
+        <!--标题部分-->
+        <view>
+
+
+          <l_text class="question" content='{{item.question_title}}' max='50' />
+        </view>
+        <!--标题部分-->
+
+        <!--问题描述部分-->
+        <view class="answer-body">
+          <view>
+            <!--//addtionRegion-->
+
+            <l_text content='{{item.question_describe}}' />
+          </view>
+
+        </view>
+        <!--问题描述部分-->
+
+      </view>
+      <!--动态内容部分-->
+      <!--三，动态信息部分-->
+      <view class="answer-actions">
+
+
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'>{{item.comment_num}} 回答 </a>
+          <text>•</text>
+        </view>
+
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'>{{item.dynamic_sort}} </a>
+          <text>•</text>
+        </view>
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'> {{item.dynamic_time}}</a>
+        </view>
+      </view>
+      <!--动态信息部分-->
+
+
+      <!--动态内容部分-->
+
+
+    </view>
+
+
+
   </block>
-
-</swiper>
-
-
-<!-- 内容部分 -->
-<!-- 动态圈板块-->
-<view id="dynamic" hidden="{{currentTab != 0}}">
-  <view class="search flex-wrp " style='background:#f85f48;position:fixed;width:100%;z-index:99;top:70px;' >
-    <view class="search-left flex-item" >
-      <text class='button_text' catchtap='add_dynamic'> 写问题</text>
-    </view>
-  </view>
-
-
-  <dynamics refresh='{{dynamics_refresh}} ' style="position:absolute;top:118px;"/>
-</view>
-
-<!-- 排行榜板块-->
-<view id="rank" hidden="{{currentTab != 1}}" style="position:absolute;top:90px;">
-
-  <view class="tag a">
-    积分TOP5
-  </view>
-    <view>
-      <view class='b'>
-        <view class='c'><text class='e'>376</text><view class='left'></view></view>
-        <user class='d' userID='110' model='2' />
-      </view>
-      <view class='b'>
-        <view class='c'><text class='e'>213</text><view class='left'></view></view>
-        <user class='d' userID='109' model='2' />
-      </view>
-      <view class='b'>
-        <view class='c'><text class='e'>193</text><view class='left'></view></view>
-        <user class='d' userID='108' model='2' />
-      </view>
-      <view class='b'>
-        <view class='c'><text class='e'>144</text><view class='left'></view></view>
-        <user class='d' userID='107' model='2' />
-      </view>
-      <view class='b'>
-        <view class='c'><text class='e'>98</text><view class='left'></view></view>
-        <user class='d' userID='106' model='2' />
-      </view>
-    </view>
-
-<view class="frame">
-  <view class="tag a">
-    校园之最
-  </view>
-  <view>
-
-    <text  class="singleItem">·最受欢迎教室</text>
-
-  </view>
-</view>
 
 </view>
