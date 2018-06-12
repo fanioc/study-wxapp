@@ -1,7 +1,6 @@
 {
   "usingComponents": {
    "theme":"/components/base/theme",
-    "dynamics":"/components/dynamic/modal",
     "nav": "/components/navigation/navigation",
     "l_text": "/components/limite_text/text",
     "img_pre": "/components/base/image_canPreview/image_canPreview",

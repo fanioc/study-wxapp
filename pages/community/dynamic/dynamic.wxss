@@ -77,9 +77,7 @@ page{
     padding: 40rpx 20rpx 10rpx;
     background: #fff;
 }
-.question-item .que-tag{
 
-}
 .question-item .que-tag .tag{
     height: 28rpx;
     padding: 15rpx 20rpx;
