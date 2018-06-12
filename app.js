@@ -1,7 +1,7 @@
 var _CONSTANT = require("./util/constant.js");
 var _util = require("./util/util.js");
 var _components = require("./util/component.js");
-const Towxml = require('/towxml/main'); //引入towxml库
+const Towxml = require('/extends/towxml/main'); //引入towxml库
 
 App({
   //

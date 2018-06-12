@@ -25,7 +25,6 @@ Component({
   methods: {
 //---------------
     pre_image: function () {//点击图片时预览
-
       wx.previewImage({
         urls: [this.data.imgURL]
       })

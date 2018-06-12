@@ -87,7 +87,7 @@ Page({
                    }
                    console.log(e);
                    that.setData({ marker: marker});
-                   
+                   wx.hideLoading()
                  }
        },
        fail: function (res) {
@@ -107,7 +107,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '正在加载地图...',
+    })
     this.get_study_map();
+    
     
   },
 

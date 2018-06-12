@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/schedule/index",
-
     "pages/order-study/order_map/order_map",
     "pages/me/index",
     "pages/community/index",
@@ -16,7 +15,8 @@
     "pages/community/dynamic/answer_detail/answer_detail",
     "pages/order-study/index",
     "pages/order-study/order_operate/order_operate",
-    "pages/order-study/order_operate/form/form"
+    "pages/order-study/order_operate/form/form",
+    "pages/study/study-map"
   ],
   "window": {
     "backgroundTextStyle": "dark",

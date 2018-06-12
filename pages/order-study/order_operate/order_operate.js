@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options.place ='2号教学楼';
+    // options.place ='2号教学楼';
     this.setData({ form_place: options.place});
     //console.log(e.markerId)
     var that = this;
