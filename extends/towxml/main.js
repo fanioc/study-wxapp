@@ -1,3 +1,5 @@
+const deCode = require('./deCode');
+
 class towxml {
 	constructor(option) {
 		const _ts = this;
@@ -28,6 +30,7 @@ class towxml {
 			_ts.m.md_ins = require('./plugins/markdown-it-ins');
 			_ts.m.md_mark = require('./plugins/markdown-it-mark');
 			_ts.m.md_emoji = require('./plugins/markdown-it-emoji');
+			_ts.m.md_todo = require('./plugins/markdown-it-todoList');
 
 		} else if (window) {
 			_ts.m.html2json = window.html2json;
@@ -39,6 +42,7 @@ class towxml {
 			_ts.m.md_ins = window.markdownitIns;
 			_ts.m.md_mark = window.markdownitMark;
 			_ts.m.md_emoji = window.markdownitEmoji;
+			_ts.m.md_todo = window.markdownitTaskLists;
 		};
 
 		_ts.m.md.use(_ts.m.md_sub);
@@ -46,6 +50,7 @@ class towxml {
 		_ts.m.md.use(_ts.m.md_ins);
 		_ts.m.md.use(_ts.m.md_mark);
 		_ts.m.md.use(_ts.m.md_emoji);
+		_ts.m.md.use(_ts.m.md_todo);
 
 		_ts.m.md.renderer.rules.emoji = function (token, idx) {
 			// return '<img class="h2w__emoji h2w__emoji--'+token[idx].markup+'" src="'+_ts.config.emoji_path + token[idx].content+'.'+ _ts.config.emoji_type+' "/>';
@@ -88,7 +93,6 @@ class towxml {
 						className_htmlTag = 'h2w__' + labelName;
 
 					if (_ts.isConversion(labelName)) {
-
 						wordSplit.splice(0, 1); //剔除元素的标签
 
 						//检查元素是否已经有className，有的话在原基础上添加新的类名
@@ -124,39 +128,32 @@ class towxml {
 							return s;
 						})();
 
+						// 添加todo事件绑定
+						if(labelName === 'todogroup'){
+							newAttrs += ' bindchange="eventRun_todo_checkboxChange"';
+						};		
+
 						//如果是图片
 						if (labelName === 'img') {
 							return '<image ' + newAttrs + '></image>'
 						};
 
+						// console.log('标签',labelName,'属性',newAttrs)
+
 						return '<' + _ts.newLabel(labelName) + ' ' + newAttrs + '>' + _ts.needClose(labelName);
 					};
 				};
-
 				return word;
 			});
-		return wxml;
+		return deCode(wxml);
 	}
 
 	//markdown转wxml
 	md2wxml(mdContent) {
 		const _ts = this;
-    let html = _ts.md2html(mdContent),
-      wxml = _ts.html2wxml(html),
-      deCode = str => {
-        let s = '';
-        if(str.length === 0){
-          return s;
-        };
-        s = str.replace(/&amp;/ig,'＆');
-        s = s.replace(/&lt;/ig, "＜");
-        s = s.replace(/&gt;/ig, "＞");
-        s = s.replace(/&nbsp;/g, " ");
-        s = s.replace(/&#39;/g, "＇");
-        s = s.replace(/&quot;/g, "＂");
-        return s;
-      };
-		return deCode(wxml);
+		let html = _ts.md2html(mdContent),
+			wxml = _ts.html2wxml(html);
+		return wxml;
 	}
 
 	//检查标签是否需要转换
@@ -201,6 +198,9 @@ class towxml {
 			case 'ins':
 				temp = 'text';
 				break;
+			case 'todogroup':
+				temp = 'checkbox-group';
+				break;
 		};
 		return temp;
 	}
@@ -218,7 +218,7 @@ class towxml {
 		if (type === 'markdown') {
 			json = _ts.m.html2json(_ts.md2wxml(content));
 		} else if (type === 'html') {
-      json = _ts.m.html2json(_ts.html2wxml(content));
+      		json = _ts.m.html2json(_ts.html2wxml(content));
 		};
 
 		//遍历json将多个class属性合为一个
@@ -238,8 +238,8 @@ class towxml {
 				};
 			};
 		})(json);
+
 		json.theme = 'light';
-		
 		
 		if(app){
 			[
@@ -254,28 +254,29 @@ class towxml {
                 'bind:animationstart',
                 'bind:animationiteration',
                 'bind:animationend',
-                'bind:touchforcechange',
-
-                'capture-bind:touchstart',
-                'capture-bind:touchmove',
-                'capture-bind:touchcancel',
-                'capture-bind:touchend',
-                'capture-bind:tap',
-                'capture-bind:longpress',
-                'capture-bind:longtap',
-                'capture-bind:transitionend',
-                'capture-bind:animationstart',
-                'capture-bind:animationiteration',
-                'capture-bind:animationend',
-                'capture-bind:touchforcechange'
+                'bind:touchforcechange'
 			].forEach(item => {
-				let aItem = item.split(':');
-				app['event_'+aItem[0]+'_'+aItem[1]] = (event)=>{
-					// console.log('元素事件',event);
+				let aItem = item.split(':'),
+					bindType = aItem[0],		// 事件绑定类型
+					evenType = aItem[1];		// 事件类型
+
+				// 检查，如果有添加自定义事件，则运行该事件
+				app[`eventRun_${bindType}_${evenType}`] = (event)=>{
+					let funName = `event_${bindType}_${evenType}`,
+						timer = `${funName}_timer`,
+						runFun = app[funName];
+					if(typeof runFun === 'function'){
+
+						// 由于小程序的事件绑定方式与冒泡机制问题，此处使用计时器以避免事件被同时多次调用
+						clearTimeout(app[timer]);
+						app[timer] = setTimeout(()=>{
+							runFun(event)
+						});
+					};
 				};
 			});
+			app[`eventRun_todo_checkboxChange`] = (event)=>{};
 		};
-
 		return json;
 	}
 };
