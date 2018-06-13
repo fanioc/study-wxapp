@@ -2,35 +2,17 @@ var _const = require("constant.js")
 var _tool = require("tool.js")
 var _com = require("component.js")
 
-
-// wx.getStorage({
-// 	key: 'session',
-// 	success: function (res) {
-// 		var session = res.data
-// 	},
-// })
-// wx.getStorage({
-// 	key: 'userInfo',
-// 	success: function (res) {
-// 		var userInfo = res.data
-// 	},
-// })
-// wx.getStorage({
-// 	key: 'userConfig',
-// 	success: function (res) {
-// 		var userConfig = res.data
-// 	},
-// })
-
 var session = wx.getStorageSync('session')
 var userInfo = function () {
 	let userInfo = wx.getStorageSync('userInfo')
 	if (userInfo == '') {
 		userInfo = {}
-		wx.setStorage({ key: 'userInfo', data: userInfo })
+		wx.setStorage({
+			key: 'userInfo',
+			data: userInfo
+		})
 		return userInfo
-	}
-	else return userInfo
+	} else return userInfo
 }()
 var userConfig = wx.getStorageSync('userConfig')
 
@@ -41,18 +23,19 @@ var userConfig = wx.getStorageSync('userConfig')
  */
 function getUserInfo(uid = 0) {
 	return new Promise((resove, reject) => {
-
-
 		if (typeof (userInfo[uid]) != 'undefined') {
-
 			resove(userInfo[uid])
 		} else {
-
-			let data = uid ? {} : { other_uid: uid }
+			let data = uid ? {} : {
+				other_uid: uid
+			}
 			let Req = APIrequest('getUserBasicInfo', data)
 			Req.then(res => {
 				userInfo[uid] = res
-				wx.setStorage({ key: 'userInfo', data: userInfo })
+				wx.setStorage({
+					key: 'userInfo',
+					data: userInfo
+				})
 				resove(res)
 			}).catch(res => {
 				reject(res)
@@ -89,40 +72,56 @@ function getSession(reGet = 0) {
 	return new Promise((resove, reject) => {
 		if (reGet == 0) {
 			wx.checkSession({
-				success: function () {
+				success: () => {
 					if (session == '') {
-						let re = getSession(++reGet)
-						re.then(res => { resove(res) }).catch(res => { reject(res) })
-					}
-					else resove(session) //session存在则返回
-				}, fail: x => {
-					let re = getSession(++reGet)
-					re.then(res => { resove(res) }).catch(res => { reject(res) })
+						getSession(++reGet).then(res => {
+							resove(res)
+						}).catch(res => {
+							reject(res)
+						})
+					} else resove(session) //session存在则返回
+				},
+				fail: () => {
+					getSession(++reGet).then(res => {
+						resove(res)
+					}).catch(res => {
+						reject(res)
+					})
 				} //用户登入凭证过期，重新获取code获取session
 			})
-		} else if (reGet >= 1 && reGet <= 3) {
+		} else if (reGet >= 1) {
 			wx.login({
 				success: function (res) {
 					wx.request({
 						url: _const.URL.API + "loginStudy",
-						data: { code: res.code },
+						data: {
+							code: res.code
+						},
 						success: function (res) {
-							if (res.data.errCode == 0) {//成功获取
+							if (res.data.errCode == 0) { //成功获取
 								session = res.data.data.session
-								wx.setStorage({ key: 'session', data: session })
+								wx.setStorage({
+									key: 'session',
+									data: session
+								})
 								console.log("请求的session:" + session)
 								resove(session)
-							}
-							else if (res.data.errCode == 2500) {
+							} else if (res.data.errCode == 2500) {
 								console.log("session错误，微信返回错误码：" + res.data.data.wxErrCode) //返回微信errCode错误码
 								reject("session错误，微信返回错误码：" + res.data.data.wxErrCode);
+							} else {
+								console.log("session错误，其他情况：" + res.data);
+								reject("session错误，其他情况：" + res.data)
 							}
-							else { console.log("session错误，其他情况：" + res.data); reject("session错误，其他情况：" + res.data) }
-						}, fail: function (res) { console.log("微信小程序登入错误：" + res); reject("微信小程序登入错误：" + res) }
+						},
+						fail: function (res) {
+							console.log("微信小程序登入错误：" + res);
+							reject("微信小程序登入错误：" + res)
+						}
 					})
 				}
 			})
-		} else { reject() }
+		}
 	})
 }
 
@@ -140,15 +139,20 @@ function getUserConfig(reGet = 0) {
 		if (reGet == 0) {
 			if (userConfig == '') {
 				let rReq = getUserConfig(++reGet)
-        rReq.then(res => resove(res)).catch(res => reject(res))
+				rReq.then(res => resove(res)).catch(res => reject(res))
 			} else resove(userConfig)
 		} else if (reGet >= 1) {
 			let Req = APIrequest('getUserConfig')
 			Req.then(config => {
 				userConfig = config
-				wx.setStorage({ key: 'userConfig', data: config })
+				wx.setStorage({
+					key: 'userConfig',
+					data: config
+				})
 				resove(userConfig)
-			}).catch(code => { reject(code) })
+			}).catch(code => {
+				reject(code)
+			})
 		}
 	})
 }
@@ -175,8 +179,10 @@ function uploadFile(filePath) {
 					let fileUrl = JSON.parse(res.data).fileUrl
 					resove(fileUrl)
 				} else reject(res.data.errCode)
-			},//其他错误情况
-			fail: function (res) { reject(res) }
+			}, //其他错误情况
+			fail: function (res) {
+				reject(res)
+			}
 		})
 	})
 
@@ -198,7 +204,12 @@ function APIrequest(method, data = {}, reGetSession = 0) {
 	return new Promise((resove, reject) => {
 		if (reGetSession > 3) //如果重试session超过三次，报错
 			reject(3102)
-		else getSession(reGetSession).then(session => { data.session = session; Requset() })
+		else getSession(reGetSession).then(session => {
+			data.session = session;
+			Requset()
+		}).catch(err => {
+			reject(3102)
+		})
 
 		var Requset = () => {
 			wx.request({
@@ -213,7 +224,9 @@ function APIrequest(method, data = {}, reGetSession = 0) {
 						Req.then(x => resove(x)).catch(x => reject(x))
 					} else reject(res.data.errCode)
 				},
-				fail: function () { reject('请求错误') }, //展示模态窗网络错误，retrun res.code;
+				fail: function () {
+					reject('请求错误')
+				}, //展示模态窗网络错误，retrun res.code;
 			})
 		}
 	})
@@ -232,6 +245,14 @@ function APIerrCode(code, showModal = 0) {
 			confirmColor: "bd0000",
 			showCancel: false
 		})
+	else if (showModal == 2) {
+		wx.showToast({
+			title: errMsg,
+			icon: "none",
+			duration: 1000,
+			mask: true,
+		})
+	}
 
 	return errMsg;
 }

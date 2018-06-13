@@ -2,9 +2,9 @@ var core = getApp().globalData.core;
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+	/**
+	 * 页面的初始数据
+	 */
 	data: {
 		config: {
 			tableHead: {
@@ -25,8 +25,13 @@ Page({
 
 	changeWeek: function (e) {
 		var week = parseInt(e.detail.value) + 1
-		this.setData({ currentWeek: week })
-		wx.setStorageSync('userTerm', { "currentWeek": week, 'currentTerm': this.data.currentTerm })
+		this.setData({
+			currentWeek: week
+		})
+		wx.setStorageSync('userTerm', {
+			"currentWeek": week,
+			'currentTerm': this.data.currentTerm
+		})
 		this.showSchel()
 	},
 	tapSetting: function (e) {
@@ -90,9 +95,7 @@ Page({
 
 
 	initSchel: function () {
-
 		const weekList = core.tool.getWeekList()
-
 		this.setData({
 			'config.tableHead.date': weekList
 		})
@@ -104,9 +107,8 @@ Page({
 				currentTerm: term.currentTerm
 			})
 			this.readSchel(0)
-		}
-		else {
-			let Req = core.APIrequest(getCurrentTerm)
+		} else {
+			let Req = core.APIrequest('getCurrentTerm')
 
 			Req.then(data => {
 				this.setData({
@@ -116,26 +118,14 @@ Page({
 						xq: data.xq
 					}
 				})
-				wx.setStorageSync('userTerm', { currentTerm: that.data.currentTerm, currentWeek: that.data.currentWeek })
+				wx.setStorageSync('userTerm', {
+					currentTerm: this.data.currentTerm,
+					currentWeek: this.data.currentWeek
+				})
 				this.readSchel(0)
 			}).catch(err => {
 				console.log("读取错误" + err)
 			})
-
-			// wx.request({
-			// 	url: CONSTANT.API.getCurrentTerm,
-			// 	success: function (res) {
-			// 		that.setData({
-			// 			currentWeek: res.data.data.week,
-			// 			currentTerm: {
-			// 				xn: res.data.data.xn,
-			// 				xq: res.data.data.xq
-			// 			}
-			// 		})
-			// 		wx.setStorageSync('userTerm', { currentTerm: that.data.currentTerm, currentWeek: that.data.currentWeek })
-			// 		that.readSchel(0)
-			// 	}
-			// })
 		}
 	},
 
@@ -169,102 +159,74 @@ Page({
 			this.setData({
 				getSche: data
 			})
-
 			wx.setStorageSync('userSchel', data)
 			this.showSchel()
-
 			wx.hideLoading()
-		}).catch(err => { wx.hideLoading() })
+		}).catch(err => {
+			wx.hideLoading()
+		})
 
-		// wx.request({
-		// 	url: CONSTANT.API.getUserAllCourse,
-		// 	data: {
-		// 		session: wx.getStorageSync('session'),
-		// 		xn: that.data.currentTerm.xn,
-		// 		xq: that.data.currentTerm.xq
-		// 	},
-		// 	success: function (res) {
-		// 		console.log(res)
-		// 		if (res.data.errCode == 0) {
-		// 			that.setData({
-		// 				getSche: res.data.data
-		// 			})
-
-		// 			wx.setStorageSync('userSchel', res.data.data)
-		// 			that.showSchel()
-		// 		} else if (res.data.errCode == 3106) {
-
-		// 			//数据库课表错误
-		// 		}
-
-		// 	},
-		// 	complete: function () {
-		// 		wx.hideLoading()
-		// 	}
-		// })
 	},
 
 	showSchel: function () {
 		this.setCurrentSche(this.data.getSche, this.data.currentWeek)
-
 	},
 
 
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
 	onLoad: function (options) {
 		core.setTheme(0, this)
-
 		this.initSchel()
 	},
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+	/**
+	 * 生命周期函数--监听页面初次渲染完成
+	 */
 	onReady: function () {
 
 	},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
 	onShow: function () {
 
 	},
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
+	/**
+	 * 生命周期函数--监听页面隐藏
+	 */
 	onHide: function () {
 
 	},
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
 	onUnload: function () {
 
 	},
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+	/**
+	 * 页面相关事件处理函数--监听用户下拉动作
+	 */
 	onPullDownRefresh: function () {
 		this.readSchel(1)
 		wx.stopPullDownRefresh();
 	},
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
 	onReachBottom: function () {
 
 	},
 
-  /**
-   * 用户点击右上角分享
-   */
+	/**
+	 * 用户点击右上角分享
+	 */
 	onShareAppMessage: function () {
 
 	}

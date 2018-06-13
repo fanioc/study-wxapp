@@ -11,8 +11,8 @@ App({
 
 	loginStudy: function () {
 		let session = core.getSession(1)
-    
-    session.then(session => {
+
+		session.then(session => {
 			console.log(session)
 			this.initUserInfo()
 		}).catch(err => { console.log('初始化session错误' + err) })

@@ -1,4 +1,3 @@
-// debug/debug.js
 var core = getApp().globalData.core;
 
 Page({
@@ -8,13 +7,11 @@ Page({
    */
   data: {
     //article将用来存储towxml数据
-    userID:110,
+    userID: 110,
     article: {},
-    study_fresh:false,
-    invite_item_array: [
-      {
-        dynamic_data:
-        {
+    study_fresh: false,
+    invite_item_array: [{
+        dynamic_data: {
 
           feed_head_img: '/image/debug.png',
           feed_source_name: 'debug',
@@ -31,8 +28,7 @@ Page({
         dynamic_time: 2018 - 1 - 2
       },
       {
-        dynamic_data:
-        {
+        dynamic_data: {
 
           feed_head_img: '/image/debug.png',
           feed_source_name: 'debug',
@@ -48,39 +44,38 @@ Page({
         dynamic_follow_with_interest: true,
         dynamic_type: 1,
         dynamic_time: 2018 - 1 - 2
-      }],
+      }
+    ],
   },
-//-------------
+  //-------------
   asd: function () {
-   // getCurrentPages();
+    // getCurrentPages();
     //var asda = this.bindItemTap;
     _components.show_mToast('完成评价');
     //this.lly(asda);
     //this.a(asda);
-    
+
     //getCurrentPages()[0].setData({ hah:  function () { console.log('asda');return true; } });
     //getCurrentPages()[0].data.hah();
     //console.log(this.data.hah());
     //console.log(getCurrentPages()[0].a);
   },
-  lly:function(call)
-  {
-      call();
+  lly: function (call) {
+    call();
   },
   bindItemTap: function () {
     wx.navigateTo({
       url: '../answer/answer'
     })
   },
-  a:function()
-  {
+  a: function () {
     console.log('llllly', getCurrentPages());
     wx.navigateTo({
       url: '/pages/community/index'
     })
-   
+
   },
-//------------
+  //------------
   /**
    * 生命周期函数--监听页面加载
    */
@@ -91,22 +86,22 @@ Page({
       url: _constant.API.getEduFreeClass,
       data: {
         session: wx.getStorageSync('session'),
-        date:'2018-05-20',
+        date: '2018-05-20',
       },
       method: 'GET',
       success: function (res) {
-                    
+
       },
       fail: function (res) {
         _components.show_mToast('网络错误');
       },
-      complete: function (res) { },
+      complete: function (res) {},
     })
-   /* var res={ errCode: 0, data:'llyasd' };
-    var that=this;
-    util.errCode(res, function () { console.log('aaaaa') })
-    //console.log();*/
-    var _that=this;
+    /* var res={ errCode: 0, data:'llyasd' };
+     var that=this;
+     util.errCode(res, function () { console.log('aaaaa') })
+     //console.log();*/
+    var _that = this;
     console.log(_that);
     console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
     getApp().globalData.current_question = {
@@ -128,49 +123,51 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({ study_fresh: !this.data.study_fresh });
-  
+    this.setData({
+      study_fresh: !this.data.study_fresh
+    });
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })
