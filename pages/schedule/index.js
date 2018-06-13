@@ -106,7 +106,8 @@ Page({
 			this.readSchel(0)
 		}
 		else {
-			var Req = core.APIrequest(getCurrentTerm)
+			let Req = core.APIrequest(getCurrentTerm)
+
 			Req.then(data => {
 				this.setData({
 					currentWeek: data.week,
@@ -117,7 +118,7 @@ Page({
 				})
 				wx.setStorageSync('userTerm', { currentTerm: that.data.currentTerm, currentWeek: that.data.currentWeek })
 				this.readSchel(0)
-			}).cathc(err => {
+			}).catch(err => {
 				console.log("读取错误" + err)
 			})
 

@@ -3,14 +3,16 @@
 	*/
 const Towxml = require('/extends/towxml/main'); //引入towxml库
 
-var core = require('/util/core.js')
+var core = require('/util/core.js');
 
 App({
 	towxml: new Towxml(),
 
 
 	loginStudy: function () {
-		core.getSession(1).then(session => {
+		let session = core.getSession(1)
+    
+    session.then(session => {
 			console.log(session)
 			this.initUserInfo()
 		}).catch(err => { console.log('初始化session错误' + err) })

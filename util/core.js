@@ -140,7 +140,7 @@ function getUserConfig(reGet = 0) {
 		if (reGet == 0) {
 			if (userConfig == '') {
 				let rReq = getUserConfig(++reGet)
-				rReq.then().catch()
+        rReq.then(res => resove(res)).catch(res => reject(res))
 			} else resove(userConfig)
 		} else if (reGet >= 1) {
 			let Req = APIrequest('getUserConfig')
