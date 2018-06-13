@@ -1,6 +1,5 @@
-var _components = getApp().globalData.components;
-var _API = getApp().globalData.CONSTANT.API;
-var _util = getApp().globalData.util;
+var core = getApp().globalData.core;
+
 Page({
 
   /**

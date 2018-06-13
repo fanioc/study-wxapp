@@ -1,5 +1,4 @@
-// pages/me/score/score.js
-var CONSTANT = getApp().globalData.CONSTANT;
+var core = getApp().globalData.core;
 
 Page({
 

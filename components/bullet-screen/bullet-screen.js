@@ -1,7 +1,5 @@
 // components/bullet-screen/bullet-screen.js
-var _util = getApp().globalData.util;
-var _URL = getApp().globalData.CONSTANT;
-var _components = getApp().globalData.components;
+var core = getApp().globalData.core;
 
 Component({
   /**

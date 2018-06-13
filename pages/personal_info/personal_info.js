@@ -1,4 +1,5 @@
-const CONSTANT = getApp().globalData.CONSTANT
+var core = getApp().globalData.core;
+
 var mtabW;
 
 Page({

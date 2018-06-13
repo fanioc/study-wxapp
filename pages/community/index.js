@@ -1,4 +1,5 @@
-var _components = getApp().globalData.components;
+var core = getApp().globalData.core;
+
 Page({
 
   /**

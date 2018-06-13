@@ -1,4 +1,5 @@
-// pages/study/index.js
+var core = getApp().globalData.core;
+
 Page({
 
 	/**
