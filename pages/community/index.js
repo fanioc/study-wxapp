@@ -13,7 +13,20 @@ Page({
     toastContent: '',//toast 提示内容
     data_success: false,//只有当网络请求成功时才会设置为真然后对其渲染
     //---------
-    on: true,
+    tag_group_array: [
+      {
+        content: '全部',
+        choose: true
+      },
+      {
+        content: '高等数学',
+        choose: false
+      },
+      {
+        content: 'C语言',
+        choose: false
+      },
+    ],//debug
 
   },
   //-----------------本页面自定义函数
@@ -22,11 +35,10 @@ Page({
   {
     var that = this;
     var last_id = that.data.feed_length;
-    if(mode==0)
-    {
+    if (mode == 0) {
       last_id = '';
     }
- 
+
     //---
     wx.showLoading({
       title: '加载动态中',
@@ -54,11 +66,10 @@ Page({
           feed_Array = getFeed;
           console.log('重置');
         }
-        if (typeof (feed_Array.length)=='undefined')
-         {
+        if (typeof (feed_Array.length) == 'undefined') {
           _components.show_mToast('网络错误');
           return false;
-         }
+        }
         that.setData({ data_success: true, feed: feed_Array, feed_length: feed_Array[feed_Array.length - 1].question_id });
         console.log('feed_length:', that.data.feed_length);
         return true;
@@ -92,8 +103,41 @@ Page({
     //debugRegion
   },
 
+  add_dynamic: function (e) {
+    wx.navigateTo({
+      url: '/pages/community/add_dynamic/add_dynamic',
 
-//-----------------本页面自定义函数
+    })
+  },
+  set_tag: function (e) {
+    var tag_group = this.data.tag_group_array;
+
+    //addtionRegion
+    if (tag_group[0].choose) {
+      if (e.currentTarget.dataset.index != 0) {
+        tag_group[0].choose = false;
+        tag_group[e.currentTarget.dataset.index].choose = !tag_group[e.currentTarget.dataset.index].choose;
+      }
+      else {
+        return true;
+      }
+
+    }
+    else {
+      if (e.currentTarget.dataset.index != 0) {
+        tag_group[e.currentTarget.dataset.index].choose = !tag_group[e.currentTarget.dataset.index].choose;
+      }
+      else {
+        for(let i in tag_group)
+        {
+          tag_group[i].choose=false;
+        }
+        tag_group[0].choose=true;
+      }
+    }
+    this.setData({ tag_group_array: tag_group });
+  },
+  //-----------------本页面自定义函数
 
   /**
    * 生命周期函数--监听页面加载
@@ -132,15 +176,14 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () 
-  {
-  
-   
-   
-      this.getFeed(0);
-      wx.stopPullDownRefresh();
+  onPullDownRefresh: function () {
+
+
+
+    this.getFeed(0);
+    wx.stopPullDownRefresh();
     _components.show_mToast('刷新成功');
-    
+
   },
 
   /**
@@ -152,8 +195,7 @@ Page({
       _components.show_mToast('没有更多了')
       return;
     }
-    else
-    {
+    else {
       this.getFeed(1);
     }
   },

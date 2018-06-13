@@ -4,12 +4,6 @@
 <!-- <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed' wx:if="{{data_success}}"> -->
 
 <view class='container'>
-  <!-- <view class="search flex-wrp " style='background:#f85f48;position:fixed;width:100%;z-index:99;top:70px;'>
-    <view class="search-left flex-item">
-      <text class='button_text' catchtap='add_dynamic'> 写问题</text>
-    </view>
-    
-  </view> -->
 
   <view class="search flex-wrp">
     <view class="search-left flex-item flex-x">
@@ -17,14 +11,14 @@
       <input placeholder="按照标签，搜索问题" placeholder-class="search-placeholder" />
     </view>
     <view class="search-right flex-item" bindtap="upper">
-      <image src="/image/edit.svg"></image>
+      <image src="/image/edit.svg" catchtap='add_dynamic'></image>
     </view>
   </view>
 
 
 <view class='tag_body'>
-        <view class="que-tag">
-          <text class="tag" >全部</text>
+        <view class="tag_group">
+          <text class=" tag {{tag_group.choose?'tag_choose':''}}" wx:for="{{tag_group_array}}" wx:key='index' wx:for-item='tag_group' catchtap='set_tag' data-index='{{index}}'>{{tag_group.content}}</text>
         </view>
 
 </view>
