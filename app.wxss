@@ -94,18 +94,6 @@ page{
 
 /*/--------顶部滑块css--------*/
 
-.fullscreen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999999;
-  background: white;
-  overflow-y: scroll;
-}
-
-/*/--------全屏显示css--------*/
 
 .hr {
   margin-top: 10rpx;
@@ -138,7 +126,7 @@ green {
   overflow: hidden;
 }
 
-/*/--------动态页面容器--------*/
+/*/--------多个动态页面的容器--------*/
 
 .flex-wrp {
   display: flex;
@@ -149,16 +137,7 @@ green {
   text-align: center;
 }
 
-.search {
-  /* z-index: 100;
-  position: fixed;
-  
-    */
-      width: 100%;
-        height: 30px; 
-  padding: 10px 0 10px 8px;
-    background: lightblue;  
-}
+
 
 .search-left {
   display: flex;
@@ -185,6 +164,7 @@ green {
   margin-top: 20rpx;
 }
 
+
 .button_text {
   font-size: 40rpx;
   font-weight: bold;
@@ -196,12 +176,6 @@ green {
   background-color: white;
 }
 
-.button_text_on {
-  color: LightGrey;
-}
-
-.middle_content {
-}
 
 .footer_button {
   /* z-index: 99999999; */
@@ -212,9 +186,7 @@ green {
 
 /*/--------置底的按钮--------*/
 
-.lly_omit::after {
-  content: '...';
-}
+
 
 text {
   word-break: break-all;
