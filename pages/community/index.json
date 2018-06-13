@@ -8,6 +8,7 @@
     "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
     "zan-button": "/extends/zan/btn/index",
-    "zan-button-group": "/extends/zan/btn-group/index"
+    "zan-button-group": "/extends/zan/btn-group/index",
+		"zan-icon":"/extends/zan/icon/index"
   }
 }

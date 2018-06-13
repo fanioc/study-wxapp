@@ -8,27 +8,7 @@
   <!-- 信息展示  -->
   <view class='place-info'>
 
-    <picker>西安财经学院-长安校区</picker>
-    <view class='place-button flex-x'>
-      <view class='place-button-item flex-all'>
-        <view>1号教学楼</view>
-        <view>2人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>2号教学楼</view>
-        <view>10人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>3号教学楼</view>
-        <view>50人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>图书馆</view>
-        <view>30人正在学习</view>
-      </view>
-    </view>
-
-		<picker>西安财经学院-长安校区</picker>
+    <picker>地点：西安财经学院-长安校区</picker>
     <view class='place-button flex-x'>
       <view class='place-button-item flex-all'>
         <view>1号教学楼</view>
