@@ -26,7 +26,7 @@
     </view>
 
     <!-- 周几列 -->
-    <view wx:for="{{config.tableHead.week}}" wx:key="df" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
+    <view wx:for="{{config.tableHead.week}}" wx:key="tableHeadWeek" wx:for-index="weekNum" wx:for-item="weekName" style='flex:1;'>
 
       <!-- 周xx xx日 -->
       <view class='week-title'>
@@ -35,7 +35,7 @@
       </view>
 
       <!-- 定位课表  -->
-      <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="df" wx:for-index="classNum">
+      <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="schelItem" wx:for-index="classNum">
 
         <!-- 课表信息  -->
         <view animation="{{animationData}}" id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*100+classNum+1]}}" style='animation: spin .5s {{weekNum*80+classNum*40}}ms  ease 1 forwards;z-index:{{20-classNum}};position:absolute;top:{{(currentCourse[(weekNum+1)*100+classNum+1].time[1]-1)*100}}rpx;background:{{color[currentCourse[(weekNum+1)*100+classNum+1].type]}};'

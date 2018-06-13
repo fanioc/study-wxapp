@@ -1,5 +1,4 @@
-// pages/me/bind-edusys/bind-edusys.js
-var _CONSTANT = require('../../../util/constant.js')
+var core = getApp().globalData.core;
 
 Page({
 

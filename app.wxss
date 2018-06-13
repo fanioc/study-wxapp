@@ -20,14 +20,11 @@ page{
 .flex-x{
   display: flex;
   flex-direction:row;
-  align-items: center;
 }
 
 .flex-y{
   display: flex;
   flex-direction:column;
-  align-items: center;
-  justify-content: center;
 }
 
 .float-centert-a{
@@ -40,6 +37,10 @@ page{
   position: relative;
   float: right;
   right: 50%;
+}
+
+.shadow{
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 

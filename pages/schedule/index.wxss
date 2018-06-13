@@ -18,7 +18,9 @@ page {
 }
 
 .setting {
+	text-align: left;
   color: #fff;
+	width: 40px;
   position: absolute;
   font-size: 20px;
   /* bottom: 10px; */

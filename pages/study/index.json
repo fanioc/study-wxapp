@@ -1,0 +1,5 @@
+{
+	"usingComponents": {
+		"zan-panel": "/extends/zan/panel/index"
+	}
+}

@@ -1,15 +1,98 @@
 //存储全局常量
 
+
+
 //1.关于链接的常量，所有网络请求都以此为前缀
 const URL = {
-  study: 'https://study.xietan.xin/xaufe/StudyApp/',
-  localhost: 'https://study.xietan.xin/xaufe/StudyApp/',
-  base: "http://localhost/wx/",
-  debug: 'https://api.xietan.xin/lly_debug/a.php',
+	base: {
+		master: "https://study.xietan.xin/",
+		debug: "https://api.xietan.xin/"
+	}
 }
 
-const API = {
+URL.API = URL.base.master + "xaufe/StudyApp/"
 
+
+//2.关于路径的常量，所有资源都以此为前缀
+const PATH = {
+	icon: "/image/subject/",
+	wrong: "/image/wrong.png",
+	debug: "/image/debug.png",
+	anonymous: "/image/anonymous.png"
+}
+
+const Theme = {
+	0: { nav: "", button: "" },
+	1: { nav: "", button: "" },
+}
+
+const errCode = {
+	"0": "正常",
+	"1000": "网络错误",
+	"1001": "Mobile登入网页无法访问",
+	"1002": "Mobile课表页面无法访问",
+	"1003": "Mobile课表子页面无法访问",
+	"1004": "Mobile成绩页面无法访问",
+	"1005": "Mobile个人信息页面无法访问",
+	"2000": "与微信后台相关",
+	"2100": "提供给微信后台信息错误",
+	"2101": "服务器session_key获取错误",
+	"2102": "服务器解密vi获取错误",
+	"2103": "服务器解密错误",
+	"2104": "appid与服务器校验出错",
+	"2500": "+ 微信服务器提示错误errcode",
+	"3000": "与服务器数据相关",
+	"3100": "教务信息错误",
+	"3101": "用户第一次登入，进入欢迎页面 并 初始化个人信息",
+	"3102": "session错误",
+	"3103": "用户没有绑定",
+	"3104": "关注错误，请稍后再来",
+	"3105": "教务系统没有当前学号个人信息",
+	"3106": "教务系统课表读取错误",
+	"3107": "教务系统没有当前学年记录",
+	"3108": "添加自定义课表错误",
+	"3109": "删除自定义课表错误",
+	"3110": "读取自定义课表出错",
+	"31101": "读取空闲教室出错，查询出错",
+	"3111": "读取studylist出错",
+	"3112": "读取studylist接受列表出错",
+	"3113": "发起学习失败",
+	"3114": "接受邀请失败，该学习过期或不是该学习的邀请对象",
+	"3115": "接受邀请失败数据库错误",
+	"3116": "读取自习地点出错",
+	"3117": "发送消息失败",
+	"3118": "标签过长",
+	"3119": "打标签失败",
+	"3120": "获取消息列表失败",
+	"3121": "获取标签信息失败",
+	"3122": "设置满意度失败",
+	"3123": "弹幕类型无效",
+	"3124": "发送弹幕失败",
+	"3125": "用户第一次设置初始化成功",
+	"3126": "用户第一次设置初始化失败",
+	"3127": "更改用户设置失败",
+	"3200": "提供给后台服务器信息错误",
+	"3201": "请求的数据非微信提供",
+	"3202": "没有存在的cookies值，刷新验证码重试",
+	"3300": "教务登入错误",
+	"32": "获取验证码错误",
+	"3400": "上传错误",
+	"3401": "上传出错",
+	"3402": "文件过大",
+	"3403": "有同名文件",
+	"3500": "社区模块",
+	"3501": "发表数据库写入错误",
+	"3502": "删除回答失败，无删除权限",
+	"3503": "更改赞同失败，无赞同动态",
+	"3504": "获取动态列表错误",
+	"3505": "问题获取失败，可能已被删除",
+	"3506": "获取问题列表错误",
+	"3507": "获取问题回答错误",
+	"3508": "删除动态失败，无删除权限"
+}
+
+/**
+const API = {
   //基础接口
   loginStudy: URL.study + 'loginStudy',
   getUserBasicInfo: URL.study + 'getUserBasicInfo',
@@ -41,7 +124,7 @@ const API = {
 
   //用户设置信息
   setUserConfig: URL.study + 'setUserConfig',//($session, $data)data 以设置名为键值，设置内容为内容值
-  getUserConfig: URL.study + 'getUserConfig',//($session)
+  : URL.study + 'getUserConfig',//($session)
 
   //自定义课表接口  
   getUserAllCourse: URL.study + 'getUserAllCourse',
@@ -69,36 +152,12 @@ const API = {
   delDynamic: URL.study + 'delDynamic',//($session, $dynamic_id)// 删除问题
   publishDynamic: URL.study + 'publishDynamic',//$title, $img_url, $content, $type, $sort = null
 }
+ */
 
-//2.关于路径的常量，所有资源都以此为前缀
-const PATH = {
-  icon: "/image/subject/",
-  wrong: "/image/wrong.png",
-  debug: "/image/debug.png",
-  anonymous: "/image/anonymous.png"
-}
 
-//3.关于时间的常量
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
-//----------------------------------------------
 module.exports = {
-  URL: URL,
-  PATH: PATH,
-  TIME_F: formatTime,
-  API: API
+	URL: URL,
+	PATH: PATH,
+	Theme: Theme,
+	errCode: errCode
 }

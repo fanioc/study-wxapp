@@ -1,7 +1,5 @@
-var _components = getApp().globalData.components;
-var _util = getApp().globalData.util;
-var _API = getApp().globalData.CONSTANT.API;
-var _PATH = getApp().globalData.CONSTANT.PATH;
+var core = getApp().globalData.core;
+
 Component({
 
   behaviors: [],

@@ -1,11 +1,11 @@
-var _components = getApp().globalData.components;
+
 // pages/markdown_editor/index.js
 var edit_content_value_temp='';//存放编辑文本的临时变量
 var init_mark='';//初始的标记
 var button_type=0;
-var _constant = getApp().globalData.CONSTANT;
-var _API = getApp().globalData.CONSTANT.API;
-var _util = getApp().globalData.util;
+
+var core = getApp().globalData.core;
+
 Page({
 
   /**
