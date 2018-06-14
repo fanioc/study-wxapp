@@ -27,7 +27,7 @@
       {{placeRange[currentPlace]}}
     </picker>
     <view class="place-button flex-x">
-      <view wx:for="{{placeItems}}" wx:key="x" class="place-button-item flex-all {{item.id==currentSelect?'item-select':'item_noSelect'}}" bind:tap="selectPlace"
+      <view wx:for="{{placeItems}}" wx:key="x" class="place-button-item flex-all {{item.id==currentSelect?'item-select':'item-no-select'}}" bind:tap="selectPlace"
         id="{{item.id}}">
         <view>
           <zan-icon type="location"></zan-icon>

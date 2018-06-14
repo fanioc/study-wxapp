@@ -18,16 +18,6 @@
   border-bottom: #22b36e 2px solid;
 }
 
-.item-select{
-  border: rgba(255, 255, 255, 0.568) 5px solid;
-  width: 38%;
-  /* box-sizing: border-box; */
-  /* background-color: rgba(179, 87, 34, 0.466); */
-}
-.item_noSelect{
-    width: 32%;
-}
-
 .cover-content {
   position: absolute;
   z-index: 99;
@@ -79,9 +69,18 @@
   font-size: 14px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #22b36e;
+  width: 32%;
   text-align: center;
   word-break: keep-all;
+}
+
+
+.item-select{
+  background-color: #2bcf80;
+}
+
+.item-no-select{
+  background-color: #22b36e;
 }
 
 .select {
