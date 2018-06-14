@@ -1,5 +1,5 @@
 /*/----------------*/
-
+@import "/extends/wxSearch/wxSearch.wxss";
 /* 
 page {
   background-color: white;
@@ -58,7 +58,7 @@ page {
   border: none;
 }
 
-/*-----------����*/
+
 
 .container .search {
   box-sizing: border-box;
