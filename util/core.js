@@ -26,7 +26,7 @@ function getUserInfo(uid = 0) {
 		if (typeof (userInfo[uid]) != 'undefined') {
 			resove(userInfo[uid])
 		} else {
-			let data = uid ? {} : {
+			let data = uid==0 ? {} : {
 				other_uid: uid
 			}
 			let Req = APIrequest('getUserBasicInfo', data)
@@ -223,7 +223,7 @@ function setUserStar(bestar_uid, star) {
 			star: star
 		})
 		Req.then(res => {
-			userInfo[other_uid].star = star
+      userInfo[bestar_uid].star = star
 			wx.setStorage({
 				key: 'userInfo',
 				data: userInfo
@@ -311,7 +311,7 @@ module.exports = {
 	setUserConfig: setUserConfig,
 	APIrequest: APIrequest,
 	APIerrCode: APIerrCode,
-
+  setUserStar: setUserStar,
 	//可读，不可修改
 	session: session,
 	userInfo: userInfo,

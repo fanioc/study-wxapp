@@ -47,18 +47,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log('dynamic.js onload参数',options.question_id)
-    console.log(getApp().globalData.current_question);
+  //---c初始化数据
+  init_data:function(){
+
     //---------
-    var that=this;
+    var that = this;
     //---
     wx.showLoading({
       title: '加载详情中',
     })
     //---
-    let req = core.APIrequest('getDynamicContent', { dynamic_id: options.question_id});
-    req.then(data=>{
+    let req = core.APIrequest('getDynamicContent', { dynamic_id: that.data.question_id });
+    req.then(data => {
       console.log('_API.getDynamicContent', data);
       //----
       if (data)//获取成功
@@ -76,13 +76,10 @@ Page({
       }
     }).catch(wx.hideLoading())
     //------ 
-   
-    
-
- 
-    
-    
-    //this.get_answer_array();
+  },
+  onLoad: function (options) {
+    console.log('dynamic.js onload参数',options.question_id);
+    this.setData({ question_id:options.question_id})
 
   },
 
@@ -97,7 +94,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.init_data();
   },
 
   /**

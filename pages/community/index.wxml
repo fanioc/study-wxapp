@@ -39,7 +39,7 @@
 
         <view>
           <!--一，用户信息部分-->
-          <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" />
+          <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" refresh="{{component_user_refresh}}"/>
 
           <image src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
           <view class="dynamic_title">{{item.question_title}}</view>
@@ -53,7 +53,7 @@
         <!--动态内容部分-->
 
         <!--一，用户信息部分-->
-        <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" />
+        <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==2}}" refresh="{{component_user_refresh}}"/>
         <!--用户信息部分-->
 
         <!--二，动态内容部分-->
