@@ -10,7 +10,7 @@
       <view class="search-left flex-item flex-x">
 
         <input placeholder="按照标签，搜索问题" placeholder-class="search-placeholder" bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" />
-        <zan-icon type='close' bindtap="wxSearch_valueClear" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
+        <zan-icon type='close' bindtap="reset_wxSearchData_tagChoose" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
       </view>
       <view class="search-right flex-item" >
         <zan-icon type='search' bindtap="wxSearchFn" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>

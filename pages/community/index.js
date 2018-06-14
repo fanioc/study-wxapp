@@ -91,6 +91,7 @@ Page({
   },
   set_tag: function (e) {
     let tag_group = this.data.tag_group_array;
+    let wxSearchData = this.data.wxSearchData;
     var that = this;
     if (e.currentTarget.dataset.all == 'true') {
       //console.log(e.currentTarget.dataset.all);
@@ -129,7 +130,7 @@ Page({
     let tag;
     if (that.data.wxSearchData.value)
     {
-      tag = that.data.wxSearchData.value.split('  ');
+      tag = that.data.wxSearchData.value.split(' ');
       console.log(tag);//value可能需要分割
       let temp=[];
       for (let i in tag)
@@ -137,7 +138,7 @@ Page({
         
         temp.push({ content: tag[i],choose:true});
       }
-      temp.pop();
+      
       that.setData({ tag_group_array:temp,tag_all:false});
     }
    //----重新设置分类
@@ -155,10 +156,6 @@ Page({
   wxSearchBlur: function (e) {
     var that = this
     WxSearch.wxSearchBlur(e, that);
-  },
-  wxSearch_valueClear: function (e) {
-    this.data.wxSearchData.value = '';
-    this.setData({ wxSearchData: this.data.wxSearchData });
   },
   //-----------面板操作
   wxSearchKeyTap: function (e) {

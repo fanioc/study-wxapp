@@ -141,13 +141,14 @@ function wxSearchKeyTap(e, that, callBack) {
   temData.tag_group_choose[index] = !temData.tag_group_choose[index];
   //llytemData
   let append = '';
-  for (let i in temData.tag_group_choose) {
+  let i;
+  for (i = 0; i < temData.tag_group_choose.length-1;i++ ) {
 
     if (temData.tag_group_choose[i]) {
-      append += temData.keys[i] + '  ';
+      append += ' '+temData.keys[i];
     }
   }
-  
+    append=append.slice(1,append.length);
     temData.value = append;
   
   that.setData({
