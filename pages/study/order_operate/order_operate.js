@@ -30,7 +30,7 @@ Page({
   fill_order_study: function (e) {
     var that = this;
     wx.navigateTo({
-      url: "/pages/order-study/order_operate/form/form?site=" + e.currentTarget.dataset.site + '&place=' + that.data.form_place,
+      url: "/pages/study/order_operate/form/form?site=" + e.currentTarget.dataset.site + '&place=' + that.data.form_place + '&date=' + that.data.form_date,
     })
   },
   a: function () {},
