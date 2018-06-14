@@ -1,5 +1,5 @@
 /*/----------------*/
-
+@import "/extends/wxSearch/wxSearch.wxss";
 /* 
 page {
   background-color: white;
@@ -58,7 +58,7 @@ page {
   border: none;
 }
 
-/*-----------容器*/
+
 
 .container .search {
   box-sizing: border-box;
@@ -66,7 +66,7 @@ page {
   /* height: 30px; */
   padding: 70px 0px 10px 20px;
   background: #2a8ce5;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.20);
+  /* box-shadow: 0 10px 3px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.20); */
 }
 
 .container .search-left {
@@ -118,7 +118,7 @@ page {
   padding: 10rpx;
 }
 
-/*----------search部分*/
+/*----------search����*/
 
 .feed-item {
   width: 690rpx;

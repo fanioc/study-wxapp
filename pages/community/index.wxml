@@ -1,27 +1,32 @@
 <mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
-
+<import src="/extends/wxSearch/wxSearch.wxml" />
 <!-- <view style='height:10%;background: #2a8ce5'></view>   -->
 <!-- <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed' wx:if="{{data_success}}"> -->
 
 <view class='container'>
 
- <view class='topNav'> <view class="search flex-wrp">
-    <view class="search-left flex-item flex-x">
-      <icon class='search-icon' type='search'></icon>
-      <input placeholder="按照标签，搜索问题" placeholder-class="search-placeholder" />
+  <view class='topNav'>
+    <view class="search flex-wrp">
+      <view class="search-left flex-item flex-x">
+
+        <input placeholder="按照标签，搜索问题" placeholder-class="search-placeholder" bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" />
+        <zan-icon type='close' bindtap="wxSearch_valueClear" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
+      </view>
+      <view class="search-right flex-item" >
+        <zan-icon type='search' bindtap="wxSearchFn" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
+        <zan-icon type='edit' wx:else></zan-icon>
+        <!-- <image src="/image/edit.svg" catchtap='add_dynamic'></image> -->
+      </view>
     </view>
-    <view class="search-right flex-item" bindtap="upper">
-		<zan-icon type='edit'></zan-icon>
-      <!-- <image src="/image/edit.svg" catchtap='add_dynamic'></image> -->
+    <template is="wxSearch" data="{{wxSearchData}}" />
+
+    <view class='tag_body'>
+      <view class="tag_group">
+       <text class=" tag {{tag_all?'tag_choose':''}}" catchtap='set_tag' data-all='true'>全部</text>
+        <text class=" tag {{tag_group.choose?'tag_choose':''}}" wx:for="{{tag_group_array}}" wx:key='index' wx:for-item='tag_group' catchtap='set_tag' data-index='{{index}}' data-all='false'>{{tag_group.content}}</text>
+      </view>
     </view>
   </view>
-
-
-  <view class='tag_body'>
-    <view class="tag_group">
-      <text class=" tag {{tag_group.choose?'tag_choose':''}}" wx:for="{{tag_group_array}}" wx:key='index' wx:for-item='tag_group' catchtap='set_tag' data-index='{{index}}'>{{tag_group.content}}</text>
-    </view>
-  </view></view>
 
 
   <view class='dynamic_body'>
@@ -90,7 +95,7 @@
           <view class='lable-answer-actions'>
             <a class='a-lable-answer-actions'> {{item.dynamic_time}}</a>
           </view>
-        </view>
+        </view>,,,,,,,44444
         <!--动态信息部分-->
 
 
