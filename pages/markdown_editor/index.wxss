@@ -6,6 +6,7 @@
     position: fixed;
     top: 70px;
     border-bottom: 1rpx solid lightgray;
+    width: 100%;
     
 }
 .edit_Container{
