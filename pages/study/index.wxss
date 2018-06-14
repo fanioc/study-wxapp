@@ -1,24 +1,52 @@
 @import "/template/back-ground/1.wxss";
-
 .contain {
   justify-content: center;
-   padding-top: 70px; 
-	position: absolute;
-	 width: 100%; 
-	/* height: 100%; */
+  position: absolute;
+  width: 100%;
+  height:100%;
 }
 
 .map {
-  margin: 0 auto;
+  width: 100%;
   position: relative;
-  width: 90%;
-  height: 350px;
-  border-radius: 20px;
+  height: 70%;
+}
+
+.shadow {
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: #22b36e 2px solid;
+}
+
+.cover-content {
+  position: absolute;
+  z-index: 99;
+  width: 100px;
+  height: 2.5em;
+  background-color: #22b36e;
+  right: 30px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cover-select {
+  bottom: 30px;
+}
+
+.cover-bang {
+  bottom: 90px;
 }
 
 .place-info {
   position: relative;
-  top: 20px;
+  height: 30%;
+  /* top: calc(60%+20px); */
+}
+
+.place-button-item view{
+  padding: 1px 0;
 }
 
 .place-button {
@@ -31,14 +59,35 @@
 }
 
 .place-button-item {
-  color: #71bbb2;
+  color: #fff;
   box-sizing: border-box;
-   height: 50px; 
+  height: 50px;
   font-size: 14px;
   padding: 10px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #22b36e;
   width: 32%;
   text-align: center;
   word-break: keep-all;
+}
+
+.select {
+  margin-top: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #22b36e;
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.select-time{
+  color: #626262;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+  width: 60%;
+  border-bottom: #919191a1 2px solid;
 }

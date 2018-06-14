@@ -6,43 +6,35 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		latitude:34.11594,
-		// longitude: 108.93455,
-		longitude:108.932906,
+		currentLatitude: 34.11594,
+		currentLongitude: 108.932906,
+		placeRange: [],
+		placeItem: [{place:"1号教学楼",stu_num:25},{place:"1号教学楼",stu_num:25},{place:"1号教学楼",stu_num:25},{place:"1号教学楼",stu_num:25},{place:"1号教学楼",stu_num:25},{place:"1号教学楼",stu_num:25}],
+		otherPlaceItem: [],
+		currentData: "2018年6月15号",
 		marker: []
+	},
+
+	getStudyPlace: function () {
+
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+		// wx.showLoading({title:'正在读取~'})
 	},
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () {
-		this.setData({
-			latitude: this.data.latitude,
-			longitude: this.data.longitude
-		})
-	},
+	onReady: function () {},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-		// var that = this
-		// wx.getLocation({
-		// 	type:'gcj02',
-		// 	success: function (res) {
-		// 		console.log(res)
-		// 		that.setData({ latitude: res.latitude, longitude: res.longitude })
-		// 	},
-		// });
-		
-	},
+	onShow: function () {},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
