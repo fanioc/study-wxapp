@@ -2,26 +2,33 @@
 <template is="back-ground-1" /> -->
 <!-- <view class='view-box'> -->
 <view class="contain">
-  <map id="study_place_map" class="map shadow" show-location="true" latitude="{{currentLatitude}}" longitude="{{currentLongitude}}" scale="18" markers="{{marker}}" bindmarkertap="markertap">
-    <cover-view class="cover-select cover-content flex-all">
+  <map id="study_place_map" class="map shadow" show-location="true" latitude="{{currentLatitude}}" longitude="{{currentLongitude}}"
+    scale="18" markers="{{markers}}" bindcallouttap="tapMarker">
+    <!-- <cover-view class="cover-select cover-content flex-all">
       <cover-view>学习地点</cover-view>
-    </cover-view>
+    </cover-view> -->
     <cover-view class="cover-bang  cover-content flex-all">
       <cover-view>排行榜</cover-view>
+    </cover-view>
+    <cover-view class="cover-me cover-content flex-all">
+      <cover-view>我的自习</cover-view>
     </cover-view>
   </map>
   <!-- 信息展示 -->
   <scroll-view scroll-y="{{true}}" class="place-info">
-    <picker class="select-time">
+
+    <picker bindchange="changeDate" class="select-time" mode="date" value="{{cuerrntDate}}" start="{{dateRange.start}}" end="{{dateRange.end}}">
+      —
       <zan-icon type="clock"></zan-icon>
-       {{currentData}}
+      {{currentDate}} —
     </picker>
-    <picker class="select">
+    <picker class="select" mode='selector' range="{{placeRange}}" value="{{currentPlace}}}" bindchange="changePlace">
       <zan-icon type="location"></zan-icon>
-      西安财经学院-长安校区
+      {{placeRange[currentPlace]}}
     </picker>
     <view class="place-button flex-x">
-      <view wx:for="{{placeItem}}" class="place-button-item flex-all">
+      <view wx:for="{{placeItems}}" wx:key="x" class="place-button-item flex-all {{item.id==currentSelect?'item-select':''}}" bind:tap="selectPlace"
+        id="{{item.id}}">
         <view>
           <zan-icon type="location"></zan-icon>
           {{item.place}}
@@ -29,10 +36,10 @@
         <view>{{item.stu_num}}人</view>
       </view>
     </view>
-    <picker class="select">
+    <!-- <view class="select">
       <zan-icon type="location"></zan-icon>
       他们都在哪...
-    </picker>
+    </view>
     <view class="place-button flex-x">
       <view class="place-button-item flex-all">
         <view>
@@ -62,6 +69,6 @@
         </view>
         <view>30人</view>
       </view>
-    </view>
+    </view> -->
   </scroll-view>
 </view>

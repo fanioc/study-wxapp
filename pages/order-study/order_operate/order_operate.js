@@ -53,7 +53,7 @@ Page({
       data: {
         session: wx.getStorageSync('session'),
         place: options.place,
-        // date: '2018-06-08'//improve
+        date: '2018-06-08'
 
       },
       method: 'GET',

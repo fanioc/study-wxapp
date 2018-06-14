@@ -18,6 +18,12 @@
   border-bottom: #22b36e 2px solid;
 }
 
+.item-select{
+  border: rgba(255, 255, 255, 0.568) 5px solid;
+  /* box-sizing: border-box; */
+  /* background-color: rgba(179, 87, 34, 0.466); */
+}
+
 .cover-content {
   position: absolute;
   z-index: 99;
@@ -36,7 +42,11 @@
 }
 
 .cover-bang {
-  bottom: 90px;
+  bottom:90px;
+}
+
+.cover-me{
+  bottom:  30px;
 }
 
 .place-info {
@@ -81,13 +91,14 @@
 }
 
 .select-time{
-  color: #626262;
+  padding-top: 20px;
+  color: #9b9b9b;
   letter-spacing: 2px;
   margin: 0 auto;
   padding-bottom: 5px;
   font-size: 14px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   text-align: center;
   width: 60%;
-  border-bottom: #919191a1 2px solid;
+  border-bottom: rgba(145, 145, 145, 0.3) 1px solid;
 }

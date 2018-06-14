@@ -1,0 +1,28 @@
+page
+{
+    background-color: lightgray;
+}
+.my-class {
+  padding: 10px;
+
+}
+.my-class .zan-steps__step--done {
+  color: #f44;
+}
+page{
+  background-color: white;
+}
+.view-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+.button_next{
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-end;
+}
