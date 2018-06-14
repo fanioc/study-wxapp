@@ -26,92 +26,55 @@ Page({
 
 
   formSubmit: function (e) {
-    console.log(e)
-    wx.request({
-      url: _CONSTANT.API.bindEduSys,
-      data: {
-        check_code: e.detail.value.check_code,
-        xh: e.detail.value.xh,
-        psd: e.detail.value.psd,
-        session: wx.getStorageSync('session')
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        
-        if(res.data.errCode!=0){
-          console.log(res)
-          wx.showToast({
-            title: res.data.data.errMsg,
-            icon:"none",
-            duration: 1000,
-            mask: true,
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-        }
-        else{
-          wx.showToast({
-            title: '绑定成功',
-            duration: 1000,
-            mask: true,
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
-          })
-        } 
-      },
-      fail: function (res) {
-        // console.log(res)
-        // fail
-      },
-      complete: function (res) {
-        console.log(res)
-        // complete
-      }
+    let Req = core.APIrequest('bindEduSys', {
+      check_code: e.detail.value.check_code,
+      xh: e.detail.value.xh,
+      psd: e.detail.value.psd,
     })
+    Req.then((result) => {
+      if (typeof (result.name) != 'undefined') {
+        wx.showToast({
+          title: '绑定成功，欢迎' + result.name + '！',
+          icon: "success",
+          duration: 1000,
+          mask: true
+        })
+        wx.navigateBack({
+          delta: 1,
+          success: () => {
+            //TODO::更新绑定设置
+          }
+        })
+      } else if (typeof (result.msg) != 'undefined') {
+        this.changeCode()
+        wx.showToast({
+          title: result.msg,
+          icon: "none",
+          duration: 1000,
+          mask: true
+        })
+      }
+    }).catch((err) => {
+      APIerrCode(err, 2)
+    });
   },
 
-  changeCode:function(){
-    var that = this
-    wx.request({
-      url: _CONSTANT.API.getCheckCode,
-      data: {
-        session: wx.getStorageSync('session')
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          check_code: res.data.data.check_code
-        })
-        console.log(that.data.check_code)
-      }
-    })
+  changeCode: function () {
+    let Req = core.APIrequest('getCheckCode')
+    Req.then((result) => {
+      this.setData({
+        check_code: res.data.data.check_code
+      })
+    }).catch((err) => {
+      APIerrCode(err, 2)
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-    wx.request({
-      url: _CONSTANT.API.getCheckCode,
-      data: {
-        session: wx.getStorageSync('session')
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        console.log(res)
-        that.setData({
-          check_code: res.data.data.check_code
-        })
-        console.log(that.data.check_code)
-      }
-    })
+    this.changeCode()
   },
 
   /**

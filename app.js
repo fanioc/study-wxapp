@@ -8,28 +8,22 @@ var core = require('/util/core.js');
 App({
 	towxml: new Towxml(),
 
-
 	loginStudy: function () {
-		let session = core.getSession(1)
-    
-    session.then(session => {
-			console.log(session)
+		core.getSession(1).then(session => {
 			this.initUserInfo()
 		}).catch(err => { console.log('初始化session错误' + err) })
 	},
 	initUserInfo: function () {
 
 		core.getUserInfo().then(info => {
-			console.log("个人初始化信息如下：")
-			console.log(info)
+			console.log("个人初始化信息成功")
 		}).catch(err => {
 			console.log('初始化个人信息错误' + err)
 			if (err == 3101)
 				console.log('进入初始化页面')
 		})
 		core.getUserConfig(1).then(config => {
-			console.log("个人初始化设置如下：")
-			console.log(config)
+			console.log("个人初始化设置成功")
 		}).catch(err => { console.log('初始化个人设置错误' + err) })
 	},
 
@@ -40,8 +34,6 @@ App({
 	onLaunch: function () {
 		this.loginStudy()
 	},
-
-
 
   /**
    * 当小程序启动，或从后台进入前台显示，会触发 onShow

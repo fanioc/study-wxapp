@@ -8,146 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    uid: 110,
+    uid: 0,
     userInfo: {},
     activeIndex: 0,
-    // slideOffset: 0,
-    tabW: 0,
-    study: [
-      {
-        study_id: 100,
-        status: 1, launch_id: 110,
-        msg: '求大家帮我复习高数',
-        place: '第二教学楼-101',
-        study_content: "高等数学",
-        reach_id: [
-          { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
-          { uid: 107, accept_time: '2018-6-7 18:00', status: 1, msg: "可以一起学习，我教你高数" },
-          { uid: 106 }
-        ],
-        study_time: { date: '2018-6-7', time: [8, 12] },
-        launch_time: '2018-6-7 18:00'
-      }, {
-        study_id: 100,
-        status: 1, launch_id: 110,
-        msg: '求大家帮我复习高数',
-        place: '第二教学楼-101',
-        study_time: { date: '2018-6-7', time: [8, 12] },
-        study_content: "高等数学",
-        reach_id: [
-          { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
-          { uid: 107, accept_time: '2018-6-7 18:00', status: 1, msg: "可以一起学习，我教你高数" },
-          { uid: 107 }
-        ],
-        launch_time: '2018-6-7 18:00'
-      }, {
-        study_id: 100,
-        status: 1, launch_id: 110,
-        msg: '求大家帮我复习高数',
-        place: '第二教学楼-101',
-        study_time: { date: '2018-6-7', time: [8, 12] },
-        study_content: "高等数学",
-        reach_id: [
-          { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
-          { uid: 107, accept_time: '2018-6-7 18:00', status: 1, msg: "可以一起学习，我教你高数" },
-          { uid: 107 }
-        ],
-        launch_time: '2018-6-7 18:00'
-      }, {
-        study_id: 100,
-        status: 1, launch_id: 110,
-        msg: '求大家帮我复习高数',
-        place: '第二教学楼-101',
-        study_time: { date: '2018-6-7', time: [8, 12] },
-        study_content: "高等数学",
-        reach_id: [
-          { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
-          { uid: 107, accept_time: '2018-6-7 18:00', status: 1, msg: "可以一起学习，我教你高数" },
-          { uid: 107 }
-        ],
-        launch_time: '2018-6-7 18:00'
-      }, {
-        study_id: 100,
-        status: 1, launch_id: 109,
-        msg: '求大家帮我复习高数',
-        place: '第二教学楼-101',
-        study_content: "高等数学",
-        study_time: { date: '2018-6-7', time: [8, 12] },
-        reach_id: [
-          { uid: 109, accept_time: '2018-6-7 18:00', status: 1, msg: "有课不想接，可以下次预约" },
-          { uid: 107, accept_time: '2018-6-7 18:00', status: 1, msg: "可以一起学习，我教你高数" },
-          { uid: 107 }
-        ],
-        launch_time: '2018-6-7 18:00'
-      }
-    ],
-    timeCap: [
-      {
-        capsule_id: 1,
-        content: "过四级",
-        start_time: '',
-        dead_time: '',
-        cap_color: '',
-        star_num: 123,
-        status: 1
-      }, {
-        capsule_id: 2,
-        content: "过六级",
-        start_time: '',
-        dead_time: '',
-        cap_color: '',
-        star_num: 123,
-        status: 1
-      }, {
-        capsule_id: 2,
-        content: "过八级",
-        start_time: '',
-        dead_time: '',
-        cap_color: '',
-        star_num: 123,
-        status: 0
-      },
-      {
-        capsule_id: 2,
-        content: "过八级",
-        start_time: '',
-        dead_time: '',
-        cap_color: '',
-        star_num: 123,
-        status: 0
-      }
-    ], score: [
-      {
-        xn: '2018-2017',
-        xq: 2,
-        course: "高等数学",
-        score: 99,
-        quality: '公共必修',
-        credit: 3
-      }, {
-        xn: '2018-2017',
-        xq: 2,
-        course: "英语",
-        score: 99,
-        quality: '公共必修',
-        credit: 3
-      }, {
-        xn: '2018-2017',
-        xq: 2,
-        course: "历史",
-        score: 99,
-        quality: '公共必修',
-        credit: 3
-      }, {
-        xn: '2018-2017',
-        xq: 2,
-        course: "语文",
-        score: 99,
-        quality: '公共必修',
-        credit: 3
-      }
-    ]
-
+    slideOffset: 0,
+    tabW: 0
   },
   tabClick: function (e) {
     if (this.data.activeIndex != e.currentTarget.id)
@@ -184,23 +49,18 @@ Page({
     this.getUserInfo(options.uid)
   },
 
-  getUserInfo(uid) {
-    var that = this
-    this.setData({ uid: uid })
-    wx.request({
-      url: CONSTANT.API.getUserBasicInfo,
-      data: {
-        session: wx.getStorageSync('session'),
-        other_uid: uid
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.errCode == 0)
-          that.setData({
-            userInfo: res.data.data
-          })
-      }
+  getUserInfo(uid = 0) {
+    if (uid == userInfo[0].uid)
+      uid = 0
+    let Info = core.getUserInfo(uid)
+    Info.then(userInfo => {
+      this.setData({
+        userInfo: data
+      })
+    }).catch(err => {
+      core.APIerrCode(err, 2)
     })
+
   },
 
   /**
