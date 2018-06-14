@@ -98,12 +98,16 @@ Component({
 
     set_followed: function () { //获取信息，由+关注组件触发，关注当前用户
       var _THAT = this;
+      wx.showLoading({
+        title: '进行中',
+      })
       let result=core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
       result.then(res => {
         let pages = getCurrentPages();
         let currentPage = pages[pages.length - 1];//lly_improve
         currentPage.setData({ component_user_refresh: !currentPage.data.component_user_refresh});
-        })
+        wx.hideLoading();
+      }).catch(wx.hideLoading());
     },
 
     post_invited: function () { //向用户发送邀请
