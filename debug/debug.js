@@ -6,46 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //article将用来存储towxml数据
-    userID: 110,
-    article: {},
-    study_fresh: false,
-    invite_item_array: [{
-        dynamic_data: {
-
-          feed_head_img: '/image/debug.png',
-          feed_source_name: 'debug',
-          feed_source_identity: 'debug',
-
-          card_img: '/image/debug4.jpg',
-          question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
-          question_describe: 'debug',
-        },
-        dynamic_sort: 'debug',
-        comment_num: 999,
-        dynamic_follow_with_interest: true,
-        dynamic_type: 1,
-        dynamic_time: 2018 - 1 - 2
-      },
-      {
-        dynamic_data: {
-
-          feed_head_img: '/image/debug.png',
-          feed_source_name: 'debug',
-          feed_source_identity: 'debug',
-
-          card_img: '/image/debug4.jpg',
-
-          question_title: 'http://hao.360.cnhttp://hao.360.cnhttp://hao.360.cnhttp://hao.360.cn',
-          question_describe: 'debug',
-        },
-        dynamic_sort: 'debug',
-        comment_num: 999,
-        dynamic_follow_with_interest: true,
-        dynamic_type: 1,
-        dynamic_time: 2018 - 1 - 2
-      }
-    ],
+ 
   },
   //-------------
   asd: function () {
@@ -82,41 +43,8 @@ Page({
   onLoad: function (options) {
 
 
-    wx.request({
-      url: _constant.API.getEduFreeClass,
-      data: {
-        session: wx.getStorageSync('session'),
-        date: '2018-05-20',
-      },
-      method: 'GET',
-      success: function (res) {
-
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-      },
-      complete: function (res) {},
-    })
-    /* var res={ errCode: 0, data:'llyasd' };
-     var that=this;
-     util.errCode(res, function () { console.log('aaaaa') })
-     //console.log();*/
-    var _that = this;
-    console.log(_that);
-    console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
-    getApp().globalData.current_question = {
-
-      //feed_source_identity: 'debug',
-      question_title: '如何使用指针对数组进行操作呢',
-      question_describe: '如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式如何使用指针对数组进行操作呢，能不能列举一下用指针的方式操作数组的方式',
-      question_id: 123,
-      card_img: '/image/debug2.jpeg',
-      dynamic_sort: '高等数学',
-      comment_num: 999,
-      dynamic_type: 0,
-      dynamic_time: '2018-05-26 10:07:14'
-    };
-    console.log(getCurrentPages()[0].is, getApp().globalData.current_question);
+    let me = core.getUserConfig();
+    me.then(res => { console.log(' 666', res) });
   },
 
   /**

@@ -29,7 +29,7 @@
 
     <view class="answer-feed">
       <view bindtap="modal_answer_detail" class="feed-item" wx:for="{{answer_array}}" data-index='{{index}}' wx:key="{{index}}">
-        <user model='1' userID='{{item.answer}}' />
+        <user model='1' userID='{{item.answer}}' refresh="{{component_user_refresh}}"/>
         <view class="feed-content">
           <view class="answer-body">
             <view class="answer-txt ">
