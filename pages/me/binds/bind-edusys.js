@@ -63,7 +63,7 @@ Page({
     let Req = core.APIrequest('getCheckCode')
     Req.then((result) => {
       this.setData({
-        check_code: res.data.data.check_code
+        check_code: result.check_code
       })
     }).catch((err) => {
       APIerrCode(err, 2)
