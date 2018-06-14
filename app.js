@@ -18,6 +18,7 @@ App({
 		}).catch(err => { console.log('初始化session错误' + err) })
 	},
 	initUserInfo: function () {
+
 		core.getUserInfo().then(info => {
 			console.log("个人初始化信息如下：")
 			console.log(info)

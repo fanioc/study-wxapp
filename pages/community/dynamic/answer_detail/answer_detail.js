@@ -1,6 +1,4 @@
-var _API = getApp().globalData.CONSTANT.API;
-var _util = getApp().globalData.util;
-var _components = getApp().globalData.components;
+var core = getApp().globalData.core;
 Page({
 
   /**
@@ -22,36 +20,23 @@ Page({
     })
     //---
     /*  getDynamicAns: URL.study + 'getDynamicAns',//($session, $dynamic_id, $answer_id)*/
-    wx.request({
-      url: _API.getDynamicAns,
-      data: {
-        session: wx.getStorageSync('session'),
-        dynamic_id: options.dynamic_id,
-        answer_id: options.answer_id,
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log('_API.getDynamicAns', res.data);
+    let req = core.APIrequest('getDynamicAns', {
+      dynamic_id: options.dynamic_id,
+      answer_id: options.answer_id,
+    });
+    req.then(data=>{
         //----
-        var data = _util.errCode(res.data)
         if (data)//获取成功
         {
-         
-          that.setData({ answer_array: data[0], question_title: options.question_title, agree: data[0].is_agree});
-            console.log(that.data.answer_array);
-            that.setData({ data_success:true});
+
+          that.setData({ answer_array: data[0], question_title: options.question_title, agree: data[0].is_agree });
+          console.log('getDynamicAns',that.data.answer_array);
+          that.setData({ data_success: true });
 
         }
-
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-        return false;
-      },
-      complete: function (res) {
         wx.hideLoading();
-      },
-    })
+
+    }).catch(wx.hideLoading());
   },
   /**
 *隐藏回答详情

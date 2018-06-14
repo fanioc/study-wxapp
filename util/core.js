@@ -41,13 +41,9 @@ var userConfig = wx.getStorageSync('userConfig')
  */
 function getUserInfo(uid = 0) {
 	return new Promise((resove, reject) => {
-
-
 		if (typeof (userInfo[uid]) != 'undefined') {
-
 			resove(userInfo[uid])
 		} else {
-
 			let data = uid ? {} : { other_uid: uid }
 			let Req = APIrequest('getUserBasicInfo', data)
 			Req.then(res => {

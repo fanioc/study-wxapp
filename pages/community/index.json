@@ -9,5 +9,6 @@
     "mtoast": "/components/toast/middleToast",
     "zan-button": "/extends/zan/btn/index",
     "zan-button-group": "/extends/zan/btn-group/index"
-  }
+  },
+  "navigationBarTextStyle": "white"
 }

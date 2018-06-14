@@ -1,6 +1,6 @@
 <mtoast hidden="{{hiddenToast}}" content="{{toastContent}}" />
 
-<view style='height:10%;'></view>
+<view style='height:10%;background-color:#2a8ce5'></view>
 <!-- <scroll-view scroll-y="true" class="container" bindscrolltolower='getFeed' wx:if="{{data_success}}"> -->
 
 <view class='container'>
