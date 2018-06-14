@@ -14,7 +14,7 @@
   <scroll-view scroll-y="{{true}}" class="place-info">
     <picker class="select-time">
       <zan-icon type="clock"></zan-icon>
-      时间：{{currentData}}
+       {{currentData}}
     </picker>
     <picker class="select">
       <zan-icon type="location"></zan-icon>
