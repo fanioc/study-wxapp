@@ -190,11 +190,50 @@ function uploadFile(filePath) {
 
 
 /**
- * 更改用户设置
- * data:{configName1:configValue1,configName2:configValue2}
+ * 设置用户设置
+ * @param {*} data  {configName1:configValue1,configName2:configValue2}
  */
 function setUserConfig(data) {
+	return new Promise((resove, reject) => {
+		let Req = APIrequest('setUserConfig', {
+			data: data
+		})
+		Req.then(config => {
+			userConfig = config
+			wx.setStorage({
+				key: 'userConfig',
+				data: config
+			})
+			resove(userConfig)
+		}).catch(code => {
+			reject(code)
+		})
+	})
+}
 
+/**
+ * 设置用户关注
+ * @param {*} other_uid 
+ * @param {*} star 0 1 
+ */
+function setUserStar(bestar_uid, star) {
+	return new Promise((resove, reject) => {
+		let Req = APIrequest('setUserStar', {
+			bestar_uid: bestar_uid,
+			star: star
+		})
+		Req.then(res => {
+			userInfo[other_uid].star = star
+			wx.setStorage({
+				key: 'userInfo',
+				data: userInfo
+			})
+			resove(res)
+		}).catch(code => {
+			reject(code)
+		})
+
+	})
 }
 
 /**

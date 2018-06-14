@@ -1,32 +1,67 @@
-<import src="/template/back-ground/1.wxml" />
-<template is="back-ground-1" />
+<!-- <import src="/template/back-ground/1.wxml" />
+<template is="back-ground-1" /> -->
 <!-- <view class='view-box'> -->
-
-   <view class='contain'> 
-  <map id='study_place_map' class='map shadow' show-location='true' latitude='{{latitude}}' longitude='{{longitude}}' scale='18' markers='{{marker}}' bindmarkertap='markertap'></map>
-
-  <!-- 信息展示  -->
-  <view class='place-info'>
-
-    <picker>地点：西安财经学院-长安校区</picker>
-    <view class='place-button flex-x'>
-      <view class='place-button-item flex-all'>
-        <view>1号教学楼</view>
-        <view>2人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>2号教学楼</view>
-        <view>10人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>3号教学楼</view>
-        <view>50人正在学习</view>
-      </view>
-      <view class='place-button-item flex-all'>
-        <view>图书馆</view>
-        <view>30人正在学习</view>
+<view class="contain">
+  <map id="study_place_map" class="map shadow" show-location="true" latitude="{{currentLatitude}}" longitude="{{currentLongitude}}" scale="18" markers="{{marker}}" bindmarkertap="markertap">
+    <cover-view class="cover-select cover-content flex-all">
+      <cover-view>学习地点</cover-view>
+    </cover-view>
+    <cover-view class="cover-bang  cover-content flex-all">
+      <cover-view>排行榜</cover-view>
+    </cover-view>
+  </map>
+  <!-- 信息展示 -->
+  <scroll-view scroll-y="{{true}}" class="place-info">
+    <picker class="select-time">
+      <zan-icon type="clock"></zan-icon>
+       {{currentData}}
+    </picker>
+    <picker class="select">
+      <zan-icon type="location"></zan-icon>
+      西安财经学院-长安校区
+    </picker>
+    <view class="place-button flex-x">
+      <view wx:for="{{placeItem}}" class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          {{item.place}}
+        </view>
+        <view>{{item.stu_num}}人</view>
       </view>
     </view>
-
-  </view>
+    <picker class="select">
+      <zan-icon type="location"></zan-icon>
+      他们都在哪...
+    </picker>
+    <view class="place-button flex-x">
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          1号教学楼
+        </view>
+        <view>2人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          2号教学楼
+        </view>
+        <view>10人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          3号教学楼
+        </view>
+        <view>50人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          图书馆
+        </view>
+        <view>30人</view>
+      </view>
+    </view>
+  </scroll-view>
 </view>

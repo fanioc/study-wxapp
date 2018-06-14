@@ -1,5 +1,7 @@
 {
 	"usingComponents": {
-		"zan-panel": "/extends/zan/panel/index"
-	}
+		"zan-panel": "/extends/zan/panel/index",
+		"zan-icon": "/extends/zan/icon/index"
+	},
+	"enablePullDownRefresh": false
 }

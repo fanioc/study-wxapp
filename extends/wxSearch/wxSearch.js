@@ -142,13 +142,14 @@ function wxSearchKeyTap(e, that, callBack) {
   //llytemData
   let append = '';
   let i;
-  for (i = 0; i < temData.tag_group_choose.length-1;i++ ) {
+  for (i = 0; i < temData.tag_group_choose.length;i++ ) {
 
     if (temData.tag_group_choose[i]) {
       append += ' '+temData.keys[i];
     }
   }
     append=append.slice(1,append.length);
+
     temData.value = append;
   
   that.setData({
@@ -181,8 +182,12 @@ function wxSearchAddHisKey(that) {
   if (typeof (text) == "undefined" || text.length == 0) { return; }
   var value = wx.getStorageSync('wxSearchHisKeys');
   if (value) {
-    if (value.indexOf(text) < 0) {
-      value.unshift(text);
+    let l;
+     if (value.indexOf(text) < 0) {
+      l=value.unshift(text);
+    }
+    if(l>4){
+      value = value.splice(0,4);
     }
     wx.setStorage({
       key: "wxSearchHisKeys",
@@ -202,8 +207,12 @@ function wxSearchAddHisKey(that) {
       }
     })
   }
+//--限制历史记录条数
+ let limite=wx.getStorageSync('wxSearchHisKeys');
+          if(typeof(limite)=='Array'&&limite.length>4)
+          {
 
-
+          }
 }
 function wxSearchDeleteKey(e, that) {
   var text = e.target.dataset.key;
