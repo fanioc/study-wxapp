@@ -9,6 +9,7 @@
     "towxml": "/components/towxml/modal",
     "zan-button": "/extends/zan/btn/index",
     "zan-button-group": "/extends/zan/btn-group/index",
-    "nav": "/components/navigation/navigation"
+    "nav": "/components/navigation/navigation",
+    "zan-icon": "/extends/zan/icon/index"
   }
 }

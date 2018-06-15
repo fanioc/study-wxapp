@@ -99,7 +99,7 @@ Component({
       wx.showLoading({
         title: '进行中',
       })
-      let result=core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
+      let result = core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
       result.then(res => {
         let pages = getCurrentPages();
         let currentPage = pages[pages.length - 1];//lly_improve
