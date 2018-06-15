@@ -14,7 +14,7 @@
       </view>
       <view class="search-right flex-item" >
         <zan-icon type='search' bindtap="wxSearchFn" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
-        <zan-icon type='edit' wx:else></zan-icon>
+        <zan-icon type='edit' catchtap='add_dynamic' wx:else></zan-icon>
         <!-- <image src="/image/edit.svg" catchtap='add_dynamic'></image> -->
       </view>
     </view>

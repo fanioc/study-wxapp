@@ -45,6 +45,7 @@ Page({
 			mask: true
 		})
 		core.uploadFile(that.data.upload_img[0]).then((image_url) => {
+      
 			core.APIrequest('publishDynamic', {
 				title: e.detail.value.question_title,
 				img_url: image_url,

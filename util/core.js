@@ -175,8 +175,9 @@ function uploadFile(filePath) {
       filePath: filePath,
       name: 'file',
       success: function (res) {
-        if (res.data.errCode = 0) {
-          let fileUrl = JSON.parse(res.data).fileUrl
+        res.data=JSON.parse(res.data)
+        if (res.data.errCode == 0) {
+          let fileUrl = res.data.fileUrl
           resove(fileUrl)
         } else reject(res.data.errCode)
       }, //其他错误情况
