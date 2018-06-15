@@ -46,7 +46,9 @@ Component({
            that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName });
          }
        });*/that.data.userID
-      let init = Promise.all([core.getUserConfig(), core.getUserInfo(that.data.userID)]).then(res => {
+      let init = Promise.all([core.getUserConfig(), core.APIrequest('getUserBasicInfo', {
+        other_uid: that.data.userID,
+      })]).then(res => {
         console.log(res);
         //-------俩个异步请求成功后的操作
         let myself = false;
@@ -99,7 +101,7 @@ Component({
       wx.showLoading({
         title: '进行中',
       })
-      let result=core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
+      let result = core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
       result.then(res => {
         let pages = getCurrentPages();
         let currentPage = pages[pages.length - 1];//lly_improve

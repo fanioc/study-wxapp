@@ -223,6 +223,7 @@ function setUserStar(bestar_uid, star) {
       star: star
     })
     Req.then(res => {
+      console.log('serUserStar', bestar_uid, star, userInfo[userInfo]);
       userInfo[bestar_uid].star = star
       wx.setStorage({
         key: 'userInfo',
@@ -311,7 +312,7 @@ module.exports = {
   setUserConfig: setUserConfig,
   APIrequest: APIrequest,
   APIerrCode: APIerrCode,
-
+  setUserStar: setUserStar,
   //可读，不可修改
   session: session,
   userInfo: userInfo,
