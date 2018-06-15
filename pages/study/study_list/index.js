@@ -6,14 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    complete_study:false,
+    complete_study: false,
     url: {
       study: 'https://study.xietan.xin/static/upLoadFile/STUDY.png'
     },
-    study_status: false,//判断是在学习还是结束
-    study_history_array: [],//上次学习的信息
-    study_satisfaction: [],//历史学习记录的满意度,
-    current_studyInfo: {},//离自己最近的学习计划所需数据
+    study_status: false, //判断是在学习还是结束
+    study_history_array: [], //上次学习的信息
+    study_satisfaction: [], //历史学习记录的满意度,
+    current_studyInfo: {}, //离自己最近的学习计划所需数据
 
     //-----学习卡片部分
     study_fresh: false,
@@ -25,7 +25,10 @@ Page({
   //----拒绝或接受邀请
   modal_study_invite: function (e) {
     var that = this;
-    this.setData({ invited_index: e.currentTarget.dataset.index, invited: e.currentTarget.dataset.invited });
+    this.setData({
+      invited_index: e.currentTarget.dataset.index,
+      invited: e.currentTarget.dataset.invited
+    });
     var title = '您可向' + (e.currentTarget.dataset.invited == 1 ? '接受邀请的' : '被拒绝的同学') + '发送消息';
     _components.show_modal(that, 'leave_message', that.post_inviteStatus, title, '确认');
 
@@ -42,26 +45,36 @@ Page({
     //---
     var that = this;
     var temp = that.data.current_studyInfo;
-    wx.request({
-      url: _API.acceptStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
-      data: {
-        session: wx.getStorageSync('session'),
-        study_id: temp[that.data.invited_index].study_id,
-        msg: e.formData.leave_message,
-        status: that.data.invited
 
-      },
-      method: 'GET',
-      success: function (res) {
-        if (res.data.errCode) {
-          that.init_data();
-                  }
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-      },
-      complete: function (res) { wx.hideLoading(); },
-    })
+    core.APIrequest('acceptStudy', {
+      study_id: temp[that.data.invited_index].study_id,
+      msg: e.formData.leave_message,
+      status: that.data.invited
+    }).then((result) => {
+
+    }).catch((err) => {
+
+    });
+    // wx.request({
+    //   url: _API.acceptStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+    //   data: {
+    //     session: wx.getStorageSync('session'),
+    //     study_id: temp[that.data.invited_index].study_id,
+    //     msg: e.formData.leave_message,
+    //     status: that.data.invited
+
+    //   },
+    //   method: 'GET',
+    //   success: function (res) {
+    //     if (res.data.errCode) {
+    //       that.init_data();
+    //               }
+    //   },
+    //   fail: function (res) {
+    //     _components.show_mToast('网络错误');
+    //   },
+    //   complete: function (res) { wx.hideLoading(); },
+    // })
   },
   //网约学习底部菜单
   button_order_menu: function (e) {
@@ -77,20 +90,24 @@ Page({
       item.push('不接受邀请');
     else
       item.push('接收邀请');
-    item.push('不显示历史记录');//debug
+    item.push('不显示历史记录'); //debug
     item.push('学习地图');
 
     //--------------
-    this.setData({ menu_item_list: item });
+    this.setData({
+      menu_item_list: item
+    });
     wx.showActionSheet({
       itemList: item,
       success: function (res) {
 
         switch (res.tapIndex) {
           case 0:
-            _util.me.study_hidden(me.study_hidden == 1 ? 0 : 1); break;
+            _util.me.study_hidden(me.study_hidden == 1 ? 0 : 1);
+            break;
           case 1:
-            _util.me.study_invite(me.study_invite == 1 ? 0 : 1); break;
+            _util.me.study_invite(me.study_invite == 1 ? 0 : 1);
+            break;
           case 2:
             break;
           case 3:
@@ -103,7 +120,9 @@ Page({
   },
   //---结束当前学习
   button_complete_study: function (e) {
-    this.setData({complete_study:true});
+    this.setData({
+      complete_study: true
+    });
 
   },
   //获取正在学习的文字信息，
@@ -116,21 +135,19 @@ Page({
         if (study[i].reach_id[0].status == '-1') {
           study[i].card_sort = 2;
           temp.push(study[i]);
-        }
-        else if (study[i].reach_id[0].status == '1') {
-          study[i].card_sort = 3;//
+        } else if (study[i].reach_id[0].status == '1') {
+          study[i].card_sort = 3; //
           temp.push(study[i]);
-        }
-        else
-        { }
-      }
-      else {
+        } else {}
+      } else {
         study[i].card_sort = 1;
         temp.push(study[i]);
       }
     }
     //console.log(temp);
-    this.setData({ current_studyInfo: temp });
+    this.setData({
+      current_studyInfo: temp
+    });
     return true;
   },
   //---------------------------------------------------------------------
@@ -145,8 +162,8 @@ Page({
     if (!e)
       return false;
 
-    var data = [];//最终用于渲染的数组数据
-    var end = e.length < 4 ? e.length : 4;//限制渲染卡片的数量
+    var data = []; //最终用于渲染的数组数据
+    var end = e.length < 4 ? e.length : 4; //限制渲染卡片的数量
     var i, j;
     var reach = [];
     var gay = [];
@@ -180,56 +197,63 @@ Page({
      console.log(data);
      console.log(end);*/
 
-    this.setData({ study_history_array: data, study_satisfaction: satisfaction });
+    this.setData({
+      study_history_array: data,
+      study_satisfaction: satisfaction
+    });
   },
   //获取上一次学习的满意度，此操作读取本地缓存
   set_study_satisfaction: function (e) {
     console.log(e);
     if (e.target.dataset.value) {
-  
+
       var that = this;
-      
-       
-          //---
-          wx.showLoading({
-            title: '加载数据中',
-          });
-          //---
-          wx.request({
-            url: _API.setSatStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
-            data: {
-              session: wx.getStorageSync('session'),
-              study_id: e.currentTarget.dataset.index,
-              sat: e.target.dataset.value,
-            },
-            method: 'GET',
-            success: function (res) {
-              var get_data = _util.errCode(res.data);
-              if (get_data) {
-                console.log(get_data);
-                this.setData({ complete_study: false });
-                that.init_data();
-              }
-            },
-            fail: function (res) {
-              _components.show_mToast('网络错误');
-            },
-            complete: function (res) { wx.hideLoading(); },
-          })
-      
-        
-      
-      
+
+
+      //---
+      wx.showLoading({
+        title: '加载数据中',
+      });
+      //---
+      wx.request({
+        url: _API.setSatStudy, //acceptStudy: URL.study + 'acceptStudy',//($session, $study_id, $msg, $status)
+        data: {
+          session: wx.getStorageSync('session'),
+          study_id: e.currentTarget.dataset.index,
+          sat: e.target.dataset.value,
+        },
+        method: 'GET',
+        success: function (res) {
+          var get_data = _util.errCode(res.data);
+          if (get_data) {
+            console.log(get_data);
+            this.setData({
+              complete_study: false
+            });
+            that.init_data();
+          }
+        },
+        fail: function (res) {
+          _components.show_mToast('网络错误');
+        },
+        complete: function (res) {
+          wx.hideLoading();
+        },
+      })
+
+
+
+
     }
-   
-    
+
+
   },
   //----------------------------
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
 
 
   },
@@ -243,31 +267,44 @@ Page({
       title: '加载数据中',
     });
     //---
-    wx.request({
-      url: _API.getStudyList,
-      data: {
-        session: wx.getStorageSync('session')
-      },
-      method: 'GET',
-      success: function (res) {
+    core.APIrequest('getStudyList').then((get_data) => {
+      console.log(get_data); //debug
+      that.set_current_studyInfo(get_data[1]);
+      that.get_study_history_array(get_data[0]);
+      that.setData({
+        study_status: true
+      });
+      wx.hideLoading();
+    }).catch((err) => {
+      wx.hideLoading();
+    });
+    // wx.request({
+    //   url: _API.getStudyList,
+    //   data: {
+    //     session: wx.getStorageSync('session')
+    //   },
+    //   method: 'GET',
+    //   success: function (res) {
 
-        get_data = _util.errCode(res.data);
-        if (get_data) {
-          console.log(get_data);//debug
-         
-            that.set_current_studyInfo(get_data[1]);
-            that.get_study_history_array(get_data[0]);
-            that.setData({ study_status: true });
-          
-        }
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-      },
-      complete: function (res) {
-        wx.hideLoading();
-      },
-    })
+    //     get_data = _util.errCode(res.data);
+    //     if (get_data) {
+    //       console.log(get_data); //debug
+
+    //       that.set_current_studyInfo(get_data[1]);
+    //       that.get_study_history_array(get_data[0]);
+    //       that.setData({
+    //         study_status: true
+    //       });
+
+    //     }
+    //   },
+    //   fail: function (res) {
+    //     _components.show_mToast('网络错误');
+    //   },
+    //   complete: function (res) {
+    //     wx.hideLoading();
+    //   },
+    // })
 
 
 
@@ -305,7 +342,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({ study_fresh: !this.data.study_fresh });
+    this.setData({
+      study_fresh: !this.data.study_fresh
+    });
 
   },
 

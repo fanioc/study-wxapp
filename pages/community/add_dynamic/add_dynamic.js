@@ -12,8 +12,9 @@ Page({
 	},
 	edit_content_imgURL: function (e) {
 		var that = this;
+    that.data.upload_img=[];
 		that.setData({
-			upload_img: []
+      upload_img: that.data.upload_img
 		});
 		wx.chooseImage({ //选择图片，上传成功后将获取地址插入markdown标记中
 			count: 1,
@@ -30,52 +31,80 @@ Page({
 
 	},
 	submit_question: function (e) {
+    	var that = this;
+    console.log('(that.data.upload_img[0])', that.data.upload_img[0]);
 		if (e.detail.value.question_title.length < 3 || e.detail.value.sort.length == 0) {
 			core.com.show_mToast('标题大于三个字，类别不能为空');
 			return false;
 		}
 
-		if (e.detail.value.type[0] == 1)
-			var dd_type = 2
-		else var dd_type = 1
+		
 
-		var that = this;
+	
 		wx.showLoading({
 			title: '正在发表~稍等一会...',
 			mask: true
 		})
-		core.uploadFile(that.data.upload_img[0]).then((image_url) => {
-			core.APIrequest('publishDynamic', {
-				title: e.detail.value.question_title,
-				img_url: image_url,
-				content: e.detail.value.question_describe,
-				type: dd_type,
-				sort: e.detail.value.sort
-			}).then((result) => {
-				wx.hideLoading();
-				wx.switchTab({
-					url: '../index',
-					success: function (res) {},
-				})
-				wx.showToast({
-					title: '发表成功！',
-					duration: 1000,
-					icon: 'success',
-				})
-			}).catch((err) => {
-				wx.hideLoading();
-				core.APIerrCode(err, 2)
-			});
-		}).catch((err) => {
-			wx.hideLoading();
-			core.APIerrCode(err, 2)
-		});
+    
+    if (that.data.upload_img[0])
+    {
+      core.uploadFile(that.data.upload_img[0]).then((image_url) => {
+        console.log(image_url);
+        core.APIrequest('publishDynamic', {
+          title: e.detail.value.question_title,
+          img_url: image_url,
+          content: e.detail.value.question_describe,
+          type: that.data.anonymous,
+          sort: e.detail.value.sort
+        }).then((result) => {
+          
+          wx.hideLoading();
+          wx.switchTab({
+            url: '../index',
+            success: function (res) { },
+          })
+          wx.showToast({
+            title: '发表成功！',
+            duration: 1000,
+            icon: 'success',
+          })
+        }).catch((err) => {
+          wx.hideLoading();
+          core.APIerrCode(err, 2)
+        });
+      }).catch((err) => {
+        wx.hideLoading();
+        core.APIerrCode(err, 2)
+      });
+    }
+else{
+      core.APIrequest('publishDynamic', {
+        title: e.detail.value.question_title,
+        img_url: '',
+        content: e.detail.value.question_describe,
+        type: that.data.anonymous,
+        sort: e.detail.value.sort
+      }).then((result) => {
+        wx.hideLoading();
+        wx.switchTab({
+          url: '../index',
+        })
+        wx.showToast({
+          title: '发表成功！',
+          duration: 1000,
+          icon: 'success',
+        })
+      }).catch((err) => {
+        wx.hideLoading();
+        core.APIerrCode(err, 2)
+      });
+}
 	},
 
 	//将编写问题页面收集的文字信息发送到数据库
 	anonymous: function (e) {
 		console.log('checkbox发生change事件，携带value值为：', e.detail.value.length);
-		if (e.detail.value.length)
+		if (e.detail.value.length==1)
 			this.setData({
 				anonymous: 2
 			});

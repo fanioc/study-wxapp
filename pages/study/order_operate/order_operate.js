@@ -1,5 +1,5 @@
 var core = getApp().globalData.core;
-var stop_scrollClass=false;
+
 Page({
 
   /**
@@ -44,7 +44,6 @@ Page({
       form_place: options.place,
       form_date: options.date
     });
-    
     //console.log(e.markerId)
     var that = this;
     //---
@@ -56,31 +55,26 @@ Page({
       place: options.place,
       date: options.date
     }).then((result) => {
-      //--------------
       var data = result;
       var top_offset = [];
       top_offset.push(0);
-
+      console.log('ha', data);
       // console.log('ha',data);
-      let i, temp = [],
+      var i, temp = [],
         temp2 = [],
         temp3 = 0;
-      for (i = 8; i < 23; i++) {
-
-        temp.push(i + '-' + (i+1));
-
+      for (i = 8; i < 23;) {
+        temp.push(i + '-' + (++i));
       }
-      console.log('temp', temp);
-      //--初始化数据
-      for (let i in data) {
+      console.log(temp)
+
+      for (i = 8; i < 23; i++) {
         temp2.push(data[i]);
       }
-      console.log('数据', temp2);
-      for (let i in temp2) {
+      for (i = 0; i < 8; i++) {
         //*----------------
-
-        console.log('模块高度', temp3, that.attributeCount(temp2[i]));
-        temp3 += that.attributeCount(temp2[i]) * 72 + -18;
+        console.log('模块高度', temp3);
+        temp3 += that.attributeCount(temp2[i]) * 54 + 44;
 
         //** */-------------高度
         top_offset.push(temp3);
@@ -93,42 +87,31 @@ Page({
         time_index: temp,
         top_offset: top_offset
       });
-      wx.hideLoading();
-
+      wx.hideLoading()
     }).catch((err) => {
-      wx.hideLoading();
       core.APIerrCode(err, 2)
+      wx.hideLoading()
     });
+
   },
 
   scrollClass: function (e) {
-    let that = this;
-    if (stop_scrollClass==true)
-    {
-      console.log('scrollTop=', e.detail.scrollTop);
-      stop_scrollClass = false;
-      return ;
+    var that = this;
+    console.log('scrollTop=', e.detail.scrollTop);
+    for (var i = 1; i < 8; i++) {
+      if (e.detail.scrollTop < that.data.top_offset[i])
+        break;
     }
-    
-    else{
+    this.setData({
+      current_sort: i - 1
+    });
 
-      for (var i = 1; i < 8; i++) {
-        if (e.detail.scrollTop < that.data.top_offset[i])
-          break;
-      }
-      console.log('当前', i, that.data.current_sort);
-      that.setData({
-        current_sort: i - 1
-      });
-    }
-    
   },
   changeScroll: function (e) {
     this.setData({
       scroll_ID: e.currentTarget.id,
       current_sort: e.currentTarget.dataset.index,
     });
-    stop_scrollClass=true;
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

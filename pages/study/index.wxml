@@ -11,7 +11,7 @@
       <cover-view>排行榜</cover-view>
     </cover-view>
     <cover-view class="cover-me cover-content flex-all">
-      <cover-view>我的自习</cover-view>
+      <cover-view bind:tap="goStudyList">我的自习</cover-view>
     </cover-view>
   </map>
   <!-- 信息展示 -->

@@ -21,6 +21,11 @@ Page({
 		otherPlaceItem: [],
 		marker: []
 	},
+	goStudyList: function (e) {
+		wx.navigateTo({
+			url: 'study_list/index'
+		})
+	},
 	changePlace: function (e) {
 		this.setData({
 			currentPlace: e.detail.value

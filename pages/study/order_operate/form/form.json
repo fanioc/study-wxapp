@@ -12,6 +12,8 @@
     "zan-tag": "/extends/zan/tag/index",
     "zan-steps": "/extends/zan/steps/index",
     "zan-field": "/extends/zan/field/index",
-    "zan-stepper": "/extends/zan/stepper/index"
-  }
+    "zan-stepper": "/extends/zan/stepper/index",
+    "zan-date-picker":"/extends/zan/datetime-picker/index"
+  },
+  "enablePullDownRefresh": false
 }
