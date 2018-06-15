@@ -21,7 +21,7 @@
               {{each.study_num}}人
             </view>
             <view class='class_foot'>
-              教室号:{{each.site}}
+              {{each.site}}
             </view>
 
           </view>
