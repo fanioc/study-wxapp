@@ -8,7 +8,7 @@ Page({
 	data: {
 		upload_img: [],
 		button_prompt: '添加',
-		anonymous: '',
+		anonymous: 1,
 	},
 	edit_content_imgURL: function (e) {
 		var that = this;

@@ -128,25 +128,36 @@ Page({
   //获取正在学习的文字信息，
   set_current_studyInfo: function (study) {
     var i, card_sort, temp = [];
-    console.log(study);
+    let me = core.userInfo[0].uid;
+     var temp_data=[];
+    console.log('ssss', study, me);
     for (i = 0; i < study.length; i++) {
 
-      if (study[i].launch_id != getApp().globalData.me.uid) {
+      if (study[i].launch_id != me) {
         if (study[i].reach_id[0].status == '-1') {
-          study[i].card_sort = 2;
-          temp.push(study[i]);
-        } else if (study[i].reach_id[0].status == '1') {
-          study[i].card_sort = 3; //
-          temp.push(study[i]);
-        } else {}
+          //study[i].card_sort = 2;
+          temp_data.push(study[i]);
+          temp.push(2);
+          
+        } 
+        else if (study[i].reach_id[0].status == '1') {
+         // study[i].card_sort = 3; //
+          temp.push(3);
+          temp_data.push(study[i]);
+        } else {
+          temp.push(-1);
+        }
       } else {
-        study[i].card_sort = 1;
-        temp.push(study[i]);
+        //study[i].card_sort = 1;
+        temp_data.push(study[i]);
+        temp.push(1);
       }
     }
+    console.log(temp,study);
     //console.log(temp);
     this.setData({
-      current_studyInfo: temp
+      current_studyInfo: study,
+      current_studyInfo_index:temp
     });
     return true;
   },
