@@ -13,6 +13,17 @@ Page({
 				time: ["08:00", "09:00", "10:00", "11:00", "14:10", "15:10", "16:10", "17:10", "19:00", "20:00", "21:00", "22:00"]
 			}
 		},
+		addSchel: 0,
+		timeRange: [
+			['周几',"周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			['开始节数',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+			['结束节数',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+		],
+		weekRange: [
+			['单双周','每周', '单周', '双周'],
+			['开始周',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+			['结束周',1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, , 13, 14, 15, 16, 17, 18, 19, 20],
+		],
 		animationData: [],
 		currentWeek: 1,
 		currentTerm: [],
@@ -22,7 +33,21 @@ Page({
 		currentCourse: [{}],
 		getSchel: []
 	},
+	addCustom: function (e) {
+		core.APIrequest('addUserCustomCourse', {
+			class_name: e.detail.value.class_name,
+			location: e.detail.value.location,
+			teacher: e.detail.value.teacher,
+			time: e.detail.value.time,
+			week: e.detail.value.week,
+			type:2
+		}).then(res=>{
+			console.log(res)
+		}).catch(err=>{
+			console.log(err)
+		})
 
+	},
 	changeWeek: function (e) {
 		var week = parseInt(e.detail.value) + 1
 		this.setData({
@@ -40,7 +65,7 @@ Page({
 			itemList: ["添加课程", "自定义课表背景", "更新课程", "设置"],
 			success: function (e) {
 				if (e.tapIndex == 0) {
-
+					that.showAdd()
 				} else if (e.tapIndex == 1) {
 
 				} else if (e.tapIndex == 2) {
@@ -68,6 +93,7 @@ Page({
 		var that = this
 		var currentCourse = new Array
 		var i = 0;
+    console.log(getSche)
 		while ("undefined" != typeof getSche[i]) {
 			var id = (getSche[i].time[0]) * 100 + getSche[i].time[1] //表示课程id
 			var zs = week <= getSche[i].week[2] && week >= getSche[i].week[1]
@@ -92,7 +118,16 @@ Page({
 		})
 		console.log(this.data.currentCourse)
 	},
-
+	closeAdd: function () {
+		this.setData({
+			addSchel: 0
+		})
+	},
+	showAdd: function () {
+		this.setData({
+			addSchel: 1
+		})
+	},
 
 	initSchel: function () {
 		const weekList = core.tool.getWeekList()

@@ -7,6 +7,36 @@ page {
   width: 100%;
 }
 
+.shadow{
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.20);
+}
+
+
+.zan-btn{
+  /* width: 30%; */
+  text-align:center;
+   /* margin:5px;  */
+  /* display: inline-block; */
+}
+
+.pic-time{
+  color: #555;
+  letter-spacing: 1px;
+  font-size: 14px;
+  padding: 10px 15px 0px 15px;
+}
+
+.addSche{
+  position: fixed;
+  z-index: 111;
+  /* height: 80%; */
+  width: 80%;
+  margin-top: 20%;
+  margin-left: 10%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
 .topNav {
   box-sizing: border-box;
   padding-top: 35px;
