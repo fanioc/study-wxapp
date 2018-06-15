@@ -1,7 +1,6 @@
 {
     "files.associations": {
-        "*.wxss": "css",
-        "*.wxml": "html"
+        "*.wxss": "css"
     },
     "editor.tabSize": 2,
     "editor.wordWrap": "on"

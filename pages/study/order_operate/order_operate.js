@@ -63,18 +63,16 @@ Page({
       var i, temp = [],
         temp2 = [],
         temp3 = 0;
-      for (i = 8; i < 23; i++) {
-
+      for (i = 8; i < 23;) {
         temp.push(i + '-' + (++i));
-        temp.push(i + '-' + (++i));
-
       }
+      console.log(temp)
+
       for (i = 8; i < 23; i++) {
         temp2.push(data[i]);
       }
       for (i = 0; i < 8; i++) {
         //*----------------
-
         console.log('模块高度', temp3);
         temp3 += that.attributeCount(temp2[i]) * 54 + 44;
 
@@ -89,9 +87,10 @@ Page({
         time_index: temp,
         top_offset: top_offset
       });
-
+      wx.hideLoading()
     }).catch((err) => {
       core.APIerrCode(err, 2)
+      wx.hideLoading()
     });
 
   },

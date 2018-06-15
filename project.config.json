@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -102,9 +102,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "order_operate",
-					"pathName": "pages/order-study/order_operate/operate",
+					"id": 11,
+					"name": "发起学习",
+					"pathName": "pages/study/order_operate/form/form",
 					"query": ""
 				},
 				{
