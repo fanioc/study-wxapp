@@ -50,12 +50,13 @@ Page({
   },
 
   getUserInfo(uid = 0) {
-    if (uid == userInfo[0].uid)
+    if (uid == core.userInfo[0].uid)
       uid = 0
     let Info = core.getUserInfo(uid)
     Info.then(userInfo => {
+      console.log(userInfo)
       this.setData({
-        userInfo: data
+        userInfo: userInfo
       })
     }).catch(err => {
       core.APIerrCode(err, 2)

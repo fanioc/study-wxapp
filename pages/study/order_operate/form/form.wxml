@@ -8,11 +8,11 @@
     <swiper class="swiper">
       <swiper-item class=" set-item">
         <zan-panel title="请设置学习日期：">
-          <zan-field title="日期" placeholder="请选择日期" error="true" input-type="string"></zan-field>
+          <zan-field title="日期" placeholder="请选择日期" value="{{date}}" error="true" input-type="string"></zan-field>
         </zan-panel>
         <zan-panel title="请设置自习地点：">
-          <zan-field title="自习地点" placeholder="请输入地点" error="true" input-type="string"></zan-field>
-          <zan-field title="教室号" placeholder="请输入地点" error="true" input-type="string"></zan-field>
+          <zan-field title="自习地点" placeholder="请输入地点" value="{{place}}" error="true" input-type="string"></zan-field>
+          <zan-field title="教室号" placeholder="请输入地点" value="{{site}}" error="true" input-type="string"></zan-field>
         </zan-panel>
         <zan-panel title="学习内容" class="zpan">
           <zan-field placeholder="请输入学习内容" value="{{ textareaValue }}"></zan-field>
