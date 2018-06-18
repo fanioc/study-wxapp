@@ -6,6 +6,7 @@ Component({
 
   properties: {
     inner: String, // 简化的定义方式,插入的内容
+    model_data: String,
     model: Number,
     userID: String,
     refresh:{
@@ -71,10 +72,11 @@ Component({
     set_default: function () {//为从服务器获取用户信息时将其设置为匿名用户，无法进行任何按钮操作
       var _THAT = this;
       //console.log(getCurrentPages()[0].is, 'set_default', );
-      _THAT.setData({ user_head_img: _PATH.anonymous, user_source_name: '', model: 0 });
+      _THAT.setData({ user_head_img: '/image/anonymous.png', user_source_name: '', model: 0 });
 
     },
     nav_User_personalPage: function () { //转跳至用户个人信息页面
+      
       var data = false;
       var that = this;
       //addtionRegion
@@ -196,6 +198,10 @@ Component({
       
       wx.navigateTo({ url: '/pages/markdown_editor/index' });
       return true;
+    },
+    refuse_studyInvite:function()
+    {
+      console.log('refuse_studyInvite');
     },
     //--------------------------------
     _myPrivateMethod: function () {

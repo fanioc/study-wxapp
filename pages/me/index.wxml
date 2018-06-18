@@ -22,12 +22,12 @@
 
     <view class="info-other">
       <view>
-        <view class='info-other-xx'>100</view>
+        <view class='info-other-xx'>3</view>
         <view>关注</view>
       </view>
       <view class='solid'></view>
       <view>
-        <view class='info-other-xx'>100</view>
+        <view class='info-other-xx'>2</view>
         <view>粉丝</view>
       </view>
       <view class='solid'></view>
@@ -37,7 +37,7 @@
       </view>
       <view class='solid'></view>
       <view>
-        <view class='info-other-xx'>100</view>
+        <view class='info-other-xx'>150</view>
         <view>积分</view>
       </view>
 

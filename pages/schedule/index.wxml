@@ -12,6 +12,30 @@
     </view>
   </view>
 
+  <view class='addSche shadow' wx:if="{{addSchel}}">
+    <form bindsubmit="addCustom">
+      <zan-panel title="请设置课程信息：">
+        <zan-field name="class_name" title="课程名" placeholder="请输入课程名" input-type="string"></zan-field>
+        <zan-field name="teacher" title="教师" placeholder="请输入教师" input-type="string"></zan-field>
+      </zan-panel>
+      <zan-panel title="设置时间和地点：">
+
+        <picker bind:change name="week" mode="multiSelector" range="{{weekRange}}" class='pic-time'>选择周次：每周，第1周-第18周</picker>
+        <picker name="time" mode="multiSelector" range="{{timeRange}}" class='pic-time'>选择时间：周一，第3节-第5节</picker>
+
+        <zan-field name="location" title="地点" placeholder="请输入地点" value="{{site}}" input-type="string"></zan-field>
+      </zan-panel>
+      <zan-button-group>
+        <zan-button class='zan-btn' type="primary">
+          <button form-type='submit' style='background-color:#44bb00;color:#fff'>添加</button>
+        </zan-button>
+        <zan-button bind:tap="closeAdd" class='zan-btn' type="danger">关闭</zan-button>
+      </zan-button-group>
+    </form>
+
+  </view>
+
+
   <!-- <view class='fixed-button'></view> -->
 
   <!-- 列数 -->
@@ -38,7 +62,7 @@
       <view style='position:relative;' wx:for="{{config.tableHead.time}}" wx:key="schelItem" wx:for-index="classNum">
 
         <!-- 课表信息  -->
-        <view animation="{{animationData}}" id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*100+classNum+1]}}" style='animation: spin .5s {{weekNum*80+classNum*40}}ms  ease 1 forwards;z-index:{{20-classNum}};position:absolute;top:{{(currentCourse[(weekNum+1)*100+classNum+1].time[1]-1)*100}}rpx;background:{{color[currentCourse[(weekNum+1)*100+classNum+1].type]}};'
+        <view animation="{{animationData}}" id='{{weekNum+1}}{{classNum+1}}' wx:if="{{currentCourse[(weekNum+1)*100+classNum+1]}}" style='animation: spin .5s {{weekNum*80+classNum*40}}ms  ease 1 forwards;position:absolute;top:{{(currentCourse[(weekNum+1)*100+classNum+1].time[1]-1)*100}}rpx;background:{{color[currentCourse[(weekNum+1)*100+classNum+1].type]}};'
           class='week-table-font week-table-{{currentCourse[(weekNum+1)*100+classNum+1].lengthTime}};}};' bindtap='selectClass' bindlongpress='longpressClass'>
           <view>
             <text style='font-weight:bold'>{{currentCourse[(weekNum+1)*100+classNum+1].class_name}}</text>@{{currentCourse[(weekNum+1)*100+classNum+1].location}}

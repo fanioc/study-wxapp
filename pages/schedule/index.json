@@ -1,20 +1,23 @@
 {
   "usingComponents": {
     "img_pre": "/components/base/image_canPreview/image_canPreview",
-    "bullet": "/components/bullet-screen/bullet-screen",
     "user": "/components/userInfo/modal",
     "modal": "/components/simulate_popup/modal",
     "mtoast": "/components/toast/middleToast",
     "zan-button": "/extends/zan/btn/index",
     "zan-button-group": "/extends/zan/btn-group/index",
     "nav": "/components/navigation/navigation",
-
-      "zan-toptips": "/extends/zan/toptips/index"
-      ,
-      "zan-icons":"/extends/zan/icon/index"
-
+    "zan-cell": "/extends/zan/cell/index",
+    "zan-panel": "/extends/zan/panel/index",
+    "zan-tag": "/extends/zan/tag/index",
+    "zan-steps": "/extends/zan/steps/index",
+    "zan-field": "/extends/zan/field/index",
+    "zan-stepper": "/extends/zan/stepper/index",
+    "zan-date-picker": "/extends/zan/datetime-picker/index",
+    "zan-toptips": "/extends/zan/toptips/index",
+    "zan-icons": "/extends/zan/icon/index"
   },
-    "backgroundTextStyle":"light",
-    "navigationBarTextStyle":"white",
-    "backgroundColor": "#22b36e"
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#22b36e"
 }

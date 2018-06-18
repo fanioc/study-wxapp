@@ -19,7 +19,10 @@
     "pages/community/dynamic/answer_detail/answer_detail",
     "pages/order-study/index",
     "pages/order-study/order_operate/order_operate",
-    "pages/order-study/order_operate/form/form"
+    "pages/order-study/order_operate/form/form",
+    "pages/study/study_index/study_index",
+    "pages/study/study_index/study_card/study_card",
+    "pages/study/study_index/study_card/chat/chat"
   ],
   "window": {
     "backgroundTextStyle": "dark",

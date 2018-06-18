@@ -1,0 +1,42 @@
+@import "/extends/chat-input/chat-input.wxss";
+page {
+    background-color: white;
+    height: 100%;
+}
+.conversation
+{
+  position: fixed;
+ height: 1120rpx;
+ background-color: #EFEFEF;
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.message{
+  background-color: white;
+  border: 2rpx solid lightblue;
+  width: 90%;
+  margin: 20rpx 0rpx;
+  padding: 2%;
+  border-radius: 20rpx;
+  }
+.message .content{
+  margin-left: 50rpx;
+}
+
+.answer-actions {
+  width: 690rpx;
+  padding: 10rpx 0 0;
+  color: #a0acac;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lable-answer-actions {
+  display: inline-block;
+  vertical-align: text-bottom;
+  padding: 0 10rpx 0 0;
+  font-size: 24rpx;
+  margin-right: 10rpx;
+}

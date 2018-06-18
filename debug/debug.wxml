@@ -1,53 +1,58 @@
-            <include src='/template/interActive.wxml' />
-            
+<include src='/template/interActive.wxml' />
 
 
-      <!--<swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item' >
+<swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
 
-          <swiper-item wx:for="{{invite_item_array}}" wx:key="index">
-                  <study refresh="{{study_fresh}}" />
-          </swiper-item>
-
- <include src='/template/interActive.wxml' />
-<user model='4'/>
-<user model='4'/>
-<towxml />
- <towxml />
-
-         <zan-button-group>
-
-      <zan-button type="primary">确认付款</zan-button>
-      <zan-button type="danger">确认付款</zan-button>
-      <zan-button type="warn">确认付款</zan-button>
-    </zan-button-group>
-
-    <view class='lly'>_____________________________</view>
- <towxml URL='http://fangrass.com/README.md' />
-   <img_pre imgURL='/image/debug2.jpeg' />
-      </swiper>-->
-
-  
-             
-<!-- <button bindtap='a'>hah</button>
-<user userID='110' model='1'/>
-<user userID='110' model='2'/>
-<user userID='110' model='3'/>
-<user userID='110' model='4'/>
-<user userID='110' model='5'/>
-<user userID='110' model='6'/> -->
-              <!--一，用户信息部分<user model='3'/>-->
-              
-
-              <!--用户信息部分<dynamic  /> <modal title='标题' bindcomfirm='a' />-->
-
-<user userID='110' model='1'/>
-<user userID='108' model='2'/>
+  <block wx:for="{{study_history_array}}" wx:key='index'>
+    <swiper-item>
+      <view class='invite_item_content'>
+        <view class="invite_item_content_card">
+          <view>
 
 
-          
+            <!-- 模块middle信息 -->
+
+
+            <view class="card_title" style='height:796rpx;'>
+              <!-- 主要 -->
+              <view scroll-y='true' class='card_title_item_scroll' style='height:766rpx;'>
+                <view>消息：{{item.msg}}</view>
+                <view>学习地点：{{item.place}}</view>
+                <view>学习科目：{{item.study_content}}</view>
+                <view>发起时间：{{item.launch_time}}</view>
+                <view>持续时间：{{item.end_hour}}小时</view>
+
+
+                <zan-panel title="学习伙伴" class="tag-demo" hide-border="{{ true }}">
+                  <block wx:for='{{item.gay}}' wx:for-item='gay' wx:for-index='idx' wx:key='{{idx}}' class='user'>
+                    <user userID='{{gay}}' model='4' />
+                  </block>
+                </zan-panel>
+                <zan-panel title="满意度{{study_satisfaction[index]}}" class="tag-demo">
+                  <zan-cell class='button_zan-cell'>
+                    <view>
+                      <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}'></progress>
+                    </view>
+
+
+                  </zan-cell>
+                </zan-panel>
+
+              </view>
+
+
+              <!-- 主要 -->
+            </view>
+            <!-- 模块middle信息 -->
+
+          </view>
+        </view>
 
 
 
-  
-      <user  userID='{{userID}}' />
- 
+      </view>
+
+    </swiper-item>
+  </block>
+
+</swiper>

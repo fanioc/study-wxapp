@@ -32,6 +32,7 @@ Page({
 	},
 	submit_question: function (e) {
     	var that = this;
+      console.log(e)
     console.log('(that.data.upload_img[0])', that.data.upload_img[0]);
 		if (e.detail.value.question_title.length < 3 || e.detail.value.sort.length == 0) {
 			core.com.show_mToast('标题大于三个字，类别不能为空');
@@ -49,7 +50,7 @@ Page({
     if (that.data.upload_img[0])
     {
       core.uploadFile(that.data.upload_img[0]).then((image_url) => {
-        console.log(image_url);
+
         core.APIrequest('publishDynamic', {
           title: e.detail.value.question_title,
           img_url: image_url,
@@ -57,7 +58,7 @@ Page({
           type: that.data.anonymous,
           sort: e.detail.value.sort
         }).then((result) => {
-          
+          console.log(res)
           wx.hideLoading();
           wx.switchTab({
             url: '../index',
@@ -69,10 +70,12 @@ Page({
             icon: 'success',
           })
         }).catch((err) => {
+          console.log(err)
           wx.hideLoading();
           core.APIerrCode(err, 2)
         });
       }).catch((err) => {
+        console.log(err)
         wx.hideLoading();
         core.APIerrCode(err, 2)
       });

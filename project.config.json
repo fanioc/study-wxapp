@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -120,21 +120,21 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "发起自习",
-					"pathName": "pages/order-study/order_operate/form/form",
+					"id": 14,
+					"name": "发送消息界面",
+					"pathName": "pages/study/study_index/study_card/chat/chat",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "发起自习",
-					"pathName": "pages/study/order_operate/form/form",
+					"name": "自习",
+					"pathName": "pages/study/study_index/study_index",
 					"query": ""
 				},
 				{
 					"id": -1,
-					"name": "发起自习",
-					"pathName": "pages/study/study_list/index",
+					"name": "自习",
+					"pathName": "pages/study/study_index/study_card/study_card",
 					"query": ""
 				}
 			]

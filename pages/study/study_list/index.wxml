@@ -78,7 +78,7 @@
                   <zan-tag type="primary" data-value='2'>
                     满 意</zan-tag>
                 </view>
-                <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+                <zan-button size="mini" type="danger" catchtap='button_complete_study' >结束学习</zan-button>
               </view>
             </zan-button-group>
           </view>
