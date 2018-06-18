@@ -15,7 +15,8 @@
     "zan-stepper": "/extends/zan/stepper/index",
     "zan-date-picker": "/extends/zan/datetime-picker/index",
     "zan-toptips": "/extends/zan/toptips/index",
-    "zan-icons": "/extends/zan/icon/index"
+    "zan-icons": "/extends/zan/icon/index",
+    "bullet":"/components/bullet-screen/bullet-screen"
   },
   "backgroundTextStyle": "light",
   "navigationBarTextStyle": "white",

@@ -39,6 +39,7 @@ Page({
           duration: 1000,
           mask: true
         })
+        core.APIrequest('updateUserEduAll')
         wx.navigateBack({
           delta: 1,
           success: () => {
