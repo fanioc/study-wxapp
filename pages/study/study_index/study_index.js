@@ -88,7 +88,7 @@ Page({
     var temp_doing = [], temp_deal = [];
 
     for (i = 0; i < study.length; i++) {
-
+            
       if (study[i].launch_id != me) {
         // console.log('ssss', study[i].launch_id, 'ssss', me);
         if (study[i].reach_id[0].status == '-1') {
@@ -203,6 +203,49 @@ Page({
   {
     wx.navigateTo({
       url: '/pages/study/study_index/study_card/study_card?index=' + e.currentTarget.dataset.index,
+    })
+  },
+  menu_left_button:function(){
+    wx.showActionSheet({
+      itemList: ['发起自习','自习地图','排行榜'],
+      success: function (res) {
+
+        switch (res.tapIndex) {
+          case 0:
+            wx.navigateTo({
+              url: '/pages/study/order_operate/form/form',
+            })
+            break;
+          case 1:
+            wx.navigateTo({
+              url: '/pages/study/index',
+            })
+            break;
+          case 2:
+            wx.navigateTo({
+              url: '/pages/study/rank/rank',
+            })
+            break;
+          case 3:
+            //that.nav_orderStudy_detailPage()
+            break;
+
+        }
+
+      }
+    })
+  },
+  take_part_in:function(){
+    //addtionRegion
+    wx.showModal({
+      title: '提示',
+      content: '确定加入此学习吗',
+      success:res=>{
+        if (res.confirm)
+        {
+          core.com.show_mToast('已发送邀请');
+        }
+      }
     })
   },
   //-----------------本页面自定义函数

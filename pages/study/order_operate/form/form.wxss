@@ -75,3 +75,18 @@ page {
   margin: 30px;
   text-align: center;
 }
+button#clockBu
+{
+  
+  font-size: 90rpx;
+  height: 250rpx;
+  width: 250rpx;
+  border-radius: 200%;
+  background-color: #00BFFF;
+  border: outset 10rpx #87CEFA; 
+}
+.foot{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

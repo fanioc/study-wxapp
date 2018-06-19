@@ -12,7 +12,7 @@
         <input placeholder="按照标签，搜索问题" placeholder-class="search-placeholder" bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" />
         <zan-icon type='close' bindtap="reset_wxSearchData_tagChoose" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
       </view>
-      <view class="search-right flex-item" >
+      <view class="search-right flex-item">
         <zan-icon type='search' bindtap="wxSearchFn" wx:if="{{wxSearchData.view.isShow}}"></zan-icon>
         <zan-icon type='edit' catchtap='add_dynamic' wx:else></zan-icon>
         <!-- <image src="/image/edit.svg" catchtap='add_dynamic'></image> -->
@@ -22,7 +22,7 @@
 
     <view class='tag_body'>
       <view class="tag_group">
-       <text class=" tag {{tag_all?'tag_choose':''}}" catchtap='set_tag' data-all='true'>全部</text>
+        <text class=" tag {{tag_all?'tag_choose':''}}" catchtap='set_tag' data-all='true'>全部</text>
         <text class=" tag {{tag_group.choose?'tag_choose':''}}" wx:for="{{tag_group_array}}" wx:key='index' wx:for-item='tag_group' catchtap='set_tag' data-index='{{index}}' data-all='false'>{{tag_group.content}}</text>
       </view>
     </view>
@@ -31,78 +31,80 @@
 
   <view class='dynamic_body'>
     <block wx:for="{{feed}}" wx:key="{{index}}" data-feedIndex="{{index}}">
-      <!-- <text  wx:if='{{item.card_img&&0}}'>图片</text>
+      <view wx:if="{{tag_show_index[index]}}">
+        <!-- <text  wx:if='{{item.card_img&&0}}'>图片</text>
     <text wx:if='{{item.question_describe||1}}'>{{item.question_describe.length<3}}</text> -->
 
-      <!-- 动态模块1-->
-      <view class="dynamic_card" wx:if="{{item.card_img.length>5&&(item.question_describe.length<3)}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
+        <!-- 动态模块1-->
+        <view class="dynamic_card" wx:if="{{item.card_img.length>5&&(item.question_describe.length<3)}}" bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
 
-        <view>
-          <!--一，用户信息部分-->
-          <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==1}}" refresh="{{component_user_refresh}}"/>
-
-          <image src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
-          <view class="dynamic_title">{{item.question_title}}</view>
-        </view>
-
-      </view>
-      <!-- 动态模块0-->
-      <view class="feed-item" wx:else bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
-
-        <!--动态内容部分-->
-
-        <!--一，用户信息部分-->
-        <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==1}}"  refresh="{{component_user_refresh}}"/>
-        <!--用户信息部分-->
-
-        <!--二，动态内容部分-->
-        <view class="feed-content" catchtap="nav_dynamic_page" data-feedIndex="{{index}}">
-          <!--标题部分-->
           <view>
+            <!--一，用户信息部分-->
+            <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==1}}" refresh="{{component_user_refresh}}" />
 
-
-            <l_text class="question" content='{{item.question_title}}' max='50' />
+            <image src="{{item.card_img}}" class="dynamic_image" mode="aspectFill"></image>
+            <view class="dynamic_title">{{item.question_title}}</view>
           </view>
-          <!--标题部分-->
 
-          <!--问题描述部分-->
-          <view class="answer-body">
+        </view>
+        <!-- 动态模块0-->
+        <view class="feed-item" wx:else bindtap='nav_dynamic_page' data-feedIndex="{{index}}">
+
+          <!--动态内容部分-->
+
+          <!--一，用户信息部分-->
+          <user userID='{{item.userID}}' model='1' wx:if="{{item.dynamic_type==1}}" refresh="{{component_user_refresh}}" />
+          <!--用户信息部分-->
+
+          <!--二，动态内容部分-->
+          <view class="feed-content" catchtap="nav_dynamic_page" data-feedIndex="{{index}}">
+            <!--标题部分-->
             <view>
-              <!--//addtionRegion-->
 
-              <l_text content='{{item.question_describe}}' />
+
+              <l_text class="question" content='{{item.question_title}}' max='50' />
+            </view>
+            <!--标题部分-->
+
+            <!--问题描述部分-->
+            <view class="answer-body">
+              <view>
+                <!--//addtionRegion-->
+
+                <l_text content='{{item.question_describe}}' />
+              </view>
+
+            </view>
+            <!--问题描述部分-->
+
+          </view>
+          <!--动态内容部分-->
+          <!--三，动态信息部分-->
+          <view class="answer-actions">
+
+
+            <view class='lable-answer-actions'>
+              <a class='a-lable-answer-actions'>{{item.comment_num}} 回答 </a>
+              <text>•</text>
             </view>
 
+            <view class='lable-answer-actions'>
+              <a class='a-lable-answer-actions'>{{item.dynamic_sort}} </a>
+              <text>•</text>
+            </view>
+            <view class='lable-answer-actions'>
+              <a class='a-lable-answer-actions'> {{item.dynamic_time}}</a>
+            </view>
           </view>
-          <!--问题描述部分-->
+          <!--动态信息部分-->
+
+
+          <!--动态内容部分-->
+
 
         </view>
-        <!--动态内容部分-->
-        <!--三，动态信息部分-->
-        <view class="answer-actions">
-
-
-          <view class='lable-answer-actions'>
-            <a class='a-lable-answer-actions'>{{item.comment_num}} 回答 </a>
-            <text>•</text>
-          </view>
-
-          <view class='lable-answer-actions'>
-            <a class='a-lable-answer-actions'>{{item.dynamic_sort}} </a>
-            <text>•</text>
-          </view>
-          <view class='lable-answer-actions'>
-            <a class='a-lable-answer-actions'> {{item.dynamic_time}}</a>
-          </view>
-        </view>
-        <!--动态信息部分-->
-
-
-        <!--动态内容部分-->
-
 
       </view>
-
 
 
     </block>
