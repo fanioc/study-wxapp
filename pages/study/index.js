@@ -22,9 +22,9 @@ Page({
 		marker: []
 	},
 	goStudyList: function (e) {
-		wx.navigateTo({
-			url: 'study_list/index'
-		})
+		wx.navigateBack({
+      delta: 1,
+    })
 	},
 	changePlace: function (e) {
 		this.setData({
@@ -139,7 +139,12 @@ Page({
 			currentDate: e.detail.value
 		})
 	},
-
+  goRank:function()
+  {
+    wx.navigateTo({
+      url: '/pages/study/rank/rank',
+    })
+  },
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

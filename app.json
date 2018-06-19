@@ -22,7 +22,8 @@
     "pages/order-study/order_operate/form/form",
     "pages/study/study_index/study_index",
     "pages/study/study_index/study_card/study_card",
-    "pages/study/study_index/study_card/chat/chat"
+    "pages/study/study_index/study_card/chat/chat",
+    "pages/study/rank/rank"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -45,7 +46,7 @@
         "selectedIconPath": "image/tabBar/activity_fill.png"
       },
       {
-        "pagePath": "pages/study/index",
+        "pagePath": "pages/study/study_index/study_index",
         "text": "自习",
         "iconPath": "image/tabBar/select.png",
         "selectedIconPath": "image/tabBar/select_fill.png"

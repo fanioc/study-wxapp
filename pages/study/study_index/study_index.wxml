@@ -3,6 +3,8 @@
 <include src='/template/interActive.wxml' />
 
 <view class="swiper-tab" style='position:fixed;width:100%;'>
+<zan-icon bindtap='menu_left_button' type="wap-nav" class='menu_left'></zan-icon>
+
   <view style='height:70px'></view>
   <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
     有关我的
@@ -31,7 +33,7 @@
           <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
             <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
               <block wx:if="{{list_index==0}}" wx:for="{{current_studyInfo}}" wx:for-item="doing" wx:for-index="doing_index" wx:key="idx">
-                <view bindtap='nav_study_card' data-index='{{doing_index}}'  class="navigator">
+                <view bindtap='nav_study_card' data-index='{{doing_index}}' class="navigator">
                   <!-- <view class="navigator-text">{{page}}</view> -->
                   <view class='doing_item'>
                     <user userID='{{doing.launch_id}}' refresh="{{component_user_refresh}}" model='-1' />
@@ -43,7 +45,7 @@
                 </view>
               </block>
               <block wx:if="{{list_index==1}}" wx:for="{{deal_study_array}}" wx:for-item="deal" wx:for-index="deal_index" wx:key="idx">
-                <view  class="navigator">
+                <view class="navigator">
 
                   <view class='doing_item'>
                     <user userID='{{deal.launch_id}}' refresh="{{component_user_refresh}}" model='0' />
@@ -92,6 +94,63 @@
 
 <!--可加入的-->
 <view hidden="{{currentTab != 1}}" class='swiper_body'>
+  <view wx:for="{{current_studyInfo}}" wx:key="index" bindtap='take_part_in'>
+    <view class="feed-item">
+
+      <!--动态内容部分-->
+
+      <!--一，用户信息部分-->
+      <user userID='{{item.launch_id}}' model='0' refresh="{{component_user_refresh}}" />
+      <!--用户信息部分-->
+      <!--二，动态内容部分-->
+      <view class="feed-content">
+        <!--标题部分-->
+        <view>
+          <l_text class="question" content='{{item.msg}}' max='50' />
+        </view>
+        <!--标题部分-->
+
+        <!--问题描述部分-->
+        <view class="answer-body">
+          <view>
+            <!--//addtionRegion-->
+            <view>学习内容：{{item.study_content}}</view>
+            <view>学习时间：{{item.study_time_start}}时-{{item.study_time_end}}时</view>
+            <view class='icon_group'>
+            组队情况：
+              <block wx:for='{{item.reach_id}}' wx:for-item='gay' wx:for-index='idx' wx:key='idx'>
+                <image src="/image/study_index/{{gay.status==1?'red':'gray'}}_head.svg" class='icon'></image>
+              </block>
+            </view>
+          </view>
+
+        </view>
+        <!--问题描述部分-->
+
+      </view>
+      <!--动态内容部分-->
+      <!--三，动态信息部分-->
+      <view class="answer-actions">
 
 
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'>{{item.place}} </a>
+          <text>•</text>
+        </view>
+
+
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'> {{item.launch_time}}</a>
+        </view>
+
+      </view>
+      <!--动态信息部分-->
+
+
+      <!--动态内容部分-->
+
+
+    </view>
+
+  </view>
 </view>

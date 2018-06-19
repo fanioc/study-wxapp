@@ -1,14 +1,16 @@
 <!-- <import src="/template/back-ground/1.wxml" />
 <template is="back-ground-1" /> -->
 <!-- <view class='view-box'> -->
+<nav />
 <view class="contain">
+
   <map id="study_place_map" class="map shadow" show-location="true" latitude="{{currentLatitude}}" longitude="{{currentLongitude}}"
     scale="18" markers="{{markers}}" bindcallouttap="tapMarker">
     <!-- <cover-view class="cover-select cover-content flex-all">
       <cover-view>学习地点</cover-view>
     </cover-view> -->
     <cover-view class="cover-bang  cover-content flex-all">
-      <cover-view>排行榜</cover-view>
+      <cover-view bind:tap="goRank">排行榜</cover-view>
     </cover-view>
     <cover-view class="cover-me cover-content flex-all">
       <cover-view bind:tap="goStudyList">我的自习</cover-view>

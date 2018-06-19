@@ -113,6 +113,12 @@ Component({
     post_invited: function () { //向用户发送邀请
       var data;
       var _THAT = this;
+      _THAT.setData({ invited: true });//lly_improve
+      let pages = getCurrentPages();
+      let currentPage = pages[pages.length - 1];//lly_improve
+      let data_temp = currentPage.data.invited_user;
+      data_temp.push(_THAT.data.userID);
+      currentPage.setData({ invited_user: data_temp});
       //addtionRegion
       //----debugdata----------
      /* wx.request({
@@ -136,6 +142,7 @@ Component({
       //----debugdata----------
 
     },
+  
     modal_leave_message: function () { //用户留言窗口
       var _THAT = this;
       core.com.show_modal(_THAT, 'leave_message', this.post_leave_message, '留言ing', '发送', false);

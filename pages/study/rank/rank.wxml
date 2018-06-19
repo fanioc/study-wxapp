@@ -1,0 +1,76 @@
+<!-- 排行榜板块-->
+<include src='/template/interActive.wxml' />
+<nav />
+<import src="/template/back-ground/1.wxml" />
+<template is="back-ground-1" />
+<view class='contain'>
+
+  <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
+    <swiper-item class='invite_item_content '>
+      <view class='invite_item_content_card pieGraph_background'>
+
+        <view class="tag a">
+          积分TOP5
+        </view>
+        <view>
+          <view class='b'>
+            <view class='c'>
+              <text class='e'>376</text>
+              <view class='left'></view>
+            </view>
+            <user class='d' userID='110' model='0' />
+          </view>
+          <view class='b'>
+            <view class='c'>
+              <text class='e'>213</text>
+              <view class='left'></view>
+            </view>
+            <user class='d' userID='109' model='0' />
+          </view>
+          <view class='b'>
+            <view class='c'>
+              <text class='e'>193</text>
+              <view class='left'></view>
+            </view>
+            <user class='d' userID='108' model='0' />
+          </view>
+          <view class='b'>
+            <view class='c'>
+              <text class='e'>144</text>
+              <view class='left'></view>
+            </view>
+            <user class='d' userID='107' model='0' />
+          </view>
+          <view class='b'>
+            <view class='c'>
+              <text class='e'>98</text>
+              <view class='left'></view>
+            </view>
+            <user class='d' userID='106' model='0' />
+          </view>
+        </view>
+
+
+      </view>
+    </swiper-item>
+
+    <swiper-item class='invite_item_content '>
+
+
+
+      <canvas class="graphCanvas invite_item_content_card pieGraph_background" canvas-id="lineGraph"></canvas>
+
+
+    </swiper-item>
+    <swiper-item class='invite_item_content'>
+
+
+
+      <canvas class="graphCanvas invite_item_content_card pieGraph_background" canvas-id="pieGraph" style='height:300px;'></canvas>
+
+
+    </swiper-item>
+  </swiper>
+
+
+</view>

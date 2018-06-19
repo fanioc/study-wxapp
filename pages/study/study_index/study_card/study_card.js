@@ -62,9 +62,24 @@ Page({
   },
   //---结束当前学习
   button_complete_study: function (e) {
-    //addtionRegion
-    this.setData({
-      complete_study: true
+    //setSatStudy: URL.study + 'setSatStudy',//设置满意度 也就是完成当前学习 只有发起者能设置本次学习
+    //---
+    wx.showLoading({
+      title: '加载数据中',
+    });
+    //---
+    var that = this;
+
+    core.APIrequest('setSatStudy', {
+      study_id: that.data.study_array.study_id,
+      sat:1,
+    }).then((result) => {
+      wx.navigateBack({
+        delta: 1,
+      });
+      wx.hideLoading();
+    }).catch((err) => {
+      wx.hideLoading();
     });
 
   },

@@ -54,18 +54,48 @@ Page({
       if (typeof (feed_Array.length) == 'undefined') {
         core.com.show_mToast('网络错误');
       }
+      //--------
+      let temp_index=[];
+      for (let i in feed_Array) {
+        temp_index.push(true);
+
+      }
+      that.setData({ tag_show_index:temp_index})
+      //------
       that.setData({
         data_success: true,
         feed: feed_Array,
         feed_length: feed_Array[feed_Array.length - 1].question_id
       });
       wx.hideLoading();
+      that.getTag_group();
     }).catch((err) => {
       core.APIerrCode(err, 2)
       wx.hideLoading();
     });
   },
-
+  getTag_group:function()
+  {
+    var that=this;
+    let dynamic = this.data.feed;
+    let temp1=[],temp2=[];
+    for(let i in dynamic)
+    {
+      if (temp2.indexOf(dynamic[i].dynamic_sort)!=-1)
+          continue; 
+      if(i<3)
+      {
+        temp1.push({ content: dynamic[i].dynamic_sort,choose:false}); 
+      }
+      temp2.push(dynamic[i].dynamic_sort);
+    
+    }
+    this.setData({ tag_group_array:temp1,tag2:temp2});
+   
+    let keys = that.data.tag2;
+    WxSearch.init(that, 0, keys);//热门，barHeight:top值
+    WxSearch.initMindKeys(that.data.tag2);//匹配内容
+  },
   //--------------bindtap事件函数
 
   nav_dynamic_page: function (e) { //转跳至动态详情页面,
@@ -107,7 +137,45 @@ Page({
       
       that.setData({ tag_group_array: tag_group, tag_all: false });
     }
+    let temp_index=[],indexOf;
+    let feed = that.data.feed;
+    let tag_group_array = that.data.tag_group_array;
+    if (e.currentTarget.dataset.all == 'true')
+    {
+      for (let i in feed) {
+        temp_index.push(true);
 
+      }
+    }
+    else{
+      for (let i in feed) {
+        temp_index.push(false);
+
+      }
+     // console.log(temp_index);
+      for (let i in feed) {
+        //console.log(that.data.tag_group_array);
+        indexOf=false;
+        for (let j in tag_group_array)
+        {
+          if (tag_group_array[j].content == feed[i].dynamic_sort && tag_group_array[j].choose==true)
+          {
+            indexOf=true;
+            break;
+          }
+        }
+        if (indexOf==true) {
+                  {
+                    temp_index[i]=true;
+                    
+                  }
+                 
+        }
+      }
+    }
+    console.log(temp_index);
+    that.setData({tag_show_index:temp_index});
+   
   },
   //-----------------本页面自定义函数
   //-------外部引入的组件函数
@@ -136,10 +204,19 @@ Page({
       for (let i in tag)
       {
         
-        temp.push({ content: tag[i],choose:true});
+        temp.push({ content: tag[i],choose:false});
       }
-      
-      that.setData({ tag_group_array:temp,tag_all:false});
+
+
+      let wxSearchData = this.data.wxSearchData;
+     
+      let temp_index = [];
+      let feed = that.data.feed;
+      for (let i in feed) {
+        temp_index.push(true);
+      }
+      //console.log(temp_index);
+      that.setData({ tag_show_index: temp_index, tag_group_array: temp,tag_all: true });
     }
    //----重新设置分类
     that.reset_wxSearchData_tagChoose();
@@ -182,7 +259,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
@@ -200,9 +276,7 @@ Page({
     this.getFeed(0);
     //addtionRegion
     //(that, barHeight, keys, isShowKey, isShowHis, callBack)
-    let keys = ['weappdev', '小程序', 'wxParse', 'wxSearch', 'wxNotification'];
-    WxSearch.init(that, 0, keys);//热门，barHeight:top值
-    WxSearch.initMindKeys(['weappdev.com', 'lly', '微信开发', '微信小程序']);//匹配内容
+    
 
   },
 

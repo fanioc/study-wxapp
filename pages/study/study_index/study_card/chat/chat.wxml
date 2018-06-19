@@ -1,6 +1,6 @@
 <import src="/extends/chat-input/chat-input.wxml" />
 <nav seat='60px' />
-
+<include src='/template/interActive.wxml' />
 <scroll-view class='conversation' scroll-y scroll-into-view='{{last_message}}'>
   <block wx:for='{{message_array}}' wx:key='index'>
     <view class='message' id='s_{{index}}' >
