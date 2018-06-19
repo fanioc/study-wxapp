@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "theme": "/components/base/theme",
+    "nav": "/components/navigation/navigation",
+    "l_text": "/components/limite_text/text",
+    "img_pre": "/components/base/image_canPreview/image_canPreview",
+    "user": "/components/userInfo/modal",
+    "modal": "/components/simulate_popup/modal",
+    "mtoast": "/components/toast/middleToast",
+    "zan-button": "/extends/zan/btn/index",
+    "zan-button-group": "/extends/zan/btn-group/index",
+    "zan-icon": "/extends/zan/icon/index",
+    "zan-cell": "/extends/zan/cell/index",
+    "zan-panel": "/extends/zan/panel/index"
+  }
+}

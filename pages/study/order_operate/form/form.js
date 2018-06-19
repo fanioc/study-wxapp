@@ -27,6 +27,7 @@ for (let i = 0; i <= 59; i++) {
 for (let i = 1; i <= 12; i++) {
   durations.push(i);
 }
+var core = getApp().globalData.core;
 Page({
 
   /**
@@ -53,13 +54,13 @@ Page({
         current: true,
         done: true,
         text: '时间地点信息',
-        desc: '10.01'
+        desc: ''
       },
       {
         done: false,
         current: false,
-        text: '邀请自习伙伴',
-        desc: '10.02'
+        text: '匹配自习伙伴',
+        desc: '可选'
       },
       {
         done: false,
@@ -68,9 +69,21 @@ Page({
       }
     ],
     current_step: 1,
-    step_content: '下一步'
+    step_content: '下一步',
+    //---------
   },
   //-------
+  nav_studylist:function(e)
+  {
+  wx.redirectTo({
+    url: '/pages/study/study_list/index',
+    }); 
+  let launch = core.APIrequest('launchStudy', { reach_uid: [110,111,112], study_content: '高等数学', msg: '帮我复习高数啊', place: '2号教学楼-108', study_date: '2018-06-16', study_time: '10-12', study_hidden:1});
+  },
+  swiper_change: function (e) {
+    console.log(e.detail.current);
+    
+  },
   step_next: function (e) {
     console.log(step);
     var step = ++this.data.current_step;

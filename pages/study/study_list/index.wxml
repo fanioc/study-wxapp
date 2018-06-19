@@ -4,7 +4,7 @@
 <view class='contain' wx:if='{{study_status}}'>
 
   <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
-    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}' wx:if="{{item.card_sort!=-1}}">
+    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}' wx:if="{{current_studyInfo_index[index]!=-1}}">
       <view class='invite_item_content'>
         <view class="invite_item_content_card">
           <view>
@@ -26,7 +26,7 @@
                 <view>当前教室学习人数：{{item.study_num}}</view>
                 <view>发起时间：{{item.launch_time}}</view>
                 <view>预计结束时间：{{item.study_time_end}}点</view>
-                <view wx:if="{{item.card_sort==1}}">
+                <view wx:if="{{current_studyInfo_index[index]==1}}">
                   自习伙伴：
                   <zan-panel title="{{reach.status==1?'接受':'拒绝'}} - {{reach.status==-1?'对方未处理':reach.msg}}" class="tag-demo" wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
 
@@ -40,7 +40,7 @@
                   <zan-panel title=" 发起人：" class="tag-demo">
                     <user userID='{{item.launch_id}}' model="3" />
                   </zan-panel>
-                  <zan-panel title="自习伙伴：" class="tag-demo" wx:if="{{item.card_sort==3}}">
+                  <zan-panel title="自习伙伴：" class="tag-demo" wx:if="{{current_studyInfo_index[index]==3}}">
                     <block wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
                       <user userID='{{reach.uid}}' model="0" wx:if="{{reach.status==1}}" />
                     </block>
@@ -63,7 +63,7 @@
 
             </text>
             <zan-button-group>
-              <block wx:if='{{item.card_sort==2}}'>
+              <block wx:if='{{current_studyInfo_index[index]==2}}'>
                 <zan-button size="mini" type="danger" data-index='{{index}}' data-invited='0' catchtap='modal_study_invite'>拒绝邀请</zan-button>
                 <zan-button size="mini" type="primary" data-invited='1' data-index='{{index}}' catchtap='modal_study_invite'>接受邀请</zan-button>
               </block>
@@ -78,7 +78,7 @@
                   <zan-tag type="primary" data-value='2'>
                     满 意</zan-tag>
                 </view>
-                <zan-button size="mini" type="danger" catchtap='button_complete_study' wx:else>结束学习</zan-button>
+                <zan-button size="mini" type="danger" catchtap='button_complete_study' >结束学习</zan-button>
               </view>
             </zan-button-group>
           </view>

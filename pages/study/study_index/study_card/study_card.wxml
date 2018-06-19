@@ -1,0 +1,77 @@
+<include src='/template/interActive.wxml' />
+<nav />
+<!-- 学习进行时显示的界面 -->
+
+
+
+    <view class='study_card'>
+      <view class='invite_item_content'>
+        <view class="invite_item_content_card">
+          <view>
+            <!-- 模块top图片 -->
+
+            <image bindtap='button_order_menu' class="card_image" mode="aspectFill" src="{{url.study}}" />
+            <!-- 模块top图片 -->
+
+            <!-- 模块middle信息 -->
+
+
+            <view class="card_title">
+              <!-- 主要 -->
+             
+              <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:400rpx;'>
+              
+               <view>消息：{{study_array.place}}</view>
+                <view>学习地点：{{study_array.place}}</view>
+                <view>学习科目：{{study_array.study_content}}</view>
+                <view>学习日期：{{study_array.study_date}}</view>
+                <view>当前教室学习人数：{{study_array.study_num}}</view>
+                <view>发起时间：{{study_array.launch_time}}</view>
+                <view>预计结束时间：{{study_array.study_time_end}}点</view>
+
+                <zan-panel title="发起人：" class="tag-demo" >
+
+                  <user userID='{{study_array.launch_id}}' model="1" />
+
+                </zan-panel>
+                自习伙伴：
+                <zan-panel title="状态：{{reach.status==1?'接受':'拒绝'}} - {{reach.status==-1?'对方未处理':reach.msg}}" class="tag-demo" wx:for="{{study_array.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
+
+                  <user userID='{{reach.uid}}' model="{{reach.status==1?'1':'0'}}" />
+
+                </zan-panel>
+
+
+
+              </scroll-view>
+
+
+
+
+              <!-- 主要 -->
+            </view>
+            <!-- 模块middle信息 -->
+          </view>
+          <!-- 模块bottom按钮部门 -->
+          <view class='invite_item_content_button'>
+            <text class='content_button_text' catchtap='button_order_menu'>
+          
+            <text  >菜单</text>
+
+            </text>
+ <zan-button size="mini" type="danger" catchtap='button_complete_study'  class='button_complete_study'>结束学习</zan-button>
+          </view>
+          <!-- 模块bottom按钮部门 -->
+        </view>
+
+
+
+      </view>
+
+    </view>
+
+
+
+
+
+<!-- 没有进行学习时显示的界面 -->
