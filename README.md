@@ -12,33 +12,33 @@
 
 ### 弹幕组件&&课表页面
 
-![弹幕组件](./screenshot\Screenshot_2018-06-10-11-32-35-642_微信.png "弹幕组件")
+![弹幕组件](./screenshot/Screenshot_2018-06-10-11-32-35-642_微信.png "弹幕组件")
 添加自定义课表
-![选项](./screenshot\Screenshot_2018-06-15-09-45-11-381_微信.png)
-![添加课表](./screenshot\Screenshot_2018-06-15-12-00-39-575_微信.png)
+![选项](./screenshot/Screenshot_2018-06-15-09-45-11-381_微信.png)
+![添加课表](./screenshot/Screenshot_2018-06-15-12-00-39-575_微信.png)
 
 ### 个人中心页面
 
-![个人中心页面](./screenshot\Screenshot_2018-06-15-10-17-41-164_微信.png "个人中心页面")
+![个人中心页面](./screenshot/Screenshot_2018-06-15-10-17-41-164_微信.png "个人中心页面")
 
 ### 自习页面
 
-![自习页面](./screenshot\Screenshot_2018-06-15-11-52-17-641_微信.png "自习页面")
+![自习页面](./screenshot/Screenshot_2018-06-15-11-52-17-641_微信.png "自习页面")
 
-![选择教室](./screenshot\Screenshot_2018-06-15-10-16-05-516_微信.png)
+![选择教室](./screenshot/Screenshot_2018-06-15-10-16-05-516_微信.png)
 
-![发起自习](./screenshot\Screenshot_2018-06-15-12-04-20-498_微信.png)
+![发起自习](./screenshot/Screenshot_2018-06-15-12-04-20-498_微信.png)
 
 ### 社区页面
 
-![社区页面](./screenshot\Screenshot_2018-06-15-11-52-40-880_微信.png)
+![社区页面](./screenshot/Screenshot_2018-06-15-11-52-40-880_微信.png)
 
 ### markdown 编辑器 (toml)
 
 markdown 编辑器
-![markdown编辑器](./screenshot\Screenshot_2018-06-15-12-47-52-676_微信.png)
+![markdown编辑器](./screenshot/Screenshot_2018-06-15-12-47-52-676_微信.png)
 markdown 渲染
-![markdown渲染](./screenshot\Screenshot_2018-06-15-11-55-49-854_微信.png)
+![markdown渲染](./screenshot/Screenshot_2018-06-15-11-55-49-854_微信.png)
 
 ## 项目架构
 
