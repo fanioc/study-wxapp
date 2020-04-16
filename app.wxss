@@ -20,14 +20,11 @@ page{
 .flex-x{
   display: flex;
   flex-direction:row;
-  align-items: center;
 }
 
 .flex-y{
   display: flex;
   flex-direction:column;
-  align-items: center;
-  justify-content: center;
 }
 
 .float-centert-a{
@@ -42,69 +39,14 @@ page{
   right: 50%;
 }
 
-
-
-.swiper-tab {
-  padding: 10px 0px;
-  /* height: 30px;  */
-  line-height: 30px;
-  background: #fff;
-  display: flex;
-  position: relative;
-  z-index: 2;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: #f85f48;
-  border-color: #f85f48;
+.shadow{
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1), 0 0px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
-.swiper-tab-list {
-  text-align: center;
-  border: solid 2rpx #f85f48;
-  margin: 10px 0px;
-  padding: 0 6px;
-  width: 60px;
-  font-size: 28rpx;
-  font-family: Helvetica,
-                 Arial,
-                 "Hiragino Sans GB",
-                 "Source Han Sans CN",
-                 "PingFang SC",
-                 Roboto,
-                 "微软雅黑",
-                 "Heiti SC",
-                 "Microsoft Yahei",
-                 sans-serif;
-}
 
-.swiper-left {
-  border-radius: 0.3rem 0 0 0.3rem;
-}
 
-.swiper-right {
-  border-radius: 0 0.3rem 0.3rem 0;
-}
+/*------------*/
 
-.on {
-  color: #fff;
-  background: #f85f48;
-}
-
-/*/--------顶部滑块css--------*/
-
-.fullscreen {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999999;
-  background: white;
-  overflow-y: scroll;
-}
-
-/*/--------全屏显示css--------*/
 
 .hr {
   margin-top: 10rpx;
@@ -137,7 +79,7 @@ green {
   overflow: hidden;
 }
 
-/*/--------动态页面容器--------*/
+/*/--------多个动态页面的容器--------*/
 
 .flex-wrp {
   display: flex;
@@ -148,16 +90,7 @@ green {
   text-align: center;
 }
 
-.search {
-  /* z-index: 100;
-  position: fixed;
-  
-    */
-      width: 100%;
-        height: 30px; 
-  padding: 10px 0 10px 8px;
-    background: lightblue;  
-}
+
 
 .search-left {
   display: flex;
@@ -184,6 +117,7 @@ green {
   margin-top: 20rpx;
 }
 
+
 .button_text {
   font-size: 40rpx;
   font-weight: bold;
@@ -195,12 +129,6 @@ green {
   background-color: white;
 }
 
-.button_text_on {
-  color: LightGrey;
-}
-
-.middle_content {
-}
 
 .footer_button {
   /* z-index: 99999999; */
@@ -211,9 +139,7 @@ green {
 
 /*/--------置底的按钮--------*/
 
-.lly_omit::after {
-  content: '...';
-}
+
 
 text {
   word-break: break-all;

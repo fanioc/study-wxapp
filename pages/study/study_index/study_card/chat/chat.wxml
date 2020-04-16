@@ -1,0 +1,23 @@
+<import src="/extends/chat-input/chat-input.wxml" />
+<nav seat='60px' />
+<include src='/template/interActive.wxml' />
+<scroll-view class='conversation' scroll-y scroll-into-view='{{last_message}}'>
+  <block wx:for='{{message_array}}' wx:key='index'>
+    <view class='message' id='s_{{index}}' >
+      <user model='0' userID='{{item.uid}}' refresh="{{component_user_refresh}}" class='user' />
+      <view class='content'>
+        <text>item.content</text>
+      </view>
+      <view class="answer-actions">
+
+        <view class='lable-answer-actions'>
+          {{item.time}}  
+  
+        </view>
+
+    
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<template is="chat-input" data="{{inputObj:inputObj,textMessage:textMessage,showVoicePart:true}}" />

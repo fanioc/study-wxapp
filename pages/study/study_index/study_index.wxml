@@ -1,0 +1,156 @@
+<!--pages/community/index.wxml-->
+<!-- 顶部切换 -->
+<include src='/template/interActive.wxml' />
+
+<view class="swiper-tab" style='position:fixed;width:100%;'>
+<zan-icon bindtap='menu_left_button' type="wap-nav" class='menu_left'></zan-icon>
+
+  <view style='height:70px'></view>
+  <view class="swiper-tab-list swiper-left {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+    有关我的
+  </view>
+
+  <view class="swiper-tab-list swiper-right {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+    可加入的
+  </view>
+
+</view>
+
+
+<!-- 内容部分 -->
+<!--  有关我的-->
+<view hidden="{{currentTab != 0}}" class='swiper_body'>
+
+
+  <view class="index-bd">
+    <view class="kind-list">
+      <block wx:for-items="{{list}}" wx:for-index='list_index' wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <image class="kind-list-img" src="/image/study_index/{{item.id}}.png"></image>
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:if="{{list_index==0}}" wx:for="{{current_studyInfo}}" wx:for-item="doing" wx:for-index="doing_index" wx:key="idx">
+                <view bindtap='nav_study_card' data-index='{{doing_index}}' class="navigator">
+                  <!-- <view class="navigator-text">{{page}}</view> -->
+                  <view class='doing_item'>
+                    <user userID='{{doing.launch_id}}' refresh="{{component_user_refresh}}" model='-1' />
+                    <view>学习地点：{{doing.place}}</view>
+                    <view>学习内容：{{doing.study_content}}</view>
+                    <view>发起时间：{{doing.launch_time}}</view>
+                  </view>
+
+                </view>
+              </block>
+              <block wx:if="{{list_index==1}}" wx:for="{{deal_study_array}}" wx:for-item="deal" wx:for-index="deal_index" wx:key="idx">
+                <view class="navigator">
+
+                  <view class='doing_item'>
+                    <user userID='{{deal.launch_id}}' refresh="{{component_user_refresh}}" model='0' />
+                    <zan-button-group>
+
+                      <zan-button size="mini" type="danger" data-index='{{deal.study_id}}' data-invited='0' catchtap='modal_study_invite'>拒绝邀请</zan-button>
+                      <zan-button size="mini" type="primary" data-invited='1' data-index='{{index}}' catchtap='modal_study_invite'>接受邀请</zan-button>
+
+
+
+                    </zan-button-group>
+                    <view>消息：{{deal.msg}}</view>
+                    <view>学习地点：{{deal.place}}</view>
+                    <view>学习内容：{{deal.study_content}}</view>
+                    <view>发起时间：{{deal.launch_time}}</view>
+                    <zan-panel title="学习伙伴" class="tag-demo">
+                      <block wx:for='{{deal.reach_id}}' wx:for-item='gay' wx:for-index='gay_idx' wx:key='{{gay_idx}}' class='user'>
+                        <user userID='{{gay.uid}}' model='0' wx:if='{{gay.status==1}}' />
+                      </block>
+                    </zan-panel>
+
+                  </view>
+
+                </view>
+              </block>
+              <view wx:if="{{list_index==2}}" class='history_list' wx:for='{{study_history_array}}' wx:for-item="history" wx:for-index="history_index" wx:key="history_index">
+                <view>学习地点：{{history.place}}</view>
+                <view>学习科目：{{history.study_content}}</view>
+                <view>发起时间：{{history.launch_time}}</view>
+                <view>持续时间：{{history.end_hour}}小时</view>
+
+                <zan-panel title="学习伙伴" class="tag-demo">
+                  <block wx:for='{{history.gay}}' wx:for-item='gay' wx:for-index='gay_idx' wx:key='{{gay_idx}}' class='user'>
+                    <user userID='{{gay}}' model='4' />
+                  </block>
+                </zan-panel>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+</view>
+
+<!--可加入的-->
+<view hidden="{{currentTab != 1}}" class='swiper_body'>
+  <view wx:for="{{current_studyInfo}}" wx:key="index" bindtap='take_part_in'>
+    <view class="feed-item">
+
+      <!--动态内容部分-->
+
+      <!--一，用户信息部分-->
+      <user userID='{{item.launch_id}}' model='0' refresh="{{component_user_refresh}}" />
+      <!--用户信息部分-->
+      <!--二，动态内容部分-->
+      <view class="feed-content">
+        <!--标题部分-->
+        <view>
+          <l_text class="question" content='{{item.msg}}' max='50' />
+        </view>
+        <!--标题部分-->
+
+        <!--问题描述部分-->
+        <view class="answer-body">
+          <view>
+            <!--//addtionRegion-->
+            <view>学习内容：{{item.study_content}}</view>
+            <view>学习时间：{{item.study_time_start}}时-{{item.study_time_end}}时</view>
+            <view class='icon_group'>
+            组队情况：
+              <block wx:for='{{item.reach_id}}' wx:for-item='gay' wx:for-index='idx' wx:key='idx'>
+                <image src="/image/study_index/{{gay.status==1?'red':'gray'}}_head.svg" class='icon'></image>
+              </block>
+            </view>
+          </view>
+
+        </view>
+        <!--问题描述部分-->
+
+      </view>
+      <!--动态内容部分-->
+      <!--三，动态信息部分-->
+      <view class="answer-actions">
+
+
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'>{{item.place}} </a>
+          <text>•</text>
+        </view>
+
+
+        <view class='lable-answer-actions'>
+          <a class='a-lable-answer-actions'> {{item.launch_time}}</a>
+        </view>
+
+      </view>
+      <!--动态信息部分-->
+
+
+      <!--动态内容部分-->
+
+
+    </view>
+
+  </view>
+</view>

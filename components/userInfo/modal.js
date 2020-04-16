@@ -1,15 +1,21 @@
-var _components = getApp().globalData.components;
-var _util = getApp().globalData.util;
-var _API = getApp().globalData.CONSTANT.API;
-var _PATH = getApp().globalData.CONSTANT.PATH;
+var core = getApp().globalData.core;
+
 Component({
 
   behaviors: [],
 
   properties: {
     inner: String, // 简化的定义方式,插入的内容
+    model_data: String,
     model: Number,
-    userID: String
+    userID: String,
+    refresh:{
+    type:Boolean,
+    value:false,
+    observer: function (newVal, oldVal) {
+      this.init_data();
+     }
+    },
   },
   data: {
     user_head_img: '',//用户头像url
@@ -22,68 +28,55 @@ Component({
 
   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
   attached: function () {
-    //--------
-    console.log('用户id为空', this.data.userID)
-
-    var that = this;
-    if (that.data.userID == getApp().globalData.me.uid)//如果是用户自己将model设置为0
-    {
-      that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName });
-      return true;
-    }
-
-    wx.request({
-      url: _API.getUserBasicInfo,
-      data: {
-        session: wx.getStorageSync('session'),
-        other_uid: that.data.userID,
-      },
-      method: 'GET',
-      success: function (res) {
-
-        //console.log(getCurrentPages()[0].is, res.data);
-        var data = _util.errCode(res.data);
-        //console.log(data, 'hahdata', that.data.userID);
-        //console.log(getCurrentPages()[0].is, data);
-        if (data) {
-          // console.log(getCurrentPages()[0].is,'line 42', );
-          that.setData({ user_head_img: data.avatarUrl, user_source_name: data.nickName });
-          console.log(that.data.user_source_name, '用户名', that.data.userID);
-          if (that.data.model == 1)//获取信息，判断是否关注已当前用户
-          {
-            // console.log('is_star', data.is_star);
-            that.setData({
-              followed: data.is_star
-            });
-            // console.log('is_star', that.data.followed);
-            //debugRegion
-          }
-        }
-        else
-          that.set_default();
-
-      },
-      fail: function (res) {
-
-        _components.show_mToast('网络错误');
-        that.set_default();
-      },
-      complete: function (res) { },
-    })
-    //------
   },
+  ready:function(){
+      this.init_data();
+  },
+
   moved: function () { },
   detached: function () { },
 
   methods: {
+    init_data: function () {//初始化数据
+      //--------
+      var that = this;
+      /* let me=core.getUserConfig();
+       me.then(res=>{
+         if (that.data.userID == res.uid)//如果是用户自己将model设置为0
+         {
+           that.setData({ myself: true, model: 0, user_head_img: getApp().globalData.me.avatarUrl, user_source_name: getApp().globalData.me.nickName });
+         }
+       });*/that.data.userID
+      let init = Promise.all([core.getUserConfig(), core.getUserInfo(that.data.userID)]).then(res => {
+        console.log(res);
+        //-------俩个异步请求成功后的操作
+        let myself = false;
+        if (that.data.userID == res[0].uid)//如果是用户自己将model设置为0
+        {
+          myself = true;
+          that.data.model = 0;
+        }
+        //---
+        that.setData({
+          followed: res[1].is_star, user_head_img: res[1].avatarUrl, user_source_name: res[1].nickName,
+          model: that.data.model, myself: myself
+        });
 
+
+        //----------------------------
+      }).catch(err => { that.set_default(); });
+
+
+
+    },
     set_default: function () {//为从服务器获取用户信息时将其设置为匿名用户，无法进行任何按钮操作
       var _THAT = this;
       //console.log(getCurrentPages()[0].is, 'set_default', );
-      _THAT.setData({ user_head_img: _PATH.anonymous, user_source_name: '', model: 0 });
+      _THAT.setData({ user_head_img: '/image/anonymous.png', user_source_name: '', model: 0 });
 
     },
     nav_User_personalPage: function () { //转跳至用户个人信息页面
+      
       var data = false;
       var that = this;
       //addtionRegion
@@ -105,39 +98,30 @@ Component({
 
     set_followed: function () { //获取信息，由+关注组件触发，关注当前用户
       var _THAT = this;
-      wx.request({
-        //   $star   star=1关注 0不关注
-        url: _API.setUserStar,
-        data: {
-          session: wx.getStorageSync('session'),
-          bestar_uid: _THAT.data.userID,
-          star: _THAT.data.followed ? 0 : 1,
-        },
-        method: 'GET',
-        success: function (res) {
-
-          var data = _util.errCode(res.data)
-          if (data) {
-            _THAT.setData({ followed: _THAT.data.followed ? 0 : 1 });
-           _components.show_mToast(data.errMsg)
-          }
-
-        },
-        fail: function (res) {
-          _components.show_mToast('网络错误');
-        },
-        complete: function (res) { },
+      wx.showLoading({
+        title: '进行中',
       })
-
-
+      let result = core.setUserStar(_THAT.data.userID, _THAT.data.followed ? 0 : 1);
+      result.then(res => {
+        let pages = getCurrentPages();
+        let currentPage = pages[pages.length - 1];//lly_improve
+        currentPage.setData({ component_user_refresh: !currentPage.data.component_user_refresh});
+        wx.hideLoading();
+      }).catch(wx.hideLoading());
     },
 
     post_invited: function () { //向用户发送邀请
       var data;
       var _THAT = this;
+      _THAT.setData({ invited: true });//lly_improve
+      let pages = getCurrentPages();
+      let currentPage = pages[pages.length - 1];//lly_improve
+      let data_temp = currentPage.data.invited_user;
+      data_temp.push(_THAT.data.userID);
+      currentPage.setData({ invited_user: data_temp});
       //addtionRegion
       //----debugdata----------
-      wx.request({
+     /* wx.request({
         url: _API.post_invited,
         data: {
           session: wx.getStorageSync('session'),
@@ -151,23 +135,24 @@ Component({
           return true;
         },
         fail: function (res) {
-          _components.show_mToast('网络错误');
+          core.com.show_mToast('网络错误');
         },
         complete: function (res) { },
-      })
+      })*/
       //----debugdata----------
 
     },
+  
     modal_leave_message: function () { //用户留言窗口
       var _THAT = this;
-      _components.show_modal(_THAT, 'leave_message', this.post_leave_message, '留言ing', '发送', false);
+      core.com.show_modal(_THAT, 'leave_message', this.post_leave_message, '留言ing', '发送', false);
 
 
       return true;
     },
     modal_reply_message: function () { //用户回复留言窗口,暂停使用
       //  var _THAT = this;
-      //_components.show_modal(_THAT, 'leave_message', this.post_leave_message, '回复ing', '发送', false);
+      //core.com.show_modal(_THAT, 'leave_message', this.post_leave_message, '回复ing', '发送', false);
 
       return true;
     },
@@ -175,7 +160,7 @@ Component({
       var _THAT = this;
        //addtionRegion
       //----debugdata----------
-      wx.request({
+      /*wx.request({
         url: _API.post_leave_message,
         data: {
           session: wx.getStorageSync('session'),
@@ -188,17 +173,17 @@ Component({
           _util.errCode(res.data);
         },
         fail: function (res) {
-          _components.show_mToast('网络错误');
+          core.com.show_mToast('网络错误');
         },
         complete: function (res) { },
-      })
+      })*/
       //----debugdata----------
       return true;
     },
 
     modal_comment: function () { //用户评论窗口
       //var _THAT = this;
-      //_components.show_modal(_THAT, 'leave_message', this.post_comment, '评论ing', '发送', false);
+      //core.com.show_modal(_THAT, 'leave_message', this.post_comment, '评论ing', '发送', false);
       //addtionRegion
 
       return true;
@@ -212,7 +197,7 @@ Component({
       //----debugdata----------
 
       //console.log(e);
-      _components.show_mToast('完成评价');
+      core.com.show_mToast('完成评价');
 
       return true;
     },
@@ -220,6 +205,10 @@ Component({
       
       wx.navigateTo({ url: '/pages/markdown_editor/index' });
       return true;
+    },
+    refuse_studyInvite:function()
+    {
+      console.log('refuse_studyInvite');
     },
     //--------------------------------
     _myPrivateMethod: function () {

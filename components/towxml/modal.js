@@ -1,7 +1,5 @@
 
 Component({
-
-
   properties: {
     URL: { // 属性名,md地址
       type: String, 

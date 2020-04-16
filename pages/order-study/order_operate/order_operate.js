@@ -1,6 +1,5 @@
-var _components = getApp().globalData.components;
-var _API = getApp().globalData.CONSTANT.API;
-var _util = getApp().globalData.util;
+var core = getApp().globalData.core;
+
 Page({
 
   /**
@@ -54,7 +53,7 @@ Page({
       data: {
         session: wx.getStorageSync('session'),
         place: options.place,
-        // date: '2018-06-08'//improve
+        date: '2018-06-08'
 
       },
       method: 'GET',

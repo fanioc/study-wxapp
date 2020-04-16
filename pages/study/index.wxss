@@ -1,0 +1,109 @@
+@import "/template/back-ground/1.wxss";
+.contain {
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  height:100%;
+}
+
+.map {
+  width: 100%;
+  position: relative;
+  height: 70%;
+}
+
+.shadow {
+  box-sizing: border-box;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: #22b36e 2px solid;
+}
+
+.cover-content {
+  position: absolute;
+  z-index: 99;
+  width: 100px;
+  height: 2.5em;
+  background-color: #22b36e;
+  right: 30px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+}
+
+.cover-select {
+  bottom: 30px;
+}
+
+.cover-bang {
+  bottom:90px;
+}
+
+.cover-me{
+  bottom:  30px;
+}
+
+.place-info {
+  position: relative;
+  height: 30%;
+  /* top: calc(60%+20px); */
+}
+
+.place-button-item view{
+  padding: 1px 0;
+}
+
+.place-button {
+  padding: 5px 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  height: 7em;
+}
+
+.place-button-item {
+  color: #fff;
+  box-sizing: border-box;
+  height: 50px;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 32%;
+  text-align: center;
+  word-break: keep-all;
+}
+
+
+.item-select{
+  background-color: #22b36e;
+}
+
+.item-no-select{
+  /* background-color: #22b36e; */
+  /* background-color: #; */
+  border: #22b36e 2px solid;
+  color: #22b36e;
+}
+
+.select {
+  margin-top: 20px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #22b36e;
+  font-size: 16px;
+  padding: 0 20px;
+}
+
+.select-time{
+  padding-top: 20px;
+  color: #9b9b9b;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  padding-bottom: 5px;
+  font-size: 14px;
+  /* margin-top: 20px; */
+  text-align: center;
+  width: 60%;
+  border-bottom: rgba(145, 145, 145, 0.3) 1px solid;
+}

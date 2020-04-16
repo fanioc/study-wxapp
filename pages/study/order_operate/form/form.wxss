@@ -1,0 +1,92 @@
+page {
+  background-color: lightgray;
+}
+
+.my-class {
+  padding: 10px;
+}
+
+.step {
+  /* font-size: 20px; */
+  position: absolute;
+  box-sizing: border-box;
+  padding-top: 70px;
+  margin: 0 10%;
+  width: 80%;
+  height: 20%;
+}
+
+.swiper {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 80%;
+}
+
+zan-panel{
+  width: 100%;
+}
+
+.zpan{
+  width: 100%;
+}
+
+.pic-time{
+  /* background-color: antiquewhite; */
+  /* z-index: 99; */
+  /* position: absolute; */
+  /* right: 10px; */
+  /* bottom: 10px; */
+  height: 50px;
+  width: 100%;
+}
+.picker{
+  margin: 4px 0;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.study-content {
+  /* height: 100px; */
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.set-item {
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  /* padding-top: 20px; */
+  align-content: space-around;
+  justify-content: space-around;
+}
+
+page {
+  background-color: #f9f9f9;
+}
+
+.view-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.intro {
+  margin: 30px;
+  text-align: center;
+}
+button#clockBu
+{
+  
+  font-size: 90rpx;
+  height: 250rpx;
+  width: 250rpx;
+  border-radius: 200%;
+  background-color: #00BFFF;
+  border: outset 10rpx #87CEFA; 
+}
+.foot{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

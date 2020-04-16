@@ -1,0 +1,154 @@
+<include src='/template/interActive.wxml' />
+<nav />
+<!-- 学习进行时显示的界面 -->
+<view class='contain' wx:if='{{study_status}}'>
+
+  <swiper indicator-dots="true" indicator-active-color='#f85f48' indicator-color=' #8a8a8a' class='invite_item'>
+    <swiper-item wx:for="{{current_studyInfo}}" wx:key='{{index}}' wx:if="{{current_studyInfo_index[index]!=-1}}">
+      <view class='invite_item_content'>
+        <view class="invite_item_content_card">
+          <view>
+            <!-- 模块top图片 -->
+
+            <image bindtap='button_order_menu' class="card_image" mode="aspectFill" src="{{url.study}}" />
+            <!-- 模块top图片 -->
+
+            <!-- 模块middle信息 -->
+
+
+            <view class="card_title">
+              <!-- 主要 -->
+              {{item.msg}}
+              <scroll-view scroll-y='true' class='card_title_item_scroll' style=' height:400rpx;'>
+                <view>学习地点：{{item.place}}</view>
+                <view>学习科目：{{item.study_content}}</view>
+                <view>学习日期：{{item.study_date}}</view>
+                <view>当前教室学习人数：{{item.study_num}}</view>
+                <view>发起时间：{{item.launch_time}}</view>
+                <view>预计结束时间：{{item.study_time_end}}点</view>
+                <view wx:if="{{current_studyInfo_index[index]==1}}">
+                  自习伙伴：
+                  <zan-panel title="{{reach.status==1?'接受':'拒绝'}} - {{reach.status==-1?'对方未处理':reach.msg}}" class="tag-demo" wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
+
+                    <user userID='{{reach.uid}}' model="{{reach.status==1?'3':'0'}}" />
+
+                  </zan-panel>
+
+                </view>
+                <view wx:else>
+
+                  <zan-panel title=" 发起人：" class="tag-demo">
+                    <user userID='{{item.launch_id}}' model="3" />
+                  </zan-panel>
+                  <zan-panel title="自习伙伴：" class="tag-demo" wx:if="{{current_studyInfo_index[index]==3}}">
+                    <block wx:for="{{item.reach_id}}" wx:for-item='reach' wx:for-index='reach_idx' wx:key='reach_idx'>
+                      <user userID='{{reach.uid}}' model="0" wx:if="{{reach.status==1}}" />
+                    </block>
+                  </zan-panel>
+                </view>
+              </scroll-view>
+
+
+
+
+              <!-- 主要 -->
+            </view>
+            <!-- 模块middle信息 -->
+          </view>
+          <!-- 模块bottom按钮部门 -->
+          <view class='invite_item_content_button'>
+            <text class='content_button_text'>
+            <text wx:if='{{complete_study}}'>进行中</text>
+            <text wx:else>进行中</text>
+
+            </text>
+            <zan-button-group>
+              <block wx:if='{{current_studyInfo_index[index]==2}}'>
+                <zan-button size="mini" type="danger" data-index='{{index}}' data-invited='0' catchtap='modal_study_invite'>拒绝邀请</zan-button>
+                <zan-button size="mini" type="primary" data-invited='1' data-index='{{index}}' catchtap='modal_study_invite'>接受邀请</zan-button>
+              </block>
+
+              <view wx:else>
+
+                <view wx:if='{{complete_study}}' data-index='{{item.study_id}}' bindtap='set_study_satisfaction'>
+                  <zan-tag type="danger" data-value='0'>
+                    不满意</zan-tag>
+                  <zan-tag type="warn" data-value='1'>
+                    勉 强</zan-tag>
+                  <zan-tag type="primary" data-value='2'>
+                    满 意</zan-tag>
+                </view>
+                <zan-button size="mini" type="danger" catchtap='button_complete_study' >结束学习</zan-button>
+              </view>
+            </zan-button-group>
+          </view>
+          <!-- 模块bottom按钮部门 -->
+        </view>
+
+
+
+      </view>
+
+    </swiper-item>
+    <block wx:for="{{study_history_array}}" wx:key='{{index}}'>
+      <swiper-item>
+        <view class='invite_item_content'>
+          <view class="invite_item_content_card">
+            <view>
+
+
+              <!-- 模块middle信息 -->
+
+
+              <view class="card_title" style='height:796rpx;'>
+                <!-- 主要 -->
+                <scroll-view scroll-y='true' class='card_title_item_scroll' style='height:766rpx;'>
+                  <view>消息：{{item.msg}}</view>
+                  <view>学习地点：{{item.place}}</view>
+                  <view>学习科目：{{item.study_content}}</view>
+                  <view>发起时间：{{item.launch_time}}</view>
+                  <view>持续时间：{{item.end_hour}}小时</view>
+
+
+                  <zan-panel title="学习伙伴" class="tag-demo" hide-border="{{ true }}">
+                    <block wx:for='{{item.gay}}' wx:for-item='gay' wx:for-index='idx' wx:key='{{idx}}' class='user'>
+                      <user userID='{{gay}}' model='4' />
+                    </block>
+                  </zan-panel>
+                  <zan-panel title="满意度{{study_satisfaction[index]}}" class="tag-demo">
+                    <zan-cell class='button_zan-cell'>
+                      <view>
+                        <progress activeColor='#09BB07' percent='{{study_satisfaction[index]*50}}'></progress>
+                      </view>
+
+
+                    </zan-cell>
+                  </zan-panel>
+
+                </scroll-view>
+
+                <view class='invite_item_content_button'>
+                  <text class='content_button_text'>
+
+            <text >历史记录</text>
+                  </text>
+                  <zan-button size="mini" type="primary" catchtap='nav_orderStudy_detailPage'>自习地图</zan-button>
+                </view>
+                <!-- 主要 -->
+              </view>
+              <!-- 模块middle信息 -->
+
+            </view>
+          </view>
+
+
+
+        </view>
+
+      </swiper-item>
+    </block>
+
+  </swiper>
+
+</view>
+<!-- 没有进行学习时显示的界面 -->

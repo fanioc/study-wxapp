@@ -1,0 +1,76 @@
+<!-- <import src="/template/back-ground/1.wxml" />
+<template is="back-ground-1" /> -->
+<!-- <view class='view-box'> -->
+<nav />
+<view class="contain">
+
+  <map id="study_place_map" class="map shadow" show-location="true" latitude="{{currentLatitude}}" longitude="{{currentLongitude}}"
+    scale="18" markers="{{markers}}" bindcallouttap="tapMarker">
+    <!-- <cover-view class="cover-select cover-content flex-all">
+      <cover-view>学习地点</cover-view>
+    </cover-view> -->
+    <cover-view class="cover-bang  cover-content flex-all">
+      <cover-view bind:tap="goRank">排行榜</cover-view>
+    </cover-view>
+    <cover-view class="cover-me cover-content flex-all">
+      <cover-view bind:tap="goStudyList">我的自习</cover-view>
+    </cover-view>
+  </map>
+  <!-- 信息展示 -->
+  <scroll-view scroll-y="{{true}}" class="place-info">
+
+    <picker bindchange="changeDate" class="select-time" mode="date" value="{{cuerrntDate}}" start="{{dateRange.start}}" end="{{dateRange.end}}">
+      —
+      <zan-icon type="clock"></zan-icon>
+      {{currentDate}} —
+    </picker>
+    <picker class="select" mode='selector' range="{{placeRange}}" value="{{currentPlace}}}" bindchange="changePlace">
+      <zan-icon type="location"></zan-icon>
+      {{placeRange[currentPlace]}}
+    </picker>
+    <view class="place-button flex-x">
+      <view wx:for="{{placeItems}}" wx:key="x" class="place-button-item flex-all {{item.id==currentSelect?'item-select':'item-no-select'}}" bind:tap="selectPlace"
+        id="{{item.id}}">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          {{item.place}}
+        </view>
+        <view>{{item.stu_num}}人</view>
+      </view>
+    </view>
+    <!-- <view class="select">
+      <zan-icon type="location"></zan-icon>
+      他们都在哪...
+    </view>
+    <view class="place-button flex-x">
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          1号教学楼
+        </view>
+        <view>2人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          2号教学楼
+        </view>
+        <view>10人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          3号教学楼
+        </view>
+        <view>50人</view>
+      </view>
+      <view class="place-button-item flex-all">
+        <view>
+          <zan-icon type="location"></zan-icon>
+          图书馆
+        </view>
+        <view>30人</view>
+      </view>
+    </view> -->
+  </scroll-view>
+</view>

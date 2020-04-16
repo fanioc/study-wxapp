@@ -1,0 +1,101 @@
+@import "/template/back-ground/1.wxss";
+page {
+  background-color: white;
+}
+.invite_item_content_card {
+  
+  /* border:1px solid #a0acac; */
+   border-radius: 10px; 
+  padding-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 10px 0 rgba(0, 0, 0, 0.20); 
+  margin: 8px;
+  position: relative;
+  word-break: break-all;
+  width: 600rpx;
+}
+.invite_item_content {
+  /*  */
+  position: relative;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.invite_item {
+  /* position: absolute; *//* top: 80px;  */
+  text-align: center;
+  width: 100%;
+  position: relative;
+  top: 0;
+  height: 100%;
+}
+
+.contain {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.b {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.c {
+  margin-top: 5rpx;
+  background-color: #f85f48;
+  color: white;
+  height: 60rpx;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.d {
+  margin-left: 90rpx;
+}
+
+.left {
+  width: 65rpx;
+  height: 65rpx; /*高度为宽度的2倍*/
+  border-radius: 65rpx 0 0 65rpx; /*圆角半径为宽度的值*/
+  position: relative;
+  display: inline-block;
+  background-color: white;
+}
+
+.e {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 88rpx;
+}
+.graphCanvas {
+  width: 750rpx;
+ height: 180px;
+ position: relative;
+}
+.pieGraph_background{
+  background-color: transparent;
+}
+

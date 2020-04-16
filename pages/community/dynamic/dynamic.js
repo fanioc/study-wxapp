@@ -1,7 +1,5 @@
-// pages/community/dynamic/dynamic.js
-var components = getApp().globalData.components;
-var _API = getApp().globalData.CONSTANT.API;
-var _util = getApp().globalData.util;
+var core = getApp().globalData.core;
+
 Page({
 
   /**
@@ -49,60 +47,39 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log('dynamic.js onload参数',options.question_id)
-    console.log(getApp().globalData.current_question);
+  //---c初始化数据
+  init_data:function(){
+
     //---------
-    var that=this;
+    var that = this;
     //---
     wx.showLoading({
       title: '加载详情中',
     })
     //---
-    wx.request({
-      url: _API.getDynamicContent,
-      data: {
-        session: wx.getStorageSync('session'),
-        dynamic_id: options.question_id
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log('_API.getDynamicContent',res.data);
-        //----
-              var data=_util.errCode(res.data)
-        if(data)//获取成功
-        {
-          
-          that.setData({ dynamic: data.dynamic, data_success: true});
-          //--------传送回答列表数组
-          var typedata = typeof data.ans_list;
-          if(typedata=='object')
-          {
-            console.log('typedata', typedata, data.ans_list);
-            that.get_answer_array(0, data.ans_list);
+    let req = core.APIrequest('getDynamicContent', { dynamic_id: that.data.question_id });
+    req.then(data => {
+      console.log('_API.getDynamicContent', data);
+      //----
+      if (data)//获取成功
+      {
 
-          }
-          //if(data.ans_list)
-              console.log('dynamic',that.data.dynamic)
+        that.setData({ dynamic: data.dynamic, data_success: true });
+        //--------传送回答列表数组
+        let typedata = typeof data.ans_list;
+        if (typedata == 'object') {
+          console.log('typedata', typedata, data.ans_list);
+          that.get_answer_array(0, data.ans_list);
         }
-       
-      },
-      fail: function (res) {
-        _components.show_mToast('网络错误');
-        return false;
-      },
-      complete: function (res) {
+        console.log('dynamic', that.data.dynamic);
         wx.hideLoading();
-      },
-    })
+      }
+    }).catch(wx.hideLoading())
     //------ 
-   
-    
-
- 
-    
-    
-    //this.get_answer_array();
+  },
+  onLoad: function (options) {
+    console.log('dynamic.js onload参数',options.question_id);
+    this.setData({ question_id:options.question_id})
 
   },
 
@@ -117,7 +94,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.init_data();
   },
 
   /**

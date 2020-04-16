@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -60,9 +60,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "自习",
-					"pathName": "pages/order-study/index",
+					"pathName": "pages/study/index",
 					"query": ""
 				},
 				{
@@ -102,9 +102,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "order_operate",
-					"pathName": "pages/order-study/order_operate/operate",
+					"id": 11,
+					"name": "发起学习",
+					"pathName": "pages/study/order_operate/form/form",
 					"query": ""
 				},
 				{
@@ -120,9 +120,27 @@
 					"query": ""
 				},
 				{
+					"id": 14,
+					"name": "发送消息界面",
+					"pathName": "pages/study/study_index/study_card/chat/chat",
+					"query": ""
+				},
+				{
 					"id": -1,
-					"name": "自习地图",
-					"pathName": "pages/order-study/order_map/order_map",
+					"name": "自习",
+					"pathName": "pages/study/study_index/study_index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "自习",
+					"pathName": "pages/study/study_index/study_card/study_card",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "排行榜",
+					"pathName": "pages/study/rank/rank",
 					"query": ""
 				}
 			]

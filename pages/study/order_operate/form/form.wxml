@@ -1,0 +1,55 @@
+<include src="/template/interActive.wxml" />
+<nav />
+<view class="view-box">
+  <view class="step">
+    <zan-steps type="horizon" hasDesc steps="{{steps}}"></zan-steps>
+  </view>
+  <form bindsubmit="launchStudy" id='form_info'>
+    <swiper class="swiper" bindchange='swiper_change'>
+      <!-- 步骤一 -->
+      <swiper-item class=" set-item">
+        <zan-panel title="请设置学习日期：">
+          <zan-field title="日期" bindchange='inputDate' placeholder="请选择日期" value="{{date}}" error="true" input-type="string"></zan-field>
+        </zan-panel>
+        <zan-panel title="请设置自习地点：">
+          <zan-field bindchange='inputPlace' title="自习地点" placeholder="请输入地点" value="{{place}}" error="true" input-type="string"></zan-field>
+          <zan-field bindchange='inputSite' title="教室号" placeholder="请输入地点" value="{{site}}" error="true" input-type="string"></zan-field>
+        </zan-panel>
+        <zan-panel title="学习内容" class="zpan">
+          <zan-field bindchange='inputContent' placeholder="请输入学习内容" value="{{ textareaValue }}"></zan-field>
+          <zan-field bindchange='inputMsg' placeholder="请输入学习标题(选填）" value="{{ study_msg }}"></zan-field>
+        </zan-panel>
+        <zan-panel title="设置开始结束时间">
+          <zan-cell>
+            <view class="flex-all pic-time">
+              <picker class="picker" mode="time" bindchange='inputStar' value='{{star_time}}'>开始时间：{{star_time}}</picker>
+              <picker class="picker" mode="time" bindchange='inputEnd' value='{{end_time}}'>结束时间：{{end_time}}</picker>
+            </view>
+          </zan-cell>
+          <zan-cell>
+
+
+          </zan-cell>
+        </zan-panel>
+      </swiper-item>
+      <!-- 步骤二 -->
+      <swiper-item class="set-item flex-all">
+        <view wx:if='{{get_studyGay}}' class='view-box'>
+          <zan-panel title="匹配列标，可多选">
+            <block wx:for='{{get_studyGay}}' wx:key='index'>
+              <user userID='{{item.uid}}' refresh="{{component_user_refresh}}" model='2'/>
+            </block>
+          </zan-panel>
+        </view>
+        <view class='foot' wx:else>
+
+          <button id='clockBu' bindtap='get_studyGay'>寻</button>
+        </view>
+      </swiper-item>
+      <!-- 步骤三 -->
+      <swiper-item class="set-item">
+        <zan-button type='primary' bindtap='nav_studylist'> 发起学习</zan-button>
+      </swiper-item>
+    </swiper>
+  </form>
+</view>

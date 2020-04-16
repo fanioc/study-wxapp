@@ -1,9 +1,13 @@
 {
   "pages": [
     "pages/schedule/index",
-    "pages/order-study/order_map/order_map",
+    "pages/study/index",
+    "pages/study/study_list/index",
+    "pages/study/order_operate/order_operate",
+    "pages/study/order_operate/form/form",
     "pages/me/index",
     "pages/community/index",
+    "pages/order-study/order_map/order_map",
     "pages/community/dynamic/dynamic",
     "debug/debug",
     "pages/me/binds/bind-edusys",
@@ -16,7 +20,10 @@
     "pages/order-study/index",
     "pages/order-study/order_operate/order_operate",
     "pages/order-study/order_operate/form/form",
-    "pages/study/study-map"
+    "pages/study/study_index/study_index",
+    "pages/study/study_index/study_card/study_card",
+    "pages/study/study_index/study_card/chat/chat",
+    "pages/study/rank/rank"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -39,7 +46,7 @@
         "selectedIconPath": "image/tabBar/activity_fill.png"
       },
       {
-        "pagePath": "pages/order-study/order_map/order_map",
+        "pagePath": "pages/study/study_index/study_index",
         "text": "自习",
         "iconPath": "image/tabBar/select.png",
         "selectedIconPath": "image/tabBar/select_fill.png"

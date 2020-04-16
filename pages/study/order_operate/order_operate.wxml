@@ -1,0 +1,38 @@
+<include src='/template/interActive.wxml' />
+<nav />
+<view class='view-box'>
+
+  <view class='title'>
+  当前选择：{{form_place}}
+  </view>
+
+  <view class='content'>
+    <view class='class_block right_sort' style='position:fixed;'>
+      <view style="{{current_sort==index?'color: black;':''}}" id='s{{index}}' wx:for='{{time_index}}' wx:key='index' bindtap='changeScroll' class='items' data-index='{{index}}'>{{item}}</view>
+    </view>
+
+    <scroll-view class='class_block left_content' scroll-y='true' scroll-into-view='{{scroll_ID}}' scroll-top='{{scroll_top}}' bindscroll='scrollClass'>
+      <zan-panel id='s{{index}}' title="{{time_index[index]}}" class="panel-example" wx:for='{{free_class_array}}' wx:key='index'>
+        <view style=' padding: 5px 5px 5px 5px;'>
+          <view class='week-table-font week-table-1' bindtap='fill_order_study' data-site='{{each.site}}' wx:for='{{item}}' wx:for-item='each' wx:for-index='idx' wx:key='idx'>
+
+            <view class='class_body'>
+              <image src='/image/pen.svg' class='class_online'></image>
+              {{each.study_num}}人
+            </view>
+            <view class='class_foot'>
+              {{each.site}}
+            </view>
+
+          </view>
+
+        </view>
+
+
+
+      </zan-panel>
+    </scroll-view>
+  </view>
+
+
+</view>

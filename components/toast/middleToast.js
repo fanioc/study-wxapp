@@ -1,6 +1,5 @@
-var globalData = getApp().globalData;
-var util = globalData.util;
-var CONSTANT = globalData.CONSTANT;
+var core = getApp().globalData.core;
+
 Component({
 
   behaviors: [],
